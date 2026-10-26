@@ -56,6 +56,26 @@ cost basis or dollar values: only relative units, so the pages show returns, wei
 change in percent. `python build.py` writes the full payload with dollar values. Deploy the
 public payload unless the club's advisor has approved showing dollar amounts in the cafe.
 
+## Hosting today: GitHub Pages (live since 2026-10-26)
+
+The site is served from this repository by GitHub Pages: https://kevinhsykes.github.io/golisano-club-display/
+(`/tv.html` for the cafe TV, `/index.html` for phones and laptops). `.github/workflows/pages.yml`
+deploys `web/` on every push to `main` and, every 15 minutes during US market hours, refreshes the
+saved prices from a Yahoo Finance snapshot and commits them back. That snapshot is personal-use data,
+so the pages say "Saved prices, not a live feed"; the licensed feed below replaces it for the public
+screen. The deployed `web/data/portfolio.json` is built in the workflow and carries dollar amounts;
+use `?amounts=hide` on either page to show percentages only.
+
+### Hand it to the school
+
+1. In GitHub: Settings > General > Transfer ownership, to the Institute's or club's GitHub organization
+   (or a faculty sponsor's account). History, the workflow and the Pages site move with it; the site
+   address becomes `https://<org>.github.io/golisano-club-display/`.
+2. In the new home: Settings > Pages > Source "GitHub Actions" (one click if it did not carry over),
+   and Settings > Actions > allow workflows. Push once or run the `pages` workflow by hand.
+3. Point the TV devices at the new `/tv.html` address and the Canvas link at `/index.html`.
+4. Add a second admin (faculty sponsor) so the site survives officer turnover.
+
 ## Deploy (club- or institute-owned Cloudflare account)
 
 ```sh

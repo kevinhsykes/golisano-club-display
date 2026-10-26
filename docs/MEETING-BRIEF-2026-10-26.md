@@ -1,11 +1,18 @@
 # Investment Club portfolio on the cafe TVs — brief for Golisano media, Oct 26, 2026
 
+## Live now (public, no account needed)
+
+- TV view: https://kevinhsykes.github.io/golisano-club-display/tv.html (open full screen in kiosk mode; add `?amounts=hide` for percentages only)
+- Portfolio page for members and managers: https://kevinhsykes.github.io/golisano-club-display/index.html
+- Source: https://github.com/kevinhsykes/golisano-club-display (transfer to a school GitHub organization to make it official; see README "Hand it to the school")
+- Prices refresh every 15 minutes during market hours from a saved Yahoo Finance snapshot (fine to show the club; the licensed feed below is what makes the public screen proper).
+
 ## What we have, ready today
 
 - **TV view** (`tv.html`): full-screen 16:9 page. Left card: portfolio value, today's change, SPY today, gain vs cost, change since the Sept 22 statement, holdings up/down, largest holding. Right side rotates four panels every 20 s: largest 9 holdings, the other 9, today's biggest moves with allocation bars, and a chart of gain over cost (portfolio vs our SPY position vs stock picks). Scrolling price tape and the exchange-required delay notice. Built for 1080p and 4K, kiosk mode, burn-in shift, auto-reload every 6 h, keeps last prices through network drops.
 - **Web view** (`index.html`): phones and laptops, linked from the club's Canvas page. Sortable holdings table with cost basis, day and total gain, weights; click a stock for its chart and key stats.
 - **Live board** (`board.html`): interim TV page using TradingView's free widget (15-minute delayed prices, no portfolio math). Needs no account or key.
-- Prices on all pages as of 10:27 AM ET today: value $104,769, cost $100,832, gain +$3,937 (+3.90%), day +$339 (+0.33%).
+- Prices on all pages as of 11:19 AM ET today: value $105,289, cost $100,832, gain +$4,457 (+4.42%), day +$859 (+0.82%).
 
 ## What the TV needs from the school
 
@@ -30,10 +37,10 @@ Questions to get answered in writing from any vendor: (a) does the plan cover a 
 - **Yearly**: regenerate the NYSE holiday calendar before January 2028.
 - Ownership: the Cloudflare account and the feed subscription should be in the Institute's or club's name, with a faculty sponsor as a second admin, so it survives officer turnover.
 
-## Demo today without any of the above
+## Demo today
 
-On a laptop with the repo: `python3 tools/demo_serve.py`, then open `http://localhost:8765/tv.html` full screen. Prices refresh every minute from a Yahoo Finance snapshot (fine for a demo and internal use, not for the public screen). Screenshots of all panels are in `docs/`.
+Open the live TV link above full screen on any laptop or the room's display. Offline fallback: `python3 tools/demo_serve.py` in the repo, then `http://localhost:8765/tv.html`. Screenshots of all panels are in `docs/`.
 
 ## Not on record yet
 
-Purchase dates and the club's start date (ask Dave for the trade history), cash and dividends. Until then the chart compares gains on what we paid, not returns over the same period, and the pages say so.
+Purchase dates and the club's start date (ask Dave for the trade history), cash and dividends. The Sept 22 cost-basis export shows all unrealized gain as short-term ($9,040.18, 8.97%) and long-term as $0.00, so every current lot was bought after Sept 22, 2025; exact dates are still unknown. Until then the chart compares gains on what we paid, not returns over the same period, and the pages say so.

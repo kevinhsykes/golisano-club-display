@@ -273,5 +273,12 @@
     "baseline": null,
     "observations": [],
     "status": "awaiting aligned marks and cash-inclusive accounting"
+  },
+  "holding_period_note": {
+    "as_of": "2026-09-22",
+    "source": "Brokerage cost-basis export photographed 2026-09-22 09:45 ET (18 records): Short Term Unrealized Gain $9,040.18 / 8.97%, Long Term Unrealized Gain $0.00 / 0.00%",
+    "implication": "Every lot was held under one year on 2026-09-22, so all current positions were bought after 2025-09-22. Exact purchase dates are still not on record.",
+    "cash": "not shown on the export (unknown)",
+    "dividends": "not shown on the export (unknown)"
   }
 }
