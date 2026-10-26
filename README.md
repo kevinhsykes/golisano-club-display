@@ -116,7 +116,13 @@ logic against a fake feed and fake storage.
 
 ## TV setup
 
-Open `https://<host>/tv.html` full screen in kiosk mode on the cafe TV's device. Options:
+The school's screens run **Yodeck**. Add each page as a Web Page media item (Media > Web Pages >
+Add, paste the address), then show it on a screen or put it in a playlist or layout. Leave Yodeck's
+"Refresh Web Page" off or set it to hours: the page refreshes its own prices every minute and
+reloads itself every 6 hours. The site sends no frame-blocking headers. `/screens.html` lists every
+template with its address and a copy button.
+
+Any other device: open `https://<host>/tv.html` full screen in kiosk mode on the cafe TV's device. Options:
 `?amounts=hide` (percent only), `?panel=holdings|movers` (pin one panel), `?rotate=40`
 (seconds per panel). The page reloads itself every 6 hours and survives network drops by
 keeping the last prices with an age warning.

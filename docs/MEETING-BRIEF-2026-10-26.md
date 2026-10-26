@@ -16,7 +16,7 @@
 
 ## What the TV needs from the school
 
-1. **A device per screen that opens a URL in kiosk mode** (any Chrome/Edge/Firefox box, a Raspberry Pi, a Chromecast with Google TV, or the signage player already driving the screens). The page is a normal web page; any signage system that shows a URL works.
+1. **Yodeck (the school's signage).** Each screen template is a normal public web page, so in Yodeck it is one Web Page media item: Media > Web Pages > Add, paste the address from https://kevinhsykes.github.io/golisano-club-display/screens.html, show it on the screen or put it in the playlist. Leave Yodeck's "Refresh Web Page" off or set it to hours; the page refreshes its own prices every minute and reloads itself every 6 hours. No account or key is needed.
 2. **Hosting**: a Cloudflare account owned by the club or the Institute (free tier is enough: one Worker, one KV store, static pages). Deploy is one command once the account exists.
 3. **A licensed price feed.** This is the only real cost, and the licence, not the price, decides it. Free and personal plans (Yahoo, Google, Finnhub, Alpaca, Alpha Vantage) do not allow showing prices to the public.
 
