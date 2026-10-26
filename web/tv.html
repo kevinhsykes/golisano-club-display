@@ -163,7 +163,7 @@ footer .src { text-align: right; }
 </div>
 <script type="module">
 import {
-  fetchJson, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -185,6 +185,7 @@ const CONFIG = {
 const now = () => CONFIG.now || new Date();
 const $ = id => document.getElementById(id);
 let payload;
+let bootVersion = null;
 
 async function boot() {
   try {
@@ -194,6 +195,7 @@ async function boot() {
     setTimeout(() => location.reload(), 60000);
     return;
   }
+  bootVersion = await fetchVersion();
   if (CONFIG.hideAmounts) payload.amounts = payload.amounts === 'shown' ? 'shown-hidden' : payload.amounts;
   CONFIG.quotes = CONFIG.quotes ?? payload.live_quotes_url ?? null;
   render();
@@ -206,6 +208,8 @@ async function boot() {
 }
 
 async function poll() {
+  const v = await fetchVersion();
+  if (buildChanged(bootVersion, v)) { location.reload(); return; }
   try {
     if (CONFIG.quotes) {
       if (mergeQuotes(payload, await fetchJson(CONFIG.quotes))) render();

@@ -12,6 +12,15 @@ export async function fetchJson(url, timeoutMs = 20000) {
   return res.json();
 }
 
+// The deployed build id (web/version.json, written by build.py). Pages fetch it at boot and again
+// on every poll; a changed id means a new deploy, and the page reloads itself to pick it up.
+export async function fetchVersion() {
+  try { return await fetchJson('version.json', 10000); } catch { return null; }
+}
+export function buildChanged(boot, now) {
+  return !!(boot && now && boot.build && now.build && boot.build !== now.build);
+}
+
 // Merge a complete portfolio-quotes.v1 snapshot over the payload's quotes.
 // An incomplete or older snapshot is ignored so the last good prices stay up.
 export function mergeQuotes(payload, snap) {

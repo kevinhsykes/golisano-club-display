@@ -11,7 +11,7 @@ Run:  python build.py            -> web/data/portfolio.json, full (dollar amount
 The public payload omits the data itself; hiding numbers with CSS is not enough
 for a page anyone can open.
 """
-import csv
+import csv, subprocess, datetime
 import json
 import sys
 from decimal import Decimal, ROUND_HALF_UP
@@ -54,6 +54,17 @@ def snapshot_value(shares, quotes):
     if missing:
         raise SystemExit(f"snapshot missing symbols: {missing}")
     return sum(shares[s] * dec(by[s]["price"]) for s in shares)
+
+
+def write_version(out_dir):
+    """web/version.json: the deployed build id. Pages poll it every minute and reload when it changes,
+    so an improvement pushed to main reaches a TV that only holds the URL within about a minute."""
+    try:
+        build = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
+    except Exception:
+        build = "unknown"
+    built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    (out_dir / "version.json").write_text(json.dumps({"build": build, "built_at_utc": built}) + "\n", encoding="utf-8")
 
 
 def main(public, out):
@@ -144,6 +155,7 @@ def main(public, out):
     }
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, indent=1, default=str), encoding="utf-8")
+    write_version(ROOT / "web")
     print(f"wrote {out} ({'public' if public else 'full'}): "
           f"{len(holdings)} holdings, {len(history)} history points")
 
