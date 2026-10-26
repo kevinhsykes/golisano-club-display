@@ -151,7 +151,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 </div>
 <script type="module">
 import {
-  fetchJson, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -169,6 +169,7 @@ if (params.get('theme')) document.documentElement.dataset.theme = params.get('th
 const now = () => CONFIG.now || new Date();
 const $ = id => document.getElementById(id);
 let payload, sortKey = 'weight', sortDir = -1;
+let bootVersion = null;
 
 async function boot() {
   try {
@@ -178,6 +179,7 @@ async function boot() {
     $('banner').textContent = 'Portfolio data is unavailable right now. Try reloading the page.';
     return;
   }
+  bootVersion = await fetchVersion();
   CONFIG.quotes = CONFIG.quotes ?? payload.live_quotes_url ?? null;
   render();
   poll();
@@ -185,6 +187,7 @@ async function boot() {
 }
 
 async function poll() {
+  if (buildChanged(bootVersion, await fetchVersion())) { location.reload(); return; }
   try {
     if (CONFIG.quotes && mergeQuotes(payload, await fetchJson(CONFIG.quotes))) render();
     else if (!CONFIG.quotes) {
