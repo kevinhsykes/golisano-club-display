@@ -4,8 +4,9 @@
 export const ET = 'America/New_York';
 const STALE_OPEN_MINUTES = 30;
 
-export async function fetchJson(url) {
-  const res = await fetch(url, { cache: 'no-store' });
+export async function fetchJson(url, timeoutMs = 20000) {
+  const signal = typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(timeoutMs) : undefined;
+  const res = await fetch(url, { cache: 'no-store', signal });
   if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
   return res.json();
 }
@@ -316,6 +317,6 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
     prevY = ly;
     add('text', { x: x(last.t) + 10 * unit, y: ly, class: `endlabel ${s.cls}` }, `${s.name} ${fmtPct(last.y, 1)}`);
   }
-  svg.setAttribute('aria-label', series.map(s => `${s.name} ${fmtPct(s.points[s.points.length - 1].y, 1)}`).join(', ') + ' since the first saved observation');
+  svg.setAttribute('aria-label', series.map(s => `${s.name} ${fmtPct(s.points[s.points.length - 1].y, 1)}`).join(', ') + ' unrealized gain over cost since the Sept 22 statement; purchase dates unknown, so not a same-period return');
   return svg;
 }

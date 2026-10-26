@@ -1,7 +1,9 @@
 # Golisano Investment Club — portfolio display
 
 A cafe TV view and a web page (linked from the club's Canvas course) showing the club's
-18 holdings with prices that refresh every minute while the market is open.
+18 holdings. Today the prices are a saved snapshot refreshed every 15 minutes while the market is
+open (see "Hosting today"); the Cloudflare Worker below refreshes every minute once a licensed feed
+is connected.
 
 | Page | Path | Use |
 |---|---|---|

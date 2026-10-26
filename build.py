@@ -67,6 +67,10 @@ def main(public, out):
     basis = {p["symbol"]: dec(p["cost_basis"]) for p in positions["opening_positions"]}
     if set(shares) != set(statement):
         raise SystemExit("positions.json and statement CSV disagree on symbols")
+    for sym, row in statement.items():
+        if shares[sym] != dec(row["shares"]) or basis[sym] != dec(row["cost_basis"]):
+            raise SystemExit(f"positions.json and statement CSV disagree on {sym}: "
+                             f"shares {shares[sym]} vs {row['shares']}, basis {basis[sym]} vs {row['cost_basis']}")
 
     current = load("quotes-current.json")
     history_snaps = load("historical-quotes.json")
