@@ -3,6 +3,7 @@
 
 export const ET = 'America/New_York';
 const STALE_OPEN_MINUTES = 30;
+export const STALE_SYMBOL_MINUTES = 90; // a single quote older than this during the session flags the board
 
 export async function fetchJson(url, timeoutMs = 20000) {
   const signal = typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(timeoutMs) : undefined;
@@ -96,8 +97,14 @@ export function freshness(items, status, now, delayMinutes = 0) {
   if (status.state === 'open') {
     // A 15-minute-delayed feed is normally ~16 minutes old; stale means no update for 15 more.
     const limit = delayMinutes ? delayMinutes + 15 : STALE_OPEN_MINUTES;
-    if (ageMin <= limit) return { level: 'live', newest, ageMin };
-    return { level: 'stale', newest, ageMin, reason: 'Prices are not updating' };
+    if (ageMin > limit) return { level: 'stale', newest, ageMin, reason: 'Prices are not updating' };
+    // One symbol stuck on an old print must not ride on the others' freshness.
+    const oldest = oldestQuote(items);
+    if ((now - oldest) / 60000 > STALE_SYMBOL_MINUTES) {
+      const sym = items.find(q => Date.parse(q.provider_update_at_utc) === oldest)?.symbol || 'A holding';
+      return { level: 'stale', newest, ageMin, reason: `${sym} has not updated since ${new Date(oldest).toISOString().slice(11, 16)} UTC` };
+    }
+    return { level: 'live', newest, ageMin };
   }
   if (newestYmd < status.lastClosedSession) {
     return { level: 'stale', newest, ageMin, reason: 'Prices are from an earlier session' };

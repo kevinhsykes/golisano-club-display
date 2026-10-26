@@ -157,9 +157,11 @@ import {
 } from './core.js';
 
 const params = new URLSearchParams(location.search);
+// Only relative, same-origin paths may be loaded from the address bar.
+const samePath = v => (v && !/^[a-z]+:|^\/\//i.test(v) ? v : null);
 const CONFIG = {
-  data: params.get('data') || 'data/portfolio.json',
-  quotes: params.get('quotes'),                  // default: payload.live_quotes_url (api/quotes)
+  data: samePath(params.get('data')) || 'data/portfolio.json',
+  quotes: samePath(params.get('quotes')),                  // default: payload.live_quotes_url (api/quotes)
   hideAmounts: params.get('amounts') === 'hide',
   now: params.get('now') ? new Date(params.get('now')) : null,
 };

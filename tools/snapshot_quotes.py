@@ -29,7 +29,7 @@ def main():
         m = yahoo(s)
         t = datetime.datetime.fromtimestamp(m["regularMarketTime"], datetime.timezone.utc)
         rows.append({
-            "symbol": s, "price": f"{m['regularMarketPrice']:.2f}", "previous_close": f"{m['chartPreviousClose']:.2f}",
+            "symbol": s, "price": f"{m['regularMarketPrice']:.2f}", "previous_close": f"{(m.get('regularMarketPreviousClose') or m.get('previousClose') or m['chartPreviousClose']):.2f}",
             "currency": m.get("currency", "USD"), "provider_update_at_utc": f(t), "retrieved_at_utc": f(now),
             "session": "regular" if m.get("currentTradingPeriod") and m["currentTradingPeriod"]["regular"]["start"] <= m["regularMarketTime"] < m["currentTradingPeriod"]["regular"]["end"] else "closed",
             "provider": "Yahoo Finance (snapshot)", "source_url": f"https://finance.yahoo.com/quote/{s.replace('/', '-')}/",

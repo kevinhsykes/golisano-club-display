@@ -57,6 +57,12 @@ test('freshness: live, stale during session, mid-session prices after close, clo
   assert.equal(f('2026-10-21T15:40:00Z'), 'stale');   // 12 days old
   const closing = q.map(x => ({ ...x, provider_update_at_utc: '2026-10-09T20:00:00Z' }));
   assert.equal(freshness(closing, marketStatus(at('2026-10-10T15:00:00Z'), cal), at('2026-10-10T15:00:00Z')).level, 'closed');
+  // One symbol stuck two hours behind the rest flags the board by name, even though the newest quote is fresh.
+  const fresh = q.map(x => ({ ...x, provider_update_at_utc: '2026-10-09T15:25:00Z' }));
+  fresh[3] = { ...fresh[3], provider_update_at_utc: '2026-10-09T13:35:00Z' };
+  const stuck = freshness(fresh, marketStatus(at('2026-10-09T15:30:00Z'), cal), at('2026-10-09T15:30:00Z'));
+  assert.equal(stuck.level, 'stale');
+  assert.match(stuck.reason, new RegExp('^' + fresh[3].symbol + ' has not updated'));
 });
 
 test('mergeQuotes keeps last good prices on incomplete or older snapshots', () => {

@@ -169,9 +169,11 @@ import {
 } from './core.js';
 
 const params = new URLSearchParams(location.search);
+// Only relative, same-origin paths may be loaded from the address bar.
+const samePath = v => (v && !/^[a-z]+:|^\/\//i.test(v) ? v : null);
 const CONFIG = {
-  data: params.get('data') || 'data/portfolio.json',
-  quotes: params.get('quotes'),                  // default: payload.live_quotes_url (api/quotes)
+  data: samePath(params.get('data')) || 'data/portfolio.json',
+  quotes: samePath(params.get('quotes')),                  // default: payload.live_quotes_url (api/quotes)
   hideAmounts: params.get('amounts') === 'hide',
   rotateSeconds: Number(params.get('rotate') || 20),
   panel: params.get('panel'),                     // h1 | h2 | movers | chart pins one panel
@@ -248,10 +250,13 @@ function renderStatus() {
   const pill = $('pill');
   pill.className = `pill ${st.state}`;
   pill.textContent = st.holiday ? 'Market holiday' : STATUS_LABEL[st.state];
-  $('session-note').textContent = st.earlyClose ? `Closes ${st.earlyClose.replace(/^13:00$/, '1:00 PM')} ET today` : '';
+  $('session-note').textContent = st.earlyClose && (st.state === 'pre' || st.state === 'open') ? `Closes ${st.earlyClose.replace(/^13:00$/, '1:00 PM')} ET today` : '';
   const b = $('banner');
   const newest = fmtTime(fr.newest) + ', ' + fmtDay(fr.newest);
-  if (fr.level === 'stale') {
+  if (!st.calendarKnown) {
+    b.className = 'banner stale show';
+    b.textContent = 'Exchange calendar needs updating (data/source/xnys-calendar.json); holidays and early closes are unknown.';
+  } else if (fr.level === 'stale') {
     b.className = 'banner stale show';
     b.textContent = `${fr.reason}. Last saved price: ${newest}. Numbers below are from then, not now.`;
   } else if (fr.level === 'closed') {
