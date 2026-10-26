@@ -1,0 +1,62 @@
+# Publishes web/ to GitHub Pages on every push to main, and refreshes the saved prices on a
+# schedule during US market hours (Yahoo Finance snapshot; see tools/snapshot_quotes.py).
+# To hand the site to the school: transfer this repository to their GitHub organization.
+name: pages
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Every 15 minutes, 13:30-20:15 UTC on weekdays (9:30 AM-4:15 PM ET in daylight time).
+    - cron: "32,47 13 * * 1-5"
+    - cron: "2,17,32,47 14-19 * * 1-5"
+    - cron: "2,17 20 * * 1-5"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Refresh saved prices (scheduled runs only)
+        if: github.event_name != 'push'
+        run: |
+          python3 tools/snapshot_quotes.py
+          python3 tools/snapshot_history.py || echo "history refresh failed; previous files kept"
+      - name: Build payloads
+        run: |
+          python3 build.py
+          python3 build.py --public --out web/data/portfolio.public.json
+      - name: Test
+        run: node --test test/core.test.mjs test/worker.test.mjs
+      - name: Commit refreshed prices
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "price-refresh[bot]"
+          git config user.email "price-refresh@users.noreply.github.com"
+          git add -A data/source web/data web/api
+          git diff --cached --quiet || git commit -m "Price snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
