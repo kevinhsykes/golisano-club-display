@@ -1,0 +1,9 @@
+{
+  "name": "golisano-club-display",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 build.py",
+    "test": "node --test test/core.test.mjs test/worker.test.mjs"
+  }
+}

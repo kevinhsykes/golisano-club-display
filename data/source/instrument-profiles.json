@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-09T03:04:48Z",
+  "scope": "Public instrument profiles only. No private holdings, costs, account identifiers, numeric ratios, prices, forecasts, or news.",
+  "classificationBasis": "Industry labels are editorial teaching categories inferred from issuer business descriptions. They are not official GICS or ICB classifications.",
+  "typeLabels": {
+    "stock": "Individual stock",
+    "etf": "Exchange-traded fund"
+  },
+  "linkSemantics": "investorRelationsUrl is the official issuer information destination. For SPY it is the official fund objective and holdings page.",
+  "instruments": [
+    {
+      "symbol": "AAPL",
+      "type": "stock",
+      "industry": "Consumer electronics",
+      "description": "Apple designs and sells smartphones, computers, tablets, wearables, accessories, and related services.",
+      "investorRelationsUrl": "https://investor.apple.com/investor-relations/default.aspx",
+      "evidenceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "evidenceTitle": "Apple 2025 Form 10-K, Item 1: Business",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "AMD",
+      "type": "stock",
+      "industry": "Semiconductors",
+      "description": "AMD designs processors, graphics chips, and related computing platforms for data centers, PCs, gaming, and embedded devices.",
+      "investorRelationsUrl": "https://ir.amd.com/",
+      "evidenceUrl": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm",
+      "evidenceTitle": "AMD 2025 Form 10-K, Overview",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "AMZN",
+      "type": "stock",
+      "industry": "Retail and cloud computing",
+      "description": "Amazon operates retail stores, marketplace services, advertising, and the Amazon Web Services cloud computing business.",
+      "investorRelationsUrl": "https://ir.aboutamazon.com/overview/default.aspx",
+      "evidenceUrl": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "evidenceTitle": "Amazon 2025 Form 10-K, Item 1: Business",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "BRK/B",
+      "type": "stock",
+      "industry": "Insurance and diversified businesses",
+      "description": "Berkshire Hathaway owns insurance, railroad, energy, manufacturing, service, and retail businesses.",
+      "investorRelationsUrl": "https://www.berkshirehathaway.com/",
+      "evidenceUrl": "https://www.berkshirehathaway.com/2025ar/2025ar.pdf",
+      "evidenceTitle": "Berkshire Hathaway 2025 Annual Report, K-1",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "CEG",
+      "type": "stock",
+      "industry": "Electric power generation",
+      "description": "Constellation generates electricity through nuclear and other power plants and supplies energy to retail customers.",
+      "investorRelationsUrl": "https://investors.constellationenergy.com/",
+      "evidenceUrl": "https://investors.constellationenergy.com/",
+      "evidenceTitle": "Constellation investor relations, Corporate Profile",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "DOCN",
+      "type": "stock",
+      "industry": "Cloud computing",
+      "description": "DigitalOcean provides cloud infrastructure, data services, and AI computing tools for developers and businesses.",
+      "investorRelationsUrl": "https://investors.digitalocean.com/overview/default.aspx",
+      "evidenceUrl": "https://investors.digitalocean.com/overview/default.aspx",
+      "evidenceTitle": "DigitalOcean investor relations, Corporate Overview",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "GOOGL",
+      "type": "stock",
+      "industry": "Internet services and cloud computing",
+      "description": "Alphabet operates Google's search, advertising, YouTube, and cloud businesses, alongside ventures such as Waymo.",
+      "investorRelationsUrl": "https://abc.xyz/investor/",
+      "evidenceUrl": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "evidenceTitle": "Alphabet 2025 Form 10-K, Item 1: Business",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "LIN",
+      "type": "stock",
+      "industry": "Industrial gases and engineering",
+      "description": "Linde produces industrial gases and designs gas processing equipment for manufacturing, healthcare, energy, electronics, and other industries.",
+      "investorRelationsUrl": "https://www.linde.com/investors",
+      "evidenceUrl": "https://www.linde.com/about-us",
+      "evidenceTitle": "Linde, About Us",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "META",
+      "type": "stock",
+      "industry": "Social platforms and advertising",
+      "description": "Meta operates Facebook, Instagram, WhatsApp, and Messenger and develops virtual and augmented reality hardware, software, and content.",
+      "investorRelationsUrl": "https://investor.atmeta.com/home/default.aspx",
+      "evidenceUrl": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+      "evidenceTitle": "Meta second-quarter 2026 results, Segment Results",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "MKSI",
+      "type": "stock",
+      "industry": "Semiconductor and industrial equipment",
+      "description": "MKS makes instruments, process controls, and specialty chemicals for semiconductor manufacturing, electronics packaging, and industrial applications.",
+      "investorRelationsUrl": "https://investor.mks.com/",
+      "evidenceUrl": "https://investor.mks.com/",
+      "evidenceTitle": "MKS investor relations, business description",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "MSFT",
+      "type": "stock",
+      "industry": "Software and cloud computing",
+      "description": "Microsoft develops software, cloud services, productivity tools, gaming products, and computing devices for consumers and businesses.",
+      "investorRelationsUrl": "https://www.microsoft.com/en-us/investor/default",
+      "evidenceUrl": "https://www.microsoft.com/investor/reports/ar25/index.html",
+      "evidenceTitle": "Microsoft 2025 Annual Report, Business: What We Offer",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "NFLX",
+      "type": "stock",
+      "industry": "Streaming entertainment",
+      "description": "Netflix provides an entertainment service with television series, films, games, and live programming.",
+      "investorRelationsUrl": "https://ir.netflix.net/ir-overview/profile/default.aspx",
+      "evidenceUrl": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000034/nflx-20251231.htm",
+      "evidenceTitle": "Netflix 2025 Form 10-K, Item 1: Business",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "NVDA",
+      "type": "stock",
+      "industry": "Semiconductors and accelerated computing",
+      "description": "NVIDIA develops graphics processors and computing platforms for gaming, professional visualization, data centers, and automotive applications.",
+      "investorRelationsUrl": "https://investor.nvidia.com/home/default.aspx",
+      "evidenceUrl": "https://investor.nvidia.com/home/default.aspx",
+      "evidenceTitle": "NVIDIA investor relations, Corporate Profile",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "RDDT",
+      "type": "stock",
+      "industry": "Online communities",
+      "description": "Reddit operates an online platform where people form communities around shared interests and exchange posts, comments, and other content.",
+      "investorRelationsUrl": "https://investor.redditinc.com/overview/default.aspx",
+      "evidenceUrl": "https://investor.redditinc.com/overview/default.aspx",
+      "evidenceTitle": "Reddit investor relations, company description",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "SOFI",
+      "type": "stock",
+      "industry": "Digital financial services",
+      "description": "SoFi provides digital borrowing, saving, spending, and investing services, plus financial technology services for banks and other businesses.",
+      "investorRelationsUrl": "https://investors.sofi.com/overview/default.aspx",
+      "evidenceUrl": "https://s27.q4cdn.com/749715820/files/doc_financials/2026/q2/2026-Q2-Earnings-Release.pdf",
+      "evidenceTitle": "SoFi second-quarter 2026 earnings release, About SoFi",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "SPY",
+      "type": "etf",
+      "industry": "Broad U.S. stock-market fund",
+      "description": "SPY is an exchange-traded fund that seeks to track the S&P 500 Index's price and yield performance before expenses.",
+      "investorRelationsUrl": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy",
+      "evidenceUrl": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy",
+      "evidenceTitle": "State Street issuer fund page, Key Features and dated Fund Top Holdings",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "TSLA",
+      "type": "stock",
+      "industry": "Electric vehicles and energy systems",
+      "description": "Tesla designs and sells electric vehicles, energy storage, and solar generation systems, with related software and services.",
+      "investorRelationsUrl": "https://ir.tesla.com/",
+      "evidenceUrl": "https://ir.tesla.com/_flysystem/s3/sec/000162828026003952/tsla-20251231-gen.pdf",
+      "evidenceTitle": "Tesla 2025 Form 10-K, Item 1: Business",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "UPS",
+      "type": "stock",
+      "industry": "Package delivery and logistics",
+      "description": "UPS transports and delivers packages and provides logistics, distribution, freight, and customs brokerage services.",
+      "investorRelationsUrl": "https://investors.ups.com/",
+      "evidenceUrl": "https://investors.ups.com/company-profile",
+      "evidenceTitle": "UPS investor relations, Company Profile",
+      "checkedAt": "2026-10-09T03:04:48Z"
+    }
+  ]
+}

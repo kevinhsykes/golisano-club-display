@@ -1,0 +1,494 @@
+{
+ "schema": "club-display.v1",
+ "amounts": "hidden",
+ "club": {
+  "name": "Investment Club",
+  "org": "Golisano Institute"
+ },
+ "statement": {
+  "date": "2026-09-22",
+  "value": null,
+  "basis": null,
+  "units_value": "1.089655872110"
+ },
+ "disclosure": "Shares and cost basis come from the Sept 22, 2026 statement and are assumed unchanged. Excludes cash, dividends, fees and later trades. Educational display, not investment advice.",
+ "holdings": [
+  {
+   "symbol": "AAPL",
+   "name": "Apple",
+   "industry": "Consumer electronics",
+   "type": "stock",
+   "description": "Apple designs and sells smartphones, computers, tablets, wearables, accessories, and related services.",
+   "ir_url": "https://investor.apple.com/investor-relations/default.aspx",
+   "tv_symbol": "NASDAQ:AAPL",
+   "avg_cost": "307.155000",
+   "units": "0.000158679800"
+  },
+  {
+   "symbol": "AMD",
+   "name": "Advanced Micro Devices",
+   "industry": "Semiconductors",
+   "type": "stock",
+   "description": "AMD designs processors, graphics chips, and related computing platforms for data centers, PCs, gaming, and embedded devices.",
+   "ir_url": "https://ir.amd.com/",
+   "tv_symbol": "NASDAQ:AMD",
+   "avg_cost": "480.425000",
+   "units": "0.000099174875"
+  },
+  {
+   "symbol": "AMZN",
+   "name": "Amazon",
+   "industry": "Retail and cloud computing",
+   "type": "stock",
+   "description": "Amazon operates retail stores, marketplace services, advertising, and the Amazon Web Services cloud computing business.",
+   "ir_url": "https://ir.aboutamazon.com/overview/default.aspx",
+   "tv_symbol": "NASDAQ:AMZN",
+   "avg_cost": "283.910000",
+   "units": "0.000089257387"
+  },
+  {
+   "symbol": "BRK/B",
+   "name": "Berkshire Hathaway Class B",
+   "industry": "Insurance and diversified businesses",
+   "type": "stock",
+   "description": "Berkshire Hathaway owns insurance, railroad, energy, manufacturing, service, and retail businesses.",
+   "ir_url": "https://www.berkshirehathaway.com/",
+   "tv_symbol": "NYSE:BRK.B",
+   "avg_cost": "511.720000",
+   "units": "0.000049587437"
+  },
+  {
+   "symbol": "CEG",
+   "name": "Constellation Energy",
+   "industry": "Electric power generation",
+   "type": "stock",
+   "description": "Constellation generates electricity through nuclear and other power plants and supplies energy to retail customers.",
+   "ir_url": "https://investors.constellationenergy.com/",
+   "tv_symbol": "NASDAQ:CEG",
+   "avg_cost": "274.585000",
+   "units": "0.000079339900"
+  },
+  {
+   "symbol": "DOCN",
+   "name": "DigitalOcean",
+   "industry": "Cloud computing",
+   "type": "stock",
+   "description": "DigitalOcean provides cloud infrastructure, data services, and AI computing tools for developers and businesses.",
+   "ir_url": "https://investors.digitalocean.com/overview/default.aspx",
+   "tv_symbol": "NYSE:DOCN",
+   "avg_cost": "126.320000",
+   "units": "0.000198349750"
+  },
+  {
+   "symbol": "GOOGL",
+   "name": "Alphabet Class A",
+   "industry": "Internet services and cloud computing",
+   "type": "stock",
+   "description": "Alphabet operates Google's search, advertising, YouTube, and cloud businesses, alongside ventures such as Waymo.",
+   "ir_url": "https://abc.xyz/investor/",
+   "tv_symbol": "NASDAQ:GOOGL",
+   "avg_cost": "374.975714",
+   "units": "0.000069422412"
+  },
+  {
+   "symbol": "LIN",
+   "name": "Linde",
+   "industry": "Industrial gases and engineering",
+   "type": "stock",
+   "description": "Linde produces industrial gases and designs gas processing equipment for manufacturing, healthcare, energy, electronics, and other industries.",
+   "ir_url": "https://www.linde.com/investors",
+   "tv_symbol": "NASDAQ:LIN",
+   "avg_cost": "477.350000",
+   "units": "0.000039669950"
+  },
+  {
+   "symbol": "META",
+   "name": "Meta Platforms Class A",
+   "industry": "Social platforms and advertising",
+   "type": "stock",
+   "description": "Meta operates Facebook, Instagram, WhatsApp, and Messenger and develops virtual and augmented reality hardware, software, and content.",
+   "ir_url": "https://investor.atmeta.com/home/default.aspx",
+   "tv_symbol": "NASDAQ:META",
+   "avg_cost": "593.880000",
+   "units": "0.000089257387"
+  },
+  {
+   "symbol": "MKSI",
+   "name": "MKS",
+   "industry": "Semiconductor and industrial equipment",
+   "type": "stock",
+   "description": "MKS makes instruments, process controls, and specialty chemicals for semiconductor manufacturing, electronics packaging, and industrial applications.",
+   "ir_url": "https://investor.mks.com/",
+   "tv_symbol": "NASDAQ:MKSI",
+   "avg_cost": "308.680000",
+   "units": "0.000059504925"
+  },
+  {
+   "symbol": "MSFT",
+   "name": "Microsoft",
+   "industry": "Software and cloud computing",
+   "type": "stock",
+   "description": "Microsoft develops software, cloud services, productivity tools, gaming products, and computing devices for consumers and businesses.",
+   "ir_url": "https://www.microsoft.com/en-us/investor/default",
+   "tv_symbol": "NASDAQ:MSFT",
+   "avg_cost": "489.516000",
+   "units": "0.000049587437"
+  },
+  {
+   "symbol": "NFLX",
+   "name": "Netflix",
+   "industry": "Streaming entertainment",
+   "type": "stock",
+   "description": "Netflix provides an entertainment service with television series, films, games, and live programming.",
+   "ir_url": "https://ir.netflix.net/ir-overview/profile/default.aspx",
+   "tv_symbol": "NASDAQ:NFLX",
+   "avg_cost": "74.205152",
+   "units": "0.000327277087"
+  },
+  {
+   "symbol": "NVDA",
+   "name": "NVIDIA",
+   "industry": "Semiconductors and accelerated computing",
+   "type": "stock",
+   "description": "NVIDIA develops graphics processors and computing platforms for gaming, professional visualization, data centers, and automotive applications.",
+   "ir_url": "https://investor.nvidia.com/home/default.aspx",
+   "tv_symbol": "NASDAQ:NVDA",
+   "avg_cost": "208.165000",
+   "units": "0.000119009850"
+  },
+  {
+   "symbol": "RDDT",
+   "name": "Reddit Class A",
+   "industry": "Online communities",
+   "type": "stock",
+   "description": "Reddit operates an online platform where people form communities around shared interests and exchange posts, comments, and other content.",
+   "ir_url": "https://investor.redditinc.com/overview/default.aspx",
+   "tv_symbol": "NYSE:RDDT",
+   "avg_cost": "160.025000",
+   "units": "0.000178514775"
+  },
+  {
+   "symbol": "SOFI",
+   "name": "SoFi Technologies",
+   "industry": "Digital financial services",
+   "type": "stock",
+   "description": "SoFi provides digital borrowing, saving, spending, and investing services, plus financial technology services for banks and other businesses.",
+   "ir_url": "https://investors.sofi.com/overview/default.aspx",
+   "tv_symbol": "NASDAQ:SOFI",
+   "avg_cost": "15.196885",
+   "units": "0.002578546749"
+  },
+  {
+   "symbol": "SPY",
+   "name": "SPDR S&P 500 ETF Trust",
+   "industry": "Broad U.S. stock-market fund",
+   "type": "etf",
+   "description": "SPY is an exchange-traded fund that seeks to track the S&P 500 Index's price and yield performance before expenses.",
+   "ir_url": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy",
+   "tv_symbol": "AMEX:SPY",
+   "avg_cost": "698.820000",
+   "units": "0.000704141612"
+  },
+  {
+   "symbol": "TSLA",
+   "name": "Tesla",
+   "industry": "Electric vehicles and energy systems",
+   "type": "stock",
+   "description": "Tesla designs and sells electric vehicles, energy storage, and solar generation systems, with related software and services.",
+   "ir_url": "https://ir.tesla.com/",
+   "tv_symbol": "NASDAQ:TSLA",
+   "avg_cost": "321.665714",
+   "units": "0.000069422412"
+  },
+  {
+   "symbol": "UPS",
+   "name": "United Parcel Service Class B",
+   "industry": "Package delivery and logistics",
+   "type": "stock",
+   "description": "UPS transports and delivers packages and provides logistics, distribution, freight, and customs brokerage services.",
+   "ir_url": "https://investors.ups.com/",
+   "tv_symbol": "NYSE:UPS",
+   "avg_cost": "104.585152",
+   "units": "0.000327277087"
+  }
+ ],
+ "quotes": {
+  "collected_at_utc": "2026-10-26T14:27:48Z",
+  "items": [
+   {
+    "symbol": "AAPL",
+    "price": "345.34",
+    "previous_close": "347.73",
+    "provider_update_at_utc": "2026-10-26T14:27:47Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/AAPL/"
+   },
+   {
+    "symbol": "AMD",
+    "price": "519.21",
+    "previous_close": "516.79",
+    "provider_update_at_utc": "2026-10-26T14:27:46Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/AMD/"
+   },
+   {
+    "symbol": "AMZN",
+    "price": "250.34",
+    "previous_close": "248.00",
+    "provider_update_at_utc": "2026-10-26T14:27:48Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/AMZN/"
+   },
+   {
+    "symbol": "BRK/B",
+    "price": "543.52",
+    "previous_close": "542.19",
+    "provider_update_at_utc": "2026-10-26T14:27:43Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/BRK-B/"
+   },
+   {
+    "symbol": "CEG",
+    "price": "251.19",
+    "previous_close": "253.45",
+    "provider_update_at_utc": "2026-10-26T14:27:47Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/CEG/"
+   },
+   {
+    "symbol": "DOCN",
+    "price": "95.70",
+    "previous_close": "93.22",
+    "provider_update_at_utc": "2026-10-26T14:26:47Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/DOCN/"
+   },
+   {
+    "symbol": "GOOGL",
+    "price": "319.72",
+    "previous_close": "320.21",
+    "provider_update_at_utc": "2026-10-26T14:27:50Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/GOOGL/"
+   },
+   {
+    "symbol": "LIN",
+    "price": "509.00",
+    "previous_close": "508.83",
+    "provider_update_at_utc": "2026-10-26T14:27:47Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/LIN/"
+   },
+   {
+    "symbol": "META",
+    "price": "635.76",
+    "previous_close": "642.62",
+    "provider_update_at_utc": "2026-10-26T14:27:49Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/META/"
+   },
+   {
+    "symbol": "MKSI",
+    "price": "200.40",
+    "previous_close": "196.55",
+    "provider_update_at_utc": "2026-10-26T14:26:17Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/MKSI/"
+   },
+   {
+    "symbol": "MSFT",
+    "price": "527.13",
+    "previous_close": "524.51",
+    "provider_update_at_utc": "2026-10-26T14:27:52Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/MSFT/"
+   },
+   {
+    "symbol": "NFLX",
+    "price": "65.05",
+    "previous_close": "65.85",
+    "provider_update_at_utc": "2026-10-26T14:27:52Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/NFLX/"
+   },
+   {
+    "symbol": "NVDA",
+    "price": "214.91",
+    "previous_close": "210.96",
+    "provider_update_at_utc": "2026-10-26T14:27:48Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/NVDA/"
+   },
+   {
+    "symbol": "RDDT",
+    "price": "136.04",
+    "previous_close": "144.25",
+    "provider_update_at_utc": "2026-10-26T14:27:50Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/RDDT/"
+   },
+   {
+    "symbol": "SOFI",
+    "price": "14.51",
+    "previous_close": "14.62",
+    "provider_update_at_utc": "2026-10-26T14:27:52Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/SOFI/"
+   },
+   {
+    "symbol": "SPY",
+    "price": "764.58",
+    "previous_close": "759.97",
+    "provider_update_at_utc": "2026-10-26T14:27:54Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/SPY/"
+   },
+   {
+    "symbol": "TSLA",
+    "price": "395.01",
+    "previous_close": "372.22",
+    "provider_update_at_utc": "2026-10-26T14:27:56Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/TSLA/"
+   },
+   {
+    "symbol": "UPS",
+    "price": "100.79",
+    "previous_close": "101.06",
+    "provider_update_at_utc": "2026-10-26T14:27:53Z",
+    "retrieved_at_utc": "2026-10-26T14:27:48Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/UPS/"
+   }
+  ],
+  "meta": null
+ },
+ "live_quotes_url": "api/quotes",
+ "history": [
+  {
+   "date": "2026-09-22",
+   "as_of_utc": "2026-09-22T13:45:00Z",
+   "spy": "774.35",
+   "kind": "statement",
+   "note": "Sept 22 statement market value (PDF as of 9:45 AM ET)",
+   "index": "100.00"
+  },
+  {
+   "date": "2026-09-29",
+   "as_of_utc": "2026-09-29T23:59:51Z",
+   "spy": "764.20",
+   "kind": "after-hours composite",
+   "note": "Sum of statement shares x Sept 29 after-hours last trades",
+   "index": "97.92"
+  },
+  {
+   "date": "2026-10-07",
+   "as_of_utc": "2026-10-07T19:28:00Z",
+   "kind": "intraday",
+   "spy": "777.21",
+   "note": "Statement shares x saved quotes",
+   "index": "99.84"
+  },
+  {
+   "date": "2026-10-08",
+   "as_of_utc": "2026-10-08T20:00:00Z",
+   "kind": "close",
+   "spy": "773.93",
+   "note": "Statement shares x saved quotes",
+   "index": "99.17"
+  },
+  {
+   "date": "2026-10-09",
+   "as_of_utc": "2026-10-09T14:39:00Z",
+   "kind": "intraday",
+   "spy": "776.38",
+   "note": "Statement shares x saved quotes",
+   "index": "99.64"
+  },
+  {
+   "date": "2026-10-21",
+   "as_of_utc": "2026-10-21T15:55:54Z",
+   "kind": "intraday",
+   "spy": "772.60",
+   "note": "Statement shares x saved quotes",
+   "index": "97.72"
+  },
+  {
+   "date": "2026-10-26",
+   "as_of_utc": "2026-10-26T14:27:56Z",
+   "kind": "intraday",
+   "spy": "764.58",
+   "note": "Statement shares x saved quotes",
+   "index": "95.36"
+  }
+ ],
+ "calendar": {
+  "source": "exchange_calendars 4.13.2 XNYS",
+  "range": [
+   "2026-01-01",
+   "2027-12-31"
+  ],
+  "weekday_holidays": [
+   "2026-01-01",
+   "2026-01-19",
+   "2026-02-16",
+   "2026-04-03",
+   "2026-05-25",
+   "2026-06-19",
+   "2026-07-03",
+   "2026-09-07",
+   "2026-11-26",
+   "2026-12-25",
+   "2027-01-01",
+   "2027-01-18",
+   "2027-02-15",
+   "2027-03-26",
+   "2027-05-31",
+   "2027-06-18",
+   "2027-07-05",
+   "2027-09-06",
+   "2027-11-25",
+   "2027-12-24"
+  ],
+  "early_closes": {
+   "2026-11-27": "13:00",
+   "2026-12-24": "13:00",
+   "2027-11-26": "13:00"
+  }
+ }
+}

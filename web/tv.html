@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Club Portfolio TV</title>
+<style>
+/* 10-foot layout for a 16:9 TV. Sizes use vh so 1080p and 4K render the same. */
+:root {
+  --bg: #061a28;
+  --panel: #0c2537;
+  --panel-2: #112f45;
+  --line: #1f4560;
+  --text: #f3eee3;
+  --muted: #a9b8c4;
+  --gold: #d5ba7e;
+  --gold-soft: #eed7a4;
+  --up: #3ccf86;
+  --down: #ff6b5e;
+  --flat: #a9b8c4;
+  --warn-bg: #4a3500;
+  --warn: #ffd27a;
+  --serif: Georgia, "DejaVu Serif", "Liberation Serif", serif;
+  --sans: "Segoe UI", Roboto, "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
+body { font: 400 2.4vh/1.25 var(--sans); font-variant-numeric: tabular-nums; cursor: none; }
+.tv { height: 100vh; display: grid; grid-template-rows: auto auto auto 1fr auto auto; gap: 1.6vh; padding: 2.4vh 2.6vw 1.6vh; transition: transform 2s ease; }
+/* Fixed rows, so the hidden banner leaves an empty row instead of shifting the layout. */
+.tv > header { grid-row: 1; } .tv > .delay { grid-row: 2; } .tv > .banner { grid-row: 3; }
+.tv > main { grid-row: 4; } .tv > .tape { grid-row: 5; } .tv > footer { grid-row: 6; }
+
+header { display: flex; align-items: center; gap: 2vw; padding-bottom: 1.4vh; border-bottom: 2px solid var(--line); }
+.brand { display: flex; align-items: baseline; gap: 1.2vw; margin-right: auto; }
+.brand .org { font: 600 2.1vh var(--sans); letter-spacing: .32em; color: var(--gold); text-transform: uppercase; }
+.brand .club { font: 500 4.2vh var(--serif); }
+.status { display: flex; align-items: center; gap: .8vw; font-size: 2.6vh; }
+.pill { padding: .5vh 1.1vw; border-radius: 99px; border: 2px solid var(--line); font-weight: 600; }
+.pill.open { border-color: var(--up); color: var(--up); }
+.pill.open::before { content: "● "; animation: pulse 2s infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.clock { font: 600 3.4vh var(--sans); min-width: 11vw; text-align: right; }
+.delay { font-size: 2.2vh; color: var(--gold-soft); margin-top: -.6vh; }
+.brand, .status, .pill { white-space: nowrap; }
+.tape .notice { color: var(--gold-soft); }
+
+.banner { display: none; padding: 1vh 1.4vw; border-radius: 1vh; font-size: 2.5vh; }
+.banner.show { display: block; }
+.banner.stale { background: var(--warn-bg); color: var(--warn); border: 2px solid var(--warn); }
+.banner.closed { background: var(--panel); color: var(--muted); border: 2px solid var(--line); }
+
+main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 0; }
+.left { display: grid; min-height: 0; }
+.left .card { display: flex; flex-direction: column; justify-content: space-between; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; min-height: 0; }
+.label { font-size: 2.25vh; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.big { font: 600 7.6vh/1.05 var(--sans); margin: .4vh 0 1vh; letter-spacing: -.01em; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6vh 1.2vw; }
+.kpi .s { font-size: 2.25vh; color: var(--muted); }
+.kpi .v { font: 600 3.5vh/1.15 var(--sans); }
+.kpi .v2 { font: 600 2.5vh var(--sans); }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--flat); }
+.panel.chart.on { grid-template-rows: 1fr auto; background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; }
+.chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.chart .grid { stroke: var(--line); stroke-width: .14vh; }
+.chart .axis { fill: var(--muted); font: 500 2.25vh var(--sans); }
+.chart .line { fill: none; stroke: var(--gold); stroke-width: .37vh; stroke-linejoin: round; }
+.chart .dot { fill: var(--bg); stroke: var(--gold-soft); stroke-width: .37vh; }
+.chart .dot.live { fill: var(--gold); }
+.chart .zero { stroke: var(--muted); stroke-width: .14vh; stroke-dasharray: .5vh .5vh; }
+.chart .line.spy { stroke: #7fb0ec; stroke-dasharray: 1vh .6vh; } .chart .dot.spy { stroke: #7fb0ec; }
+.chart .line.picks { stroke: #b9a0f0; } .chart .dot.picks { stroke: #b9a0f0; }
+.chart .endlabel { font: 600 2.5vh var(--sans); fill: var(--gold-soft); }
+.chart .endlabel.spy { fill: #7fb0ec; } .chart .endlabel.picks { fill: #b9a0f0; }
+.chart .note { font-size: 2.1vh; color: var(--muted); }
+
+.right { position: relative; min-height: 0; display: grid; grid-template-rows: auto 1fr; gap: 1.2vh; }
+.panel-head { display: flex; justify-content: space-between; align-items: baseline; }
+.panel-head h2 { margin: 0; font: 500 3.2vh var(--serif); }
+.dots { display: flex; gap: .6vw; }
+.dots i { width: 1.2vh; height: 1.2vh; border-radius: 50%; background: var(--line); }
+.dots i.on { background: var(--gold); }
+.panel { display: none; min-height: 0; }
+.panel.on { display: grid; }
+
+/* Nine holdings per panel (10-foot guidance: about 6-9 items per screen, text >= 24px at 1080p). */
+.grid9 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.2vh .9vw; }
+.tile { position: relative; border-radius: 1.4vh; padding: 1.5vh 1vw 1.3vh; background: var(--panel); border: 1px solid var(--line); overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 1fr auto; column-gap: .6vw; }
+.tile::before { content: ""; position: absolute; inset: 0; background: var(--tint, transparent); pointer-events: none; }
+.tile > * { position: relative; }
+.tile .sym { font: 700 4.4vh/1.05 var(--sans); letter-spacing: .02em; }
+.tile .nm { font-size: 2.3vh; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.tile .px { font: 500 3.2vh var(--sans); color: var(--text); margin-top: .4vh; }
+.tile .right { text-align: right; }
+.tile .day { font: 700 3.6vh/1.15 var(--sans); white-space: nowrap; }
+.tile .meta { font-size: 2.3vh; line-height: 1.35; color: var(--muted); white-space: nowrap; }
+.tile .meta b { font-weight: 600; color: var(--text); }
+.tile .meta b.up { color: var(--up); } .tile .meta b.down { color: var(--down); }
+.tile .wbar { grid-column: 1 / -1; height: .8vh; border-radius: 99px; background: rgba(213,186,126,.18); margin-top: 1vh; align-self: end; }
+.tile .wbar i { display: block; height: 100%; border-radius: 99px; background: var(--gold); }
+
+.movers { grid-template-columns: 1fr 1fr; gap: 1.6vw; }
+.movers h3 { margin: 0 0 1vh; font: 600 2.4vh var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.mrow { display: grid; grid-template-columns: 8vw 1fr auto; align-items: baseline; padding: 1.8vh 0; border-bottom: 1px solid var(--line); font-size: 3vh; }
+.mrow .sym { font-weight: 700; font-size: 3.4vh; }
+.mrow .nm { color: var(--muted); font-size: 2.4vh; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.alloc { margin-top: 2.6vh; }
+.bar { display: grid; grid-template-columns: 15vw 1fr 6vw; align-items: center; gap: 1vw; margin: 1.1vh 0; font-size: 2.6vh; }
+.bar .track { height: 2.2vh; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
+.bar .track i { display: block; height: 100%; background: var(--gold); }
+.bar .pct { text-align: right; font-weight: 600; }
+
+.tape { overflow: hidden; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); padding: 1vh 0; white-space: nowrap; }
+.tape .track { display: inline-block; animation: scroll var(--tape-duration, 80s) linear infinite; }
+.tape span { margin-right: 3.2vw; font-size: 2.9vh; }
+.tape b { margin-right: .6vw; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .tape .track { animation: none; } .pill.open::before { animation: none; } }
+
+footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1vh; color: var(--muted); }
+footer .src { text-align: right; }
+.error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="tv" id="tv">
+  <header>
+    <div class="brand"><span class="org">Golisano Institute</span><span class="club">Investment Club</span></div>
+    <div class="status"><span class="pill" id="pill">…</span><span id="session-note"></span></div>
+    <div class="clock" id="clock"></div>
+  </header>
+  <div class="delay" id="delay"></div>
+  <div class="banner" id="banner" role="status"></div>
+  <main>
+    <section class="left">
+      <div class="card">
+        <div class="label" id="hero-label">Portfolio value</div>
+        <div class="big" id="hero">—</div>
+        <div class="kpis">
+          <div class="kpi"><div class="s" id="day-label">Today</div><div class="v" id="day">—</div><div class="v2" id="day2"></div></div>
+          <div class="kpi"><div class="s" id="spy-label">S&amp;P 500 (SPY) today</div><div class="v" id="spy">—</div></div>
+          <div class="kpi"><div class="s" id="gain-label">Gain vs cost</div><div class="v" id="gain">—</div><div class="v2" id="gain2"></div></div>
+          <div class="kpi"><div class="s">Since Sept 22</div><div class="v" id="since">—</div></div>
+          <div class="kpi"><div class="s" id="breadth-label">Holdings up / down</div><div class="v" id="breadth">—</div></div>
+          <div class="kpi"><div class="s">Largest holding</div><div class="v" id="largest">—</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="right">
+      <div class="panel-head"><h2 id="panel-title">Holdings</h2><div class="dots" id="dots"></div></div>
+      <div class="panel grid9" id="p-h1" data-title="Largest holdings"></div>
+      <div class="panel grid9" id="p-h2" data-title="More holdings"></div>
+      <div class="panel movers" id="p-movers" data-title="Today's biggest moves"></div>
+      <div class="panel chart" id="p-chart" data-title="Portfolio since Sept 22">
+        <div id="chart" style="position:relative; min-height:0"></div>
+        <div class="note">Gain over what we paid, at each saved price check. 0% = break-even.</div>
+      </div>
+    </section>
+  </main>
+  <div class="tape" aria-hidden="true"><div class="track" id="tape"></div></div>
+  <footer><div id="disclosure"></div><div class="src" id="source"></div></footer>
+</div>
+<script type="module">
+import {
+  fetchJson, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
+  STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
+} from './core.js';
+
+const params = new URLSearchParams(location.search);
+const CONFIG = {
+  data: params.get('data') || 'data/portfolio.json',
+  quotes: params.get('quotes'),                  // default: payload.live_quotes_url (api/quotes)
+  hideAmounts: params.get('amounts') === 'hide',
+  rotateSeconds: Number(params.get('rotate') || 20),
+  panel: params.get('panel'),                     // h1 | h2 | movers | chart pins one panel
+
+  pollSeconds: 60,
+  reloadHours: 6,
+  now: params.get('now') ? new Date(params.get('now')) : null, // test hook
+};
+const now = () => CONFIG.now || new Date();
+const $ = id => document.getElementById(id);
+let payload;
+
+async function boot() {
+  try {
+    payload = await fetchJson(CONFIG.data);
+  } catch (e) {
+    document.body.replaceChildren(el('div', { class: 'error' }, 'Portfolio data is unavailable. Retrying in one minute.'));
+    setTimeout(() => location.reload(), 60000);
+    return;
+  }
+  if (CONFIG.hideAmounts) payload.amounts = payload.amounts === 'shown' ? 'shown-hidden' : payload.amounts;
+  CONFIG.quotes = CONFIG.quotes ?? payload.live_quotes_url ?? null;
+  render();
+  poll();
+  setInterval(tick, 1000);
+  setInterval(poll, CONFIG.pollSeconds * 1000);
+  setInterval(rotate, CONFIG.rotateSeconds * 1000);
+  setInterval(shift, 180000);
+  setTimeout(() => location.reload(), CONFIG.reloadHours * 3600000);
+}
+
+async function poll() {
+  try {
+    if (CONFIG.quotes) {
+      if (mergeQuotes(payload, await fetchJson(CONFIG.quotes))) render();
+    } else {
+      const fresh = await fetchJson(CONFIG.data);
+      if (newestQuote(fresh.quotes.items) > newestQuote(payload.quotes.items)) {
+        fresh.amounts = payload.amounts;
+        payload = fresh;
+        render();
+      }
+    }
+  } catch { /* keep last good prices; the banner reports their age */ }
+  renderStatus();
+}
+
+function tick() {
+  $('clock').textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit' }).format(now());
+  if (new Date().getSeconds() === 0) renderStatus();
+}
+
+function render() {
+  const forceHide = payload.amounts === 'shown-hidden';
+  const base = forceHide ? { ...payload, amounts: 'shown' } : payload;
+  const s = compute(base);
+  const showDollars = s.dollars && !forceHide;
+  renderStatus();
+  renderHero(s, showDollars);
+  renderChart(base, s, showDollars);
+  renderHoldings(s);
+  renderMovers(s);
+  renderTape(s);
+  $('disclosure').textContent = payload.disclosure;
+  const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
+  $('source').textContent = `${src} · quotes ${fmtTime(oldestQuote(payload.quotes.items))}–${fmtTime(newestQuote(payload.quotes.items))}, ${fmtDay(newestQuote(payload.quotes.items))}`;
+  if (!document.querySelector('.panel.on')) rotate();
+}
+
+function renderStatus() {
+  const st = marketStatus(now(), payload.calendar);
+  const fr = freshness(payload.quotes.items, st, now(), payload.quotes.meta?.delay_minutes || 0);
+  $('delay').textContent = delayNotice(payload);
+  const pill = $('pill');
+  pill.className = `pill ${st.state}`;
+  pill.textContent = st.holiday ? 'Market holiday' : STATUS_LABEL[st.state];
+  $('session-note').textContent = st.earlyClose ? `Closes ${st.earlyClose.replace(/^13:00$/, '1:00 PM')} ET today` : '';
+  const b = $('banner');
+  const newest = fmtTime(fr.newest) + ', ' + fmtDay(fr.newest);
+  if (fr.level === 'stale') {
+    b.className = 'banner stale show';
+    b.textContent = `${fr.reason}. Last saved price: ${newest}. Numbers below are from then, not now.`;
+  } else if (fr.level === 'closed') {
+    b.className = 'banner closed show';
+    b.textContent = `Market closed. Showing the last saved prices (${newest}).`;
+  } else {
+    b.className = 'banner';
+    b.textContent = '';
+  }
+  $('day-label').textContent = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(fr.newest)}`;
+  $('spy-label').textContent = fr.level === 'live' ? 'S&P 500 (SPY) today' : `S&P 500 (SPY), ${fmtShortDate(fr.newest)}`;
+  const when = fr.level === 'live' ? 'today' : fmtShortDate(fr.newest);
+  $('p-h1').dataset.title = `Largest 9 holdings · move ${when}`;
+  $('p-h2').dataset.title = `Other 9 holdings · move ${when}`;
+  $('p-movers').dataset.title = `Biggest moves · ${when}`;
+  if (panelIdx >= 0) $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
+}
+
+function renderHero(s, showDollars) {
+  const set = (id, text, d, cls = 'v') => { const n = $(id); n.textContent = text; n.className = `${cls} ${d ? dir(d) : ''}`; };
+  const since = payload.statement.units_value
+    ? s.total / Number(payload.statement.units_value) - 1
+    : s.total / Number(payload.statement.value) - 1;
+  if (showDollars) {
+    $('hero-label').textContent = 'Portfolio value (listed holdings)';
+    $('hero').textContent = fmtUsd(s.total);
+    $('hero').className = 'big';
+    set('day', `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange);
+    set('day2', fmtPct(s.dayPct), s.dayChange, 'v2');
+    set('gain', fmtSignedUsd(s.gain), s.gain);
+    set('gain2', fmtPct(s.gainPct), s.gain, 'v2');
+  } else {
+    $('hero-label').textContent = 'Return vs cost (listed holdings)';
+    $('hero').textContent = fmtPct(s.gainPct);
+    $('hero').className = `big ${dir(s.gainPct)}`;
+    set('day', `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct);
+    set('day2', '', 0, 'v2');
+    set('gain', fmtPct(s.gainPct), s.gainPct);
+    set('gain2', '', 0, 'v2');
+  }
+  set('since', fmtPct(since), since);
+  set('spy', s.spyDayPct === null ? '—' : `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct);
+  const ups = s.rows.filter(r => r.dayPct > 0).length, downs = s.rows.filter(r => r.dayPct < 0).length;
+  $('breadth').replaceChildren(el('span', { class: 'up' }, `▲ ${ups}`), '  ', el('span', { class: 'down' }, `▼ ${downs}`));
+  const top = [...s.rows].sort((a, b) => b.weight - a.weight)[0];
+  $('largest').textContent = `${top.symbol.replace('/', '.')} ${fmtWeight(top.weight)}`;
+}
+
+function renderChart(base, s, showDollars) {
+  $('p-chart').dataset.title = 'Gain over cost: portfolio vs our SPY position';
+  if (PANELS[panelIdx] === 'p-chart') $('panel-title').textContent = $('p-chart').dataset.title;
+  const box = $('chart');
+  if (!box.clientHeight) return; // hidden panel; the ResizeObserver redraws it when shown
+  // The svg is absolutely positioned, so the box size comes from the layout alone.
+  const w = Math.max(200, box.clientWidth), h = Math.max(120, box.clientHeight);
+  const unit = innerHeight / 1080;
+  box.replaceChildren(compareChart(comparisonSeries(base, s), { width: w, height: h, pad: 26 * unit, left: 92 * unit, right: 420 * unit, unit }));
+  box.dataset.size = `${w}x${h}`;
+}
+
+// Redraw when the chart box changes size (banner appearing, delay line, window resize).
+new ResizeObserver(() => {
+  const box = $('chart');
+  if (payload && box.dataset.size !== `${box.clientWidth}x${box.clientHeight}`) render();
+}).observe(document.getElementById('chart'));
+
+function tint(pct) {
+  const a = Math.min(Math.abs(pct) / 0.03, 1) * 0.42 + 0.06;
+  return pct > 0 ? `rgba(60,207,134,${a})` : pct < 0 ? `rgba(255,107,94,${a})` : 'transparent';
+}
+
+function renderHoldings(s) {
+  const rows = [...s.rows].sort((a, b) => b.weight - a.weight);
+  const maxW = rows[0].weight;
+  const tile = r => el('div', { class: 'tile', style: `--tint:${tint(r.dayPct)}` },
+    el('div', {},
+      el('div', { class: 'sym' }, r.symbol.replace('/', '.')),
+      el('div', { class: 'nm' }, r.name),
+      el('div', { class: 'px' }, `$${fmtPrice(r.price)}`)),
+    el('div', { class: 'right' },
+      el('div', { class: `day ${dir(r.dayPct)}` }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`),
+      el('div', { class: 'meta' }, 'Weight ', el('b', {}, fmtWeight(r.weight))),
+      el('div', { class: 'meta' }, 'vs cost ', el('b', { class: dir(r.costPct) }, fmtPct(r.costPct, 1)))),
+    el('div', { class: 'wbar' }, el('i', { style: `width:${(r.weight / maxW) * 100}%` })));
+  $('p-h1').replaceChildren(...rows.slice(0, 9).map(tile));
+  $('p-h2').replaceChildren(...rows.slice(9).map(tile));
+}
+
+function renderMovers(s) {
+  const byDay = [...s.rows].sort((a, b) => b.dayPct - a.dayPct);
+  const row = r => el('div', { class: 'mrow' },
+    el('span', { class: 'sym' }, r.symbol.replace('/', '.')),
+    el('span', { class: 'nm' }, r.name),
+    el('span', { class: dir(r.dayPct) }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`));
+  const mag7 = new Set(['AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'NVDA', 'TSLA']);
+  const w = pred => s.rows.filter(pred).reduce((a, r) => a + r.weight, 0);
+  const groups = [
+    ['S&P 500 fund (SPY)', w(r => r.symbol === 'SPY')],
+    ['Magnificent Seven', w(r => mag7.has(r.symbol))],
+    ['Other stocks', w(r => r.symbol !== 'SPY' && !mag7.has(r.symbol))],
+  ];
+  $('p-movers').replaceChildren(
+    el('div', {}, el('h3', {}, 'Leading'), byDay.slice(0, 4).map(row),
+      el('div', { class: 'alloc' }, el('h3', {}, 'Where the money is'),
+        groups.map(([name, x]) => el('div', { class: 'bar' }, el('span', {}, name),
+          el('span', { class: 'track' }, el('i', { style: `width:${x * 100}%` })), el('span', { class: 'pct' }, fmtWeight(x)))))),
+    el('div', {}, el('h3', {}, 'Lagging'), byDay.slice(-4).reverse().map(row),
+      el('div', { class: 'alloc' }, el('h3', {}, 'Largest positions'),
+        [...s.rows].sort((a, b) => b.weight - a.weight).slice(0, 3).map(r => el('div', { class: 'bar' }, el('span', {}, r.symbol.replace('/', '.')),
+          el('span', { class: 'track' }, el('i', { style: `width:${r.weight * 100}%` })), el('span', { class: 'pct' }, fmtWeight(r.weight)))))),
+  );
+}
+
+function renderTape(s) {
+  const items = s.rows.map(r => el('span', {}, el('b', {}, r.symbol.replace('/', '.')), `$${fmtPrice(r.price)} `,
+    el('span', { class: dir(r.dayPct), style: 'margin:0' }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`)));
+  // The delay notice must recur at least every 90 seconds on a ticker; the track holds
+  // two copies of the list, so it appears twice per scroll cycle.
+  items.unshift(el('span', { class: 'notice' }, delayNotice(payload)));
+  const clone = items.map(n => n.cloneNode(true));
+  $('tape').replaceChildren(...items, ...clone);
+  $('tape').style.setProperty('--tape-duration', `${items.length * 4.5}s`);
+}
+
+const PANELS = ['p-h1', 'p-h2', 'p-movers', 'p-chart'];
+let panelIdx = -1;
+function rotate() {
+  const pinned = PANELS.indexOf(`p-${CONFIG.panel}`);
+  if (pinned >= 0 && panelIdx === pinned) return;
+  panelIdx = pinned >= 0 ? pinned : (panelIdx + 1) % PANELS.length;
+  PANELS.forEach((id, i) => $(id).classList.toggle('on', i === panelIdx));
+  $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
+  $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
+}
+
+// Small periodic shift of the whole layout to spread static pixels (burn-in care).
+const OFFSETS = [[0, 0], [3, 2], [-3, 3], [2, -3], [-2, -2]];
+let shiftIdx = 0;
+function shift() {
+  shiftIdx = (shiftIdx + 1) % OFFSETS.length;
+  const [x, y] = OFFSETS[shiftIdx];
+  $('tv').style.transform = `translate(${x}px, ${y}px)`;
+}
+
+window.addEventListener('resize', () => payload && render());
+boot();
+</script>
+</body>
+</html>

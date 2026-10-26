@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "club-display",
+      "runtimeExecutable": "C:/Users/KevinSykes/python311/python.exe",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "web", "--bind", "127.0.0.1"],
+      "port": 8765
+    }
+  ]
+}

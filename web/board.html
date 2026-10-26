@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Club Live Prices</title>
+<style>
+/* Interim TV board: live 15-minute-delayed prices from TradingView's free embeddable
+   widget, until the club's licensed feed powers tv.html. Works from a local file too.
+   TradingView keeps its branding; the widget is scaled up for 10-foot viewing. */
+:root {
+  --bg: #061a28; --line: #1f4560; --text: #f3eee3; --muted: #a9b8c4;
+  --gold: #d5ba7e; --gold-soft: #eed7a4; --up: #3ccf86;
+  --serif: Georgia, "DejaVu Serif", serif;
+  --sans: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; cursor: none; }
+body { font: 2.4vh/1.25 var(--sans); }
+.wrap { height: 100vh; display: grid; grid-template-rows: auto auto 1fr auto; gap: 1.4vh; padding: 2.4vh 2.6vw 1.6vh; }
+header { display: flex; align-items: baseline; gap: 2vw; padding-bottom: 1.2vh; border-bottom: 2px solid var(--line); white-space: nowrap; }
+.org { font: 600 2.2vh var(--sans); letter-spacing: .32em; color: var(--gold); text-transform: uppercase; }
+.club { font: 500 4.2vh var(--serif); margin-right: auto; }
+.pill { padding: .5vh 1.1vw; border-radius: 99px; border: 2px solid var(--line); font-weight: 600; font-size: 2.6vh; }
+.pill.open { border-color: var(--up); color: var(--up); }
+.clock { font: 600 3.4vh var(--sans); }
+.delay { color: var(--gold-soft); font-size: 2.4vh; }
+/* The widget renders at a fixed size and is scaled to fill the stage. */
+.stage { position: relative; min-height: 0; overflow: hidden; }
+.scaled { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1vh; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="org">Golisano Institute</span><span class="club">Investment Club · live prices</span>
+    <span class="pill" id="pill">…</span><span class="clock" id="clock"></span>
+  </header>
+  <div class="delay">Prices delayed 15 minutes · Market data by TradingView (Cboe One delayed) · our 18 holdings</div>
+  <div class="stage" id="stage"></div>
+  <footer>
+    <span>Student-managed portfolio. Educational display, not investment advice.</span>
+    <span>Portfolio value and gain return when the club's data feed is connected.</span>
+  </footer>
+</div>
+<script>
+// NYSE regular session in ET; holidays are not checked here (tv.html does that).
+const ET = 'America/New_York';
+function tick() {
+  const now = new Date();
+  document.getElementById('clock').textContent = new Intl.DateTimeFormat('en-US', { timeZone: ET, hour: 'numeric', minute: '2-digit' }).format(now) + ' ET';
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: ET, hourCycle: 'h23', weekday: 'short', hour: '2-digit', minute: '2-digit' }).formatToParts(now).map(x => [x.type, x.value]));
+  const m = Number(p.hour) * 60 + Number(p.minute);
+  const open = !['Sat', 'Sun'].includes(p.weekday) && m >= 570 && m < 960;
+  const pill = document.getElementById('pill');
+  pill.className = `pill ${open ? 'open' : ''}`;
+  pill.textContent = open ? 'Market open' : 'Market closed';
+}
+tick(); setInterval(tick, 15000);
+
+const SYMBOLS = [
+  ['AMEX:SPY', 'SPY'], ['NASDAQ:META', 'META'], ['NASDAQ:AMD', 'AMD'], ['NASDAQ:AAPL', 'AAPL'],
+  ['NASDAQ:SOFI', 'SOFI'], ['NYSE:UPS', 'UPS'], ['NYSE:RDDT', 'RDDT'], ['NASDAQ:NVDA', 'NVDA'],
+  ['NASDAQ:TSLA', 'TSLA'], ['NASDAQ:MSFT', 'MSFT'], ['NYSE:BRK.B', 'BRK.B'], ['NYSE:DOCN', 'DOCN'],
+  ['NASDAQ:GOOGL', 'GOOGL'], ['NASDAQ:NFLX', 'NFLX'], ['NASDAQ:CEG', 'CEG'], ['NASDAQ:AMZN', 'AMZN'],
+  ['NASDAQ:LIN', 'LIN'], ['NASDAQ:MKSI', 'MKSI'],
+];
+// Two widgets of nine rows (largest holdings first), shown alternately so each can be
+// scaled up for 10-foot reading. Base size is the widget's own layout; CSS scales it.
+const BASE_W = 960, BASE_H = 430, ROTATE_MS = 20000;
+const stage = document.getElementById('stage');
+const boards = [SYMBOLS.slice(0, 9), SYMBOLS.slice(9)].map((group, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'scaled';
+  wrap.style.visibility = i === 0 ? 'visible' : 'hidden';
+  wrap.innerHTML = '<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>'
+    + '<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">Market data by TradingView</a></div></div>';
+  const s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+  s.async = true;
+  s.textContent = JSON.stringify({
+    width: BASE_W, height: BASE_H, locale: 'en', showSymbolLogo: true, colorTheme: 'dark', isTransparent: true,
+    symbolsGroups: [{ name: i === 0 ? 'Largest 9 holdings' : 'Other 9 holdings',
+      symbols: group.map(([name, displayName]) => ({ name, displayName })) }],
+  });
+  wrap.firstChild.appendChild(s);
+  stage.appendChild(wrap);
+  return wrap;
+});
+let shown = 0;
+setInterval(() => {
+  shown = 1 - shown;
+  boards.forEach((b, i) => { b.style.visibility = i === shown ? 'visible' : 'hidden'; });
+}, ROTATE_MS);
+
+function fit() {
+  const k = Math.min(stage.clientWidth / BASE_W, stage.clientHeight / (BASE_H + 30));
+  for (const b of boards) {
+    b.style.transform = `scale(${k})`;
+    b.style.left = `${(stage.clientWidth - BASE_W * k) / 2}px`;
+  }
+}
+addEventListener('resize', fit); fit();
+// Reload every 6 hours so a long-running kiosk picks up widget updates.
+setTimeout(() => location.reload(), 6 * 3600 * 1000);
+</script>
+</body>
+</html>

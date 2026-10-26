@@ -1,0 +1,277 @@
+{
+  "schema": "club-portfolio.v1",
+  "currency": "USD",
+  "opening_observation": "statement-20260922",
+  "opening_positions": [
+    {
+      "symbol": "AAPL",
+      "shares": "16",
+      "cost_basis": "4914.48",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "AMD",
+      "shares": "10",
+      "cost_basis": "4804.25",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "AMZN",
+      "shares": "9",
+      "cost_basis": "2555.19",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "BRK/B",
+      "shares": "5",
+      "cost_basis": "2558.60",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "CEG",
+      "shares": "8",
+      "cost_basis": "2196.68",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "DOCN",
+      "shares": "20",
+      "cost_basis": "2526.40",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "GOOGL",
+      "shares": "7",
+      "cost_basis": "2624.83",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "LIN",
+      "shares": "4",
+      "cost_basis": "1909.40",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "META",
+      "shares": "9",
+      "cost_basis": "5344.92",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "MKSI",
+      "shares": "6",
+      "cost_basis": "1852.08",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "MSFT",
+      "shares": "5",
+      "cost_basis": "2447.58",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "NFLX",
+      "shares": "33",
+      "cost_basis": "2448.77",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "NVDA",
+      "shares": "12",
+      "cost_basis": "2497.98",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "RDDT",
+      "shares": "18",
+      "cost_basis": "2880.45",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "SOFI",
+      "shares": "260",
+      "cost_basis": "3951.19",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "SPY",
+      "shares": "71",
+      "cost_basis": "49616.22",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "TSLA",
+      "shares": "7",
+      "cost_basis": "2251.66",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    },
+    {
+      "symbol": "UPS",
+      "shares": "33",
+      "cost_basis": "3451.31",
+      "acquisition_date": null,
+      "source": "golisano-holdings.csv"
+    }
+  ],
+  "cash": null,
+  "transactions": [],
+  "instruments": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "BRK/B",
+      "name": "Berkshire Hathaway Class B",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "CEG",
+      "name": "Constellation Energy",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "DOCN",
+      "name": "DigitalOcean",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Class A",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "LIN",
+      "name": "Linde",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms Class A",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "MKSI",
+      "name": "MKS",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "RDDT",
+      "name": "Reddit Class A",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "SOFI",
+      "name": "SoFi Technologies",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    },
+    {
+      "symbol": "UPS",
+      "name": "United Parcel Service Class B",
+      "currency": "USD",
+      "profile_status": "pending sourced enrichment"
+    }
+  ],
+  "groups": [
+    {
+      "id": "mag7",
+      "name": "Magnificent Seven",
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "AMZN",
+        "GOOGL",
+        "META",
+        "NVDA",
+        "TSLA"
+      ],
+      "scope": "direct holdings only; excludes indirect SPY exposure",
+      "source": "user club discussion; group configuration"
+    }
+  ],
+  "modules": {
+    "holdings": true,
+    "allocation": false,
+    "contributors": false,
+    "stock_details": false,
+    "mag7": false,
+    "benchmark": false,
+    "trade_planner": false
+  },
+  "benchmark": {
+    "symbol": "SPY",
+    "baseline": null,
+    "observations": [],
+    "status": "awaiting aligned marks and cash-inclusive accounting"
+  }
+}

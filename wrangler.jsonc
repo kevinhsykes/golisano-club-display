@@ -1,0 +1,21 @@
+// Cloudflare Workers config. Deploy from a club/institute-owned Cloudflare account:
+//   npx wrangler login
+//   npx wrangler kv namespace create QUOTES        -> paste the id below
+//   npx wrangler secret put TWELVEDATA_KEY         (or TIINGO_KEY with PROVIDER "tiingo")
+//   python build.py --public --out web/data/portfolio.json && npx wrangler deploy
+// The feed plan must licence display to other people (see worker/providers.js).
+{
+  "name": "golisano-club-portfolio",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "web", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "kv_namespaces": [{ "binding": "QUOTES", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }],
+  "triggers": { "crons": ["* 13-21 * * 1-5"] },
+  "vars": {
+    "PROVIDER": "twelvedata",
+    // Twelve Data's default US feed is real-time from venues covering ~5% of volume.
+    "DELAY_MINUTES": "0",
+    "MARKET_SCOPE": "partial"
+  },
+  "observability": { "enabled": true }
+}
