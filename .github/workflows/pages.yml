@@ -8,8 +8,11 @@ on:
   schedule:
     # Every 15 minutes, 13:30-20:15 UTC on weekdays (9:30 AM-4:15 PM ET in daylight time).
     - cron: "32,47 13 * * 1-5"
-    - cron: "2,17,32,47 14-19 * * 1-5"
-    - cron: "2,17 20 * * 1-5"
+    - cron: "2,17,32,47 14-20 * * 1-5"
+    - cron: "2,17 21 * * 1-5"
+    # The hours above cover both daylight time (13:30-20:15 UTC) and standard time (14:30-21:15
+    # UTC); the few extra runs outside market hours are harmless. A KPC user timer
+    # (golisano-refresh.timer) also dispatches this workflow every 15 minutes as a second trigger.
   workflow_dispatch:
 permissions:
   contents: write

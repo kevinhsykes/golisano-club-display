@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TV screens · Golisano Investment Club</title>
+<meta name="description" content="The screen templates for the cafe TVs: what each shows and the address to open on a display.">
+<style>
+  :root { --bg: #071019; --panel: #0d1b2a; --line: #1e3246; --text: #e8eef4; --muted: #9fb0c0; --gold: #c9a44c; --green: #3ddc97; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, Roboto, system-ui, sans-serif; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+  header { border-bottom: 2px solid var(--gold); padding-bottom: 12px; margin-bottom: 20px; }
+  .org { display: block; font-size: 11px; letter-spacing: .28em; color: var(--gold); text-transform: uppercase; font-weight: 600; }
+  h1 { margin: 0; font: 500 28px Georgia, "Times New Roman", serif; }
+  .lead { color: var(--muted); max-width: 70ch; }
+  .lead a, .card a, footer a { color: var(--green); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #000; }
+  .card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card h2 { margin: 0; font: 600 18px Inter, system-ui, sans-serif; }
+  .card p { margin: 0; color: var(--muted); font-size: 14px; }
+  .url { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: #06111b; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; word-break: break-all; color: var(--text); }
+  .actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 8px 14px; border-radius: 6px; background: var(--gold); color: #071019; font-weight: 600; text-decoration: none; font-size: 14px; }
+  .btn.alt { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  h3 { margin: 32px 0 8px; font: 600 16px Inter, system-ui, sans-serif; color: var(--gold); letter-spacing: .08em; text-transform: uppercase; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  td, th { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  code { font: 13px ui-monospace, Menlo, monospace; color: var(--green); }
+  footer { margin-top: 32px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="org">Golisano Institute · Investment Club</span>
+    <h1>TV screens</h1>
+  </header>
+  <p class="lead">Each screen below is a web page built for a 16:9 television at 1080p or 4K. Open its address full screen in kiosk mode on the device that drives the TV; the page refreshes itself and keeps the last prices through a network drop. Prices are a saved snapshot refreshed every 15 minutes during market hours. For phones and laptops use the <a href="index.html">portfolio page</a>.</p>
+
+  <div class="grid" id="grid"></div>
+
+  <h3>Options for any TV screen</h3>
+  <table>
+    <tr><th>Add to the address</th><th>Effect</th></tr>
+    <tr><td><code>?panel=h1</code> · <code>h2</code> · <code>movers</code> · <code>chart</code></td><td>Pin one panel instead of rotating through all four.</td></tr>
+    <tr><td><code>?rotate=40</code></td><td>Seconds per panel when rotating (default 20).</td></tr>
+    <tr><td><code>?amounts=hide</code></td><td>Percent only: no dollar values on screen.</td></tr>
+    <tr><td>Combine with <code>&amp;</code></td><td>Example: <code>tv.html?panel=movers&amp;amounts=hide</code></td></tr>
+  </table>
+
+  <h3>Setting up a screen</h3>
+  <table>
+    <tr><th>Device</th><th>How</th></tr>
+    <tr><td>Existing signage player</td><td>Add the address as a web-page item. Any system that shows a URL works.</td></tr>
+    <tr><td>Chrome or Edge on a PC or mini PC</td><td>Run the browser with <code>--kiosk https://kevinhsykes.github.io/golisano-club-display/tv.html</code>, or press F11 for full screen.</td></tr>
+    <tr><td>Chromecast with Google TV, Fire TV, Raspberry Pi</td><td>Install a kiosk browser app and set the address as its home page.</td></tr>
+  </table>
+
+  <footer>Student-managed portfolio. Educational display, not investment advice. Shares and cost basis from the Sept 22, 2026 statement. Source: <a href="https://github.com/kevinhsykes/golisano-club-display">github.com/kevinhsykes/golisano-club-display</a>.</footer>
+</div>
+<script>
+const base = location.href.replace(/[^/]*$/, '');
+const screens = [
+  { img: 'screens/tv-largest.png', title: 'Rotating TV view (default)', url: 'tv.html',
+    text: 'The main cafe screen. Portfolio value, today, gain vs cost and holdings up/down on the left; the right side rotates every 20 seconds through the four panels below. Price tape along the bottom.' },
+  { img: 'screens/tv-largest.png', title: 'Largest 9 holdings', url: 'tv.html?panel=h1',
+    text: 'Pinned panel: the nine biggest positions with price, day move, weight and gain vs cost.' },
+  { img: 'screens/tv-more.png', title: 'Other 9 holdings', url: 'tv.html?panel=h2',
+    text: 'Pinned panel: the rest of the portfolio in the same card layout.' },
+  { img: 'screens/tv-movers.png', title: "Today's biggest moves", url: 'tv.html?panel=movers',
+    text: 'Pinned panel: holdings ranked by today’s move with allocation bars.' },
+  { img: 'screens/tv-chart.png', title: 'Gain over cost chart', url: 'tv.html?panel=chart',
+    text: 'Pinned panel: portfolio vs our SPY position vs stock picks since the Sept 22 statement.' },
+  { img: 'screens/board.png', title: 'Live board (TradingView)', url: 'board.html',
+    text: 'Prices delayed 15 minutes straight from TradingView’s free widget, alternating two groups of nine. No portfolio math; works with no account or feed.' },
+  { img: 'screens/web.png', title: 'Portfolio page (phones and laptops)', url: 'index.html',
+    text: 'For members and managers, not a TV: sortable holdings table, chart, and a detail popup per stock with a TradingView chart and key stats.' },
+];
+document.getElementById('grid').innerHTML = screens.map(s => `
+  <article class="card">
+    <a href="${s.url}"><img src="${s.img}" alt="${s.title} screenshot" loading="lazy"></a>
+    <div class="body">
+      <h2>${s.title}</h2>
+      <p>${s.text}</p>
+      <div class="url">${base}${s.url}</div>
+      <div class="actions"><a class="btn" href="${s.url}" target="_blank" rel="noopener">Open</a>
+      <a class="btn alt" href="#" data-copy="${base}${s.url}">Copy address</a></div>
+    </div>
+  </article>`).join('');
+document.querySelectorAll('[data-copy]').forEach(a => a.addEventListener('click', async e => {
+  e.preventDefault(); try { await navigator.clipboard.writeText(a.dataset.copy); a.textContent = 'Copied'; setTimeout(() => a.textContent = 'Copy address', 1500); } catch { prompt('Address', a.dataset.copy); }
+}));
+</script>
+</body>
+</html>
