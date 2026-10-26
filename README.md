@@ -51,10 +51,12 @@ pages label it "not sourced from all markets" (`MARKET_SCOPE=partial`).
 
 ## Public vs full data
 
-`python build.py --public --out web/data/portfolio.json` writes a payload with no share counts,
-cost basis or dollar values: only relative units, so the pages show returns, weights and day
-change in percent. `python build.py` writes the full payload with dollar values. Deploy the
-public payload unless the club's advisor has approved showing dollar amounts in the cafe.
+`python build.py --public --out web/data/portfolio.public.json` writes a payload with no share
+counts, cost basis or dollar values: only relative units, so the pages show returns, weights and
+day change in percent. `python build.py` writes the full payload with dollar values. The deployed
+site uses the full payload: Kevin Sykes decided on 2026-10-26 that showing dollar amounts on the
+cafe TV is fine. To switch a screen to percent only, open `tv.html?amounts=hide`, or point
+`?data=data/portfolio.public.json` at the public payload.
 
 ## Hosting today: GitHub Pages (live since 2026-10-26)
 
