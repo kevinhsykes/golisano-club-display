@@ -114,6 +114,38 @@ class TestImportTransactions(ImportTestCase):
             imp.parse_csv(csv)
         self.assertIn("line 2", str(cm.exception))
 
+    def test_trade_date_beats_settlement_date_in_either_order(self):
+        cases = [
+            ("Settlement Date,Trade Date", "2026-01-07,2026-01-05"),
+            ("Trade Date,Settlement Date", "2026-01-05,2026-01-07"),
+        ]
+        for header, dates in cases:
+            csv = Path(self.tmp.name) / "two-dates.csv"
+            csv.write_text(
+                f"{header},Symbol,Action,Shares,Price\n"
+                f"{dates},AAPL,Buy,2,190.25\n",
+                encoding="utf-8")
+            code, _ = run([str(csv), "--positions", str(self.positions)])
+            self.assertEqual(code, 0, header)
+            self.assertEqual(self.transactions(), [
+                {"date": "2026-01-05", "symbol": "AAPL", "type": "buy",
+                 "shares": "2.0000", "price": "190.25"},
+            ], header)
+
+    def test_settlement_date_only_is_a_hard_error_naming_header(self):
+        csv = Path(self.tmp.name) / "settle-only.csv"
+        csv.write_text(
+            "Settlement Date,Symbol,Action,Shares,Price\n"
+            "2026-01-07,AAPL,Buy,2,190.25\n",
+            encoding="utf-8")
+        code, _ = run([str(csv), "--positions", str(self.positions)])
+        self.assertEqual(code, 2)
+        self.assertEqual(self.transactions(), [])  # nothing was written
+        with self.assertRaises(imp.ImportRowError) as cm:
+            imp.parse_csv(csv)
+        self.assertIn("'Settlement Date'", str(cm.exception))
+        self.assertIn("trade date", str(cm.exception))
+
 
 if __name__ == "__main__":
     unittest.main()

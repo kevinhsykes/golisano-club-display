@@ -9,6 +9,8 @@ one command lands it in the data model:
 The CSV needs columns for date, symbol, action/type, shares and price (header names are
 matched case- and spacing-insensitively; "Trade Date", "Quantity" and "Unit Price" all work,
 and dividend rows may put the cash amount in the price column or an "Amount" column).
+When a file has both a trade date and a settlement/run/process date column, the trade date
+is used; a file with only a settlement/run/process date column is rejected.
 Supported actions: buy, sell, dividend, reinvest (a reinvested dividend imports as a
 dividend row with the shares it bought).
 
@@ -30,13 +32,19 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Header cells -> canonical columns (matched lower-cased, trimmed, spaces/hyphens collapsed).
 HEADER_ALIASES = {
-    "date": {"date", "trade date", "transaction date", "run date", "settlement date"},
+    "date": {"date", "trade date", "transaction date"},
     "symbol": {"symbol", "ticker"},
     "action": {"action", "type", "action type", "transaction type", "activity", "transaction"},
     "shares": {"shares", "quantity", "qty"},
     "price": {"price", "unit price", "price per share", "share price", "trade price"},
     "amount": {"amount", "total amount", "cash amount"},
 }
+
+# Date headers that are the trade date, vs ones that are NOT the trade date. A settlement,
+# run or process date is when the trade cleared, not when it happened; if a file offers only
+# those, we fail rather than silently record the wrong day.
+TRADE_DATE_ALIASES = {"date", "trade date", "transaction date"}
+NON_TRADE_DATE_ALIASES = {"settlement date", "run date", "process date"}
 
 # CSV action codes -> the row type we store ("reinvest" is a dividend that bought shares).
 ACTION_CODES = {
@@ -60,13 +68,26 @@ def norm_header(cell):
 def map_headers(row):
     """Map a CSV header row to canonical column names."""
     cols = {}
+    date_hits = []  # (column index, is_trade_date) for every date-ish header, in file order
     for i, cell in enumerate(row):
         h = norm_header(cell)
         if not h:
             continue
+        if h in TRADE_DATE_ALIASES:
+            date_hits.append((i, True))
+            continue
+        if h in NON_TRADE_DATE_ALIASES:
+            date_hits.append((i, False))
+            continue
         match = [name for name, aliases in HEADER_ALIASES.items() if h in aliases]
         if match:
             cols.setdefault(match[0], i)  # first occurrence wins
+    if date_hits:
+        trade = [i for i, is_trade in date_hits if is_trade]
+        if trade:
+            cols["date"] = trade[0]  # the trade date wins over settlement/run/process dates
+        else:
+            cols["_non_trade_date"] = date_hits[0][0]  # flagged; parse_csv refuses it
     return cols
 
 
@@ -110,6 +131,11 @@ def parse_csv(path):
         except StopIteration:
             raise ImportRowError(f"{Path(path).name}: file is empty (no header row)")
         cols = map_headers(header)
+        if "_non_trade_date" in cols:
+            only = header[cols["_non_trade_date"]].strip()
+            raise ImportRowError(
+                f"{Path(path).name}: found only a {only!r} column for dates; that is not the "
+                f"trade date. Add a trade date column and re-run.")
         missing = [c for c in ("date", "symbol", "action") if c not in cols]
         if missing:
             raise ImportRowError(
