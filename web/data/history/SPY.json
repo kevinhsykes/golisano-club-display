@@ -4,11 +4,11 @@
  "exchange": "NYSEArca",
  "currency": "USD",
  "as_of_utc": "2026-10-27T20:00:00Z",
- "price": 769.71,
+ "price": 769.66,
  "previous_close": 685.24,
  "day_high": 771.13,
  "day_low": 765.21,
- "volume": 23595683,
+ "volume": 26520775,
  "week52_high": 781.62,
  "week52_low": 629.28,
  "closes": [
@@ -1014,9 +1014,9 @@
   },
   {
    "date": "2026-10-27",
-   "close": 769.71
+   "close": 769.66
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T20:02:40Z"
+ "retrieved_at_utc": "2026-10-27T20:16:42Z"
 }
