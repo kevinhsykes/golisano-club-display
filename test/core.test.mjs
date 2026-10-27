@@ -82,6 +82,47 @@ test('mergeQuotes keeps last good prices on incomplete or older snapshots', () =
   assert.equal(pts[pts.length - 1].kind, 'live');
 });
 
+// Calendar coverage guard: data/source/xnys-calendar.json covers a fixed window; this test is
+// the alarm that a student sees long before it runs out. See README "Calendar renewal".
+const CALENDAR = JSON.parse(readFileSync(new URL('../data/source/xnys-calendar.json', import.meta.url), 'utf8'));
+const CALENDAR_RANGE_END = CALENDAR.range[1];
+const CALENDAR_WARNING_DAYS = 120, DAY_MS = 86400000;
+const calendarCoverageMessage = () =>
+  `calendar coverage ends ${CALENDAR_RANGE_END}; renew the XNYS calendar (see README) before then`;
+// "Today" is the real UTC date in a normal run (computed once, so a run is deterministic);
+// CAL_TODAY=YYYY-MM-DD overrides it to rehearse the warning.
+const calToday = () => {
+  const override = process.env.CAL_TODAY;
+  if (override === undefined) return new Date().toISOString().slice(0, 10);
+  assert.match(override, /^\d{4}-\d{2}-\d{2}$/, `CAL_TODAY must be YYYY-MM-DD, got ${JSON.stringify(override)}`);
+  assert.equal(new Date(`${override}T00:00:00Z`).toISOString().slice(0, 10), override,
+    `CAL_TODAY must be a real calendar date, got ${JSON.stringify(override)}`);
+  return override;
+};
+const daysOfCalendarLeft = today =>
+  Math.round((Date.parse(CALENDAR_RANGE_END) - Date.parse(today)) / DAY_MS);
+
+test('XNYS calendar covers at least 120 more days from today', () => {
+  const today = calToday();
+  assert.ok(daysOfCalendarLeft(today) >= CALENDAR_WARNING_DAYS, calendarCoverageMessage());
+});
+
+test('calendar coverage guard fires when CAL_TODAY is inside the 120-day window', () => {
+  const inside = new Date(Date.parse(CALENDAR_RANGE_END) - 30 * DAY_MS).toISOString().slice(0, 10);
+  const prev = process.env.CAL_TODAY;
+  process.env.CAL_TODAY = inside;
+  try {
+    const today = calToday();
+    assert.equal(today, inside, 'CAL_TODAY must drive the guard');
+    assert.throws(
+      () => assert.ok(daysOfCalendarLeft(today) >= CALENDAR_WARNING_DAYS, calendarCoverageMessage()),
+      { message: calendarCoverageMessage() },
+    );
+  } finally {
+    if (prev === undefined) delete process.env.CAL_TODAY; else process.env.CAL_TODAY = prev;
+  }
+});
+
 test('comparison chart starts from the statement gain over cost, not zero', () => {
   for (const p of [full(), load('portfolio.public.json')]) {
     const [port, spy, picks] = comparisonSeries(p, compute(p));
