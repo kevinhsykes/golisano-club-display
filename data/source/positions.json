@@ -131,7 +131,36 @@
     }
   ],
   "cash": null,
-  "transactions": [],
+  "transactions": [
+    {
+      "date": "2026-01-05",
+      "symbol": "AAPL",
+      "type": "buy",
+      "shares": "2.0000",
+      "price": "190.25"
+    },
+    {
+      "date": "2026-02-10",
+      "symbol": "MSFT",
+      "type": "sell",
+      "shares": "1.0000",
+      "price": "415.60"
+    },
+    {
+      "date": "2026-03-01",
+      "symbol": "KO",
+      "type": "dividend",
+      "shares": "0.0000",
+      "price": "0.485"
+    },
+    {
+      "date": "2026-03-15",
+      "symbol": "VTI",
+      "type": "dividend",
+      "shares": "0.2417",
+      "price": "290.50"
+    }
+  ],
   "instruments": [
     {
       "symbol": "AAPL",
