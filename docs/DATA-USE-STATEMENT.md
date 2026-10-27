@@ -12,7 +12,7 @@ GitHub Actions builds the site and refreshes the saved snapshot. GitHub Pages se
 
 ## Who can see it
 
-The TV page and the web page are public. Anyone who opens the address, and anyone in the cafe looking at the screen, can see the prices and the portfolio figures the pages show. Prices of listed stocks are public market data. The club's own holdings and dollar amounts are on that public page because the sponsor already allowed dollar amounts on the cafe TV (2026-10-26). A screen can be opened with amounts hidden if the sponsor wants percents only.
+The TV page and the web page are public. Anyone who opens the address, and anyone in the cafe looking at the screen, can see the prices and the portfolio figures the pages show. Prices of listed stocks are public market data. The club's own holdings and dollar amounts are on that public page because club leadership (Kevin Sykes, 2026-10-26) chose to show dollar amounts on the interim cafe TV display. This statement asks the sponsor to approve that use going forward. A screen can be opened with amounts hidden if the sponsor wants percents only.
 
 ## Retention
 
