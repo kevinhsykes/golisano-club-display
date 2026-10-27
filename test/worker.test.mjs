@@ -1,7 +1,7 @@
 // Worker refresh logic against a fake KV and fake provider responses. No network.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import worker, { refresh, shouldFetch, SYMBOLS } from '../worker/index.js';
+import worker, { refresh, shouldFetch, validate, SYMBOLS } from '../worker/index.js';
 
 const fakeKV = () => {
   const m = new Map();
@@ -97,4 +97,101 @@ test('tiingo adapter maps the IEX response, including BRK.B', async () => {
   assert.equal(rows.length, 18);
   assert.equal(rows.find(r => r.symbol === 'BRK/B').price, '53');
   await assert.rejects(tiingo.fetch(SYMBOLS, { TIINGO_KEY: 't' }, async () => new Response(JSON.stringify(body.slice(1)), { status: 200 })), /incomplete quote for AAPL/);
+});
+
+test('a provider outage (thrown fetch or non-200) keeps the last good snapshot, no partial write', async () => {
+  const kv = fakeKV();
+  await refresh(env(kv), new Date('2026-10-21T15:00:00Z'), fetchReturning(tdBody('2026-10-21T14:44:30Z')));
+  const good = JSON.parse(kv.m.get('quotes:latest')).quotes;
+
+  const thrown = await refresh(env(kv), new Date('2026-10-21T15:01:00Z'), async () => { throw new Error('getaddrinfo ENOTFOUND'); });
+  assert.equal(thrown.ok, false);
+  assert.match(thrown.error, /ENOTFOUND/);
+  const http503 = await refresh(env(kv), new Date('2026-10-21T15:02:00Z'), async () => new Response('maintenance', { status: 503 }));
+  assert.equal(http503.ok, false);
+  assert.match(http503.error, /HTTP 503/);
+
+  const stored = JSON.parse(kv.m.get('quotes:latest'));
+  assert.deepEqual(stored.quotes, good);
+  assert.equal(stored.health.ok, false);
+  assert.match(stored.health.error, /HTTP 503/);
+  const snap = await (await worker.fetch(new Request('https://x/api/quotes'), env(kv))).json();
+  assert.equal(snap.quotes.length, 18); // /api/quotes still serves the last good snapshot
+});
+
+test('a valid JSON response with a symbol missing from SYMBOLS is treated as incomplete', async () => {
+  const kv = fakeKV();
+  await refresh(env(kv), new Date('2026-10-21T15:00:00Z'), fetchReturning(tdBody('2026-10-21T14:44:30Z')));
+  const good = JSON.parse(kv.m.get('quotes:latest')).quotes;
+
+  // 200 with parseable JSON, but SOFI's slot carries HOOD, which is not in SYMBOLS
+  const body = tdBody('2026-10-21T14:46:30Z', 3);
+  body['HOOD'] = body['SOFI'];
+  delete body['SOFI'];
+  const r = await refresh(env(kv), new Date('2026-10-21T15:01:00Z'), fetchReturning(body));
+  assert.equal(r.ok, false);
+  assert.match(r.error, /incomplete quote for SOFI/);
+  const stored = JSON.parse(kv.m.get('quotes:latest'));
+  assert.deepEqual(stored.quotes, good);
+  assert.equal(stored.health.ok, false);
+
+  // validate() is the backstop: an unknown or repeated symbol is rejected outright
+  const rows = SYMBOLS.map((s, i) => ({ symbol: s, price: String(100 + i), previous_close: String(99 + i),
+    currency: 'USD', provider_update_at_utc: '2026-10-21T14:46:30Z' }));
+  const now = new Date('2026-10-21T15:01:00Z');
+  assert.throws(() => validate([...rows.slice(0, 17), { ...rows[0], symbol: 'HOOD' }], now), /unexpected or duplicate symbol HOOD/);
+  assert.throws(() => validate([...rows.slice(0, 17), { ...rows[0], symbol: 'AAPL' }], now), /unexpected or duplicate symbol AAPL/);
+});
+
+test('cron gate: before the session and past the capture window the handler never fetches', async () => {
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  try {
+    const gateRun = async iso => {
+      calls = 0;
+      globalThis.fetch = async () => { calls++; throw new Error('unexpected fetch at ' + iso); };
+      const kv = fakeKV();
+      const waits = [];
+      await worker.scheduled({ scheduledTime: Date.parse(iso) }, env(kv), { waitUntil: p => waits.push(p) });
+      await Promise.all(waits);
+      assert.equal(calls, 0);
+      assert.equal(kv.m.size, 0);
+    };
+    await gateRun('2026-10-21T13:29:00Z'); // 9:29 AM EDT, before the open
+    await gateRun('2026-10-21T20:25:00Z'); // 4:25 PM EDT, past the 20-minute capture window
+    // positive control: the same wiring does fetch inside the session, so the zeros above are real
+    globalThis.fetch = async (url, init) => fetchReturning(tdBody('2026-10-21T14:44:30Z'))(url, init);
+    const kv = fakeKV();
+    const waits = [];
+    await worker.scheduled({ scheduledTime: Date.parse('2026-10-21T15:00:00Z') }, env(kv), { waitUntil: p => waits.push(p) });
+    await Promise.all(waits);
+    assert.equal(await (await worker.fetch(new Request('https://x/api/quotes'), env(kv))).json().then(s => s.quotes.length), 18);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test('a failing KV put never lets the refresh claim success', async () => {
+  const kv = fakeKV();
+  await refresh(env(kv), new Date('2026-10-21T15:00:00Z'), fetchReturning(tdBody('2026-10-21T14:44:30Z')));
+  const good = JSON.parse(kv.m.get('quotes:latest')).quotes;
+  const goodBytes = kv.m.get('quotes:latest');
+
+  // put fails every time: refresh rejects instead of returning ok:true, stored bytes untouched
+  const down = { m: kv.m, get: kv.get, put: async () => { throw new Error('kv write failed'); } };
+  await assert.rejects(refresh(env(down), new Date('2026-10-21T15:01:00Z'), fetchReturning(tdBody('2026-10-21T14:45:30Z', 1))), /kv write failed/);
+  assert.equal(kv.m.get('quotes:latest'), goodBytes);
+
+  // only the snapshot write fails: the handler reports failure, it does not claim success
+  let failed = false;
+  const failOnce = { m: kv.m, get: kv.get, put: async (k, v) => {
+    if (!failed) { failed = true; throw new Error('kv write failed'); }
+    kv.m.set(k, v);
+  } };
+  const r = await refresh(env(failOnce), new Date('2026-10-21T15:02:00Z'), fetchReturning(tdBody('2026-10-21T14:46:30Z', 2)));
+  assert.equal(r.ok, false);
+  assert.match(r.error, /kv write failed/);
+  const stored = JSON.parse(kv.m.get('quotes:latest'));
+  assert.deepEqual(stored.quotes, good);
+  assert.equal(stored.health.ok, false);
 });
