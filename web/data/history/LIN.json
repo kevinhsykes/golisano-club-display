@@ -3,12 +3,12 @@
  "name": "Linde plc",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-10-27T19:17:19Z",
- "price": 507.51,
+ "as_of_utc": "2026-10-27T19:32:15Z",
+ "price": 508.075,
  "previous_close": 444.82,
  "day_high": 508.57,
  "day_low": 504.56,
- "volume": 879112,
+ "volume": 926010,
  "week52_high": 548.2,
  "week52_low": 387.78,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-10-27",
-   "close": 507.51
+   "close": 508.075
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T19:17:22Z"
+ "retrieved_at_utc": "2026-10-27T19:32:21Z"
 }
