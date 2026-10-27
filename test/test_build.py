@@ -4,11 +4,12 @@ Every test runs build.main() against a TEMP copy of data/source inside
 tempfile.TemporaryDirectory, with build.ROOT/SRC/OUT redirected, so the repo's
 web/ and data/ trees are never read for output nor written to.
 
-Privacy claims checked here come from README "Public vs full data":
-    "`python build.py --public ...` writes a payload with no share counts,
-    cost basis or dollar values: only relative units"
-Case 2 asserts the "shares" / "cost_basis" KEYS are absent (not redacted to
-empty/null) and that the source dollar totals appear nowhere in the file.
+Privacy claims checked here come from README "Public vs full data" (as corrected on
+packet/readmeaudit): the public payload carries relative units plus each holding's average
+cost per share, and no share counts or position dollar totals. Case 2 asserts the "shares" /
+"cost_basis" / "value" / "market_value" KEYS are absent (not redacted to empty/null), that
+avg_cost is present and quantized exactly as build.py writes it, and that the source dollar
+totals appear nowhere in the file.
 """
 import csv
 import io
@@ -118,8 +119,10 @@ class TestFullBuild(BuildTestCase):
 
 
 class TestPublicBuild(BuildTestCase):
-    """README "Public vs full data": --public has no share counts, cost basis or
-    dollar values; only relative units."""
+    """README "Public vs full data": the public payload gives relative units plus average
+    cost per share, with no share counts and no position dollar totals. build.py writes
+    avg_cost on purpose (units x avg_cost reproduces total cost without revealing position
+    size), so its presence and exact quantization are asserted, not its absence."""
 
     def test_public_omits_share_counts_cost_basis_and_dollar_values(self):
         build.main(public=True, out=self.public_out)
@@ -134,7 +137,21 @@ class TestPublicBuild(BuildTestCase):
         for holding in payload["holdings"]:
             self.assertNotIn("shares", holding)
             self.assertNotIn("cost_basis", holding)
+            self.assertNotIn("value", holding)
+            self.assertNotIn("market_value", holding)
             self.assertIn("units", holding)
+            # avg_cost is present on purpose (units x avg_cost reproduces total cost without
+            # revealing position size): a string quantized to exactly six decimal places.
+            self.assertIsInstance(holding["avg_cost"], str)
+            self.assertRegex(holding["avg_cost"], r"^\d+\.\d{6}$")
+
+        # ...and it must equal build.py's own formula applied to the source statement:
+        # cost_basis / shares, quantized to 1e-6, half-up.
+        by_symbol = {h["symbol"]: h for h in payload["holdings"]}
+        for row in self.statement_rows():
+            expected_avg = str((Decimal(row["cost_basis"]) / Decimal(row["shares"]))
+                               .quantize(Decimal("1e-6"), ROUND_HALF_UP))
+            self.assertEqual(by_symbol[row["symbol"]]["avg_cost"], expected_avg)
 
         self.assertIsNone(payload["statement"]["value"])
         self.assertIsNone(payload["statement"]["basis"])
