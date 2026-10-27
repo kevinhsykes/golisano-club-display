@@ -44,7 +44,9 @@ jobs:
       - name: Test
         run: node --test test/core.test.mjs test/worker.test.mjs
       - name: Commit refreshed prices
-        if: github.event_name != 'push'
+        # always(): a failed refresh must still publish web/data/refresh-health.json
+        # (ok:false) so the screens page shows the failure instead of the last success.
+        if: always() && github.event_name != 'push'
         run: |
           git config user.name "price-refresh[bot]"
           git config user.email "price-refresh@users.noreply.github.com"
