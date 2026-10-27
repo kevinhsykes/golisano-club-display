@@ -1,0 +1,8 @@
+{
+ "attempted_at_utc": "2026-10-27T00:40:35Z",
+ "ok": true,
+ "provider": "yahoo-snapshot",
+ "symbols_requested": 18,
+ "symbols_written": 18,
+ "error": null
+}

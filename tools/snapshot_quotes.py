@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "source"
 API = ROOT / "web" / "api" / "quotes"
+HEALTH = ROOT / "web" / "data" / "refresh-health.json"
 UA = {"User-Agent": "Mozilla/5.0"}
 
 
@@ -19,25 +20,47 @@ def yahoo(sym):
     return json.load(urllib.request.urlopen(req, timeout=15))["chart"]["result"][0]["meta"]
 
 
+def one_line(exc):
+    """An exception as the single line the health record can hold."""
+    return " ".join(f"{type(exc).__name__}: {exc}".split())[:200]
+
+
+def write_health(attempted_at_utc, ok, requested, written, error):
+    """Published with the site (web/data/, served by Pages): the pages show whether the
+    last refresh attempt ran and what happened, even when it failed."""
+    rec = {"attempted_at_utc": attempted_at_utc, "ok": ok, "provider": "yahoo-snapshot",
+           "symbols_requested": requested, "symbols_written": written, "error": error}
+    HEALTH.parent.mkdir(parents=True, exist_ok=True)
+    HEALTH.write_text(json.dumps(rec, indent=1) + "\n", encoding="utf-8")
+
+
 def main():
-    positions = json.loads((SRC / "positions.json").read_text(encoding="utf-8"))
-    symbols = [p["symbol"] for p in positions["opening_positions"]]
     now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
     f = lambda d: d.strftime("%Y-%m-%dT%H:%M:%SZ")
-    rows = []
-    for s in symbols:
-        m = yahoo(s)
-        t = datetime.datetime.fromtimestamp(m["regularMarketTime"], datetime.timezone.utc)
-        rows.append({
-            "symbol": s, "price": f"{m['regularMarketPrice']:.2f}", "previous_close": f"{(m.get('regularMarketPreviousClose') or m.get('previousClose') or m['chartPreviousClose']):.2f}",
-            "currency": m.get("currency", "USD"), "provider_update_at_utc": f(t), "retrieved_at_utc": f(now),
-            "session": "regular" if m.get("currentTradingPeriod") and m["currentTradingPeriod"]["regular"]["start"] <= m["regularMarketTime"] < m["currentTradingPeriod"]["regular"]["end"] else "closed",
-            "provider": "Yahoo Finance (snapshot)", "source_url": f"https://finance.yahoo.com/quote/{s.replace('/', '-')}/",
-            "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display",
-        })
-        time.sleep(0.3)
-    if len(rows) != len(symbols):
-        sys.exit(f"got {len(rows)} of {len(symbols)} quotes; nothing written")
+    symbols, rows, error = [], [], None
+    try:
+        positions = json.loads((SRC / "positions.json").read_text(encoding="utf-8"))
+        symbols = [p["symbol"] for p in positions["opening_positions"]]
+        for s in symbols:
+            m = yahoo(s)
+            t = datetime.datetime.fromtimestamp(m["regularMarketTime"], datetime.timezone.utc)
+            rows.append({
+                "symbol": s, "price": f"{m['regularMarketPrice']:.2f}", "previous_close": f"{(m.get('regularMarketPreviousClose') or m.get('previousClose') or m['chartPreviousClose']):.2f}",
+                "currency": m.get("currency", "USD"), "provider_update_at_utc": f(t), "retrieved_at_utc": f(now),
+                "session": "regular" if m.get("currentTradingPeriod") and m["currentTradingPeriod"]["regular"]["start"] <= m["regularMarketTime"] < m["currentTradingPeriod"]["regular"]["end"] else "closed",
+                "provider": "Yahoo Finance (snapshot)", "source_url": f"https://finance.yahoo.com/quote/{s.replace('/', '-')}/",
+                "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display",
+            })
+            time.sleep(0.3)
+    except Exception as e:
+        error = one_line(e)
+    ok = error is None and len(rows) == len(symbols)
+    # On failure the previous quotes-current.json / api files are kept and the record still
+    # says what happened; the process still exits non-zero so the workflow run stays red.
+    write_health(f(now), ok, len(symbols), len(rows),
+                 error if error else (None if ok else f"got {len(rows)} of {len(symbols)} quotes"))
+    if not ok:
+        sys.exit(f"got {len(rows)} of {len(symbols)} quotes; nothing written" + (f"; {error}" if error else ""))
     old = json.loads((SRC / "quotes-current.json").read_text(encoding="utf-8"))
     hist_path = SRC / "historical-quotes.json"
     hist = json.loads(hist_path.read_text(encoding="utf-8"))

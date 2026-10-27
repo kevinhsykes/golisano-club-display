@@ -54,6 +54,7 @@
   </table>
 
   <h3>Setting up a screen (the school's TVs run Yodeck)</h3>
+  <p class="lead" id="refresh-health">no refresh record yet</p>
   <table>
     <tr><th>Device</th><th>How</th></tr>
     <tr><td><strong>Yodeck</strong> (the school's signage players)</td><td>In Yodeck: <strong>Media &rarr; Web Pages &rarr; Add</strong>, name it, paste one of the addresses above, save. Then show it on a screen directly, or add it to a playlist or layout. Under <em>Advanced settings</em>, leave <em>Refresh Web Page</em> off or set it to a few hours: the page already refreshes its own prices every minute and reloads itself every 6 hours. No login, no account, no key is needed; the page is public. Use the rotating TV view as a single-item show so it stays on screen, or pin one panel per screen.</td></tr>
@@ -64,6 +65,13 @@
 
   <footer>Student-managed portfolio. Educational display, not investment advice. Shares and cost basis from the Sept 22, 2026 statement. Source: <a href="https://github.com/kevinhsykes/golisano-club-display">github.com/kevinhsykes/golisano-club-display</a>.</footer>
 </div>
+<script type="module">
+import { fetchJson, refreshHealthLine } from './core.js';
+// Published by tools/snapshot_quotes.py; a 404 or malformed record keeps the fallback line.
+try {
+  document.getElementById('refresh-health').textContent = refreshHealthLine(await fetchJson('data/refresh-health.json'));
+} catch { /* no refresh record yet */ }
+</script>
 <script>
 const base = location.href.replace(/[^/]*$/, '');
 const screens = [

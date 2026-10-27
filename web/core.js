@@ -46,6 +46,29 @@ export function delayNotice(payload) {
   return `${delay}${scope} · ${meta.attribution}`;
 }
 
+// The last refresh attempt, from web/data/refresh-health.json (written by
+// tools/snapshot_quotes.py on every run, success or failure). Returns the record when it is
+// well formed, otherwise null so the page can show a plain "no refresh record yet" fallback
+// instead of a broken or spoofed-looking line.
+export function parseRefreshHealth(rec) {
+  if (!rec || typeof rec !== 'object' || Array.isArray(rec)) return null;
+  if (typeof rec.attempted_at_utc !== 'string' || Number.isNaN(Date.parse(rec.attempted_at_utc))) return null;
+  if (typeof rec.ok !== 'boolean' || rec.provider !== 'yahoo-snapshot') return null;
+  if (!Number.isInteger(rec.symbols_requested) || rec.symbols_requested < 0) return null;
+  if (!Number.isInteger(rec.symbols_written) || rec.symbols_written < 0 || rec.symbols_written > rec.symbols_requested) return null;
+  if (rec.error !== null && typeof rec.error !== 'string') return null;
+  return rec;
+}
+
+// "Last refresh attempt: Oct 26, 4:32 PM ET (ok) · 18/18 symbols" — the setup/diagnostics line.
+export function refreshHealthLine(rec) {
+  const h = parseRefreshHealth(rec);
+  if (!h) return 'no refresh record yet';
+  const when = new Date(h.attempted_at_utc);
+  return `Last refresh attempt: ${fmtShortDate(when)}, ${fmtTime(when)} (${h.ok ? 'ok' : 'failed'})`
+    + ` · ${h.symbols_written}/${h.symbols_requested} symbols`;
+}
+
 export const newestQuote = items => Math.max(...items.map(q => Date.parse(q.provider_update_at_utc)));
 export const oldestQuote = items => Math.min(...items.map(q => Date.parse(q.provider_update_at_utc)));
 
