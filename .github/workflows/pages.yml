@@ -37,12 +37,6 @@ jobs:
         run: |
           python3 tools/snapshot_quotes.py
           python3 tools/snapshot_history.py || echo "history refresh failed; previous files kept"
-      - name: Build payloads
-        run: |
-          python3 build.py
-          python3 build.py --public --out web/data/portfolio.public.json
-      - name: Test
-        run: node --test test/core.test.mjs test/worker.test.mjs
       - name: Commit refreshed prices
         # always(): a failed refresh must still publish web/data/refresh-health.json
         # (ok:false) so the screens page shows the failure instead of the last success.
@@ -53,6 +47,12 @@ jobs:
           git add -A data/source web/data web/api
           git diff --cached --quiet || git commit -m "Price snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
           git push
+      - name: Build payloads
+        run: |
+          python3 build.py
+          python3 build.py --public --out web/data/portfolio.public.json
+      - name: Test
+        run: node --test test/core.test.mjs test/worker.test.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web
