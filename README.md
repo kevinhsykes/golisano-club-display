@@ -108,6 +108,30 @@ those symbols.
 `data/source/xnys-calendar.json` covers 2026-2027 (generated with `exchange_calendars`).
 Regenerate it before January 2028, or the Worker stops fetching once the calendar runs out.
 
+### Calendar renewal
+
+The calendar is generated from [`exchange_calendars`](https://pypi.org/project/exchange-calendars/)
+for the NYSE (`XNYS`); the file's `source` field records the library and version it came from. It
+covers a fixed window, its `range` (2026-01-01 through 2027-12-31 today); outside it the pages show
+an "Exchange calendar needs updating" banner. `npm test` warns long before that: it fails with
+`calendar coverage ends <range end>; renew the XNYS calendar (see README) before then` once fewer
+than 120 days of coverage are left (set `CAL_TODAY=YYYY-MM-DD` to rehearse the warning at any date).
+
+To renew, generate the next window with the same library (`pip install exchange-calendars`) and
+write the file in its current four-field shape:
+
+```python
+from exchange_calendars import get_calendar
+cal = get_calendar("XNYS", start="2028-01-01", end="2029-12-31")
+```
+
+- `range`: the covered window, `["YYYY-MM-DD", "YYYY-MM-DD"]`.
+- `weekday_holidays`: every Mon–Fri in the window that is not a session (e.g. `2026-01-01`).
+- `early_closes`: sessions closing at 13:00 America/New_York, as `{"2026-11-27": "13:00"}`.
+- `source`: the library and version you regenerated with, e.g. `exchange_calendars 4.13.2 XNYS`.
+
+Commit the renewed file, run `npm test` (the coverage warning should go quiet), and rebuild.
+
 ## Checks
 
 `npm test` runs the math (Oct 9 figures to the cent), market clock (holidays, early close,
