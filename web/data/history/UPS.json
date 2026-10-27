@@ -3,12 +3,12 @@
  "name": "United Parcel Service, Inc.",
  "exchange": "NYSE",
  "currency": "USD",
- "as_of_utc": "2026-10-27T17:17:26Z",
- "price": 104.805,
+ "as_of_utc": "2026-10-27T17:32:22Z",
+ "price": 104.95,
  "previous_close": 89.22,
- "day_high": 104.87,
+ "day_high": 105.07,
  "day_low": 99.659,
- "volume": 4839118,
+ "volume": 5154413,
  "week52_high": 122.41,
  "week52_low": 90.84,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-10-27",
-   "close": 104.805
+   "close": 104.95
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T17:17:28Z"
+ "retrieved_at_utc": "2026-10-27T17:32:30Z"
 }
