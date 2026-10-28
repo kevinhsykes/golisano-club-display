@@ -3,12 +3,12 @@
  "name": "State Street SPDR S&P 500 ETF Trust",
  "exchange": "NYSEArca",
  "currency": "USD",
- "as_of_utc": "2026-10-28T14:02:22Z",
- "price": 770.28,
+ "as_of_utc": "2026-10-28T14:17:25Z",
+ "price": 770.685,
  "previous_close": 687.06,
  "day_high": 771.7,
  "day_low": 769.25,
- "volume": 3158308,
+ "volume": 3926158,
  "week52_high": 781.62,
  "week52_low": 629.28,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-10-28",
-   "close": 770.28
+   "close": 770.685
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-28T14:02:23Z"
+ "retrieved_at_utc": "2026-10-28T14:17:27Z"
 }
