@@ -4,11 +4,11 @@
  "exchange": "NYSE",
  "currency": "USD",
  "as_of_utc": "2026-10-29T19:59:59Z",
- "price": 129.87,
+ "price": 129.78,
  "previous_close": 210.77,
  "day_high": 131.89,
  "day_low": 126.37,
- "volume": 11535498,
+ "volume": 14371245,
  "week52_high": 263.5,
  "week52_low": 119.27,
  "closes": [
@@ -1014,9 +1014,9 @@
   },
   {
    "date": "2026-10-29",
-   "close": 129.8699
+   "close": 129.78
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-29T20:02:41Z"
+ "retrieved_at_utc": "2026-10-29T20:16:46Z"
 }
