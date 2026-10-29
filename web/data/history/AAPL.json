@@ -1011,12 +1011,8 @@
   {
    "date": "2026-10-27",
    "close": 347.1
-  },
-  {
-   "date": "2026-10-28",
-   "close": 343.83
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-28T23:26:26Z"
+ "retrieved_at_utc": "2026-10-29T00:44:13Z"
 }
