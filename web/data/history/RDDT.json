@@ -3,14 +3,14 @@
  "name": "Reddit, Inc.",
  "exchange": "NYSE",
  "currency": "USD",
- "as_of_utc": "2026-10-30T17:44:29Z",
- "price": 90.72,
+ "as_of_utc": "2026-10-30T18:02:22Z",
+ "price": 89.72,
  "previous_close": 194.42,
  "day_high": 101.95,
- "day_low": 89.97,
- "volume": 23374718,
+ "day_low": 89.632,
+ "volume": 24108921,
  "week52_high": 263.5,
- "week52_low": 89.97,
+ "week52_low": 89.632,
  "closes": [
   {
    "date": "2025-10-30",
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-10-30",
-   "close": 90.7201
+   "close": 89.72
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-30T17:47:29Z"
+ "retrieved_at_utc": "2026-10-30T18:02:23Z"
 }
