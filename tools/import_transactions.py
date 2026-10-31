@@ -8,11 +8,12 @@ one command lands it in the data model:
 
 The CSV needs columns for date, symbol, action/type, shares and price (header names are
 matched case- and spacing-insensitively; "Trade Date", "Quantity" and "Unit Price" all work,
-and dividend rows may put the cash amount in the price column or an "Amount" column).
+and dividend rows may put the cash amount in the price column or an "Amount" column; a cash
+dividend with both uses the Amount, which is the payment).
 When a file has both a trade date and a settlement/run/process date column, the trade date
 is used; a file with only a settlement/run/process date column is rejected.
 Supported actions: buy, sell, dividend, reinvest (a reinvested dividend imports as a
-dividend row with the shares it bought).
+dividend row with the shares it bought, which the row must state).
 
 Writes positions.json `transactions[]` rows of the shape the pages expect:
     {"date": "YYYY-MM-DD", "symbol": "AAPL", "type": "buy|sell|dividend",
@@ -46,14 +47,15 @@ HEADER_ALIASES = {
 TRADE_DATE_ALIASES = {"date", "trade date", "transaction date"}
 NON_TRADE_DATE_ALIASES = {"settlement date", "run date", "process date"}
 
-# CSV action codes -> the row type we store ("reinvest" is a dividend that bought shares).
+# CSV action codes -> the canonical action. A reinvestment is stored as a dividend row
+# with the shares it bought — which it must state; a cash dividend may carry none.
 ACTION_CODES = {
     "buy": "buy", "buy to open": "buy", "purchase": "buy", "bought": "buy",
     "sell": "sell", "sell to open": "sell", "sell to close": "sell", "sale": "sell", "sold": "sell",
     "dividend": "dividend", "div": "dividend", "cash dividend": "dividend",
-    "reinvest": "dividend", "reinvestment": "dividend", "dividend reinvest": "dividend",
-    "dividend reinvestment": "dividend", "reinvested dividend": "dividend",
-    "reinvest shares": "dividend",
+    "reinvest": "reinvest", "reinvestment": "reinvest", "dividend reinvest": "reinvest",
+    "dividend reinvestment": "reinvest", "reinvested dividend": "reinvest",
+    "reinvest shares": "reinvest",
 }
 
 
@@ -105,6 +107,8 @@ def norm_decimal(raw, name, lineno, what, allow_zero):
         d = Decimal(raw.strip().replace(",", "").replace("$", ""))
     except (InvalidOperation, AttributeError):
         raise ImportRowError(f"{name} line {lineno}: {what} is not a number: {raw!r}")
+    if not d.is_finite():
+        raise ImportRowError(f"{name} line {lineno}: {what} is not a finite number: {raw!r}")
     if d < 0 or (d == 0 and not allow_zero):
         raise ImportRowError(f"{name} line {lineno}: {what} must be positive: {raw!r}")
     return d
@@ -147,24 +151,33 @@ def parse_csv(path):
                 continue  # blank line
             need = lambda name: raw[cols[name]].strip() if name in cols and cols[name] < len(raw) else ""
             action = need("action")
-            row_type = ACTION_CODES.get(norm_header(action))
-            if row_type is None:
+            action_code = ACTION_CODES.get(norm_header(action))
+            if action_code is None:
                 raise ImportRowError(
                     f"{Path(path).name} line {lineno}: unknown action {action!r} "
                     f"(supported: buy, sell, dividend, reinvest)")
+            # A reinvestment imports as a dividend row carrying the shares it bought.
+            row_type = "dividend" if action_code == "reinvest" else action_code
+            is_cash_div = action_code == "dividend"
             date = norm_date(need("date"), Path(path).name, lineno)
             symbol = need("symbol").upper()
             if not symbol:
                 raise ImportRowError(f"{Path(path).name} line {lineno}: missing symbol")
-            is_div = row_type == "dividend"
             shares_raw, price_raw, amount_raw = need("shares"), need("price"), need("amount")
-            if not is_div and not shares_raw:
+            if action_code == "reinvest" and not shares_raw:
+                raise ImportRowError(
+                    f"{Path(path).name} line {lineno}: reinvest row missing shares "
+                    f"(a reinvestment stores the shares it bought; a cash dividend may use 0)")
+            if action_code in ("buy", "sell") and not shares_raw:
                 raise ImportRowError(f"{Path(path).name} line {lineno}: {row_type} row missing shares")
-            if not price_raw and is_div and amount_raw:  # dividends often carry the cash amount separately
+            if row_type == "dividend" and amount_raw and (is_cash_div or not price_raw):
+                # Cash dividend: the Amount column is the payment; a per-share price is not.
+                # Reinvestment: only when no unit price is given does the amount stand in.
                 price_raw = amount_raw
             if not price_raw:
                 raise ImportRowError(f"{Path(path).name} line {lineno}: {row_type} row missing price/amount")
-            shares = (norm_decimal(shares_raw, Path(path).name, lineno, "shares", allow_zero=is_div)
+            shares = (norm_decimal(shares_raw, Path(path).name, lineno, "shares",
+                                   allow_zero=is_cash_div)
                       if shares_raw else Decimal(0))
             price = norm_decimal(price_raw, Path(path).name, lineno, "price", allow_zero=False)
             row = {"date": date, "symbol": symbol, "type": row_type,

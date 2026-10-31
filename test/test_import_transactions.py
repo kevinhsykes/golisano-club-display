@@ -114,6 +114,45 @@ class TestImportTransactions(ImportTestCase):
             imp.parse_csv(csv)
         self.assertIn("line 2", str(cm.exception))
 
+    def test_cash_dividend_prefers_explicit_amount_over_price(self):
+        csv = Path(self.tmp.name) / "div-amount.csv"
+        csv.write_text(
+            "Date,Symbol,Action,Shares,Price,Amount\n"
+            "2026-01-05,AAPL,Dividend,0,0.25,12.34\n"  # a per-share price is present; the cash amount wins
+            "2026-01-06,MSFT,Dividend,0,0,5.67\n",       # zero per-share price no longer rejects the row
+            encoding="utf-8")
+        code, _ = run([str(csv), "--positions", str(self.positions)])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.transactions(), [
+            {"date": "2026-01-05", "symbol": "AAPL", "type": "dividend", "shares": "0.0000", "price": "12.34"},
+            {"date": "2026-01-06", "symbol": "MSFT", "type": "dividend", "shares": "0.0000", "price": "5.67"},
+        ])
+
+    def test_reinvest_without_shares_is_a_hard_error_naming_line(self):
+        csv = Path(self.tmp.name) / "reinvest-no-shares.csv"
+        csv.write_text("Date,Symbol,Action,Amount\n2026-03-15,VTI,Reinvest,70.21\n", encoding="utf-8")
+        code, _ = run([str(csv), "--positions", str(self.positions)])
+        self.assertEqual(code, 2)
+        self.assertEqual(self.transactions(), [])  # nothing was written
+        with self.assertRaises(imp.ImportRowError) as cm:
+            imp.parse_csv(csv)
+        self.assertIn("line 2", str(cm.exception))
+        self.assertIn("reinvest", str(cm.exception))
+
+    def test_non_finite_numbers_are_rejected_naming_line(self):
+        for value in ("Infinity", "NaN"):
+            csv = Path(self.tmp.name) / f"nonfinite-{value.lower()}.csv"
+            csv.write_text(
+                f"Date,Symbol,Action,Shares,Price\n2026-01-05,AAPL,Buy,{value},190.25\n",
+                encoding="utf-8")
+            code, _ = run([str(csv), "--positions", str(self.positions)])
+            self.assertEqual(code, 2, value)
+            self.assertEqual(self.transactions(), [], value)  # nothing was written
+            with self.assertRaises(imp.ImportRowError) as cm:
+                imp.parse_csv(csv)
+            self.assertIn("line 2", str(cm.exception), value)
+            self.assertIn("finite", str(cm.exception), value)
+
     def test_trade_date_beats_settlement_date_in_either_order(self):
         cases = [
             ("Settlement Date,Trade Date", "2026-01-07,2026-01-05"),
