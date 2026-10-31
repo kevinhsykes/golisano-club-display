@@ -103,6 +103,21 @@ snapshot, rebuild, test, and redeploy. Add or remove the symbol in `SYMBOLS`
 (`worker/index.js`) in the same change; the Worker refuses any set that is not exactly
 those symbols.
 
+## Importing trade history
+
+When the treasurer sends the brokerage transaction-history export (see
+`docs/TRADE-HISTORY-REQUEST.md`), land it with one command:
+
+```
+python3 tools/import_transactions.py <csv-export>          # writes data/source/positions.json
+python3 tools/import_transactions.py <csv-export> --dry-run  # preview, writes nothing
+```
+
+It supports buy, sell, dividend and reinvest rows, refuses unknown action codes instead of
+guessing, and never duplicates rows when re-run. Note the rows in `transactions[]` today are
+still the fabricated sample from `test/fixtures/transactions-sample.csv`; purchase dates and
+real returns stay unknown until that real file arrives.
+
 ## Yearly
 
 `data/source/xnys-calendar.json` covers 2026-2027 (generated with `exchange_calendars`).
