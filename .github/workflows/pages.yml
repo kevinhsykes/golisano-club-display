@@ -38,9 +38,7 @@ jobs:
           python3 tools/snapshot_quotes.py
           python3 tools/snapshot_history.py || echo "history refresh failed; previous files kept"
       - name: Commit refreshed prices
-        # always(): a failed refresh must still publish web/data/refresh-health.json
-        # (ok:false) so the screens page shows the failure instead of the last success.
-        if: always() && github.event_name != 'push'
+        if: github.event_name != 'push'
         run: |
           git config user.name "price-refresh[bot]"
           git config user.email "price-refresh@users.noreply.github.com"
