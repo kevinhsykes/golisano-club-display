@@ -57,7 +57,9 @@ def main():
     ok = error is None and len(rows) == len(symbols)
     # On failure the previous quotes-current.json / api files are kept and the record still
     # says what happened; the process still exits non-zero so the workflow run stays red.
-    write_health(f(now), ok, len(symbols), len(rows),
+    # symbols_written counts quotes actually persisted: on the failure path none are written
+    # (previous files kept), so it is 0 even if some were fetched before the error.
+    write_health(f(now), ok, len(symbols), len(rows) if ok else 0,
                  error if error else (None if ok else f"got {len(rows)} of {len(symbols)} quotes"))
     if not ok:
         sys.exit(f"got {len(rows)} of {len(symbols)} quotes; nothing written" + (f"; {error}" if error else ""))
