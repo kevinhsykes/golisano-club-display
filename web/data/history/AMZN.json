@@ -3,31 +3,15 @@
  "name": "Amazon.com, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-10-26T20:00:01Z",
- "price": 249.09,
- "previous_close": 224.21,
- "day_high": 250.79,
- "day_low": 247.24,
- "volume": 32080113,
+ "as_of_utc": "2026-10-30T20:00:01Z",
+ "price": 240.35,
+ "previous_close": 222.86,
+ "day_high": 241.54,
+ "day_low": 229.363,
+ "volume": 104652185,
  "week52_high": 287.2,
  "week52_low": 196.0,
  "closes": [
-  {
-   "date": "2025-10-27",
-   "close": 226.97
-  },
-  {
-   "date": "2025-10-28",
-   "close": 229.25
-  },
-  {
-   "date": "2025-10-29",
-   "close": 230.3
-  },
-  {
-   "date": "2025-10-30",
-   "close": 222.86
-  },
   {
    "date": "2025-10-31",
    "close": 244.22
@@ -1011,8 +995,28 @@
   {
    "date": "2026-10-23",
    "close": 248.0
+  },
+  {
+   "date": "2026-10-26",
+   "close": 249.09
+  },
+  {
+   "date": "2026-10-27",
+   "close": 253.1
+  },
+  {
+   "date": "2026-10-28",
+   "close": 254.6
+  },
+  {
+   "date": "2026-10-29",
+   "close": 243.79
+  },
+  {
+   "date": "2026-10-30",
+   "close": 240.35
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T00:14:16Z"
+ "retrieved_at_utc": "2026-10-30T22:59:43Z"
 }

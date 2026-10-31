@@ -3,31 +3,15 @@
  "name": "State Street SPDR S&P 500 ETF Trust",
  "exchange": "NYSEArca",
  "currency": "USD",
- "as_of_utc": "2026-10-26T20:00:00Z",
- "price": 765.37,
- "previous_close": 677.25,
- "day_high": 767.73,
- "day_low": 761.64,
- "volume": 31454797,
+ "as_of_utc": "2026-10-30T20:00:00Z",
+ "price": 755.72,
+ "previous_close": 679.83,
+ "day_high": 761.46,
+ "day_low": 750.36,
+ "volume": 77142196,
  "week52_high": 781.62,
  "week52_low": 629.28,
  "closes": [
-  {
-   "date": "2025-10-27",
-   "close": 685.24
-  },
-  {
-   "date": "2025-10-28",
-   "close": 687.06
-  },
-  {
-   "date": "2025-10-29",
-   "close": 687.39
-  },
-  {
-   "date": "2025-10-30",
-   "close": 679.83
-  },
   {
    "date": "2025-10-31",
    "close": 682.06
@@ -1011,8 +995,28 @@
   {
    "date": "2026-10-23",
    "close": 759.97
+  },
+  {
+   "date": "2026-10-26",
+   "close": 765.37
+  },
+  {
+   "date": "2026-10-27",
+   "close": 769.66
+  },
+  {
+   "date": "2026-10-28",
+   "close": 772.31
+  },
+  {
+   "date": "2026-10-29",
+   "close": 769.36
+  },
+  {
+   "date": "2026-10-30",
+   "close": 755.72
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T00:14:21Z"
+ "retrieved_at_utc": "2026-10-30T22:59:49Z"
 }

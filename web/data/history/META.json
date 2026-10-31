@@ -3,31 +3,15 @@
  "name": "Meta Platforms, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-10-26T20:00:01Z",
- "price": 630.56,
- "previous_close": 738.36,
- "day_high": 647.69,
- "day_low": 627.82,
- "volume": 30797210,
+ "as_of_utc": "2026-10-30T20:00:01Z",
+ "price": 614.99,
+ "previous_close": 666.47,
+ "day_high": 626.37,
+ "day_low": 610.137,
+ "volume": 25017839,
  "week52_high": 779.82,
  "week52_low": 520.26,
  "closes": [
-  {
-   "date": "2025-10-27",
-   "close": 750.82
-  },
-  {
-   "date": "2025-10-28",
-   "close": 751.44
-  },
-  {
-   "date": "2025-10-29",
-   "close": 751.67
-  },
-  {
-   "date": "2025-10-30",
-   "close": 666.47
-  },
   {
    "date": "2025-10-31",
    "close": 648.35
@@ -1011,8 +995,28 @@
   {
    "date": "2026-10-23",
    "close": 642.62
+  },
+  {
+   "date": "2026-10-26",
+   "close": 630.56
+  },
+  {
+   "date": "2026-10-27",
+   "close": 620.19
+  },
+  {
+   "date": "2026-10-28",
+   "close": 612.49
+  },
+  {
+   "date": "2026-10-29",
+   "close": 624.52
+  },
+  {
+   "date": "2026-10-30",
+   "close": 614.99
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T00:14:18Z"
+ "retrieved_at_utc": "2026-10-30T22:59:45Z"
 }

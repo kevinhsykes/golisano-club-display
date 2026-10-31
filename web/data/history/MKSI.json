@@ -3,31 +3,15 @@
  "name": "MKS Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-10-26T20:00:01Z",
- "price": 202.28,
- "previous_close": 142.94,
- "day_high": 205.333,
- "day_low": 197.032,
- "volume": 1051641,
+ "as_of_utc": "2026-10-30T20:00:01Z",
+ "price": 202.04,
+ "previous_close": 139.31,
+ "day_high": 206.84,
+ "day_low": 196.2,
+ "volume": 1384604,
  "week52_high": 447.62,
  "week52_low": 134.74,
  "closes": [
-  {
-   "date": "2025-10-27",
-   "close": 145.01
-  },
-  {
-   "date": "2025-10-28",
-   "close": 140.48
-  },
-  {
-   "date": "2025-10-29",
-   "close": 141.4
-  },
-  {
-   "date": "2025-10-30",
-   "close": 139.31
-  },
   {
    "date": "2025-10-31",
    "close": 143.71
@@ -1011,8 +995,28 @@
   {
    "date": "2026-10-23",
    "close": 196.55
+  },
+  {
+   "date": "2026-10-26",
+   "close": 202.28
+  },
+  {
+   "date": "2026-10-27",
+   "close": 212.16
+  },
+  {
+   "date": "2026-10-28",
+   "close": 218.24
+  },
+  {
+   "date": "2026-10-29",
+   "close": 216.17
+  },
+  {
+   "date": "2026-10-30",
+   "close": 202.04
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T00:14:19Z"
+ "retrieved_at_utc": "2026-10-30T22:59:46Z"
 }

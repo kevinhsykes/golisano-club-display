@@ -3,31 +3,15 @@
  "name": "DigitalOcean Holdings, Inc.",
  "exchange": "NYSE",
  "currency": "USD",
- "as_of_utc": "2026-10-26T20:00:02Z",
- "price": 99.53,
- "previous_close": 39.45,
- "day_high": 102.525,
- "day_low": 92.255,
- "volume": 2179215,
+ "as_of_utc": "2026-10-30T20:00:02Z",
+ "price": 89.65,
+ "previous_close": 37.94,
+ "day_high": 93.11,
+ "day_low": 86.4,
+ "volume": 3290726,
  "week52_high": 187.5,
- "week52_low": 37.835,
+ "week52_low": 38.45,
  "closes": [
-  {
-   "date": "2025-10-27",
-   "close": 40.38
-  },
-  {
-   "date": "2025-10-28",
-   "close": 39.73
-  },
-  {
-   "date": "2025-10-29",
-   "close": 39.6
-  },
-  {
-   "date": "2025-10-30",
-   "close": 37.94
-  },
   {
    "date": "2025-10-31",
    "close": 40.66
@@ -1011,8 +995,28 @@
   {
    "date": "2026-10-23",
    "close": 93.22
+  },
+  {
+   "date": "2026-10-26",
+   "close": 99.53
+  },
+  {
+   "date": "2026-10-27",
+   "close": 106.39
+  },
+  {
+   "date": "2026-10-28",
+   "close": 105.07
+  },
+  {
+   "date": "2026-10-29",
+   "close": 99.97
+  },
+  {
+   "date": "2026-10-30",
+   "close": 89.65
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-27T00:14:17Z"
+ "retrieved_at_utc": "2026-10-30T22:59:44Z"
 }
