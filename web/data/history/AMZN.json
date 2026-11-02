@@ -6,9 +6,9 @@
  "as_of_utc": "2026-10-30T20:00:01Z",
  "price": 240.35,
  "previous_close": 222.86,
- "day_high": 241.54,
+ "day_high": 241.55,
  "day_low": 229.363,
- "volume": 104652185,
+ "volume": 725055,
  "week52_high": 287.2,
  "week52_low": 196.0,
  "closes": [
@@ -1011,8 +1011,12 @@
   {
    "date": "2026-10-29",
    "close": 243.79
+  },
+  {
+   "date": "2026-10-30",
+   "close": 240.35
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-10-31T00:37:16Z"
+ "retrieved_at_utc": "2026-11-02T14:10:17Z"
 }
