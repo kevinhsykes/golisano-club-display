@@ -3,12 +3,12 @@
  "name": "Netflix, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-05T15:32:22Z",
- "price": 65.64,
+ "as_of_utc": "2026-11-05T15:47:21Z",
+ "price": 65.621,
  "previous_close": 109.846,
  "day_high": 67.49,
- "day_low": 65.56,
- "volume": 10407721,
+ "day_low": 65.525,
+ "volume": 11880878,
  "week52_high": 116.733,
  "week52_low": 61.39,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-05",
-   "close": 65.64
+   "close": 65.6212
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-05T15:32:23Z"
+ "retrieved_at_utc": "2026-11-05T15:47:22Z"
 }
