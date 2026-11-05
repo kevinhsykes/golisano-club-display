@@ -2833,5 +2833,228 @@
    }
   ],
   "note": "Snapshot for internal club review and demos; not a licensed feed for public display."
+ },
+ {
+  "schema": "portfolio-quotes.v1",
+  "collected_at_utc": "2026-11-04T21:16:26Z",
+  "quotes": [
+   {
+    "symbol": "AAPL",
+    "price": "349.51",
+    "previous_close": "331.90",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/AAPL/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "AMD",
+    "price": "488.78",
+    "previous_close": "483.90",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:00Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/AMD/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "AMZN",
+    "price": "266.03",
+    "previous_close": "250.69",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/AMZN/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "BRK/B",
+    "price": "579.09",
+    "previous_close": "557.07",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:01:26Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/BRK-B/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "CEG",
+    "price": "245.72",
+    "previous_close": "263.40",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/CEG/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "DOCN",
+    "price": "84.02",
+    "previous_close": "90.50",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:02Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/DOCN/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "GOOGL",
+    "price": "288.93",
+    "previous_close": "280.03",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/GOOGL/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "LIN",
+    "price": "524.74",
+    "previous_close": "511.55",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:00Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/LIN/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "META",
+    "price": "630.00",
+    "previous_close": "621.03",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:00Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/META/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "MKSI",
+    "price": "194.95",
+    "previous_close": "205.18",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/MKSI/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "MSFT",
+    "price": "555.80",
+    "previous_close": "520.99",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/MSFT/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "NFLX",
+    "price": "66.39",
+    "previous_close": "63.42",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:00Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/NFLX/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "NVDA",
+    "price": "200.13",
+    "previous_close": "206.69",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/NVDA/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "RDDT",
+    "price": "101.77",
+    "previous_close": "96.15",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T20:59:59Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/RDDT/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "SOFI",
+    "price": "17.38",
+    "previous_close": "16.77",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/SOFI/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "SPY",
+    "price": "766.82",
+    "previous_close": "754.35",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:00Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/SPY/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "TSLA",
+    "price": "385.19",
+    "previous_close": "398.50",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:01Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/TSLA/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   },
+   {
+    "symbol": "UPS",
+    "price": "114.30",
+    "previous_close": "109.17",
+    "currency": "USD",
+    "provider_update_at_utc": "2026-11-04T21:00:00Z",
+    "retrieved_at_utc": "2026-11-04T21:16:26Z",
+    "session": "closed",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/UPS/",
+    "delay_label": "Snapshot of Yahoo Finance's quote page; personal-use data, not licensed for public display"
+   }
+  ],
+  "note": "Snapshot for internal club review and demos; not a licensed feed for public display."
  }
 ]
