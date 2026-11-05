@@ -3,12 +3,12 @@
  "name": "Tesla, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-04T21:00:01Z",
- "price": 385.19,
- "previous_close": 444.26,
- "day_high": 392.04,
- "day_low": 375.5,
- "volume": 47499015,
+ "as_of_utc": "2026-11-05T14:33:21Z",
+ "price": 366.775,
+ "previous_close": 462.07,
+ "day_high": 374.225,
+ "day_low": 366.775,
+ "volume": 3526691,
  "week52_high": 498.83,
  "week52_low": 297.38,
  "closes": [
@@ -1015,8 +1015,12 @@
   {
    "date": "2026-11-04",
    "close": 385.19
+  },
+  {
+   "date": "2026-11-05",
+   "close": 366.775
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-05T14:10:18Z"
+ "retrieved_at_utc": "2026-11-05T14:33:22Z"
 }
