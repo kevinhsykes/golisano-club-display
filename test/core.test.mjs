@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, parseRefreshHealth, refreshHealthLine } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -80,6 +80,26 @@ test('mergeQuotes keeps last good prices on incomplete or older snapshots', () =
   assert.equal(mergeQuotes(p, newer), true);
   const pts = historySeries(p, compute(p));
   assert.equal(pts[pts.length - 1].kind, 'live');
+});
+
+test('refresh health: the rendering helper accepts a valid record and rejects malformed or missing ones', () => {
+  const valid = { attempted_at_utc: '2026-10-26T14:32:11Z', ok: true, provider: 'yahoo-snapshot',
+                  symbols_requested: 18, symbols_written: 18, error: null };
+  assert.equal(parseRefreshHealth(valid), valid);
+  assert.match(refreshHealthLine(valid), /^Last refresh attempt: .+ \(ok\) · 18\/18 symbols$/);
+  assert.equal(refreshHealthLine({ ...valid, ok: false, symbols_written: 0, error: 'HTTP 404' }),
+               'Last refresh attempt: Oct 26, 10:32 AM ET (failed) · 0/18 symbols');
+  for (const bad of [null, undefined, 'no refresh record yet', [], {},
+    { ...valid, attempted_at_utc: 'not-a-timestamp' },
+    { ...valid, ok: 'yes' },
+    { ...valid, provider: 'twelve-data' },
+    { ...valid, symbols_requested: '18' },
+    { ...valid, symbols_written: 19 },
+    { ...valid, symbols_written: -1 },
+    { ...valid, error: 7 }]) {
+    assert.equal(parseRefreshHealth(bad), null, JSON.stringify(bad));
+    assert.equal(refreshHealthLine(bad), 'no refresh record yet');
+  }
 });
 
 test('comparison chart starts from the statement gain over cost, not zero', () => {
