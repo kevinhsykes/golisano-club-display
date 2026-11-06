@@ -54,8 +54,9 @@ pages label it "not sourced from all markets" (`MARKET_SCOPE=partial`).
 ## Public vs full data
 
 `python build.py --public --out web/data/portfolio.public.json` writes a payload with no share
-counts, cost basis or dollar values: only relative units, so the pages show returns, weights and
-day change in percent. `python build.py` writes the full payload with dollar values. The deployed
+counts or position dollar values: relative units plus each holding's average cost per share, so
+the pages show returns, weights and day change in percent. `python build.py` writes the full
+payload with dollar values. The deployed
 site uses the full payload: Kevin Sykes decided on 2026-10-26 that showing dollar amounts on the
 cafe TV is fine. To switch a screen to percent only, open `tv.html?amounts=hide`, or point
 `?data=data/portfolio.public.json` at the public payload.
@@ -106,23 +107,27 @@ those symbols.
 ## Yearly
 
 `data/source/xnys-calendar.json` covers 2026-2027 (generated with `exchange_calendars`).
-Regenerate it before January 2028, or the Worker stops fetching once the calendar runs out.
+Regenerate it before January 2028: past its end the market clock no longer knows holidays or
+early closes (the Worker keeps fetching on weekdays), and the TV page shows an
+"Exchange calendar needs updating" banner.
 
 ## Checks
 
-`npm test` runs the math (Oct 9 figures to the cent), market clock (holidays, early close,
-daylight saving), freshness rules, the public payload's privacy, and the Worker's refresh
-logic against a fake feed and fake storage.
+`npm test` (run `python build.py` first; the full payload is built locally, not committed) runs
+the math (Oct 9 figures to the cent), market clock (holidays, early close, daylight saving),
+freshness rules, the public payload's privacy, and the Worker's refresh logic against a fake
+feed and fake storage.
 
 ## TV setup
 
 The school's screens run **Yodeck**. Add each page as a Web Page media item (Media > Web Pages >
 Add, paste the address), then show it on a screen or put it in a playlist or layout. Leave Yodeck's
 "Refresh Web Page" off or set it to hours: the page refreshes its own prices every minute and
-reloads itself every 6 hours. The site sends no frame-blocking headers. `/screens.html` lists every
+reloads itself every 6 hours. On GitHub Pages the site sends no frame-blocking headers; the
+Cloudflare Worker sends `X-Frame-Options: DENY` (worker/index.js). `/screens.html` lists every
 template with its address and a copy button.
 
 Any other device: open `https://<host>/tv.html` full screen in kiosk mode on the cafe TV's device. Options:
-`?amounts=hide` (percent only), `?panel=holdings|movers` (pin one panel), `?rotate=40`
-(seconds per panel). The page reloads itself every 6 hours and survives network drops by
-keeping the last prices with an age warning.
+`?amounts=hide` (percent only), `?panel=h1|h2|movers|chart` (pin one panel; h1/h2 are the two
+holdings pages), `?rotate=40` (seconds per panel). The page reloads itself every 6 hours and
+survives network drops by keeping the last prices with an age warning.
