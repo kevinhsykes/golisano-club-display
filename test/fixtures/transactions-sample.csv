@@ -1,0 +1,6 @@
+Trade Date,Symbol,Action Type,Quantity,Unit Price
+2026-01-05,AAPL,Buy,2,190.25
+2026-02-10,msft,SELL,1,415.60
+
+2026-03-01,KO,Dividend,0,0.485
+2026-03-15,vti,Dividend Reinvest,0.2417,290.50
