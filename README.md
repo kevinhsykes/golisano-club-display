@@ -36,6 +36,8 @@ Real-time prices on a public screen need exchange display licences that cost far
 the club can justify. The feed vendor's own terms must also allow showing its data to other
 people; most free and personal plans do not.
 
+Data use of this display (what it holds, where it runs, what the club will not do) is in `docs/DATA-USE-STATEMENT.md`.
+
 ## Which feed
 
 The feed's licence decides this, not its price. Checked 2026-10-21:
