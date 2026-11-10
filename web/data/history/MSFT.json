@@ -3,19 +3,15 @@
  "name": "Microsoft Corporation",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-10T20:47:27Z",
- "price": 534.02,
+ "as_of_utc": "2026-11-10T21:00:01Z",
+ "price": 533.16,
  "previous_close": 506.0,
  "day_high": 544.15,
  "day_low": 526.365,
- "volume": 18192396,
+ "volume": 23673184,
  "week52_high": 559.15,
  "week52_low": 349.2,
  "closes": [
-  {
-   "date": "2025-11-10",
-   "close": 506.0
-  },
   {
    "date": "2025-11-11",
    "close": 508.68
@@ -1018,9 +1014,9 @@
   },
   {
    "date": "2026-11-10",
-   "close": 534.02
+   "close": 533.16
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-10T20:47:29Z"
+ "retrieved_at_utc": "2026-11-10T21:02:38Z"
 }
