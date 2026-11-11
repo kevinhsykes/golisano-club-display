@@ -105,7 +105,20 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 .d-chart { height: 460px; }
 .d-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
 @media (max-width: 760px) { .d-grid { grid-template-columns: 1fr; } .d-chart { height: 360px; } }
-@media (max-width: 560px) { td.name, th.name { display: none; } }
+@media (max-width: 560px) { td.name, th.name, .narrow-hide { display: none; } }
+
+/* New positions and stop-loss rules */
+.newpos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin: 0 0 14px; }
+.np { border: 2px solid var(--gold); border-radius: 10px; padding: 12px 14px; background: var(--panel); }
+.np h3 { margin: 0; font: 600 20px var(--sans); display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.np h3 .nm { font: 400 15px var(--serif); color: var(--muted); }
+.np .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 12px; margin-top: 8px; }
+.np .s { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.np .v { font: 600 18px var(--sans); }
+.np .stop { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 14px; }
+.np .stop .rule { color: var(--muted); font-size: 12px; }
+.badge { font: 700 10px/1 var(--sans); letter-spacing: .08em; padding: 3px 6px; border-radius: 4px; background: var(--gold); color: var(--bg); vertical-align: middle; margin-left: 6px; }
+.warn-text { color: var(--warn); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -118,10 +131,11 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
   </header>
   <div class="banner" id="banner" role="status"></div>
   <section class="kpis" id="kpis"></section>
+  <section class="newpos" id="newpos" aria-label="New positions"></section>
   <section class="chart">
     <h2 id="chart-title">Saved observations since Sept 22</h2>
     <div id="chart"></div>
-    <div class="note">Each dot is how far above cost the holdings were on that date; 0% is break-even. Dots are saved prices only, no days filled in. SPY is about half the portfolio, so "stock picks" shows the other 17 holdings on their own. Purchase dates are not on record yet, so this compares gains on what we paid, not returns over the same period.</div>
+    <div class="note">Each dot is how far above cost the holdings were on that date; 0% is break-even. Dots are saved prices only, no days filled in. SPY is about half the portfolio, so "stock picks" shows every other holding on its own. Each dot uses the holdings and cost on that date, so a new purchase does not move earlier dots. Purchase dates of the Sept 22 holdings are not on record, so this compares gains on what we paid, not returns over the same period.</div>
   </section>
   <section class="holdings">
     <h2>Holdings</h2>
@@ -152,6 +166,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 <script type="module">
 import {
   fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  sinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -212,16 +227,19 @@ function render() {
   else { b.className = 'banner'; b.textContent = ''; }
 
   const when = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(newest)}`;
-  const since = payload.statement.units_value ? s.total / Number(payload.statement.units_value) - 1 : s.total / Number(payload.statement.value) - 1;
+  const since = sinceStatement(payload, s);
+  const tg = totalGain(payload, s);
   const kpi = (label, v, d, v2) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
     el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: `v2 ${dir(d)}` }, v2) : null);
   $('kpis').replaceChildren(
-    dollars ? kpi('Value (listed holdings)', fmtUsd(s.total)) : kpi('Return vs cost', fmtPct(s.gainPct), s.gainPct),
+    dollars ? kpi('Value (listed holdings)', fmtUsd(s.total)) : kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
     dollars ? kpi(when, `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange, fmtPct(s.dayPct)) : kpi(when, `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct),
     kpi(fr.level === 'live' ? 'S&P 500 (SPY) today' : `SPY, ${fmtShortDate(newest)}`, `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct),
-    dollars ? kpi('Gain vs cost', fmtSignedUsd(s.gain), s.gain, fmtPct(s.gainPct)) : kpi('Since Sept 22 statement', fmtPct(since), since),
-    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Since Sept 22 statement', fmtPct(since), since, `statement ${fmtUsd(Number(payload.statement.value))}`)] : []),
+    dollars ? kpi('Gain vs cost', fmtSignedUsd(tg.gain), tg.gain,
+      tg.realized ? `${fmtPct(tg.pct)} · incl. ${fmtSignedUsd(tg.realized)} realized` : fmtPct(tg.pct)) : kpi('Return since Sept 22', fmtPct(since), since),
+    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Return since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain')] : []),
   );
+  renderNew(s, dollars);
 
   $('chart-title').textContent = 'Gain over cost basis: portfolio vs our SPY position (the IPS benchmark)';
   const box = $('chart');
@@ -235,26 +253,48 @@ function render() {
     el('a', { href: 'tv.html', target: '_blank', rel: 'noopener' }, 'Open the full-screen TV view'));
 }
 
+// Positions bought in the last two weeks, with the stop-loss rule recorded with the buy.
+function renderNew(s, dollars) {
+  const t = now().getTime();
+  const fresh = s.rows.filter(r => isNew(r, t)).sort((a, b) => b.openedAt - a.openedAt || a.symbol.localeCompare(b.symbol));
+  const stat = (label, v, d) => el('div', {}, el('div', { class: 's' }, label), el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v));
+  $('newpos').replaceChildren(...fresh.map(r => el('article', { class: 'np' },
+    el('h3', {}, r.symbol.replace('/', '.'), el('span', { class: 'nm' }, r.name), el('span', { class: 'badge' }, `NEW · BOUGHT ${fmtShortDate(r.openedAt).toUpperCase()}`)),
+    el('div', { class: 'grid' },
+      stat('Bought at', `$${fmtPrice(r.buyPrice)}`), stat('Now', `$${fmtPrice(r.price)}`),
+      stat('Since we bought', `${arrow(r.sinceBuy)} ${fmtPct(r.sinceBuy, 1)}`, r.sinceBuy),
+      dollars ? stat(`${r.shares} shares, worth`, fmtUsd(r.value)) : stat('Weight', fmtWeight(r.weight))),
+    el('div', { class: 'stop' }, r.stopPrice === undefined ? el('span', { class: 'rule' }, 'No stop-loss level recorded.') : [
+      el('div', { class: r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : '' },
+        r.stopLevel === 'hit' ? `At or below the stop, $${fmtPrice(r.stopPrice)}` : `Stop $${fmtPrice(r.stopPrice)}: ${(r.stopGap * 100).toFixed(1)}% below the price`),
+      el('div', { class: 'rule' }, r.stopRule || '')]))));
+}
+
 function renderTable(s, dollars) {
+  const t = now().getTime();
+  const tg = totalGain(payload, s);
   const cols = [
     ['symbol', 'Symbol', r => r.symbol.replace('/', '.'), 'sym'],
     ['name', 'Name', r => r.name, 'name'],
-    ...(dollars ? [['shares', 'Shares', r => String(r.shares)]] : []),
+    ...(dollars ? [['shares', 'Shares', r => String(r.shares), 'narrow-hide']] : []),
     ['price', 'Price', r => `$${fmtPrice(r.price)}`],
-    ['prev', 'Prev close', r => `$${fmtPrice(r.prev)}`],
+    ['prev', 'Prev close', r => `$${fmtPrice(r.prev)}`, 'narrow-hide'],
     ...(dollars ? [['dayValue', 'Day $', r => fmtSignedUsd(r.dayValue, true), r => dir(r.dayValue)]] : []),
     ['dayPct', 'Day %', r => `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r => dir(r.dayPct)],
-    ['avg_cost', 'Avg cost', r => `$${fmtPrice(Number(r.avg_cost))}`],
-    ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true)], ['value', 'Value', r => fmtUsd(r.value, true)],
+    ['avg_cost', 'Avg cost', r => `$${fmtPrice(Number(r.avg_cost))}`, 'narrow-hide'],
+    ['stopPrice', 'Stop', r => (r.stopPrice === undefined ? '' : `$${fmtPrice(r.stopPrice)}`),
+      r => (r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : null)],
+    ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true), 'narrow-hide'], ['value', 'Value', r => fmtUsd(r.value, true)],
       ['gainValue', 'Gain $', r => fmtSignedUsd(r.gainValue, true), r => dir(r.gainValue)]] : []),
     ['costPct', 'Gain %', r => fmtPct(r.costPct, 1), r => dir(r.costPct)],
     ['weight', 'Weight', r => fmtWeight(r.weight)],
   ];
   // Totals row: sums for dollar columns, portfolio-level percents.
   const totals = {
-    symbol: 'Total', name: `${s.rows.length} holdings`, dayValue: fmtSignedUsd(s.dayChange, true),
+    symbol: 'Total', dayValue: fmtSignedUsd(s.dayChange, true),
     dayPct: `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, cost: fmtUsd(s.cost, true), value: fmtUsd(s.total, true),
     gainValue: fmtSignedUsd(s.gain, true), costPct: fmtPct(s.gainPct, 1), weight: '100.0%',
+    name: `${s.rows.length} holdings${tg.realized ? ` · unrealized; ${fmtSignedUsd(tg.realized, true)} realized from sales` : ''}`,
   };
   const tdir = { dayValue: s.dayChange, dayPct: s.dayPct, gainValue: s.gain, costPct: s.gainPct };
   $('foot').replaceChildren(el('tr', {}, ...cols.map(([key]) => el('td', { class: tdir[key] !== undefined ? dir(tdir[key]) : null }, totals[key] ?? ''))));
@@ -269,7 +309,7 @@ function renderTable(s, dollars) {
     });
     return th;
   }));
-  const val = r => (sortKey === 'shares' || sortKey === 'avg_cost' ? Number(r[sortKey]) : r[sortKey]);
+  const val = r => (sortKey === 'shares' || sortKey === 'avg_cost' ? Number(r[sortKey]) : sortKey === 'stopPrice' ? (r.stopPrice ?? -1) : r[sortKey]);
   const rows = [...s.rows].sort((a, b) => {
     const x = val(a), y = val(b);
     return (typeof x === 'string' ? x.localeCompare(y) : x - y) * sortDir;
@@ -277,7 +317,7 @@ function renderTable(s, dollars) {
   lastSummary = s; lastDollars = dollars;
   $('rows').replaceChildren(...rows.map(r => el('tr', { 'data-symbol': r.symbol, title: `Details for ${r.symbol.replace('/', '.')}` }, ...cols.map(([key, , f, cls]) =>
     el('td', { class: typeof cls === 'function' ? cls(r) : cls || null },
-      key === 'symbol' ? el('button', { type: 'button', 'aria-haspopup': 'dialog' }, f(r)) : f(r))))));
+      key === 'symbol' ? [el('button', { type: 'button', 'aria-haspopup': 'dialog' }, f(r)), isNew(r, t) ? el('span', { class: 'badge' }, 'NEW') : null] : f(r))))));
 }
 
 
@@ -315,6 +355,8 @@ function openDetail(symbol) {
     stat('Avg cost', `$${fmtPrice(Number(r.avg_cost))}`),
     stat('Gain %', fmtPct(r.costPct, 1), r.costPct),
     stat('Weight', fmtWeight(r.weight)),
+    ...(r.openedAt !== undefined ? [stat('Bought', `${fmtShortDate(r.openedAt)} at $${fmtPrice(r.buyPrice)}`), stat('Since we bought', fmtPct(r.sinceBuy, 1), r.sinceBuy)] : []),
+    ...(r.stopPrice !== undefined ? [stat('Stop-loss', `$${fmtPrice(r.stopPrice)} (${(r.stopGap * 100).toFixed(1)}% below)`)] : []),
   );
   $('d-about').replaceChildren(r.description || '', ' ',
     r.ir_url ? el('a', { href: r.ir_url, target: '_blank', rel: 'noopener' }, r.type === 'etf' ? 'Fund objective and holdings' : 'Investor relations') : '');

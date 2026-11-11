@@ -7,6 +7,9 @@ Tiingo. Run:  python3 tools/snapshot_quotes.py   then   python3 build.py && pyth
 import json, sys, time, datetime, urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from holdings import current_symbols  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "source"
 API = ROOT / "web" / "api" / "quotes"
@@ -21,12 +24,15 @@ def yahoo(sym):
 
 def main():
     positions = json.loads((SRC / "positions.json").read_text(encoding="utf-8"))
-    symbols = [p["symbol"] for p in positions["opening_positions"]]
+    symbols = current_symbols(positions)  # statement holdings plus recorded trades
     now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
     f = lambda d: d.strftime("%Y-%m-%dT%H:%M:%SZ")
     rows = []
     for s in symbols:
-        m = yahoo(s)
+        try:
+            m = yahoo(s)
+        except Exception as e:  # name the symbol; nothing is written
+            sys.exit(f"{s}: quote fetch failed ({e}); nothing written")
         t = datetime.datetime.fromtimestamp(m["regularMarketTime"], datetime.timezone.utc)
         rows.append({
             "symbol": s, "price": f"{m['regularMarketPrice']:.2f}", "previous_close": f"{(m.get('regularMarketPreviousClose') or m.get('previousClose') or m['chartPreviousClose']):.2f}",

@@ -37,7 +37,7 @@ footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1
     <span class="org">Golisano Institute</span><span class="club">Investment Club · live prices</span>
     <span class="pill" id="pill">…</span><span class="clock" id="clock"></span>
   </header>
-  <div class="delay">Prices delayed 15 minutes · Market data by TradingView (Cboe One delayed) · our 18 holdings</div>
+  <div class="delay">Prices delayed 15 minutes · Market data by TradingView (Cboe One delayed) · our 20 holdings</div>
   <div class="stage" id="stage"></div>
   <footer>
     <span>Student-managed portfolio. Educational display, not investment advice.</span>
@@ -64,13 +64,15 @@ const SYMBOLS = [
   ['NASDAQ:SOFI', 'SOFI'], ['NYSE:UPS', 'UPS'], ['NYSE:RDDT', 'RDDT'], ['NASDAQ:NVDA', 'NVDA'],
   ['NASDAQ:TSLA', 'TSLA'], ['NASDAQ:MSFT', 'MSFT'], ['NYSE:BRK.B', 'BRK.B'], ['NYSE:DOCN', 'DOCN'],
   ['NASDAQ:GOOGL', 'GOOGL'], ['NASDAQ:NFLX', 'NFLX'], ['NASDAQ:CEG', 'CEG'], ['NASDAQ:AMZN', 'AMZN'],
-  ['NASDAQ:LIN', 'LIN'], ['NASDAQ:MKSI', 'MKSI'],
+  ['NASDAQ:LIN', 'LIN'], ['NASDAQ:MKSI', 'MKSI'], ['NASDAQ:MU', 'MU'], ['NYSE:CAT', 'CAT'],
 ];
-// Two widgets of nine rows (largest holdings first), shown alternately so each can be
+// Widgets of ten rows each (roughly largest holdings first), shown in turn so each can be
 // scaled up for 10-foot reading. Base size is the widget's own layout; CSS scales it.
-const BASE_W = 960, BASE_H = 430, ROTATE_MS = 20000;
+const BASE_W = 960, BASE_H = 470, ROTATE_MS = 20000, PER = 10;
 const stage = document.getElementById('stage');
-const boards = [SYMBOLS.slice(0, 9), SYMBOLS.slice(9)].map((group, i) => {
+const groups = [];
+for (let i = 0; i < SYMBOLS.length; i += PER) groups.push(SYMBOLS.slice(i, i + PER));
+const boards = groups.map((group, i) => {
   const wrap = document.createElement('div');
   wrap.className = 'scaled';
   wrap.style.visibility = i === 0 ? 'visible' : 'hidden';
@@ -81,7 +83,7 @@ const boards = [SYMBOLS.slice(0, 9), SYMBOLS.slice(9)].map((group, i) => {
   s.async = true;
   s.textContent = JSON.stringify({
     width: BASE_W, height: BASE_H, locale: 'en', showSymbolLogo: true, colorTheme: 'dark', isTransparent: true,
-    symbolsGroups: [{ name: i === 0 ? 'Largest 9 holdings' : 'Other 9 holdings',
+    symbolsGroups: [{ name: `Holdings ${i * PER + 1}–${i * PER + group.length} of ${SYMBOLS.length}`,
       symbols: group.map(([name, displayName]) => ({ name, displayName })) }],
   });
   wrap.firstChild.appendChild(s);
@@ -90,7 +92,7 @@ const boards = [SYMBOLS.slice(0, 9), SYMBOLS.slice(9)].map((group, i) => {
 });
 let shown = 0;
 setInterval(() => {
-  shown = 1 - shown;
+  shown = (shown + 1) % boards.length;
   boards.forEach((b, i) => { b.style.visibility = i === shown ? 'visible' : 'hidden'; });
 }, ROTATE_MS);
 

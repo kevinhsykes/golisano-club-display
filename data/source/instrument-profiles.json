@@ -188,6 +188,26 @@
       "evidenceUrl": "https://investors.ups.com/company-profile",
       "evidenceTitle": "UPS investor relations, Company Profile",
       "checkedAt": "2026-10-09T03:04:48Z"
+    },
+    {
+      "symbol": "CAT",
+      "type": "stock",
+      "industry": "Construction and mining machinery",
+      "description": "Caterpillar makes construction and mining equipment, diesel and natural-gas engines, industrial gas turbines and diesel-electric locomotives, and provides financing for them.",
+      "investorRelationsUrl": "https://investors.caterpillar.com/",
+      "evidenceUrl": "https://investors.caterpillar.com/financials/sec-filings/default.aspx",
+      "evidenceTitle": "Caterpillar SEC filings (Form 10-K, Item 1: Business)",
+      "checkedAt": "2026-11-11T18:30:00Z"
+    },
+    {
+      "symbol": "MU",
+      "type": "stock",
+      "industry": "Memory semiconductors",
+      "description": "Micron designs and makes memory and storage chips: DRAM (including high-bandwidth memory for AI servers) and NAND flash, sold to data-center, PC, mobile, automotive and industrial customers.",
+      "investorRelationsUrl": "https://investors.micron.com/",
+      "evidenceUrl": "https://investors.micron.com/sec-filings",
+      "evidenceTitle": "Micron SEC filings (Form 10-K, Item 1: Business)",
+      "checkedAt": "2026-11-11T18:30:00Z"
     }
   ]
 }

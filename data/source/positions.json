@@ -131,115 +131,196 @@
     }
   ],
   "cash": null,
-  "transactions": [],
+  "transactions": [
+    {
+      "id": "2026-11-11-buy-MU",
+      "type": "buy",
+      "symbol": "MU",
+      "trade_date": "2026-11-11",
+      "executed_at_utc": "2026-11-11T17:54:00Z",
+      "time_note": "about 12:54 PM ET",
+      "shares": "7",
+      "price": "824.70",
+      "fees": null,
+      "status": "confirmed",
+      "source": "Fill reported by Kevin Sykes (club member) in chat, 2026-11-11 1:17 PM ET: '824.7 micron 7 shares & cat 608.54 8 shares, about 12:54pm'. Brokerage confirmation not yet attached; fees not stated.",
+      "stop_loss": {
+        "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11).",
+        "pct_below_buy": "20",
+        "price": "659.76",
+        "kind": "closing-price rule; no stop order recorded at the broker"
+      }
+    },
+    {
+      "id": "2026-11-11-buy-CAT",
+      "type": "buy",
+      "symbol": "CAT",
+      "trade_date": "2026-11-11",
+      "executed_at_utc": "2026-11-11T17:54:00Z",
+      "time_note": "about 12:54 PM ET",
+      "shares": "8",
+      "price": "608.54",
+      "fees": null,
+      "status": "confirmed",
+      "source": "Fill reported by Kevin Sykes (club member) in chat, 2026-11-11 1:17 PM ET: '824.7 micron 7 shares & cat 608.54 8 shares, about 12:54pm'. Brokerage confirmation not yet attached; fees not stated.",
+      "stop_loss": null
+    },
+    {
+      "id": "2026-11-11-sell-SPY",
+      "type": "sell",
+      "symbol": "SPY",
+      "trade_date": "2026-11-11",
+      "executed_at_utc": "2026-11-11T17:54:00Z",
+      "time_note": "about 12:54 PM ET",
+      "shares": "14",
+      "price": "761.31",
+      "fees": null,
+      "status": "confirmed",
+      "estimated": true,
+      "source": "Kevin Sykes in chat, 2026-11-11 1:29-1:30 PM ET: 'We are selling whatever spy was needed for this. This isn't new money coming in, but reallocation.' / 'We don't have to be spot on ... 12:54pm ish.' Shares = fewest whole SPY shares covering the MU + CAT cost ($10,641.22); price = SPY 1-minute bar 17:54Z (Yahoo Finance chart API, open 761.27 / close 761.31). Replace with the brokerage fill when available.",
+      "stop_loss": null
+    }
+  ],
   "instruments": [
     {
       "symbol": "AAPL",
       "name": "Apple",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:AAPL"
     },
     {
       "symbol": "AMD",
       "name": "Advanced Micro Devices",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:AMD"
     },
     {
       "symbol": "AMZN",
       "name": "Amazon",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:AMZN"
     },
     {
       "symbol": "BRK/B",
       "name": "Berkshire Hathaway Class B",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NYSE:BRK.B"
     },
     {
       "symbol": "CEG",
       "name": "Constellation Energy",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:CEG"
     },
     {
       "symbol": "DOCN",
       "name": "DigitalOcean",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NYSE:DOCN"
     },
     {
       "symbol": "GOOGL",
       "name": "Alphabet Class A",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:GOOGL"
     },
     {
       "symbol": "LIN",
       "name": "Linde",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:LIN"
     },
     {
       "symbol": "META",
       "name": "Meta Platforms Class A",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:META"
     },
     {
       "symbol": "MKSI",
       "name": "MKS",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:MKSI"
     },
     {
       "symbol": "MSFT",
       "name": "Microsoft",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:MSFT"
     },
     {
       "symbol": "NFLX",
       "name": "Netflix",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:NFLX"
     },
     {
       "symbol": "NVDA",
       "name": "NVIDIA",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:NVDA"
     },
     {
       "symbol": "RDDT",
       "name": "Reddit Class A",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NYSE:RDDT"
     },
     {
       "symbol": "SOFI",
       "name": "SoFi Technologies",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:SOFI"
     },
     {
       "symbol": "SPY",
       "name": "SPDR S&P 500 ETF Trust",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "AMEX:SPY"
     },
     {
       "symbol": "TSLA",
       "name": "Tesla",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NASDAQ:TSLA"
     },
     {
       "symbol": "UPS",
       "name": "United Parcel Service Class B",
       "currency": "USD",
-      "profile_status": "pending sourced enrichment"
+      "profile_status": "pending sourced enrichment",
+      "tv_symbol": "NYSE:UPS"
+    },
+    {
+      "symbol": "CAT",
+      "name": "Caterpillar",
+      "currency": "USD",
+      "profile_status": "sourced",
+      "tv_symbol": "NYSE:CAT"
+    },
+    {
+      "symbol": "MU",
+      "name": "Micron Technology",
+      "currency": "USD",
+      "profile_status": "sourced",
+      "tv_symbol": "NASDAQ:MU"
     }
   ],
   "groups": [

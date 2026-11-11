@@ -11,7 +11,7 @@
   "basis": null,
   "units_value": "1.089655872110"
  },
- "disclosure": "Shares and cost basis come from the Sept 22, 2026 statement and are assumed unchanged. Excludes cash, dividends, fees and later trades. Educational display, not investment advice.",
+ "disclosure": "Holdings: the Sept 22, 2026 statement plus trades recorded through Nov 11 (some at estimated prices until the brokerage fills are recorded). Cash, dividends and unrecorded fees are not included. Return since Sept 22 is time-weighted, so money moved by a trade is not counted as gain or loss. Educational display, not investment advice.",
  "holdings": [
   {
    "symbol": "AAPL",
@@ -187,7 +187,7 @@
    "ir_url": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy",
    "tv_symbol": "AMEX:SPY",
    "avg_cost": "698.820000",
-   "units": "0.000704141612"
+   "units": "0.000565296787"
   },
   {
    "symbol": "TSLA",
@@ -210,147 +210,210 @@
    "tv_symbol": "NYSE:UPS",
    "avg_cost": "104.585152",
    "units": "0.000327277087"
+  },
+  {
+   "symbol": "MU",
+   "name": "Micron Technology",
+   "industry": "Memory semiconductors",
+   "type": "stock",
+   "description": "Micron designs and makes memory and storage chips: DRAM (including high-bandwidth memory for AI servers) and NAND flash, sold to data-center, PC, mobile, automotive and industrial customers.",
+   "ir_url": "https://investors.micron.com/",
+   "tv_symbol": "NASDAQ:MU",
+   "avg_cost": "824.700000",
+   "opened": {
+    "date": "2026-11-11",
+    "executed_at_utc": "2026-11-11T17:54:00Z",
+    "time_note": "about 12:54 PM ET",
+    "price": "824.70"
+   },
+   "stop": {
+    "price": "659.76",
+    "pct_below_buy": "20",
+    "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11).",
+    "kind": "closing-price rule; no stop order recorded at the broker"
+   },
+   "units": "0.000069422412"
+  },
+  {
+   "symbol": "CAT",
+   "name": "Caterpillar",
+   "industry": "Construction and mining machinery",
+   "type": "stock",
+   "description": "Caterpillar makes construction and mining equipment, diesel and natural-gas engines, industrial gas turbines and diesel-electric locomotives, and provides financing for them.",
+   "ir_url": "https://investors.caterpillar.com/",
+   "tv_symbol": "NYSE:CAT",
+   "avg_cost": "608.540000",
+   "opened": {
+    "date": "2026-11-11",
+    "executed_at_utc": "2026-11-11T17:54:00Z",
+    "time_note": "about 12:54 PM ET",
+    "price": "608.54"
+   },
+   "units": "0.000079339900"
+  }
+ ],
+ "flows": [
+  {
+   "effective_utc": "2026-11-11T17:54:00Z",
+   "amount_units": "0.057252663564"
+  },
+  {
+   "effective_utc": "2026-11-11T17:54:00Z",
+   "amount_units": "0.048281502725"
+  },
+  {
+   "effective_utc": "2026-11-11T17:54:00Z",
+   "amount_units": "-0.105703953676"
+  }
+ ],
+ "realized": [
+  {
+   "symbol": "SPY",
+   "executed_at_utc": "2026-11-11T17:54:00Z",
+   "estimated": true,
+   "gain_units": "0.008676413111",
+   "cost_units": "0.097027540565"
   }
  ],
  "quotes": {
-  "collected_at_utc": "2026-11-11T18:02:13Z",
+  "collected_at_utc": "2026-11-11T18:22:36Z",
   "items": [
    {
     "symbol": "AAPL",
-    "price": "354.80",
+    "price": "355.20",
     "previous_close": "348.51",
-    "provider_update_at_utc": "2026-11-11T18:02:12Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:35Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/AAPL/"
    },
    {
     "symbol": "AMD",
-    "price": "559.50",
+    "price": "563.89",
     "previous_close": "515.21",
-    "provider_update_at_utc": "2026-11-11T18:02:05Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:36Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/AMD/"
    },
    {
     "symbol": "AMZN",
-    "price": "265.94",
+    "price": "266.92",
     "previous_close": "270.87",
-    "provider_update_at_utc": "2026-11-11T18:02:09Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:35Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/AMZN/"
    },
    {
     "symbol": "BRK/B",
-    "price": "581.48",
+    "price": "581.83",
     "previous_close": "583.34",
-    "provider_update_at_utc": "2026-11-11T18:02:08Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:25Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/BRK-B/"
    },
    {
     "symbol": "CEG",
-    "price": "275.94",
+    "price": "276.15",
     "previous_close": "267.76",
-    "provider_update_at_utc": "2026-11-11T18:02:14Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:30Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/CEG/"
    },
    {
     "symbol": "DOCN",
-    "price": "88.47",
+    "price": "88.66",
     "previous_close": "79.52",
-    "provider_update_at_utc": "2026-11-11T18:02:02Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:28Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/DOCN/"
    },
    {
     "symbol": "GOOGL",
-    "price": "294.11",
+    "price": "295.22",
     "previous_close": "287.38",
-    "provider_update_at_utc": "2026-11-11T18:02:14Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:37Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/GOOGL/"
    },
    {
     "symbol": "LIN",
-    "price": "523.57",
+    "price": "523.69",
     "previous_close": "521.78",
-    "provider_update_at_utc": "2026-11-11T18:02:13Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:21:28Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/LIN/"
    },
    {
     "symbol": "META",
-    "price": "641.85",
+    "price": "641.31",
     "previous_close": "641.39",
-    "provider_update_at_utc": "2026-11-11T18:02:10Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:35Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/META/"
    },
    {
     "symbol": "MKSI",
-    "price": "229.45",
+    "price": "229.16",
     "previous_close": "213.47",
-    "provider_update_at_utc": "2026-11-11T18:02:16Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:29Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/MKSI/"
    },
    {
     "symbol": "MSFT",
-    "price": "520.94",
+    "price": "522.07",
     "previous_close": "533.16",
-    "provider_update_at_utc": "2026-11-11T18:02:16Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:39Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/MSFT/"
    },
    {
     "symbol": "NFLX",
-    "price": "63.83",
+    "price": "63.81",
     "previous_close": "63.26",
-    "provider_update_at_utc": "2026-11-11T18:02:15Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:37Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/NFLX/"
    },
    {
     "symbol": "NVDA",
-    "price": "176.34",
+    "price": "176.99",
     "previous_close": "168.80",
-    "provider_update_at_utc": "2026-11-11T18:02:17Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:40Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/NVDA/"
    },
    {
     "symbol": "RDDT",
-    "price": "105.89",
+    "price": "106.08",
     "previous_close": "98.67",
-    "provider_update_at_utc": "2026-11-11T18:02:15Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:36Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/RDDT/"
@@ -359,28 +422,28 @@
     "symbol": "SOFI",
     "price": "16.54",
     "previous_close": "16.37",
-    "provider_update_at_utc": "2026-11-11T18:02:17Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:34Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/SOFI/"
    },
    {
     "symbol": "SPY",
-    "price": "760.87",
+    "price": "762.06",
     "previous_close": "749.92",
-    "provider_update_at_utc": "2026-11-11T18:02:17Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:38Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/SPY/"
    },
    {
     "symbol": "TSLA",
-    "price": "392.42",
+    "price": "393.73",
     "previous_close": "379.78",
-    "provider_update_at_utc": "2026-11-11T18:02:18Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:41Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/TSLA/"
@@ -389,11 +452,31 @@
     "symbol": "UPS",
     "price": "112.37",
     "previous_close": "111.05",
-    "provider_update_at_utc": "2026-11-11T18:02:14Z",
-    "retrieved_at_utc": "2026-11-11T18:02:13Z",
+    "provider_update_at_utc": "2026-11-11T18:22:39Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
     "session": "regular",
     "provider": "Yahoo Finance (snapshot)",
     "source_url": "https://finance.yahoo.com/quote/UPS/"
+   },
+   {
+    "symbol": "MU",
+    "price": "824.77",
+    "previous_close": "725.11",
+    "provider_update_at_utc": "2026-11-11T18:22:42Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/MU/"
+   },
+   {
+    "symbol": "CAT",
+    "price": "608.92",
+    "previous_close": "584.57",
+    "provider_update_at_utc": "2026-11-11T18:22:41Z",
+    "retrieved_at_utc": "2026-11-11T18:22:36Z",
+    "session": "regular",
+    "provider": "Yahoo Finance (snapshot)",
+    "source_url": "https://finance.yahoo.com/quote/CAT/"
    }
   ],
   "meta": null
@@ -406,7 +489,14 @@
    "spy": "774.35",
    "kind": "statement",
    "note": "Sept 22 statement market value (PDF as of 9:45 AM ET)",
-   "index": "100.00"
+   "twr": "0E-8",
+   "index": "100.000000",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-09-29",
@@ -414,159 +504,299 @@
    "spy": "764.20",
    "kind": "after-hours composite",
    "note": "Sum of statement shares x Sept 29 after-hours last trades",
-   "index": "97.92"
+   "twr": "-0.02075348",
+   "index": "97.924652",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-07",
    "as_of_utc": "2026-10-07T19:28:00Z",
    "kind": "intraday",
    "spy": "777.21",
-   "note": "Statement shares x saved quotes",
-   "index": "99.84"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.00161834",
+   "index": "99.838166",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-08",
    "as_of_utc": "2026-10-08T20:00:00Z",
    "kind": "close",
    "spy": "773.93",
-   "note": "Statement shares x saved quotes",
-   "index": "99.17"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.00825669",
+   "index": "99.174331",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-09",
    "as_of_utc": "2026-10-09T14:39:00Z",
    "kind": "intraday",
    "spy": "776.38",
-   "note": "Statement shares x saved quotes",
-   "index": "99.64"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.00355641",
+   "index": "99.644359",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-21",
    "as_of_utc": "2026-10-21T15:55:54Z",
    "kind": "intraday",
    "spy": "772.60",
-   "note": "Statement shares x saved quotes",
-   "index": "97.72"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.02281524",
+   "index": "97.718476",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-26",
    "as_of_utc": "2026-10-26T20:04:06Z",
    "kind": "close",
    "spy": "765.37",
-   "note": "Statement shares x saved quotes",
-   "index": "95.53"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.04474864",
+   "index": "95.525136",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-27",
    "as_of_utc": "2026-10-27T20:03:49Z",
    "kind": "close",
    "spy": "769.66",
-   "note": "Statement shares x saved quotes",
-   "index": "96.96"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.03036010",
+   "index": "96.963990",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-28",
    "as_of_utc": "2026-10-28T20:02:55Z",
    "kind": "close",
    "spy": "772.31",
-   "note": "Statement shares x saved quotes",
-   "index": "97.28"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.02715283",
+   "index": "97.284717",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-29",
    "as_of_utc": "2026-10-29T20:04:32Z",
    "kind": "close",
    "spy": "769.36",
-   "note": "Statement shares x saved quotes",
-   "index": "96.79"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.03208456",
+   "index": "96.791544",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-30",
    "as_of_utc": "2026-10-30T20:03:23Z",
    "kind": "close",
    "spy": "755.72",
-   "note": "Statement shares x saved quotes",
-   "index": "93.97"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.06034112",
+   "index": "93.965888",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-10-30",
    "as_of_utc": "2026-10-30T20:03:23Z",
    "kind": "close",
    "spy": "755.72",
-   "note": "Statement shares x saved quotes",
-   "index": "93.97"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.06034112",
+   "index": "93.965888",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-02",
    "as_of_utc": "2026-11-02T21:04:22Z",
    "kind": "close",
    "spy": "752.10",
-   "note": "Statement shares x saved quotes",
-   "index": "93.21"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.06786741",
+   "index": "93.213259",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-03",
    "as_of_utc": "2026-11-03T21:00:03Z",
    "kind": "intraday",
    "spy": "754.35",
-   "note": "Statement shares x saved quotes",
-   "index": "93.89"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.06113932",
+   "index": "93.886068",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-04",
    "as_of_utc": "2026-11-04T21:01:26Z",
    "kind": "intraday",
    "spy": "766.82",
-   "note": "Statement shares x saved quotes",
-   "index": "95.58"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.04423886",
+   "index": "95.576114",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-05",
    "as_of_utc": "2026-11-05T21:00:03Z",
    "kind": "intraday",
    "spy": "733.00",
-   "note": "Statement shares x saved quotes",
-   "index": "90.69"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.09306715",
+   "index": "90.693285",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-06",
    "as_of_utc": "2026-11-06T21:00:02Z",
    "kind": "intraday",
    "spy": "735.36",
-   "note": "Statement shares x saved quotes",
-   "index": "91.48"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.08521139",
+   "index": "91.478861",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-06",
    "as_of_utc": "2026-11-06T21:03:25Z",
    "kind": "close",
    "spy": "735.29",
-   "note": "Statement shares x saved quotes",
-   "index": "91.47"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.08526618",
+   "index": "91.473382",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-09",
    "as_of_utc": "2026-11-09T21:05:01Z",
    "kind": "close",
    "spy": "752.69",
-   "note": "Statement shares x saved quotes",
-   "index": "94.46"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.05536634",
+   "index": "94.463366",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-10",
    "as_of_utc": "2026-11-10T21:01:15Z",
    "kind": "intraday",
    "spy": "749.92",
-   "note": "Statement shares x saved quotes",
-   "index": "94.06"
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.05938592",
+   "index": "94.061408",
+   "cost_units": "1.000000000000",
+   "spy_units": "0.000704141612",
+   "spy_cost_units": "0.492068241438",
+   "flow_units": "0E-12",
+   "realized_units": "0E-12",
+   "sold_cost_units": "0E-12"
   },
   {
    "date": "2026-11-11",
-   "as_of_utc": "2026-11-11T18:02:18Z",
+   "as_of_utc": "2026-11-11T18:22:42Z",
    "kind": "intraday",
-   "spy": "760.87",
-   "note": "Statement shares x saved quotes",
-   "index": "95.90"
+   "spy": "762.06",
+   "note": "Shares held then x saved quotes",
+   "twr": "-0.03944964",
+   "index": "96.039124",
+   "cost_units": "1.008506625725",
+   "spy_units": "0.000565296787",
+   "spy_cost_units": "0.395040700873",
+   "flow_units": "-0.000169787386",
+   "realized_units": "0.008676413111",
+   "sold_cost_units": "0.097027540565"
   }
  ],
  "calendar": {

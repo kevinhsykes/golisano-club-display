@@ -9,8 +9,10 @@ import { marketStatus, etParts } from '../web/core.js';
 import calendar from '../data/source/xnys-calendar.json' with { type: 'json' };
 import { PROVIDERS } from './providers.js';
 
-export const SYMBOLS = ['AAPL', 'AMD', 'AMZN', 'BRK/B', 'CEG', 'DOCN', 'GOOGL', 'LIN', 'META', 'MKSI',
-  'MSFT', 'NFLX', 'NVDA', 'RDDT', 'SOFI', 'SPY', 'TSLA', 'UPS'];
+// Current holdings. test/worker.test.mjs fails if this differs from the built payload's holdings,
+// so a recorded trade that adds or closes a position must update this list in the same change.
+export const SYMBOLS = ['AAPL', 'AMD', 'AMZN', 'BRK/B', 'CAT', 'CEG', 'DOCN', 'GOOGL', 'LIN', 'META', 'MKSI',
+  'MSFT', 'MU', 'NFLX', 'NVDA', 'RDDT', 'SOFI', 'SPY', 'TSLA', 'UPS'];
 const CLOSE_CAPTURE_MINUTES = 20;   // keep fetching this long after the bell for closing prices
 const HISTORY_MAX = 400;            // about 18 months of sessions
 

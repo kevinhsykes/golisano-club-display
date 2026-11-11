@@ -62,23 +62,25 @@
     <tr><td>Chromecast with Google TV, Fire TV, Raspberry Pi</td><td>Install a kiosk browser app and set the address as its home page.</td></tr>
   </table>
 
-  <footer>Student-managed portfolio. Educational display, not investment advice. Shares and cost basis from the Sept 22, 2026 statement. Source: <a href="https://github.com/kevinhsykes/golisano-club-display">github.com/kevinhsykes/golisano-club-display</a>.</footer>
+  <footer>Student-managed portfolio. Educational display, not investment advice. Shares and cost basis from the Sept 22, 2026 statement plus recorded trades. Source: <a href="https://github.com/kevinhsykes/golisano-club-display">github.com/kevinhsykes/golisano-club-display</a>.</footer>
 </div>
 <script>
 const base = location.href.replace(/[^/]*$/, '');
 const screens = [
   { img: 'screens/tv-largest.png', title: 'Rotating TV view (default)', url: 'tv.html',
-    text: 'The main cafe screen. Portfolio value, today, gain vs cost and holdings up/down on the left; the right side rotates every 20 seconds through the four panels below. Price tape along the bottom.' },
-  { img: 'screens/tv-largest.png', title: 'Largest 9 holdings', url: 'tv.html?panel=h1',
-    text: 'Pinned panel: the nine biggest positions with price, day move, weight and gain vs cost.' },
-  { img: 'screens/tv-more.png', title: 'Other 9 holdings', url: 'tv.html?panel=h2',
-    text: 'Pinned panel: the rest of the portfolio in the same card layout.' },
+    text: 'The main cafe screen. Portfolio value, today, gain vs cost and holdings up/down on the left; the right side rotates every 20 seconds through the panels below. Price tape along the bottom.' },
+  { img: 'screens/tv-new.png', title: 'New positions', url: 'tv.html?panel=new',
+    text: 'Pinned panel: positions bought in the last two weeks, with buy price, move since we bought and the stop-loss level. In the rotation only while a position is new.' },
+  { img: 'screens/tv-largest.png', title: 'Holdings 1–10', url: 'tv.html?panel=h1',
+    text: 'Pinned panel: the ten biggest positions, one line each: price, weight, day move and gain vs cost.' },
+  { img: 'screens/tv-more.png', title: 'Holdings 11–20', url: 'tv.html?panel=h2',
+    text: 'Pinned panel: the rest of the portfolio in the same layout. A new position adds a page when needed.' },
   { img: 'screens/tv-movers.png', title: "Today's biggest moves", url: 'tv.html?panel=movers',
     text: 'Pinned panel: holdings ranked by today’s move with allocation bars.' },
   { img: 'screens/tv-chart.png', title: 'Gain over cost chart', url: 'tv.html?panel=chart',
     text: 'Pinned panel: portfolio vs our SPY position vs stock picks since the Sept 22 statement.' },
   { img: 'screens/board.png', title: 'Live board (TradingView)', url: 'board.html',
-    text: 'Prices delayed 15 minutes straight from TradingView’s free widget, alternating two groups of nine. No portfolio math; works with no account or feed.' },
+    text: 'Prices delayed 15 minutes straight from TradingView’s free widget, in groups of ten. No portfolio math; works with no account or feed.' },
   { img: 'screens/web.png', title: 'Portfolio page (phones and laptops)', url: 'index.html',
     text: 'For members and managers, not a TV: sortable holdings table, chart, and a detail popup per stock with a TradingView chart and key stats.' },
 ];

@@ -138,8 +138,15 @@ export function compute(payload) {
     const prev = Number(q.previous_close);
     const size = dollars ? Number(h.shares) : Number(h.units);
     const cents = p => Math.round(p * 100);
+    const notes = positionNotes(h, price);
+    // A position bought during this quote's session earned today only from its buy price:
+    // the move from yesterday's close happened before we owned it.
+    const boughtToday = notes.openedAt !== undefined &&
+      etParts(new Date(notes.openedAt)).ymd === etParts(new Date(Date.parse(q.provider_update_at_utc))).ymd &&
+      Date.parse(q.provider_update_at_utc) >= notes.openedAt;
+    const base = boughtToday ? notes.buyPrice : prev;
     const value = dollars ? (cents(price) * size) / 100 : price * size;
-    const prevValue = dollars ? (cents(prev) * size) / 100 : prev * size;
+    const prevValue = dollars ? (cents(base) * size) / 100 : base * size;
     const cost = dollars ? Number(h.cost_basis) : Number(h.avg_cost) * size;
     return {
       ...h, price, prev, value, prevValue, cost,
@@ -147,6 +154,7 @@ export function compute(payload) {
       dayValue: value - prevValue, gainValue: value - cost,
       costPct: price / Number(h.avg_cost) - 1,
       asOf: Date.parse(q.provider_update_at_utc),
+      boughtToday, ...notes,
     };
   });
   const sum = k => rows.reduce((a, r) => a + r[k], 0);
@@ -161,6 +169,60 @@ export function compute(payload) {
     gain: total - cost, gainPct: total / cost - 1,
     spyDayPct: spy ? spy.dayPct : null,
   };
+}
+
+// New positions and stop-loss rules recorded with a buy (build.py: holdings[].opened / .stop).
+// sinceBuy: price vs the first buy price. stopGap: how far the price is above the stop, as a
+// share of the price (0.12 = the stop is 12% below). stopLevel: ok | near (within 5%) | hit.
+export const STOP_NEAR = 0.05;
+export function positionNotes(h, price) {
+  const out = {};
+  if (h.opened) {
+    out.openedAt = Date.parse(h.opened.executed_at_utc);
+    out.buyPrice = Number(h.opened.price);
+    out.sinceBuy = price / out.buyPrice - 1;
+  }
+  if (h.stop && Number(h.stop.price) > 0) {
+    out.stopPrice = Number(h.stop.price);
+    out.stopRule = h.stop.rule || null;
+    out.stopGap = 1 - out.stopPrice / price;
+    out.stopLevel = price <= out.stopPrice ? 'hit' : out.stopGap <= STOP_NEAR ? 'near' : 'ok';
+  }
+  return out;
+}
+
+// Positions bought within `days` of `now` (default two weeks): shown as NEW on the screens.
+export const isNew = (r, now, days = 14) => r.openedAt !== undefined && now - r.openedAt < days * 86400000 && now >= r.openedAt;
+
+// Time-weighted return since the Sept 22 statement. build.py chains it over the saved points
+// (history[].twr); the live link uses the trades recorded after the last saved point, so money
+// added for a purchase never shows up as gain.
+export function sinceStatement(payload, summary) {
+  const hist = payload.history;
+  const last = hist[hist.length - 1];
+  const dollars = summary.dollars;
+  const valueOf = h => (dollars ? Number(h.value) : (Number(h.index) / 100) * Number(payload.statement.units_value));
+  if (!last || last.twr === undefined) {
+    // Older payloads: no trades recorded, so value over statement value is the same thing.
+    return dollars ? summary.total / Number(payload.statement.value) - 1 : summary.total / Number(payload.statement.units_value) - 1;
+  }
+  const lastT = Date.parse(last.as_of_utc);
+  const newest = newestQuote(payload.quotes.items);
+  const flowAfter = (payload.flows || [])
+    .filter(f => Date.parse(f.effective_utc) > lastT && Date.parse(f.effective_utc) <= newest)
+    .reduce((a, f) => a + Number(dollars ? f.amount : f.amount_units), 0);
+  return (1 + Number(last.twr)) * summary.total / (valueOf(last) + flowAfter) - 1;
+}
+
+// Gain including sales: unrealized gain on what we hold plus gain realized by sales up to the
+// newest quote. The percent is over everything we paid, including the cost of what was sold.
+export function totalGain(payload, summary) {
+  const newest = newestQuote(payload.quotes.items), d = summary.dollars;
+  const sold = (payload.realized || []).filter(r => Date.parse(r.executed_at_utc) <= newest);
+  const realized = sold.reduce((a, r) => a + Number(d ? r.gain : r.gain_units), 0);
+  const soldCost = sold.reduce((a, r) => a + Number(d ? r.cost : r.cost_units), 0);
+  const gain = summary.gain + realized;
+  return { gain, pct: gain / (summary.cost + soldCost), realized, soldCost, estimated: sold.some(r => r.estimated) };
 }
 
 // History as {t, y} points: dollars when shown, otherwise an index (statement = 100).
@@ -212,6 +274,22 @@ export function el(tag, attrs = {}, ...kids) {
   return n;
 }
 
+// Pick which x-axis date labels to draw so none overlap. Each label's box depends on its anchor
+// (first: start, last: end, others: middle). The newest and the first are always kept.
+export function pickDateLabels(xs, texts, charPx, padPx) {
+  const n = xs.length, box = i => {
+    const w = texts[i].length * charPx;
+    return i === 0 ? [xs[i], xs[i] + w] : i === n - 1 ? [xs[i] - w, xs[i]] : [xs[i] - w / 2, xs[i] + w / 2];
+  };
+  const kept = [];
+  const fits = i => kept.every(j => { const a = box(i), b = box(j); return a[1] + padPx <= b[0] || b[1] + padPx <= a[0]; });
+  for (const i of [n - 1, 0, ...Array.from({ length: Math.max(0, n - 2) }, (_, k) => n - 2 - k)]) {
+    if (i < 0 || kept.includes(i)) continue;
+    if (i === n - 1 || fits(i)) kept.push(i);
+  }
+  return new Set(kept);
+}
+
 // SVG line chart of discrete saved observations. Returns an <svg> element.
 export function lineChart(points, { width, height, pad = 40, left: leftPad, unit = 1, format, dollars }) {
   const NS = 'http://www.w3.org/2000/svg';
@@ -243,14 +321,8 @@ export function lineChart(points, { width, height, pad = 40, left: leftPad, unit
   valid.forEach((p, i) => {
     add('circle', { cx: x(p.t), cy: y(p.y), r: (i === valid.length - 1 ? 7 : 5) * unit, class: `dot ${p.kind}` });
   });
-  // Label dates from the newest backwards, skipping any that would collide (~90px apart);
-  // the first date is always kept.
-  const gap = 90 * unit, labelIdx = new Set([0]);
-  let lastX = Infinity;
-  for (let i = valid.length - 1; i > 0; i--) {
-    const px = x(valid[i].t);
-    if (lastX - px >= gap && px - x(valid[0].t) >= gap) { labelIdx.add(i); lastX = px; }
-  }
+  // Date labels that do not overlap (newest and first kept).
+  const labelIdx = pickDateLabels(valid.map(p => x(p.t)), valid.map(p => fmtShortDate(p.t)), 9 * unit, 14 * unit);
   valid.forEach((p, i) => {
     if (!labelIdx.has(i)) return;
     add('text', { x: x(p.t), y: height - bottom * 0.25, class: 'axis', 'text-anchor': i === 0 ? 'start' : i === valid.length - 1 ? 'end' : 'middle' })
@@ -262,33 +334,44 @@ export function lineChart(points, { width, height, pad = 40, left: leftPad, unit
 
 // ---------- portfolio vs market ----------
 // Gain over cost basis at each saved observation, for: the whole portfolio, the club's own
-// SPY position (the IPS benchmark), and the 17 stock picks without SPY. Purchase dates are
-// unknown, so this is unrealized gain on what was paid, not a same-period benchmark return.
-// Works for both payloads: the public one carries relative units and avg cost, no dollars.
+// SPY position (the IPS benchmark), and the stock picks without SPY. Each point uses the cost
+// and SPY position held at that moment (build.py), so a new buy does not move earlier points.
+// Statement purchase dates are unknown, so this is unrealized gain on what was paid, not a
+// same-period benchmark return. Works for both payloads (the public one is in relative units).
 export function comparisonSeries(payload, summary) {
   const spyH = payload.holdings.find(h => h.symbol === 'SPY');
-  const spyAvg = Number(spyH.avg_cost);
-  const spySize = summary.dollars ? Number(spyH.shares) : Number(spyH.units);
-  const totalCost = summary.cost;                      // dollars, or 1.0 in units
-  const picksCost = totalCost - spySize * spyAvg;
-  const valueAt = h => (summary.dollars ? Number(h.value)
-    : (Number(h.index) / 100) * Number(payload.statement.units_value));
-  const pts = payload.history.map(h => ({ t: Date.parse(h.as_of_utc), spy: Number(h.spy), total: valueAt(h) }));
+  const tg = totalGain(payload, summary);
+  const now = {
+    cost: summary.cost, realized: tg.realized, soldCost: tg.soldCost,
+    spySize: summary.dollars ? Number(spyH.shares) : Number(spyH.units),
+    spyAvg: Number(spyH.avg_cost),
+  };
+  const d = summary.dollars;
+  const valueAt = h => (d ? Number(h.value) : (Number(h.index) / 100) * Number(payload.statement.units_value));
+  const pts = payload.history.map(h => {
+    const cost = Number(d ? h.cost : h.cost_units), spySize = Number(d ? h.spy_shares : h.spy_units);
+    const spyCost = Number(d ? h.spy_cost : h.spy_cost_units);
+    const known = Number.isFinite(cost) && cost > 0 && spySize > 0 && spyCost > 0;
+    return { t: Date.parse(h.as_of_utc), spy: Number(h.spy), total: valueAt(h),
+      ...(known ? { cost, spySize, spyAvg: spyCost / spySize,
+        realized: Number(d ? h.realized : h.realized_units) || 0, soldCost: Number(d ? h.sold_cost : h.sold_cost_units) || 0 } : now) };
+  });
   const newest = newestQuote(payload.quotes.items);
   if (!pts.length || newest > pts[pts.length - 1].t + 60000) {
-    pts.push({ t: newest, live: true, total: summary.total,
+    pts.push({ t: newest, live: true, total: summary.total, ...now,
       spy: Number(payload.quotes.items.find(q => q.symbol === 'SPY').price) });
   }
   return [
-    { name: 'Portfolio', cls: 'port', points: pts.map(p => ({ t: p.t, live: p.live, y: p.total / totalCost - 1 })) },
-    { name: 'SPY position', cls: 'spy', points: pts.map(p => ({ t: p.t, live: p.live, y: p.spy / spyAvg - 1 })) },
-    { name: 'Stock picks (excl. SPY)', cls: 'picks',
-      points: pts.map(p => ({ t: p.t, live: p.live, y: (p.total - p.spy * spySize) / picksCost - 1 })) },
+    // Portfolio: unrealized plus realized gain, over everything paid (so a sale is not a drop).
+    { name: 'Portfolio', cls: 'port', points: pts.map(p => ({ t: p.t, live: p.live, y: (p.total - p.cost + p.realized) / (p.cost + p.soldCost) })) },
+    { name: 'SPY position', cls: 'spy', points: pts.map(p => ({ t: p.t, live: p.live, y: p.spy / p.spyAvg - 1 })) },
+    { name: 'Stock picks', cls: 'picks',
+      points: pts.map(p => ({ t: p.t, live: p.live, y: (p.total - p.spy * p.spySize) / (p.cost - p.spySize * p.spyAvg) - 1 })) },
   ];
 }
 
 // Multi-line % change chart with a zero line and end labels. Returns an <svg>.
-export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1 }) {
+export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit }) {
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -313,14 +396,9 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
     add('line', { x1: left, x2: width - right, y1: y(v), y2: y(v), class: Math.abs(v) < 1e-9 ? 'zero' : 'grid' });
     add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
   }
-  // date labels from newest back, skipping collisions
-  const pts0 = series[0].points, gap = 70 * unit;
-  let lastX = Infinity;
-  const keep = new Set([0]);
-  for (let i = pts0.length - 1; i > 0; i--) {
-    const px = x(pts0[i].t);
-    if (lastX - px >= gap && px - x(pts0[0].t) >= gap) { keep.add(i); lastX = px; }
-  }
+  // date labels that do not overlap (newest and first kept)
+  const pts0 = series[0].points;
+  const keep = pickDateLabels(pts0.map(p => x(p.t)), pts0.map(p => fmtShortDate(p.t)), charPx, 12 * unit);
   pts0.forEach((p, i) => keep.has(i) && add('text', { x: x(p.t), y: height - bottom * 0.3, class: 'axis',
     'text-anchor': i === 0 ? 'start' : i === pts0.length - 1 ? 'end' : 'middle' }, fmtShortDate(p.t)));
   // lines, dots, end labels (nudged apart so they don't overlap)

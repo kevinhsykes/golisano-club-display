@@ -4,7 +4,7 @@ The web view's holding detail dialog draws its chart and indicator readings from
 so the page needs no third-party script. Same snapshot caveat as snapshot_quotes.py: Yahoo
 Finance data for internal club use and demos, not a licensed public-display feed.
 
-Run:  python3 tools/snapshot_history.py          (about 20 s for 18 symbols)
+Run:  python3 tools/snapshot_history.py          (about 1 s per holding)
 """
 import datetime
 import json
@@ -12,6 +12,9 @@ import sys
 import time
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from holdings import current_symbols  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "source"
@@ -47,7 +50,7 @@ def fetch(sym):
 
 def main():
     positions = json.loads((SRC / "positions.json").read_text(encoding="utf-8"))
-    symbols = [p["symbol"] for p in positions["opening_positions"]]
+    symbols = current_symbols(positions)  # statement holdings plus recorded trades
     OUT.mkdir(parents=True, exist_ok=True)
     done = 0
     for s in symbols:

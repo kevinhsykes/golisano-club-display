@@ -1,7 +1,13 @@
 // Worker refresh logic against a fake KV and fake provider responses. No network.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import worker, { refresh, shouldFetch, SYMBOLS } from '../worker/index.js';
+
+test('Worker SYMBOLS are exactly the built holdings (statement plus recorded trades)', () => {
+  const payload = JSON.parse(readFileSync(new URL('../web/data/portfolio.json', import.meta.url), 'utf8'));
+  assert.deepEqual([...SYMBOLS].sort(), payload.holdings.map(h => h.symbol).sort());
+});
 
 const fakeKV = () => {
   const m = new Map();
@@ -42,7 +48,7 @@ test('refresh stores a complete snapshot and /api/quotes serves it without healt
   assert.equal(r.ok, true);
   const res = await worker.fetch(new Request('https://x/api/quotes'), env(kv));
   const snap = await res.json();
-  assert.equal(snap.quotes.length, 18);
+  assert.equal(snap.quotes.length, SYMBOLS.length);
   assert.equal(snap.quotes.find(q => q.symbol === 'BRK/B').price, '103');
   assert.equal(snap.meta.delay_minutes, 0);
   assert.equal(snap.meta.market_scope, 'partial');
@@ -94,7 +100,7 @@ test('tiingo adapter maps the IEX response, including BRK.B', async () => {
     assert.equal(init.headers.Authorization, 'Token t');
     return new Response(JSON.stringify(body), { status: 200 });
   });
-  assert.equal(rows.length, 18);
+  assert.equal(rows.length, SYMBOLS.length);
   assert.equal(rows.find(r => r.symbol === 'BRK/B').price, '53');
   await assert.rejects(tiingo.fetch(SYMBOLS, { TIINGO_KEY: 't' }, async () => new Response(JSON.stringify(body.slice(1)), { status: 200 })), /incomplete quote for AAPL/);
 });

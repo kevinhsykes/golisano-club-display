@@ -1,16 +1,16 @@
 # Golisano Investment Club — portfolio display
 
 A cafe TV view and a web page (linked from the club's Canvas course) showing the club's
-18 holdings. Today the prices are a saved snapshot refreshed every 15 minutes while the market is
+holdings (20 since the Nov 11, 2026 trades). Today the prices are a saved snapshot refreshed every 15 minutes while the market is
 open (see "Hosting today"); the Cloudflare Worker below refreshes every minute once a licensed feed
 is connected.
 
 | Page | Path | Use |
 |---|---|---|
-| Live board (interim) | `/board.html` | TV view that works today with no account or key: TradingView's free widget shows 15-minute-delayed prices for the 18 holdings. No portfolio value. Also works opened as a local file. |
+| Live board (interim) | `/board.html` | TV view that works today with no account or key: TradingView's free widget shows 15-minute-delayed prices for the holdings. No portfolio value. Also works opened as a local file. |
 | TV view | `/tv.html` | Full-screen 16:9 display for the cafe once a licensed feed runs: value, day change, gain, four rotating panels. |
 | Web view | `/` (`index.html`) | Phones and laptops. The Canvas page links here. Sortable holdings table. |
-| Quotes API | `/api/quotes` | Latest complete set of 18 quotes (last good set if a refresh fails). |
+| Quotes API | `/api/quotes` | Latest complete set of quotes, one per holding (last good set if a refresh fails). |
 | History API | `/api/history` | One closing snapshot per trading day. |
 | Health | `/api/health` | Last refresh attempt, error text if it failed, newest quote time. |
 
@@ -19,8 +19,8 @@ is connected.
 ```
 Cloudflare cron (every minute, weekdays)          browser (TV / web)
   -> NYSE calendar: open, or <=20 min after close    -> loads data/portfolio.json (holdings)
-  -> one request to the quote feed for 18 symbols   -> polls /api/quotes every 60 s
-  -> validate all 18, never older than stored        -> recomputes value, day change, weights
+  -> one request to the quote feed for all symbols  -> polls /api/quotes every 60 s
+  -> validate every symbol, never older than stored -> recomputes value, day change, weights
   -> KV "quotes:latest" (+ "history" after close)    -> shows "Prices delayed 15 minutes · source"
 ```
 
@@ -97,11 +97,30 @@ Then open `/api/health` during market hours; `last_attempt.ok` should be `true` 
 
 ## When the portfolio changes
 
-Holdings live in `data/source/positions.json` and the statement CSV. After the outside
-professional confirms a trade, update shares and cost basis there, add the new statement
-snapshot, rebuild, test, and redeploy. Add or remove the symbol in `SYMBOLS`
-(`worker/index.js`) in the same change; the Worker refuses any set that is not exactly
-those symbols.
+`data/source/positions.json` keeps the Sept 22 statement frozen in `opening_positions` (checked
+against `statement-20260922.csv`) and records every later trade in `transactions`. Do not edit
+the opening positions or the CSV for a trade. Add one row per fill instead:
+
+```json
+{"id": "2026-11-11-buy-MU", "type": "buy", "symbol": "MU", "trade_date": "2026-11-11",
+ "executed_at_utc": "2026-11-11T17:54:00Z", "shares": "7", "price": "824.70", "fees": null,
+ "status": "confirmed", "source": "where the fill came from",
+ "stop_loss": {"price": "659.76", "pct_below_buy": "20", "rule": "...", "kind": "..."}}
+```
+
+- `type` is `buy` or `sell`. A sell removes shares at average cost; its gain shows as realized.
+- Set `"estimated": true` when the price is not the brokerage fill yet; the footer says so.
+  Replace it with the fill when it arrives.
+- A new symbol also needs a row in `instruments` (with `tv_symbol`, e.g. `NASDAQ:MU`) and in
+  `instrument-profiles.json`, and must be added to `SYMBOLS` in `worker/index.js` (a test fails
+  until it is). `tools/snapshot_quotes.py` and `tools/snapshot_history.py` pick it up by themselves.
+- Then run `python3 tools/snapshot_quotes.py && python3 tools/snapshot_history.py`, both builds,
+  and the tests, and commit.
+
+Each saved history point is valued with the holdings held at that moment, so a trade never moves
+earlier points. "Return since Sept 22" is time-weighted: money a trade moves is not gain or loss.
+Positions bought in the last 14 days get a NEW badge and the TV's "New positions" panel, with the
+stop-loss level and its distance (amber within 5%, red at or below).
 
 ## Yearly
 
@@ -110,7 +129,7 @@ Regenerate it before January 2028, or the Worker stops fetching once the calenda
 
 ## Checks
 
-`npm test` runs the math (Oct 9 figures to the cent), market clock (holidays, early close,
+`npm test` and `python3 -m unittest discover -s test -p 'test_*.py'` run the math (Oct 9 figures to the cent), market clock (holidays, early close,
 daylight saving), freshness rules, the public payload's privacy, and the Worker's refresh
 logic against a fake feed and fake storage.
 
@@ -123,6 +142,6 @@ reloads itself every 6 hours. The site sends no frame-blocking headers. `/screen
 template with its address and a copy button.
 
 Any other device: open `https://<host>/tv.html` full screen in kiosk mode on the cafe TV's device. Options:
-`?amounts=hide` (percent only), `?panel=holdings|movers` (pin one panel), `?rotate=40`
+`?amounts=hide` (percent only), `?panel=new|h1|h2|movers|chart` (pin one panel), `?rotate=40`
 (seconds per panel). The page reloads itself every 6 hours and survives network drops by
 keeping the last prices with an age warning.

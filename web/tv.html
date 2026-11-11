@@ -54,57 +54,77 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 .left { display: grid; min-height: 0; }
 .left .card { display: flex; flex-direction: column; justify-content: space-between; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; min-height: 0; }
-.label { font-size: 2.25vh; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.label { font-size: 2.5vh; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .big { font: 600 7.6vh/1.05 var(--sans); margin: .4vh 0 1vh; letter-spacing: -.01em; }
 .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6vh 1.2vw; }
-.kpi .s { font-size: 2.25vh; color: var(--muted); }
-.kpi .v { font: 600 3.5vh/1.15 var(--sans); }
-.kpi .v2 { font: 600 2.5vh var(--sans); }
+.kpi .s { font-size: 2.5vh; color: var(--muted); }
+.kpi .v { font: 600 3.8vh/1.15 var(--sans); }
+.kpi .v2 { font: 600 2.6vh var(--sans); }
 .up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--flat); }
 .panel.chart.on { grid-template-rows: 1fr auto; background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; }
 .chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .chart .grid { stroke: var(--line); stroke-width: .14vh; }
-.chart .axis { fill: var(--muted); font: 500 2.25vh var(--sans); }
+.chart .axis { fill: var(--muted); font: 500 2.5vh var(--sans); }
 .chart .line { fill: none; stroke: var(--gold); stroke-width: .37vh; stroke-linejoin: round; }
 .chart .dot { fill: var(--bg); stroke: var(--gold-soft); stroke-width: .37vh; }
 .chart .dot.live { fill: var(--gold); }
 .chart .zero { stroke: var(--muted); stroke-width: .14vh; stroke-dasharray: .5vh .5vh; }
 .chart .line.spy { stroke: #7fb0ec; stroke-dasharray: 1vh .6vh; } .chart .dot.spy { stroke: #7fb0ec; }
 .chart .line.picks { stroke: #b9a0f0; } .chart .dot.picks { stroke: #b9a0f0; }
-.chart .endlabel { font: 600 2.5vh var(--sans); fill: var(--gold-soft); }
+.chart .endlabel { font: 600 2.9vh var(--sans); fill: var(--gold-soft); }
 .chart .endlabel.spy { fill: #7fb0ec; } .chart .endlabel.picks { fill: #b9a0f0; }
-.chart .note { font-size: 2.1vh; color: var(--muted); }
+.chart .note { font-size: 2.4vh; color: var(--muted); }
 
 .right { position: relative; min-height: 0; display: grid; grid-template-rows: auto 1fr; gap: 1.2vh; }
 .panel-head { display: flex; justify-content: space-between; align-items: baseline; }
 .panel-head h2 { margin: 0; font: 500 3.2vh var(--serif); }
 .dots { display: flex; gap: .6vw; }
-.dots i { width: 1.2vh; height: 1.2vh; border-radius: 50%; background: var(--line); }
+.dots i { width: 1.8vh; height: 1.8vh; border-radius: 50%; background: #3d6380; }
 .dots i.on { background: var(--gold); }
 .panel { display: none; min-height: 0; }
 .panel.on { display: grid; }
 
-/* Nine holdings per panel (10-foot guidance: about 6-9 items per screen, text >= 24px at 1080p). */
-.grid9 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.2vh .9vw; }
-.tile { position: relative; border-radius: 1.4vh; padding: 1.5vh 1vw 1.3vh; background: var(--panel); border: 1px solid var(--line); overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 1fr auto; column-gap: .6vw; }
-.tile::before { content: ""; position: absolute; inset: 0; background: var(--tint, transparent); pointer-events: none; }
-.tile > * { position: relative; }
-.tile .sym { font: 700 4.4vh/1.05 var(--sans); letter-spacing: .02em; }
-.tile .nm { font-size: 2.3vh; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.tile .px { font: 500 3.2vh var(--sans); color: var(--text); margin-top: .4vh; }
-.tile .right { text-align: right; }
-.tile .day { font: 700 3.6vh/1.15 var(--sans); white-space: nowrap; }
-.tile .meta { font-size: 2.3vh; line-height: 1.35; color: var(--muted); white-space: nowrap; }
-.tile .meta b { font-weight: 600; color: var(--text); }
-.tile .meta b.up { color: var(--up); } .tile .meta b.down { color: var(--down); }
-.tile .wbar { grid-column: 1 / -1; height: .8vh; border-radius: 99px; background: rgba(213,186,126,.18); margin-top: 1vh; align-self: end; }
-.tile .wbar i { display: block; height: 100%; border-radius: 99px; background: var(--gold); }
+/* Holdings as rows of a 2 x 5 grid, ten per page (10-foot guidance: few items, text >= 27 px at 1080p).
+   One line per holding: symbol, price, today's move, gain vs cost. The tint is only a side bar,
+   so the numbers keep full contrast on any day. */
+.rows10 { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 1fr); grid-auto-flow: column; gap: 1.1vh 1vw; }
+.tile { position: relative; border-radius: 1.2vh; padding: 0 1.1vw 0 1.6vw; background: var(--panel); border: 1px solid var(--line); overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; align-content: center; column-gap: 1vw; }
+.tile::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: .7vw; background: var(--bar, var(--line)); }
+.tile .sym { font: 700 4.6vh/1.05 var(--sans); letter-spacing: .02em; display: flex; align-items: center; gap: .7vw; min-width: 0; }
+.tile .px { font: 500 2.9vh var(--sans); color: var(--muted); }
+.tile .px b { color: var(--text); font-weight: 600; }
+.tile .day { font: 700 4.4vh/1.05 var(--sans); white-space: nowrap; text-align: right; }
+.tile .meta { font: 500 2.7vh var(--sans); color: var(--muted); white-space: nowrap; text-align: right; }
+.tile .meta b { font-weight: 700; }
+.tile.stop-near { border-color: var(--warn); }
+.tile.stop-hit { border-color: var(--down); box-shadow: inset 0 0 0 2px var(--down); }
+.badge { font: 700 1.9vh/1 var(--sans); letter-spacing: .1em; padding: .55vh .5vw; border-radius: .6vh; background: var(--gold); color: var(--bg); white-space: nowrap; }
+
+/* New positions: one large card each, with the stop-loss rule drawn as a distance bar. */
+.newpos { grid-auto-flow: row; grid-template-columns: repeat(var(--n, 2), 1fr); gap: 1.4vw; }
+.np { background: var(--panel); border: 2px solid var(--gold); border-radius: 1.6vh; padding: 2.2vh 1.6vw; display: flex; flex-direction: column; gap: 1.5vh; min-height: 0; }
+.np .head { display: flex; align-items: baseline; gap: 1vw; flex-wrap: wrap; }
+.np .sym { font: 700 7vh/1 var(--sans); }
+.np .nm { font: 500 3.2vh var(--serif); color: var(--text); }
+.np .what { font-size: 2.5vh; color: var(--muted); line-height: 1.3; }
+.np .nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6vh 1.2vw; }
+.np .nums .s { font-size: 2.5vh; color: var(--muted); }
+.np .nums .v { font: 700 4.6vh/1.1 var(--sans); }
+.np .stop { margin-top: auto; border-top: 2px solid var(--line); padding-top: 1.6vh; }
+.np .stop .line { font: 600 3vh var(--sans); }
+.np .stop .line.none { color: var(--muted); font-weight: 500; }
+.np .stop .rule { font-size: 2.4vh; color: var(--muted); margin-top: .6vh; }
+.stopbar { position: relative; height: 2.4vh; border-radius: 99px; background: var(--panel-2); margin-top: 1.2vh; overflow: hidden; }
+.stopbar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--up); }
+.stopbar.near i { background: var(--warn); } .stopbar.hit i { background: var(--down); }
+.warn { color: var(--warn); }
 
 .movers { grid-template-columns: 1fr 1fr; gap: 1.6vw; }
 .movers h3 { margin: 0 0 1vh; font: 600 2.4vh var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .mrow { display: grid; grid-template-columns: 8vw 1fr auto; align-items: baseline; padding: 1.8vh 0; border-bottom: 1px solid var(--line); font-size: 3vh; }
 .mrow .sym { font-weight: 700; font-size: 3.4vh; }
-.mrow .nm { color: var(--muted); font-size: 2.4vh; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.mrow .nm { color: var(--muted); font-size: 2.6vh; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .alloc { margin-top: 2.6vh; }
 .bar { display: grid; grid-template-columns: 15vw 1fr 6vw; align-items: center; gap: 1vw; margin: 1.1vh 0; font-size: 2.6vh; }
 .bar .track { height: 2.2vh; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
@@ -118,7 +138,7 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 @keyframes scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .tape .track { animation: none; } .pill.open::before { animation: none; } }
 
-footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1vh; color: var(--muted); }
+footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.2vh; color: var(--muted); }
 footer .src { text-align: right; }
 .error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
 </style>
@@ -141,7 +161,7 @@ footer .src { text-align: right; }
           <div class="kpi"><div class="s" id="day-label">Today</div><div class="v" id="day">—</div><div class="v2" id="day2"></div></div>
           <div class="kpi"><div class="s" id="spy-label">S&amp;P 500 (SPY) today</div><div class="v" id="spy">—</div></div>
           <div class="kpi"><div class="s" id="gain-label">Gain vs cost</div><div class="v" id="gain">—</div><div class="v2" id="gain2"></div></div>
-          <div class="kpi"><div class="s">Since Sept 22</div><div class="v" id="since">—</div></div>
+          <div class="kpi"><div class="s">Return since Sept 22</div><div class="v" id="since">—</div></div>
           <div class="kpi"><div class="s" id="breadth-label">Holdings up / down</div><div class="v" id="breadth">—</div></div>
           <div class="kpi"><div class="s">Largest holding</div><div class="v" id="largest">—</div></div>
         </div>
@@ -149,12 +169,12 @@ footer .src { text-align: right; }
     </section>
     <section class="right">
       <div class="panel-head"><h2 id="panel-title">Holdings</h2><div class="dots" id="dots"></div></div>
-      <div class="panel grid9" id="p-h1" data-title="Largest holdings"></div>
-      <div class="panel grid9" id="p-h2" data-title="More holdings"></div>
+      <div class="panel newpos" id="p-new" data-title="New positions"></div>
+      <div id="holding-pages" style="display:contents"></div>
       <div class="panel movers" id="p-movers" data-title="Today's biggest moves"></div>
       <div class="panel chart" id="p-chart" data-title="Portfolio since Sept 22">
         <div id="chart" style="position:relative; min-height:0"></div>
-        <div class="note">Gain over what we paid, at each saved price check. 0% = break-even.</div>
+        <div class="note">Gain over what we paid, at each saved price check. 0% = break-even. Stock picks = every holding except SPY.</div>
       </div>
     </section>
   </main>
@@ -164,6 +184,7 @@ footer .src { text-align: right; }
 <script type="module">
 import {
   fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  sinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -176,7 +197,7 @@ const CONFIG = {
   quotes: samePath(params.get('quotes')),                  // default: payload.live_quotes_url (api/quotes)
   hideAmounts: params.get('amounts') === 'hide',
   rotateSeconds: Number(params.get('rotate') || 20),
-  panel: params.get('panel'),                     // h1 | h2 | movers | chart pins one panel
+  panel: params.get('panel'),                     // new | h1 | h2 | h3 | movers | chart pins one panel
 
   pollSeconds: 60,
   reloadHours: 6,
@@ -235,10 +256,11 @@ function render() {
   const base = forceHide ? { ...payload, amounts: 'shown' } : payload;
   const s = compute(base);
   const showDollars = s.dollars && !forceHide;
-  renderStatus();
+  renderNew(s, showDollars);
+  renderHoldings(s);
+  renderStatus();      // after the pages exist: it writes their titles
   renderHero(s, showDollars);
   renderChart(base, s, showDollars);
-  renderHoldings(s);
   renderMovers(s);
   renderTape(s);
   $('disclosure').textContent = payload.disclosure;
@@ -273,32 +295,37 @@ function renderStatus() {
   $('day-label').textContent = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(fr.newest)}`;
   $('spy-label').textContent = fr.level === 'live' ? 'S&P 500 (SPY) today' : `S&P 500 (SPY), ${fmtShortDate(fr.newest)}`;
   const when = fr.level === 'live' ? 'today' : fmtShortDate(fr.newest);
-  $('p-h1').dataset.title = `Largest 9 holdings · move ${when}`;
-  $('p-h2').dataset.title = `Other 9 holdings · move ${when}`;
+  holdingPages.forEach((id, i) => {
+    const n = $(id).childElementCount, from = i * PER_PAGE + 1;
+    $(id).dataset.title = `Holdings ${from}–${from + n - 1} of ${holdingCount}, largest first · move ${when}`;
+  });
   $('p-movers').dataset.title = `Biggest moves · ${when}`;
   if (panelIdx >= 0) $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
 }
 
+function base() {
+  return payload.amounts === 'shown-hidden' ? { ...payload, amounts: 'shown' } : payload;
+}
+
 function renderHero(s, showDollars) {
   const set = (id, text, d, cls = 'v') => { const n = $(id); n.textContent = text; n.className = `${cls} ${d ? dir(d) : ''}`; };
-  const since = payload.statement.units_value
-    ? s.total / Number(payload.statement.units_value) - 1
-    : s.total / Number(payload.statement.value) - 1;
+  const since = sinceStatement(base(), s);
+  const tg = totalGain(base(), s);   // unrealized + gains locked in by sales
   if (showDollars) {
-    $('hero-label').textContent = 'Portfolio value (listed holdings)';
+    $('hero-label').textContent = 'Portfolio value';
     $('hero').textContent = fmtUsd(s.total);
     $('hero').className = 'big';
     set('day', `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange);
     set('day2', fmtPct(s.dayPct), s.dayChange, 'v2');
-    set('gain', fmtSignedUsd(s.gain), s.gain);
-    set('gain2', fmtPct(s.gainPct), s.gain, 'v2');
+    set('gain', fmtSignedUsd(tg.gain), tg.gain);
+    set('gain2', tg.realized ? `${fmtPct(tg.pct)} · ${fmtUsd(Math.abs(tg.realized))} from sales` : fmtPct(tg.pct), tg.gain, 'v2');
   } else {
-    $('hero-label').textContent = 'Return vs cost (listed holdings)';
-    $('hero').textContent = fmtPct(s.gainPct);
-    $('hero').className = `big ${dir(s.gainPct)}`;
+    $('hero-label').textContent = 'Gain vs cost';
+    $('hero').textContent = fmtPct(tg.pct);
+    $('hero').className = `big ${dir(tg.pct)}`;
     set('day', `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct);
     set('day2', '', 0, 'v2');
-    set('gain', fmtPct(s.gainPct), s.gainPct);
+    set('gain', fmtPct(tg.pct), tg.pct);
     set('gain2', '', 0, 'v2');
   }
   set('since', fmtPct(since), since);
@@ -317,7 +344,7 @@ function renderChart(base, s, showDollars) {
   // The svg is absolutely positioned, so the box size comes from the layout alone.
   const w = Math.max(200, box.clientWidth), h = Math.max(120, box.clientHeight);
   const unit = innerHeight / 1080;
-  box.replaceChildren(compareChart(comparisonSeries(base, s), { width: w, height: h, pad: 26 * unit, left: 92 * unit, right: 420 * unit, unit }));
+  box.replaceChildren(compareChart(comparisonSeries(base, s), { width: w, height: h, pad: 26 * unit, left: 92 * unit, right: 380 * unit, unit, charPx: 15 * unit }));
   box.dataset.size = `${w}x${h}`;
 }
 
@@ -327,32 +354,80 @@ new ResizeObserver(() => {
   if (payload && box.dataset.size !== `${box.clientWidth}x${box.clientHeight}`) render();
 }).observe(document.getElementById('chart'));
 
-function tint(pct) {
-  const a = Math.min(Math.abs(pct) / 0.03, 1) * 0.42 + 0.06;
-  return pct > 0 ? `rgba(60,207,134,${a})` : pct < 0 ? `rgba(255,107,94,${a})` : 'transparent';
+const barColor = pct => (pct > 0 ? 'var(--up)' : pct < 0 ? 'var(--down)' : 'var(--line)');
+const sym = r => r.symbol.replace('/', '.');
+const PER_PAGE = 10;
+let holdingPages = [], holdingCount = 0;
+
+function stopText(r) {
+  if (r.stopPrice === undefined) return null;
+  if (r.stopLevel === 'hit') return `At or below the stop ($${fmtPrice(r.stopPrice)})`;
+  return `Stop $${fmtPrice(r.stopPrice)} · ${(r.stopGap * 100).toFixed(1)}% below`;
 }
 
+// Holdings in pages of ten (two columns of five), largest first. Pages are made from the
+// holding count, so a new position adds a page instead of overflowing a fixed grid.
 function renderHoldings(s) {
   const rows = [...s.rows].sort((a, b) => b.weight - a.weight);
-  const maxW = rows[0].weight;
-  const tile = r => el('div', { class: 'tile', style: `--tint:${tint(r.dayPct)}` },
-    el('div', {},
-      el('div', { class: 'sym' }, r.symbol.replace('/', '.')),
-      el('div', { class: 'nm' }, r.name),
-      el('div', { class: 'px' }, `$${fmtPrice(r.price)}`)),
-    el('div', { class: 'right' },
-      el('div', { class: `day ${dir(r.dayPct)}` }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`),
-      el('div', { class: 'meta' }, 'Weight ', el('b', {}, fmtWeight(r.weight))),
-      el('div', { class: 'meta' }, 'vs cost ', el('b', { class: dir(r.costPct) }, fmtPct(r.costPct, 1)))),
-    el('div', { class: 'wbar' }, el('i', { style: `width:${(r.weight / maxW) * 100}%` })));
-  $('p-h1').replaceChildren(...rows.slice(0, 9).map(tile));
-  $('p-h2').replaceChildren(...rows.slice(9).map(tile));
+  const t = now().getTime();
+  const tile = r => el('div', { class: `tile ${r.stopLevel && r.stopLevel !== 'ok' ? `stop-${r.stopLevel}` : ''}`, style: `--bar:${barColor(r.dayPct)}` },
+    el('div', { class: 'sym' }, sym(r), isNew(r, t) ? el('span', { class: 'badge' }, 'NEW') : null),
+    el('div', { class: `day ${dir(r.dayPct)}` }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`),
+    el('div', { class: 'px' }, el('b', {}, `$${fmtPrice(r.price)}`), ` · ${fmtWeight(r.weight)}`),
+    r.stopLevel && r.stopLevel !== 'ok'
+      ? el('div', { class: 'meta' }, el('b', { class: r.stopLevel === 'hit' ? 'down' : 'warn' }, r.stopLevel === 'hit' ? 'AT STOP' : 'NEAR STOP'))
+      : el('div', { class: 'meta' }, isNew(r, t) ? 'since buy ' : 'vs cost ',
+        el('b', { class: dir(isNew(r, t) ? r.sinceBuy : r.costPct) }, fmtPct(isNew(r, t) ? r.sinceBuy : r.costPct, 1))));
+  const pages = [];
+  for (let i = 0; i < rows.length; i += PER_PAGE) pages.push(rows.slice(i, i + PER_PAGE));
+  holdingCount = rows.length;
+  const ids = pages.map((_, i) => `p-h${i + 1}`);
+  if (ids.join() !== holdingPages.join()) {
+    $('holding-pages').replaceChildren(...ids.map(id => el('div', { class: 'panel rows10', id })));
+    holdingPages = ids;
+    setPanels();
+  }
+  pages.forEach((pg, i) => $(ids[i]).replaceChildren(...pg.map(tile)));
+}
+
+// One large card per position bought in the last two weeks, with the stop-loss rule if one is
+// recorded. The panel leaves the rotation when there is nothing new.
+function renderNew(s, showDollars) {
+  const t = now().getTime();
+  const fresh = s.rows.filter(r => isNew(r, t)).sort((a, b) => b.openedAt - a.openedAt || a.symbol.localeCompare(b.symbol));
+  newCount = fresh.length;
+  const card = r => {
+    const stop = stopText(r);
+    const range = r.stopPrice !== undefined ? Math.max(0, Math.min(1, (r.price - r.stopPrice) / (r.buyPrice - r.stopPrice) / 1.5)) : 0;
+    return el('div', { class: 'np' },
+      el('div', { class: 'head' }, el('span', { class: 'sym' }, sym(r)), el('span', { class: 'nm' }, r.name),
+        el('span', { class: 'badge' }, `BOUGHT ${fmtShortDate(r.openedAt).toUpperCase()}`)),
+      r.industry ? el('div', { class: 'what' }, r.industry) : null,
+      el('div', { class: 'nums' },
+        el('div', {}, el('div', { class: 's' }, 'Bought at'), el('div', { class: 'v' }, `$${fmtPrice(r.buyPrice)}`)),
+        el('div', {}, el('div', { class: 's' }, 'Now'), el('div', { class: 'v' }, `$${fmtPrice(r.price)}`)),
+        el('div', {}, el('div', { class: 's' }, 'Since we bought'), el('div', { class: `v ${dir(r.sinceBuy)}` }, `${arrow(r.sinceBuy)} ${fmtPct(r.sinceBuy, 1)}`)),
+        showDollars
+          ? el('div', {}, el('div', { class: 's' }, `${r.shares} shares, worth`), el('div', { class: 'v' }, fmtUsd(r.value)))
+          : el('div', {}, el('div', { class: 's' }, 'Share of portfolio'), el('div', { class: 'v' }, fmtWeight(r.weight)))),
+      el('div', { class: 'stop' },
+        stop
+          ? [el('div', { class: `line ${r.stopLevel === 'ok' ? '' : r.stopLevel === 'hit' ? 'down' : 'warn'}` }, stop),
+            el('div', { class: `stopbar ${r.stopLevel}`, role: 'img', 'aria-label': `Price distance above the stop: ${(r.stopGap * 100).toFixed(1)}%` },
+              el('i', { style: `width:${(range * 100).toFixed(1)}%` })),
+            el('div', { class: 'rule' }, 'Rule: sell if it closes 20% or more below our buy price.')]
+          : el('div', { class: 'line none' }, 'No stop-loss level recorded')));
+  };
+  $('p-new').style.setProperty('--n', Math.min(Math.max(fresh.length, 1), 3));
+  $('p-new').replaceChildren(...fresh.slice(0, 3).map(card));
+  $('p-new').dataset.title = fresh.length === 1 ? `New position · bought ${fmtShortDate(fresh[0].openedAt)}` : `New positions · bought ${[...new Set(fresh.map(r => fmtShortDate(r.openedAt)))].join(', ')}`;
+  if (Boolean(fresh.length) !== PANELS.includes('p-new')) setPanels();
 }
 
 function renderMovers(s) {
   const byDay = [...s.rows].sort((a, b) => b.dayPct - a.dayPct);
   const row = r => el('div', { class: 'mrow' },
-    el('span', { class: 'sym' }, r.symbol.replace('/', '.')),
+    el('span', { class: 'sym' }, sym(r)),
     el('span', { class: 'nm' }, r.name),
     el('span', { class: dir(r.dayPct) }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`));
   const mag7 = new Set(['AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'NVDA', 'TSLA']);
@@ -385,13 +460,24 @@ function renderTape(s) {
   $('tape').style.setProperty('--tape-duration', `${items.length * 4.5}s`);
 }
 
-const PANELS = ['p-h1', 'p-h2', 'p-movers', 'p-chart'];
-let panelIdx = -1;
+let PANELS = [];
+let panelIdx = -1, newCount = 0;
+// Rotation: new positions first (while any are new), then each holdings page, movers, chart.
+function setPanels() {
+  const current = PANELS[panelIdx];
+  PANELS = [...(newCount ? ['p-new'] : []), ...holdingPages, 'p-movers', 'p-chart'];
+  panelIdx = PANELS.indexOf(current);
+  // A pinned panel (?panel=) may only exist once its page is built: switch to it then.
+  if (panelIdx < 0 || (PANELS.includes(`p-${CONFIG.panel}`) && current !== `p-${CONFIG.panel}`)) { panelIdx = -1; rotate(); return; }
+  PANELS.forEach((id, i) => $(id).classList.toggle('on', i === panelIdx));
+  $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
+}
 function rotate() {
+  if (!PANELS.length) return;
   const pinned = PANELS.indexOf(`p-${CONFIG.panel}`);
   if (pinned >= 0 && panelIdx === pinned) return;
   panelIdx = pinned >= 0 ? pinned : (panelIdx + 1) % PANELS.length;
-  PANELS.forEach((id, i) => $(id).classList.toggle('on', i === panelIdx));
+  document.querySelectorAll('.right .panel').forEach(n => n.classList.toggle('on', n.id === PANELS[panelIdx]));
   $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
   $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
 }

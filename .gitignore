@@ -3,3 +3,4 @@ node_modules/
 __pycache__/
 # Full payload has dollar values; build it locally, do not commit it.
 web/data/portfolio.json
+web/version.json
