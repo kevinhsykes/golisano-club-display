@@ -25,6 +25,8 @@ def yahoo(sym):
 def main():
     positions = json.loads((SRC / "positions.json").read_text(encoding="utf-8"))
     symbols = current_symbols(positions)  # statement holdings plus recorded trades
+    if "SPY" not in symbols:
+        symbols.append("SPY")  # the benchmark is quoted even if the club sells all of it
     now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
     f = lambda d: d.strftime("%Y-%m-%dT%H:%M:%SZ")
     rows = []

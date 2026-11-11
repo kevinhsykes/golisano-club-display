@@ -106,6 +106,11 @@ def main(public, out):
 
     current = load("quotes-current.json")
     history_snaps = load("historical-quotes.json")
+    newest_quote = max(q["provider_update_at_utc"] for q in current["quotes"])
+    late = [t["id"] for t in trades if t["executed_at_utc"] > newest_quote]
+    if late:
+        raise SystemExit(f"trades {late} are after the newest saved quote ({newest_quote}); "
+                         "run python3 tools/snapshot_quotes.py first")
     no_quote = sorted(set(shares) - {q["symbol"] for q in current["quotes"]})
     if no_quote:
         raise SystemExit(f"quotes-current.json has no quote for current holdings {no_quote}; "
@@ -121,10 +126,16 @@ def main(public, out):
         closed = all(q.get("session") == "closed" for q in snap["quotes"])
         latest = max(q["provider_update_at_utc"] for q in snap["quotes"])
         held, _ = holdings_at(positions, latest)
+        have = {q["symbol"] for q in snap["quotes"]}
+        if snap is not current and not set(held) <= have:
+            # Saved before a trade was recorded (e.g. a trade entered a day late): skip the point.
+            # The time-weighted chain stays right because flows are summed between kept points.
+            print(f"history point {latest} skipped: no quote for {sorted(set(held) - have)}", file=sys.stderr)
+            continue
         history.append({"date": latest[:10], "as_of_utc": latest,
                         "value": snapshot_value(held, snap["quotes"], latest),
                         "kind": "close" if closed else "intraday",
-                        "spy": next(q["price"] for q in snap["quotes"] if q["symbol"] == "SPY"),
+                        "spy": next((q["price"] for q in snap["quotes"] if q["symbol"] == "SPY"), None),
                         "note": "Shares held then x saved quotes"})
     # Per point: cost held then, SPY position then, the outside flow since the previous point,
     # and the time-weighted return since the statement (flows count at the start of a period).
@@ -184,7 +195,9 @@ def main(public, out):
                "price_note": t.get("price_note") or ("Estimated price; replaced when the brokerage fill is recorded."
                                                      if t.get("estimated") else None),
                "stop": ({"price": t["stop_loss"]["price"], "rule": t["stop_loss"].get("rule")} if t.get("stop_loss") else None)}
-        if not public:
+        if public:
+            row["shares_units"] = str((dec(t["shares"]) / open_total_basis).quantize(Decimal("1e-12")))
+        else:
             row |= {"shares": t["shares"], "fees": t.get("fees"), "amount": money(abs(trade_amount(t)))}
             if t.get("id") in gains:
                 row |= {"realized_gain": money(gains[t["id"]]["gain"]), "cost_removed": money(gains[t["id"]]["cost"])}

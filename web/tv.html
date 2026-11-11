@@ -103,7 +103,7 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 
 /* New positions: one large card each, with the stop-loss rule drawn as a distance bar. */
 .newpos { grid-auto-flow: row; grid-template-columns: repeat(var(--n, 2), 1fr); gap: 1.4vw; }
-.np { background: var(--panel); border: 2px solid var(--gold); border-radius: 1.6vh; padding: 2.2vh 1.6vw; display: flex; flex-direction: column; gap: 1.5vh; min-height: 0; }
+.np { background: var(--panel); border: 2px solid var(--gold); border-radius: 1.6vh; padding: 2.2vh 1.6vw; display: flex; flex-direction: column; gap: 1.2vh; min-height: 0; overflow: hidden; }
 .np .head { display: flex; align-items: baseline; gap: 1vw; flex-wrap: wrap; }
 .np .sym { font: 700 7vh/1 var(--sans); }
 .np .nm { font: 500 3.2vh var(--serif); color: var(--text); }
@@ -114,7 +114,7 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 .np .stop { margin-top: auto; border-top: 2px solid var(--line); padding-top: 1.6vh; }
 .np .stop .line { font: 600 3vh var(--sans); }
 .np .stop .line.none { color: var(--muted); font-weight: 500; }
-.np .stop .rule { font-size: 2.4vh; color: var(--muted); margin-top: .6vh; }
+.np .stop .rule { font-size: 2.4vh; color: var(--muted); margin-top: .6vh; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .stopbar { position: relative; height: 2.4vh; border-radius: 99px; background: var(--panel-2); margin-top: 1.2vh; overflow: hidden; }
 .stopbar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--up); }
 .stopbar.near i { background: var(--warn); } .stopbar.hit i { background: var(--down); }
@@ -318,7 +318,7 @@ function renderHero(s, showDollars) {
     set('day', `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange);
     set('day2', fmtPct(s.dayPct), s.dayChange, 'v2');
     set('gain', fmtSignedUsd(tg.gain), tg.gain);
-    set('gain2', tg.realized ? `${fmtPct(tg.pct)} · ${fmtUsd(Math.abs(tg.realized))} from sales` : fmtPct(tg.pct), tg.gain, 'v2');
+    set('gain2', tg.realized ? `${fmtPct(tg.pct)} · ${fmtSignedUsd(tg.realized)} from sales` : fmtPct(tg.pct), tg.gain, 'v2');
   } else {
     $('hero-label').textContent = 'Gain vs cost';
     $('hero').textContent = fmtPct(tg.pct);
@@ -415,7 +415,7 @@ function renderNew(s, showDollars) {
           ? [el('div', { class: `line ${r.stopLevel === 'ok' ? '' : r.stopLevel === 'hit' ? 'down' : 'warn'}` }, stop),
             el('div', { class: `stopbar ${r.stopLevel}`, role: 'img', 'aria-label': `Price distance above the stop: ${(r.stopGap * 100).toFixed(1)}%` },
               el('i', { style: `width:${(range * 100).toFixed(1)}%` })),
-            el('div', { class: 'rule' }, 'Rule: sell if it closes 20% or more below our buy price.')]
+            el('div', { class: 'rule' }, r.stopRule ? `Rule: ${r.stopRule.replace(/\s*\(.*\)\.?$/, '.')}` : '')]
           : el('div', { class: 'line none' }, 'No stop-loss level recorded')));
   };
   $('p-new').style.setProperty('--n', Math.min(Math.max(fresh.length, 1), 3));
@@ -451,7 +451,7 @@ function renderMovers(s) {
 
 function renderTape(s) {
   const items = s.rows.map(r => el('span', {}, el('b', {}, r.symbol.replace('/', '.')), `$${fmtPrice(r.price)} `,
-    el('span', { class: dir(r.dayPct), style: 'margin:0' }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`)));
+    el('span', { class: dir(r.stockDayPct), style: 'margin:0' }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`)));
   // The delay notice must recur at least every 90 seconds on a ticker; the track holds
   // two copies of the list, so it appears twice per scroll cycle.
   items.unshift(el('span', { class: 'notice' }, delayNotice(payload)));

@@ -290,7 +290,8 @@
    "stop": {
     "price": "659.76",
     "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11)."
-   }
+   },
+   "shares_units": "0.000069422412"
   },
   {
    "id": "2026-11-11-buy-CAT",
@@ -303,7 +304,8 @@
    "price": "608.54",
    "estimated": false,
    "price_note": null,
-   "stop": null
+   "stop": null,
+   "shares_units": "0.000079339900"
   },
   {
    "id": "2026-11-11-sell-SPY",
@@ -316,7 +318,8 @@
    "price": "761.31",
    "estimated": true,
    "price_note": "Estimated price; replaced when the brokerage fill is recorded.",
-   "stop": null
+   "stop": null,
+   "shares_units": "0.000138844825"
   }
  ],
  "quotes": {

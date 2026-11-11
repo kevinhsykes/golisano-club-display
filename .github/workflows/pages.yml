@@ -39,7 +39,8 @@ jobs:
           python3 tools/snapshot_history.py || echo "history refresh failed; previous files kept"
       - name: Build payloads
         run: |
-          python3 build.py
+          # A push that adds a holding may carry quotes without it; fetch a fresh snapshot then.
+          python3 build.py || { python3 tools/snapshot_quotes.py && python3 build.py; }
           python3 build.py --public --out web/data/portfolio.public.json
       - name: Test
         run: |

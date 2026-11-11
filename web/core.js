@@ -132,6 +132,7 @@ export function freshness(items, status, now, delayMinutes = 0) {
 export function compute(payload) {
   const quotes = new Map(payload.quotes.items.map(q => [q.symbol, q]));
   const dollars = payload.amounts === 'shown';
+  const tradeSize = t => Number(dollars ? t.shares : t.shares_units);
   const rows = payload.holdings.map(h => {
     const q = quotes.get(h.symbol);
     const price = Number(q.price);
@@ -139,22 +140,28 @@ export function compute(payload) {
     const size = dollars ? Number(h.shares) : Number(h.units);
     const cents = p => Math.round(p * 100);
     const notes = positionNotes(h, price);
-    // A position bought during this quote's session earned today only from its buy price:
-    // the move from yesterday's close happened before we owned it.
-    const boughtToday = notes.openedAt !== undefined &&
-      etParts(new Date(notes.openedAt)).ymd === etParts(new Date(Date.parse(q.provider_update_at_utc))).ymd &&
-      Date.parse(q.provider_update_at_utc) >= notes.openedAt;
-    const base = boughtToday ? notes.buyPrice : prev;
-    const value = dollars ? (cents(price) * size) / 100 : price * size;
-    const prevValue = dollars ? (cents(base) * size) / 100 : base * size;
+    // Trades in this symbol during the quote's session: shares bought today start at their buy
+    // price, and shares sold today count their move from yesterday's close up to the sale.
+    const qt = Date.parse(q.provider_update_at_utc), qDay = etParts(new Date(qt)).ymd;
+    const today = (payload.trades || []).filter(t => t.symbol === h.symbol && Date.parse(t.executed_at_utc) <= qt &&
+      etParts(new Date(Date.parse(t.executed_at_utc))).ymd === qDay && Number.isFinite(tradeSize(t)));
+    const bought = today.filter(t => t.type === 'buy'), sold = today.filter(t => t.type === 'sell');
+    const sizeAtOpen = size - bought.reduce((a, t) => a + tradeSize(t), 0) + sold.reduce((a, t) => a + tradeSize(t), 0);
+    const money = (p, n) => (dollars ? (cents(p) * n) / 100 : p * n);
+    const value = money(price, size);
+    const prevValue = money(prev, sizeAtOpen) + bought.reduce((a, t) => a + money(Number(t.price), tradeSize(t)), 0);
+    const proceeds = sold.reduce((a, t) => a + money(Number(t.price), tradeSize(t)), 0);
+    const dayValue = value + proceeds - prevValue;
     const cost = dollars ? Number(h.cost_basis) : Number(h.avg_cost) * size;
     return {
       ...h, price, prev, value, prevValue, cost,
-      dayChange: price - prev, dayPct: price / prev - 1,
-      dayValue: value - prevValue, gainValue: value - cost,
+      // dayPct is the club's own day on this holding; stockDayPct is the stock's move (tape, SPY benchmark).
+      dayChange: price - prev, stockDayPct: price / prev - 1,
+      dayValue, dayPct: prevValue > 0 ? dayValue / prevValue : price / prev - 1,
+      gainValue: value - cost,
       costPct: price / Number(h.avg_cost) - 1,
-      asOf: Date.parse(q.provider_update_at_utc),
-      boughtToday, ...notes,
+      asOf: qt,
+      boughtToday: bought.length > 0, tradedToday: today.length > 0, ...notes,
     };
   });
   const sum = k => rows.reduce((a, r) => a + r[k], 0);
@@ -165,9 +172,9 @@ export function compute(payload) {
   const spy = rows.find(r => r.symbol === 'SPY');
   return {
     rows, dollars, total, cost,
-    dayChange: total - prevTotal, dayPct: total / prevTotal - 1,
+    dayChange: sum('dayValue'), dayPct: sum('dayValue') / prevTotal,
     gain: total - cost, gainPct: total / cost - 1,
-    spyDayPct: spy ? spy.dayPct : null,
+    spyDayPct: spy ? spy.stockDayPct : null,
   };
 }
 
@@ -215,14 +222,16 @@ export function sinceStatement(payload, summary) {
 }
 
 // Gain including sales: unrealized gain on what we hold plus gain realized by sales up to the
-// newest quote. The percent is over everything we paid, including the cost of what was sold.
+// newest quote. The percent is over the net money put in (see below).
 export function totalGain(payload, summary) {
   const newest = newestQuote(payload.quotes.items), d = summary.dollars;
   const sold = (payload.realized || []).filter(r => Date.parse(r.executed_at_utc) <= newest);
   const realized = sold.reduce((a, r) => a + Number(d ? r.gain : r.gain_units), 0);
   const soldCost = sold.reduce((a, r) => a + Number(d ? r.cost : r.cost_units), 0);
   const gain = summary.gain + realized;
-  return { gain, pct: gain / (summary.cost + soldCost), realized, soldCost, estimated: sold.some(r => r.estimated) };
+  // Over the net money put in (statement cost plus outside flows) = current cost - realized gain,
+  // so selling one holding to buy another does not change the percent.
+  return { gain, pct: gain / (summary.cost - realized), realized, soldCost, estimated: sold.some(r => r.estimated) };
 }
 
 // History as {t, y} points: dollars when shown, otherwise an index (statement = 100).
@@ -341,6 +350,14 @@ export function lineChart(points, { width, height, pad = 40, left: leftPad, unit
 export function comparisonSeries(payload, summary) {
   const spyH = payload.holdings.find(h => h.symbol === 'SPY');
   const tg = totalGain(payload, summary);
+  if (!spyH) {
+    // No SPY position (sold out): only the portfolio line.
+    const pts = payload.history.map(h => ({ t: Date.parse(h.as_of_utc), y: (Number(summary.dollars ? h.value : (Number(h.index) / 100) * Number(payload.statement.units_value))
+      - Number(summary.dollars ? h.cost : h.cost_units) + Number(summary.dollars ? h.realized : h.realized_units)) /
+      (Number(summary.dollars ? h.cost : h.cost_units) - Number(summary.dollars ? h.realized : h.realized_units)) }));
+    pts.push({ t: newestQuote(payload.quotes.items), live: true, y: tg.pct });
+    return [{ name: 'Portfolio', cls: 'port', points: pts }];
+  }
   const now = {
     cost: summary.cost, realized: tg.realized, soldCost: tg.soldCost,
     spySize: summary.dollars ? Number(spyH.shares) : Number(spyH.units),
@@ -362,8 +379,8 @@ export function comparisonSeries(payload, summary) {
       spy: Number(payload.quotes.items.find(q => q.symbol === 'SPY').price) });
   }
   return [
-    // Portfolio: unrealized plus realized gain, over everything paid (so a sale is not a drop).
-    { name: 'Portfolio', cls: 'port', points: pts.map(p => ({ t: p.t, live: p.live, y: (p.total - p.cost + p.realized) / (p.cost + p.soldCost) })) },
+    // Portfolio: unrealized plus realized gain, over the net money put in (so a reallocation is flat).
+    { name: 'Portfolio', cls: 'port', points: pts.map(p => ({ t: p.t, live: p.live, y: (p.total - p.cost + p.realized) / (p.cost - p.realized) })) },
     { name: 'SPY position', cls: 'spy', points: pts.map(p => ({ t: p.t, live: p.live, y: p.spy / p.spyAvg - 1 })) },
     { name: 'Stock picks', cls: 'picks',
       points: pts.map(p => ({ t: p.t, live: p.live, y: (p.total - p.spy * p.spySize) / (p.cost - p.spySize * p.spyAvg) - 1 })) },

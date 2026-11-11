@@ -294,7 +294,7 @@ function renderTable(s, dollars) {
     symbol: 'Total', dayValue: fmtSignedUsd(s.dayChange, true),
     dayPct: `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, cost: fmtUsd(s.cost, true), value: fmtUsd(s.total, true),
     gainValue: fmtSignedUsd(s.gain, true), costPct: fmtPct(s.gainPct, 1), weight: '100.0%',
-    name: `${s.rows.length} holdings${tg.realized ? ` · unrealized; ${fmtSignedUsd(tg.realized, true)} realized from sales` : ''}`,
+    name: `${s.rows.length} holdings${tg.realized && dollars ? ` · unrealized; ${fmtSignedUsd(tg.realized, true)} realized from sales` : ''}`,
   };
   const tdir = { dayValue: s.dayChange, dayPct: s.dayPct, gainValue: s.gain, costPct: s.gainPct };
   $('foot').replaceChildren(el('tr', {}, ...cols.map(([key]) => el('td', { class: tdir[key] !== undefined ? dir(tdir[key]) : null }, totals[key] ?? ''))));

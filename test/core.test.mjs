@@ -202,11 +202,49 @@ test("today's change for a position bought today starts from the buy price, not 
   let r = compute(p).rows.find(x => x.symbol === 'MU');
   assert.equal(r.boughtToday, true);
   assert.equal(r.dayValue.toFixed(2), ((830 - 824.70) * 7).toFixed(2));
-  assert.ok(r.dayPct > 0.14);                          // the stock's own move is still shown per row
+  assert.ok(r.stockDayPct > 0.14);                     // the stock's own move (tape) is kept separately
+  assert.equal(r.dayPct.toFixed(6), (((830 - 824.70) * 7) / (824.70 * 7)).toFixed(6)); // Day % uses the same base as Day $
   // Next session: yesterday's close is the baseline again.
   q.provider_update_at_utc = '2026-11-12T15:00:00Z'; q.previous_close = '830.00'; q.price = '840.00';
   r = compute(p).rows.find(x => x.symbol === 'MU');
   assert.equal(r.boughtToday, false);
   assert.equal(r.dayValue.toFixed(2), (10 * 7).toFixed(2));
   assert.equal(mu.opened.date, '2026-11-11');
+});
+
+test("shares sold today count their move from yesterday's close up to the sale", () => {
+  const p = full();
+  const q = p.quotes.items.find(x => x.symbol === 'SPY');
+  q.provider_update_at_utc = '2026-11-11T19:00:00Z'; q.price = '762.00'; q.previous_close = '750.00';
+  const r = compute(p).rows.find(x => x.symbol === 'SPY');
+  // 57 held now + 14 sold at 761.31: (57 x 762 + 14 x 761.31) - 71 x 750
+  assert.equal(r.dayValue.toFixed(2), (57 * 762 + 14 * 761.31 - 71 * 750).toFixed(2));
+  assert.equal(r.stockDayPct.toFixed(6), (762 / 750 - 1).toFixed(6));
+  // Same in the public payload (units), as a percent.
+  const pub = load('portfolio.public.json');
+  const qp = pub.quotes.items.find(x => x.symbol === 'SPY');
+  Object.assign(qp, { provider_update_at_utc: '2026-11-11T19:00:00Z', price: '762.00', previous_close: '750.00' });
+  assert.equal(compute(pub).rows.find(x => x.symbol === 'SPY').dayPct.toFixed(6), r.dayPct.toFixed(6));
+});
+
+test('a reallocation at unchanged prices leaves gain % unchanged', () => {
+  // Before: 100 X, cost 10,000, price 110. After: all X sold at 110 (realized +1,000), 11,000 of Y bought at 110.
+  const q = (sym, price) => ({ symbol: sym, price: String(price), previous_close: String(price), provider_update_at_utc: '2026-11-12T15:00:00Z' });
+  const before = { amounts: 'shown', holdings: [{ symbol: 'X', shares: '100', cost_basis: '10000', avg_cost: '100' }], quotes: { items: [q('X', 110)] } };
+  const after = { amounts: 'shown', holdings: [{ symbol: 'Y', shares: '100', cost_basis: '11000', avg_cost: '110' }], quotes: { items: [q('Y', 110)] },
+    realized: [{ executed_at_utc: '2026-11-12T14:00:00Z', gain: '1000', cost: '10000' }] };
+  const a = totalGain(before, compute(before)), b = totalGain(after, compute(after));
+  assert.equal(a.gain, 1000); assert.equal(b.gain, 1000);
+  assert.equal(a.pct.toFixed(6), '0.100000');
+  assert.equal(b.pct.toFixed(6), '0.100000');
+  // The reviewed bug divided by cost + sold cost: 1000 / 21000.
+  assert.notEqual(b.pct.toFixed(6), (1000 / 21000).toFixed(6));
+});
+
+test('comparison chart with no SPY position draws only the portfolio line', () => {
+  const p = full();
+  p.holdings = p.holdings.filter(h => h.symbol !== 'SPY');
+  const series = comparisonSeries(p, compute(p));
+  assert.equal(series.length, 1);
+  assert.ok(series[0].points.every(pt => Number.isFinite(pt.y)));
 });
