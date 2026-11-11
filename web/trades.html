@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Club Trades</title>
+<style>
+/* Trade history for phones and laptops. Same look as index.html. */
+:root {
+  --bg: #ffffff; --panel: #f6f4ef; --line: #e2ddd2; --text: #0b1f2e; --muted: #5b6874;
+  --gold: #9a7a35; --up: #11804a; --down: #c0392b; --warn-bg: #fff4d6; --warn: #7a5200;
+  --buy: #11804a; --sell: #b5532a;
+  --serif: Georgia, "DejaVu Serif", serif;
+  --sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1620; --panel: #12212e; --line: #22384a; --text: #eef2f5; --muted: #9fb0bd;
+    --gold: #d5ba7e; --up: #3ccf86; --down: #ff7a6e; --warn-bg: #3d2d00; --warn: #ffd27a; --buy: #3ccf86; --sell: #ff9f6e;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1620; --panel: #12212e; --line: #22384a; --text: #eef2f5; --muted: #9fb0bd;
+  --gold: #d5ba7e; --up: #3ccf86; --down: #ff7a6e; --warn-bg: #3d2d00; --warn: #ffd27a; --buy: #3ccf86; --sell: #ff9f6e;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 var(--sans); font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
+header h1 { margin: 0; font: 500 24px var(--serif); margin-right: auto; }
+header .org { display: block; font: 600 11px var(--sans); letter-spacing: .28em; color: var(--gold); text-transform: uppercase; }
+header .links { flex-basis: 100%; font: 13px var(--sans); } header .links a { color: inherit; }
+header .links b { font-weight: 700; }
+.asof { color: var(--muted); font-size: 13px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 14px 0; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.kpi .s { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.kpi .v { font: 600 22px var(--sans); margin-top: 2px; }
+.kpi .v2 { font-size: 13px; color: var(--muted); }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--muted); }
+h2 { margin: 18px 0 8px; font: 500 18px var(--serif); }
+.day { margin: 0 0 14px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.day > .dh { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; padding: 10px 12px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.day > .dh h3 { margin: 0; font: 600 16px var(--sans); margin-right: auto; }
+.day > .dh span { color: var(--muted); font-size: 13px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 8px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+th.l, td.l { text-align: left; }
+tr:last-child td { border-bottom: 0; }
+td.sym { font-weight: 700; }
+td.name { color: var(--muted); max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
+.act { display: inline-block; min-width: 42px; text-align: center; font: 700 11px/1 var(--sans); letter-spacing: .08em; padding: 4px 6px; border-radius: 4px; color: #fff; }
+.act.buy { background: var(--buy); } .act.sell { background: var(--sell); }
+.est { display: inline-block; font: 700 10px/1 var(--sans); letter-spacing: .06em; padding: 3px 5px; border-radius: 4px; background: var(--warn-bg); color: var(--warn); border: 1px solid currentColor; margin-left: 6px; }
+.notes { padding: 8px 12px 12px; font-size: 13px; color: var(--muted); }
+.notes p { margin: 4px 0; }
+.start { background: var(--panel); border: 1px dashed var(--line); border-radius: 10px; padding: 12px; font-size: 14px; }
+.start b { font-weight: 600; }
+.empty { color: var(--muted); }
+footer { margin-top: 14px; font-size: 12px; color: var(--muted); }
+footer a { color: var(--gold); }
+@media (max-width: 560px) { .narrow-hide { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><span class="org">Golisano Institute</span>Investment Club trades</h1>
+    <span class="asof" id="asof"></span>
+    <nav class="links"><a href="index.html">Portfolio</a> · <b>Trades</b> · <a href="screens.html">TV screens</a> · <a href="board.html">Live board</a></nav>
+  </header>
+  <section class="kpis" id="kpis"></section>
+  <h2>Trade history, newest first</h2>
+  <div id="days"></div>
+  <h2>Starting point</h2>
+  <div class="start" id="start"></div>
+  <footer>
+    <p id="disclosure"></p>
+    <p>"Price since" compares today's price with the trade price: for a buy it is our gain on those shares; for a sale it is what the shares did after we sold them. Amounts exclude fees unless a fee is shown.</p>
+  </footer>
+</div>
+<script type="module">
+import { fetchJson, mergeQuotes, compute, totalGain, el, fmtUsd, fmtSignedUsd, fmtPct, fmtPrice, arrow, dir, fmtTime, fmtDay, newestQuote } from './core.js';
+
+const params = new URLSearchParams(location.search);
+const samePath = v => (v && !/^[a-z]+:|^\/\//i.test(v) ? v : null);
+const DATA = samePath(params.get('data')) || 'data/portfolio.json';
+const hideAmounts = params.get('amounts') === 'hide';
+if (params.get('theme')) document.documentElement.dataset.theme = params.get('theme');
+const $ = id => document.getElementById(id);
+const fmtDate = ymd => new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(`${ymd}T12:00:00Z`));
+
+let payload;
+async function boot() {
+  try { payload = await fetchJson(DATA); } catch {
+    $('days').replaceChildren(el('p', { class: 'empty' }, 'Trade data is unavailable right now. Try reloading the page.'));
+    return;
+  }
+  try { if (payload.live_quotes_url) mergeQuotes(payload, await fetchJson(payload.live_quotes_url)); } catch { /* saved prices */ }
+  render();
+}
+
+function render() {
+  const dollars = payload.amounts === 'shown' && !hideAmounts;
+  const trades = [...(payload.trades || [])].sort((a, b) => b.executed_at_utc.localeCompare(a.executed_at_utc));
+  const prices = new Map(payload.quotes.items.map(q => [q.symbol, Number(q.price)]));
+  const newest = newestQuote(payload.quotes.items);
+  $('asof').textContent = `Prices as of ${fmtTime(newest)}, ${fmtDay(newest)}`;
+
+  const s = compute(payload);
+  const tg = totalGain(payload, s);
+  const sum = (type, k) => trades.filter(t => t.type === type).reduce((a, t) => a + Number(t[k] || 0), 0);
+  const kpi = (label, v, d, v2) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
+    el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: 'v2' }, v2) : null);
+  const buys = trades.filter(t => t.type === 'buy').length, sells = trades.filter(t => t.type === 'sell').length;
+  $('kpis').replaceChildren(
+    kpi('Trades recorded', String(trades.length), undefined, `${buys} buy${buys === 1 ? '' : 's'}, ${sells} sale${sells === 1 ? '' : 's'}`),
+    ...(dollars ? [
+      kpi('Bought', fmtUsd(sum('buy', 'amount'), true)),
+      kpi('Sold', fmtUsd(sum('sell', 'amount'), true)),
+      kpi('Realized gain from sales', fmtSignedUsd(sum('sell', 'realized_gain'), true), sum('sell', 'realized_gain')),
+    ] : [kpi('Gain from sales', tg.realized ? fmtPct(tg.realized / (s.cost + tg.soldCost)) : '—', tg.realized, 'share of total cost')]),
+  );
+
+  if (!trades.length) {
+    $('days').replaceChildren(el('p', { class: 'empty' }, 'No trades recorded since the Sept 22 statement.'));
+  } else {
+    const byDay = new Map();
+    for (const t of trades) { if (!byDay.has(t.trade_date)) byDay.set(t.trade_date, []); byDay.get(t.trade_date).push(t); }
+    $('days').replaceChildren(...[...byDay].map(([ymd, list]) => {
+      const bought = list.filter(t => t.type === 'buy').reduce((a, t) => a + Number(t.amount || 0), 0);
+      const sold = list.filter(t => t.type === 'sell').reduce((a, t) => a + Number(t.amount || 0), 0);
+      const cols = [
+        ['Time', t => t.time_note || fmtTime(Date.parse(t.executed_at_utc)), 'l narrow-hide'],
+        ['', t => el('span', { class: `act ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'), 'l'],
+        ['Symbol', t => t.symbol.replace('/', '.'), 'l sym'],
+        ['Name', t => t.name, 'l name narrow-hide'],
+        ...(dollars ? [['Shares', t => t.shares]] : []),
+        ['Price', t => [`$${fmtPrice(Number(t.price))}`, t.estimated ? el('span', { class: 'est', title: t.price_note || '' }, 'EST') : null]],
+        ...(dollars ? [['Amount', t => fmtUsd(Number(t.amount), true)]] : []),
+        ['Now', t => (prices.has(t.symbol) ? `$${fmtPrice(prices.get(t.symbol))}` : '—'), 'narrow-hide'],
+        ['Price since', t => {
+          const p = prices.get(t.symbol);
+          if (!p) return '—';
+          const x = p / Number(t.price) - 1;
+          return el('span', { class: dir(t.type === 'buy' ? x : -x) }, `${arrow(x)} ${fmtPct(x, 1)}`);
+        }],
+        ...(dollars ? [['Realized', t => (t.realized_gain ? el('span', { class: dir(Number(t.realized_gain)) }, fmtSignedUsd(Number(t.realized_gain), true)) : '')]] : []),
+      ];
+      const notes = [
+        ...list.filter(t => t.stop).map(t => el('p', {}, el('b', {}, `${t.symbol} stop-loss: $${fmtPrice(Number(t.stop.price))}. `), t.stop.rule || '')),
+        ...(list.some(t => t.estimated) ? [el('p', {}, 'EST: estimated price. ', list.find(t => t.estimated).price_note || '')] : []),
+      ];
+      return el('section', { class: 'day' },
+        el('div', { class: 'dh' }, el('h3', {}, fmtDate(ymd)),
+          dollars ? el('span', {}, `Bought ${fmtUsd(bought, true)} · Sold ${fmtUsd(sold, true)} · Net ${fmtSignedUsd(sold - bought, true)} cash`) : null),
+        el('div', { class: 'table-wrap' }, el('table', {},
+          el('thead', {}, el('tr', {}, ...cols.map(([h, , c]) => el('th', { class: c || null, scope: 'col' }, h)))),
+          el('tbody', {}, ...list.map(t => el('tr', {}, ...cols.map(([, f, c]) => el('td', { class: c || null }, f(t)))))))),
+        notes.length ? el('div', { class: 'notes' }, notes) : null);
+    }));
+  }
+
+  $('start').replaceChildren(
+    el('b', {}, 'Sept 22, 2026 brokerage statement. '),
+    dollars && payload.statement.value
+      ? `The club held 18 positions worth ${fmtUsd(Number(payload.statement.value), true)} at a cost of ${fmtUsd(Number(payload.statement.basis), true)}. `
+      : 'The club held 18 positions. ',
+    'Purchase dates for those positions are not on record, so this history starts there. Every trade above is applied on top of that statement.');
+  $('disclosure').textContent = payload.disclosure;
+}
+
+boot();
+</script>
+</body>
+</html>

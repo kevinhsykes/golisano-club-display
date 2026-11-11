@@ -38,6 +38,12 @@ test('public payload carries no shares, basis or dollar history but gives the sa
   try { pub = load('portfolio.public.json'); } catch { return; } // built with --public
   assert.equal(pub.amounts, 'hidden');
   for (const h of pub.holdings) { assert.equal(h.shares, undefined); assert.equal(h.cost_basis, undefined); }
+  // Trade log, flows and realized gains carry no share counts or dollar amounts in the public build.
+  assert.ok(pub.trades.length >= 3);
+  for (const t of pub.trades) for (const k of ['shares', 'amount', 'fees', 'realized_gain', 'cost_removed']) assert.equal(t[k], undefined, k);
+  for (const f of pub.flows) assert.equal(f.amount, undefined);
+  for (const r of pub.realized) { assert.equal(r.gain, undefined); assert.equal(r.proceeds, undefined); }
+  for (const h of pub.history) for (const k of ['cost', 'spy_shares', 'spy_cost', 'flow', 'realized', 'sold_cost']) assert.equal(h[k], undefined, k);
   assert.equal(pub.statement.value, null);
   assert.ok(pub.history.every(p => p.value === undefined));
   const a = compute(full()), b = compute(pub);

@@ -10,6 +10,7 @@ is connected.
 | Live board (interim) | `/board.html` | TV view that works today with no account or key: TradingView's free widget shows 15-minute-delayed prices for the holdings. No portfolio value. Also works opened as a local file. |
 | TV view | `/tv.html` | Full-screen 16:9 display for the cafe once a licensed feed runs: value, day change, gain, four rotating panels. |
 | Web view | `/` (`index.html`) | Phones and laptops. The Canvas page links here. Sortable holdings table. |
+| Trades | `/trades.html` | Every buy and sale since the Sept 22 statement, with realized gains and stop-loss rules. |
 | Quotes API | `/api/quotes` | Latest complete set of quotes, one per holding (last good set if a refresh fails). |
 | History API | `/api/history` | One closing snapshot per trading day. |
 | Health | `/api/health` | Last refresh attempt, error text if it failed, newest quote time. |

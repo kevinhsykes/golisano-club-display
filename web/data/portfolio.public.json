@@ -275,6 +275,50 @@
    "cost_units": "0.097027540565"
   }
  ],
+ "trades": [
+  {
+   "id": "2026-11-11-buy-MU",
+   "type": "buy",
+   "symbol": "MU",
+   "name": "Micron Technology",
+   "trade_date": "2026-11-11",
+   "executed_at_utc": "2026-11-11T17:54:00Z",
+   "time_note": "about 12:54 PM ET",
+   "price": "824.70",
+   "estimated": false,
+   "price_note": null,
+   "stop": {
+    "price": "659.76",
+    "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11)."
+   }
+  },
+  {
+   "id": "2026-11-11-buy-CAT",
+   "type": "buy",
+   "symbol": "CAT",
+   "name": "Caterpillar",
+   "trade_date": "2026-11-11",
+   "executed_at_utc": "2026-11-11T17:54:00Z",
+   "time_note": "about 12:54 PM ET",
+   "price": "608.54",
+   "estimated": false,
+   "price_note": null,
+   "stop": null
+  },
+  {
+   "id": "2026-11-11-sell-SPY",
+   "type": "sell",
+   "symbol": "SPY",
+   "name": "SPDR S&P 500 ETF Trust",
+   "trade_date": "2026-11-11",
+   "executed_at_utc": "2026-11-11T17:54:00Z",
+   "time_note": "about 12:54 PM ET",
+   "price": "761.31",
+   "estimated": true,
+   "price_note": "Estimated price; replaced when the brokerage fill is recorded.",
+   "stop": null
+  }
+ ],
  "quotes": {
   "collected_at_utc": "2026-11-11T18:22:36Z",
   "items": [

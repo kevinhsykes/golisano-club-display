@@ -174,6 +174,21 @@ def main(public, out):
         holdings.append(h)
     flows = [{"effective_utc": t["executed_at_utc"], "amount": trade_amount(t)} for t in trades]
     realized = realized_gains(positions)
+    # Trade log for web/trades.html. The public build drops share counts and dollar amounts.
+    gains = {r["id"]: r for r in realized}
+    trade_log = []
+    for t in trades:
+        row = {"id": t.get("id"), "type": t["type"], "symbol": t["symbol"], "name": names.get(t["symbol"], t["symbol"]),
+               "trade_date": t["trade_date"], "executed_at_utc": t["executed_at_utc"], "time_note": t.get("time_note"),
+               "price": t["price"], "estimated": bool(t.get("estimated")),
+               "price_note": t.get("price_note") or ("Estimated price; replaced when the brokerage fill is recorded."
+                                                     if t.get("estimated") else None),
+               "stop": ({"price": t["stop_loss"]["price"], "rule": t["stop_loss"].get("rule")} if t.get("stop_loss") else None)}
+        if not public:
+            row |= {"shares": t["shares"], "fees": t.get("fees"), "amount": money(abs(trade_amount(t)))}
+            if t.get("id") in gains:
+                row |= {"realized_gain": money(gains[t["id"]]["gain"]), "cost_removed": money(gains[t["id"]]["cost"])}
+        trade_log.append(row)
 
     if public:
         # Relative units let the page recompute weights from live prices without
@@ -223,6 +238,7 @@ def main(public, out):
         # Gains locked in by sales (proceeds less the average cost removed); the pages add them to
         # unrealized gain so a sale does not look like a loss.
         "realized": realized,
+        "trades": trade_log,
         "quotes": {"collected_at_utc": current["collected_at_utc"], "items": quotes, "meta": None},
         # The pages poll this (served by worker/index.js) and fall back to the saved quotes.
         "live_quotes_url": "api/quotes",
