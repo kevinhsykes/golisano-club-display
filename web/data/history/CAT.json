@@ -3,12 +3,12 @@
  "name": "Caterpillar Inc.",
  "exchange": "NYSE",
  "currency": "USD",
- "as_of_utc": "2026-11-11T20:02:30Z",
- "price": 604.73,
+ "as_of_utc": "2026-11-11T20:17:34Z",
+ "price": 603.73,
  "previous_close": 567.93,
  "day_high": 610.5,
  "day_low": 588.5,
- "volume": 2642831,
+ "volume": 2722722,
  "week52_high": 1073.46,
  "week52_low": 537.08,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-11",
-   "close": 604.73
+   "close": 603.73
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-11T20:02:32Z"
+ "retrieved_at_utc": "2026-11-11T20:17:38Z"
 }
