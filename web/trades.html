@@ -73,8 +73,12 @@ footer a { color: var(--gold); }
   tbody tr { padding: 12px; border-bottom: 1px solid var(--line); }
   td, td.l { text-align: left; padding: 3px 0; border: 0; white-space: normal; overflow-wrap: anywhere; }
   td.name { max-width: none; overflow: visible; }
-  td::before { content: attr(data-label); color: var(--muted); margin-right: 8px; font-weight: 400; }
-  td.sym { font-size: 18px; }
+  td::before { content: attr(data-label); color: var(--muted); margin-right: 8px; font: 400 15px var(--sans); }
+  td.blank { display: none; }
+  /* Card heading: the BUY/SELL badge and the symbol on one line, without labels. */
+  td.side, td.sym { display: inline-block; width: auto; margin-right: 10px; vertical-align: middle; }
+  td.side::before, td.sym::before { content: none; }
+  td.sym { font-size: 20px; font-weight: 700; }
 }
 
 </style>
@@ -168,7 +172,7 @@ function render() {
       const sold = list.filter(t => t.type === 'sell').reduce((a, t) => a + Number(t.amount || 0), 0);
       const cols = [
         ['Time', t => t.time_note || fmtTime(Date.parse(t.executed_at_utc)), 'l narrow-hide'],
-        ['', t => el('span', { class: `act ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'), 'l'],
+        ['', t => el('span', { class: `act ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'), 'l side'],
         ['Symbol', t => t.symbol.replace('/', '.'), 'l sym'],
         ['Name', t => t.name, 'l name narrow-hide'],
         ...(dollars ? [['Shares', t => t.shares]] : []),
@@ -194,7 +198,7 @@ function render() {
           dollars ? el('span', {}, `Bought ${fmtUsd(bought, true)} · Sold ${fmtUsd(sold, true)} · Net ${fmtSignedUsd(sold - bought, true)} cash`) : null),
         el('div', { class: 'table-wrap' }, el('table', {},
           el('thead', {}, el('tr', {}, ...cols.map(([h, , c]) => el('th', { class: c || null, scope: 'col' }, h)))),
-          el('tbody', {}, ...list.map(t => el('tr', {}, ...cols.map(([h, f, c]) => el('td', { class: c || null, 'data-label': h }, f(t)))))))),
+          el('tbody', {}, ...list.map(t => el('tr', {}, ...cols.map(([h, f, c]) => { const v = f(t); return el('td', { class: [c, v === '' || v === null ? 'blank' : null].filter(Boolean).join(' ') || null, 'data-label': h }, v); })))))),
         notes.length ? el('div', { class: 'notes' }, notes) : null);
     }));
   }
