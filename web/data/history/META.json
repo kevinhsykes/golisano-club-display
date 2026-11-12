@@ -3,12 +3,12 @@
  "name": "Meta Platforms, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-12T18:17:12Z",
- "price": 625.415,
+ "as_of_utc": "2026-11-12T18:47:07Z",
+ "price": 624.626,
  "previous_close": 609.01,
  "day_high": 630.277,
  "day_low": 618.92,
- "volume": 5336917,
+ "volume": 5654770,
  "week52_high": 779.82,
  "week52_low": 520.26,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-12",
-   "close": 625.415
+   "close": 624.6263
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-12T18:17:16Z"
+ "retrieved_at_utc": "2026-11-12T18:47:13Z"
 }
