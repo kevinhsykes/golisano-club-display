@@ -47,7 +47,10 @@ NOT_THE_COMPANY = {"AAPL": ["Apple Hospitality"], "AMZN": ["Amazon rainforest", 
                    "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial"]}
 # Market-research press releases ("Global Parcel Delivery Market Report 2026"), not news that uses
 # "market share" or "market outlook" in passing.
-_NOISE = re.compile(r"\bmarket (report|size|research)\b|\bglobal\b.*\bmarket\s+(forecast|20\d\d)\b", re.I)
+# Market-research press releases are written in Title Case: "Global Parcel Delivery Market Report 2026",
+# "... Market Analysis 2026: UPS", "... Market Trends 2026-2032". News that mentions a market in a
+# sentence ("loses global market share", "chip market size could hit $1 trillion") stays. Case-sensitive.
+_NOISE = re.compile(r"\bMarket (Report|Size|Research)\b|\bMarket (Analysis|Forecast|Outlook|Trends?)\b.*\b20\d\d\b")
 RUN_BUDGET = 240        # seconds for the whole fetch; later symbols keep their previous items
 _SUFFIX = re.compile(r"\s+(class\s+[a-z]|inc\.?|corp\.?|corporation|co\.?|ltd\.?)$", re.I)
 

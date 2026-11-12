@@ -546,6 +546,7 @@ export function compareChart(seriesIn, { width, height, pad = 18, left = 62, rig
     add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, Math.abs(v) < 1e-9 ? '0%' : `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
   }
   // date labels that do not overlap (newest and first kept)
+  if (!series.length) return svg;    // nothing measurable to draw
   const pts0 = series[0].points;
   const keep = pickDateLabels(pts0.map(p => x(p.t)), pts0.map(p => fmtShortDate(p.t)), charPx, 12 * unit);
   pts0.forEach((p, i) => keep.has(i) && add('text', { x: x(p.t), y: height - bottom * 0.3, class: 'axis',

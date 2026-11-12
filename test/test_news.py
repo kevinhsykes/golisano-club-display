@@ -189,5 +189,25 @@ class MatchingEdges(unittest.TestCase):
         self.assertTrue(mentions("Stock market outlook: Tesla to report", "TSLA", "Tesla"))
 
 
+class PressReleaseFilter(unittest.TestCase):
+    def test_title_case_market_research_releases_are_dropped(self):
+        from snapshot_news import mentions
+        for title in ("Global Parcel Delivery Market Report 2026: UPS, FedEx",
+                      "Global Parcel Delivery Market Analysis 2026: UPS",
+                      "Global Parcel Delivery Market Trends 2026-2032: UPS",
+                      "Parcel Delivery Market Outlook 2030: UPS, FedEx",
+                      "Logistics Market Size, Share and Growth: UPS"):
+            with self.subTest(title=title):
+                self.assertFalse(mentions(title, "UPS", "United Parcel Service Class B"))
+
+    def test_news_sentences_about_a_market_are_kept(self):
+        from snapshot_news import mentions
+        for title, sym, name in (("Apple loses global market share in China, report says", "AAPL", "Apple"),
+                                 ("Nvidia says AI chip market size could hit $1 trillion", "NVDA", "NVIDIA"),
+                                 ("UPS global market forecast cut as volumes slow", "UPS", "United Parcel Service Class B")):
+            with self.subTest(title=title):
+                self.assertTrue(mentions(title, sym, name))
+
+
 if __name__ == "__main__":
     unittest.main()
