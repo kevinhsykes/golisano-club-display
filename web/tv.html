@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Club Portfolio TV</title>
 <style>
-/* 10-foot layout for a 16:9 TV. Sizes use vh so 1080p and 4K render the same. */
+/* 10-foot layout for a 16:9 TV seen from 4-6 m. Sizes use vh so 720p, 1080p and 4K render the same.
+   Minimum text is 3vh (footer fine print 2.6vh). Sized for DejaVu Sans, the widest font in the stack. */
 :root {
   --bg: #061a28;
   --panel: #0c2537;
@@ -15,8 +16,9 @@
   --muted: #a9b8c4;
   --gold: #d5ba7e;
   --gold-soft: #eed7a4;
-  --up: #3ccf86;
-  --down: #ff6b5e;
+  /* Up/down pair checked for deuteranopia (validator delta-E 10.0); arrows and signs always agree. */
+  --up: #2fc9a0;
+  --down: #ff7352;
   --flat: #a9b8c4;
   --warn-bg: #4a3500;
   --warn: #ffd27a;
@@ -25,182 +27,190 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
-body { font: 400 2.4vh/1.25 var(--sans); font-variant-numeric: tabular-nums; cursor: none; }
+body { font: 400 3vh/1.25 var(--sans); font-variant-numeric: tabular-nums; cursor: none; }
 .tv { height: 100vh; display: grid; grid-template-rows: auto auto auto 1fr auto auto; gap: 1.6vh; padding: 2.4vh 2.6vw 1.6vh; transition: transform 2s ease; }
 /* Fixed rows, so the hidden banner leaves an empty row instead of shifting the layout. */
-.tv > header { grid-row: 1; } .tv > .delay { grid-row: 2; } .tv > .banner { grid-row: 3; }
+.tv > header { grid-row: 1; } .tv > .strip { grid-row: 2; } .tv > .banner { grid-row: 3; }
 .tv > main { grid-row: 4; } .tv > .tape { grid-row: 5; } .tv > footer { grid-row: 6; }
 
-header { display: flex; align-items: center; gap: 2vw; padding-bottom: 1.4vh; border-bottom: 2px solid var(--line); }
+header { display: flex; align-items: center; gap: 2vw; padding-bottom: 1.2vh; border-bottom: 2px solid var(--line); white-space: nowrap; }
 .brand { display: flex; align-items: baseline; gap: 1.2vw; margin-right: auto; }
-.brand .org { font: 600 2.1vh var(--sans); letter-spacing: .32em; color: var(--gold); text-transform: uppercase; }
-.brand .club { font: 500 4.2vh var(--serif); }
-.status { display: flex; align-items: center; gap: .8vw; font-size: 2.6vh; }
-.pill { padding: .5vh 1.1vw; border-radius: 99px; border: 2px solid var(--line); font-weight: 600; }
+.brand .org { font: 600 3vh var(--sans); letter-spacing: .2em; color: var(--gold); text-transform: uppercase; }
+.brand .club { font: 500 4.6vh var(--serif); }
+.status { display: flex; align-items: center; gap: .8vw; font-size: 3vh; }
+.pill { padding: .5vh 1.1vw; border-radius: 99px; border: 2px solid var(--line); font: 600 3vh var(--sans); }
 .pill.open { border-color: var(--up); color: var(--up); }
 .pill.open::before { content: "● "; animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: .35; } }
-.clock { font: 600 3.4vh var(--sans); min-width: 11vw; text-align: right; }
-.delay { font-size: 2.2vh; color: var(--gold-soft); margin-top: -.6vh; }
-.brand, .status, .pill { white-space: nowrap; }
-.tape .notice { color: var(--gold-soft); }
+.clock { font: 600 3.6vh var(--sans); min-width: 11vw; text-align: right; }
 
-.banner { display: none; padding: 1vh 1.4vw; border-radius: 1vh; font-size: 2.5vh; }
+/* One line under the header: the required notice on the left, the price time on the right. */
+.strip { display: flex; justify-content: space-between; gap: 2vw; font-size: 3vh; white-space: nowrap; margin-top: -.4vh; }
+.strip .notice { color: var(--gold-soft); font-weight: 600; flex: none; }
+.strip .asof { color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+
+/* Stale and calendar warnings only. Market-closed is a calm state shown by the pill and the strip. */
+.banner { display: none; padding: 1vh 1.4vw; border-radius: 1vh; font-size: 3vh; }
 .banner.show { display: block; }
 .banner.stale { background: var(--warn-bg); color: var(--warn); border: 2px solid var(--warn); }
-.banner.closed { background: var(--panel); color: var(--muted); border: 2px solid var(--line); }
 
-main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 0; }
-.left { display: grid; min-height: 0; }
-.left .card { display: flex; flex-direction: column; justify-content: space-between; }
+main { display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 69fr); gap: 1.4vw; min-height: 0; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; min-height: 0; }
-.label { font-size: 2.5vh; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.big { font: 600 7.6vh/1.05 var(--sans); margin: .4vh 0 1vh; letter-spacing: -.01em; }
-.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6vh 1.2vw; }
-.kpi .s { font-size: 2.5vh; color: var(--muted); }
-.kpi .v { font: 600 3.8vh/1.15 var(--sans); }
-.kpi .v2 { font: 600 2.6vh var(--sans); }
+.left { display: flex; flex-direction: column; justify-content: space-between; }
+.left.compact { justify-content: flex-start; gap: 3vh; }
+.label { font-size: 3vh; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.big { font: 600 9vh/1.05 var(--sans); font-variant-numeric: normal; margin: .4vh 0; letter-spacing: -.01em; white-space: nowrap; }
+.sub { font-size: 3vh; color: var(--muted); white-space: nowrap; }
+.grp { border-top: 2px solid var(--line); padding-top: 1.2vh; }
+.cmp { display: flex; justify-content: space-between; align-items: baseline; white-space: nowrap; }
+.cmp .who { font: 500 3.4vh var(--sans); }
+.cmp .v { font: 700 4.8vh/1.2 var(--sans); }
+.cmp.bench .who, .cmp.bench .v { font-weight: 500; }
 .up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--flat); }
-.panel.chart.on { grid-template-rows: 1fr auto; background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; }
-.chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.chart .grid { stroke: var(--line); stroke-width: .14vh; }
-.chart .axis { fill: var(--muted); font: 500 2.5vh var(--sans); }
-.chart .line { fill: none; stroke: var(--gold); stroke-width: .37vh; stroke-linejoin: round; }
-.chart .dot { fill: var(--bg); stroke: var(--gold-soft); stroke-width: .37vh; }
-.chart .dot.live { fill: var(--gold); }
-.chart .zero { stroke: var(--muted); stroke-width: .14vh; stroke-dasharray: .5vh .5vh; }
-.chart .line.spy { stroke: #7fb0ec; stroke-dasharray: 1vh .6vh; } .chart .dot.spy { stroke: #7fb0ec; }
-.chart .line.picks { stroke: #b9a0f0; } .chart .dot.picks { stroke: #b9a0f0; }
-.chart .endlabel { font: 600 2.9vh var(--sans); fill: var(--gold-soft); }
-.chart .endlabel.spy { fill: #7fb0ec; } .chart .endlabel.picks { fill: #b9a0f0; }
-.chart .note { font-size: 2.4vh; color: var(--muted); }
 
 .right { position: relative; min-height: 0; display: grid; grid-template-rows: auto 1fr; gap: 1.2vh; }
-.panel-head { display: flex; justify-content: space-between; align-items: baseline; }
-.panel-head h2 { margin: 0; font: 500 3.2vh var(--serif); }
-.dots { display: flex; gap: .6vw; }
+.panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1vw; white-space: nowrap; }
+.panel-head h2 { margin: 0; font: 500 3.6vh var(--serif); overflow: hidden; text-overflow: ellipsis; }
+.dots { display: flex; gap: .6vw; flex: none; }
 .dots i { width: 1.8vh; height: 1.8vh; border-radius: 50%; background: #3d6380; }
 .dots i.on { background: var(--gold); }
 .panel { display: none; min-height: 0; }
 .panel.on { display: grid; }
+.badge { font: 700 2.6vh/1 var(--sans); letter-spacing: .06em; padding: .5vh .5vw; border-radius: .6vh; background: var(--gold); color: var(--bg); white-space: nowrap; }
 
-/* Holdings as rows of a 2 x 5 grid, ten per page (10-foot guidance: few items, text >= 27 px at 1080p).
-   One line per holding: symbol, price, today's move, gain vs cost. The tint is only a side bar,
-   so the numbers keep full contrast on any day. */
-.rows10 { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 1fr); grid-auto-flow: column; gap: 1.1vh 1vw; }
-.tile { position: relative; border-radius: 1.2vh; padding: 0 1.1vw 0 1.6vw; background: var(--panel); border: 1px solid var(--line); overflow: hidden;
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; align-content: center; column-gap: 1vw; }
+/* Holdings: ten per page in two columns, filled row by row in weight order. One tile per holding:
+   symbol and the STOCK's move today; its share of the total and the club's gain on it. The colour
+   is only a side bar, so the numbers keep full contrast. */
+.rows10 { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 1fr); gap: 1vh 1vw; }
+.tile { position: relative; border-radius: 1.2vh; padding: 0 .8vw 0 1.4vw; background: var(--panel); border: 1px solid var(--line); overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; align-content: center; column-gap: 1vw; white-space: nowrap; }
 .tile::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: .7vw; background: var(--bar, var(--line)); }
-.tile .sym { font: 700 4.6vh/1.05 var(--sans); letter-spacing: .02em; display: flex; align-items: center; gap: .7vw; min-width: 0; }
-.tile .px { font: 500 2.9vh var(--sans); color: var(--muted); }
-.tile .px b { color: var(--text); font-weight: 600; }
-.tile .day { font: 700 4.4vh/1.05 var(--sans); white-space: nowrap; text-align: right; }
-.tile .meta { font: 500 2.7vh var(--sans); color: var(--muted); white-space: nowrap; text-align: right; }
-.tile .meta b { font-weight: 700; }
+.tile .sym { font: 700 4.4vh/1.05 var(--sans); display: flex; align-items: center; gap: .7vw; min-width: 0; }
+.tile .day { font: 700 4.4vh/1.05 var(--sans); text-align: right; }
+.tile .px { font: 500 3vh var(--sans); color: var(--muted); } .tile .px b { color: var(--text); font-weight: 600; }
+.tile .meta { font: 500 3vh var(--sans); color: var(--muted); text-align: right; } .tile .meta b { font-weight: 700; }
 .tile.stop-near { border-color: var(--warn); }
 .tile.stop-hit { border-color: var(--down); box-shadow: inset 0 0 0 2px var(--down); }
-.badge { font: 700 1.9vh/1 var(--sans); letter-spacing: .1em; padding: .55vh .5vw; border-radius: .6vh; background: var(--gold); color: var(--bg); white-space: nowrap; }
 
-/* New positions: one large card each, with the stop-loss rule drawn as a distance bar. */
-.newpos { grid-auto-flow: row; grid-template-columns: repeat(var(--n, 2), 1fr); gap: 1.4vw; }
-.np { background: var(--panel); border: 2px solid var(--gold); border-radius: 1.6vh; padding: 2.2vh 1.6vw; display: flex; flex-direction: column; gap: 1.2vh; min-height: 0; overflow: hidden; }
+/* New positions: one large card each (two at most). Lead stat: the club's result since the buy. */
+.newpos { grid-auto-flow: row; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 1.4vw; }
+.np { background: var(--panel); border: 2px solid var(--gold); border-radius: 1.6vh; padding: 2vh 1.6vw; display: flex; flex-direction: column; gap: 1.2vh; min-height: 0; overflow: hidden; }
 .np .head { display: flex; align-items: baseline; gap: 1vw; flex-wrap: wrap; }
 .np .sym { font: 700 7vh/1 var(--sans); }
-.np .nm { font: 500 3.2vh var(--serif); color: var(--text); }
-.np .what { font-size: 2.5vh; color: var(--muted); line-height: 1.3; }
-.np .nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6vh 1.2vw; }
-.np .nums .s { font-size: 2.5vh; color: var(--muted); }
-.np .nums .v { font: 700 4.6vh/1.1 var(--sans); }
-.np .stop { margin-top: auto; border-top: 2px solid var(--line); padding-top: 1.6vh; }
-.np .stop .line { font: 600 3vh var(--sans); }
-.np .stop .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; }
-.np .stop .facts .s { font-size: 2.5vh; color: var(--muted); }
-.np .stop .facts .f { font: 700 4.2vh var(--sans); margin-top: .4vh; }
-.np .stop .rule { font-size: 2.4vh; color: var(--muted); margin-top: .6vh; }
+.np .nm { font: 500 3.2vh var(--serif); }
+.np .what { font-size: 3vh; color: var(--muted); line-height: 1.25; }
+.np .lead .s, .np .nums .s { font-size: 3vh; color: var(--muted); }
+.np .lead .v { font: 700 7vh/1.05 var(--sans); }
+.np .nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4vh 1.2vw; margin-top: auto; }
+.np .nums .v { font: 700 4.6vh/1.1 var(--sans); white-space: nowrap; }
+.np .stop { border-top: 2px solid var(--line); padding-top: 1.4vh; }
+.np .stop .line { font: 600 3.2vh var(--sans); }
+.np .stop .rule { font-size: 3vh; color: var(--muted); margin-top: .6vh; }
 .stopbar { position: relative; height: 2.4vh; border-radius: 99px; background: var(--panel-2); margin-top: 1.2vh; overflow: hidden; }
 .stopbar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--up); }
 .stopbar.near i { background: var(--warn); } .stopbar.hit i { background: var(--down); }
 .warn { color: var(--warn); }
 
-.movers { grid-template-columns: 1fr 1fr; gap: 1.6vw; }
-.movers h3 { margin: 0 0 1vh; font: 600 2.4vh var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.mrow { display: grid; grid-template-columns: 8vw 1fr auto; align-items: baseline; padding: 1.8vh 0; border-bottom: 1px solid var(--line); font-size: 3vh; }
-.mrow .sym { font-weight: 700; font-size: 3.4vh; }
-.mrow .nm { color: var(--muted); font-size: 2.6vh; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.alloc { margin-top: 2.6vh; }
-.bar { display: grid; grid-template-columns: 15vw 1fr 6vw; align-items: center; gap: 1vw; margin: 1.1vh 0; font-size: 2.6vh; }
-.bar .track { height: 2.2vh; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
+/* Recent trades: one row per order, newest first. Side is gold (filled = buy, outlined = sell), so
+   green and red keep meaning up and down. The move is the stock's price change since the trade. */
+.trades { grid-template-rows: repeat(var(--rows, 5), minmax(0, 1fr)) auto; gap: 1vh; }
+.trow { display: grid; grid-template-columns: 7vw 6vw 9vw minmax(0, 1fr) 15vw; align-items: center; column-gap: 1.2vw;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 1.2vh; padding: 0 1.4vw; min-height: 0; white-space: nowrap; }
+.trow .d { font: 600 3.2vh var(--sans); color: var(--muted); }
+.trow .side { font: 700 2.8vh/1 var(--sans); letter-spacing: .08em; padding: .8vh 0; border-radius: .6vh; text-align: center; }
+.trow .side.buy { background: var(--gold-soft); color: var(--bg); border: 2px solid var(--gold-soft); }
+.trow .side.sell { color: var(--gold-soft); border: 2px solid var(--gold-soft); }
+.trow .sym { font: 700 4.2vh/1.05 var(--sans); }
+.trow .fill { font: 600 3.2vh var(--sans); min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.trow .fill small, .trow .since small { display: block; font: 500 3vh var(--sans); color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.trow .since { text-align: right; font: 700 3.8vh var(--sans); }
+.trades .tnote { font-size: 3vh; color: var(--muted); }
+
+/* Movers: ranked by the stock's own move today. */
+.movers { grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 1vh 1.6vw; align-content: start; }
+.movers h3 { margin: 0 0 .6vh; font: 600 3vh var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.mrow { display: grid; grid-template-columns: 10vw minmax(0, 1fr) auto; align-items: baseline; column-gap: .8vw; padding: 1.5vh 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.mrow .sym { font: 700 4.2vh var(--sans); }
+.mrow .nm { color: var(--muted); font-size: 3vh; overflow: hidden; text-overflow: ellipsis; }
+.mrow .mv { font: 700 4.2vh var(--sans); }
+.alloc { grid-column: 1 / -1; align-self: end; }
+.bar { display: grid; grid-template-columns: 22vw 1fr 8vw; align-items: center; gap: 1vw; margin: 1vh 0; font-size: 3vh; white-space: nowrap; }
+.bar .track { height: 2.6vh; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
 .bar .track i { display: block; height: 100%; background: var(--gold); }
-.bar .pct { text-align: right; font-weight: 600; }
+.bar .pct { text-align: right; font: 600 3.4vh var(--sans); }
 
-/* Recent trades: one row per order, newest first. */
-.trades { grid-template-rows: repeat(var(--rows, 6), minmax(0, 1fr)) auto; gap: 1vh; }
-.trow { display: grid; grid-template-columns: 6.5vw 6.5vw minmax(0, 1fr) 15vw 12vw; align-items: center; column-gap: 1.2vw;
-  background: var(--panel); border: 1px solid var(--line); border-radius: 1.2vh; padding: 0 1.4vw; min-height: 0; }
-.trow .d { font: 600 2.8vh var(--sans); color: var(--muted); }
-.trow .side { font: 700 2.2vh/1 var(--sans); letter-spacing: .1em; padding: .8vh 0; border-radius: .6vh; text-align: center; color: var(--bg); }
-.trow .side.buy { background: var(--up); } .trow .side.sell { background: var(--down); }
-.trow .who { min-width: 0; display: flex; align-items: baseline; overflow: hidden; } .trow .who b { font: 700 4.2vh/1.05 var(--sans); margin-right: .8vw; }
-.trow .who span { font: 500 2.6vh var(--serif); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-.trow .fill { font: 600 3.2vh var(--sans); white-space: nowrap; min-width: 0; } .trow .fill small { display: block; font: 500 2.4vh var(--sans); color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
-.trow .since { text-align: right; font: 700 3.6vh var(--sans); white-space: nowrap; } .trow .since small { display: block; font: 500 2.4vh var(--sans); color: var(--muted); }
-.trades .tnote { font-size: 2.4vh; color: var(--muted); }
+/* Chart: the club's time-weighted return vs the S&P 500 (SPY price), both from 0% on Sept 22. */
+.panel.chart.on { grid-template-rows: 1fr auto; background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2vh 1.4vw; }
+.chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.chart .grid { stroke: var(--line); stroke-width: .14vh; }
+.chart .axis { fill: var(--muted); font: 500 3vh var(--sans); }
+.chart .line { fill: none; stroke: var(--gold); stroke-width: .5vh; stroke-linejoin: round; }
+.chart .dot { fill: var(--bg); stroke: var(--gold-soft); stroke-width: .37vh; }
+.chart .dot.live { fill: var(--gold); }
+.chart .zero { stroke: var(--muted); stroke-width: .18vh; }
+.chart .line.spy { stroke: #7fb0ec; stroke-dasharray: 1.2vh .8vh; } .chart .dot.spy { stroke: #7fb0ec; }
+.chart .endlabel { font: 600 3.4vh var(--sans); fill: var(--gold-soft); }
+.chart .endlabel.spy { fill: #7fb0ec; }
+.chart .note { font-size: 3vh; color: var(--muted); }
 
-.tape { overflow: hidden; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); padding: 1vh 0; white-space: nowrap; }
+.tape { overflow: hidden; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); padding: .9vh 0; white-space: nowrap; }
 .tape .track { display: inline-block; animation: scroll var(--tape-duration, 80s) linear infinite; }
-.tape span { margin-right: 3.2vw; font-size: 2.9vh; }
+.tape span { margin-right: 3vw; font-size: 3.2vh; }
 .tape b { margin-right: .6vw; }
+.tape .notice { color: var(--gold-soft); font-weight: 600; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .tape .track { animation: none; } .pill.open::before { animation: none; } }
 
-footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.2vh; color: var(--muted); }
-footer .src { text-align: right; }
+footer { display: flex; flex-wrap: wrap; gap: 0 1.6vw; font-size: 2.6vh; color: var(--muted); }
+footer span { white-space: nowrap; }
+footer .src { margin-left: auto; }
 .error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
 </style>
 </head>
 <body>
+<script>
+// Watchdog in a plain script: if the module never starts (for example a new page with an old
+// cached core.js after a deploy) or stops ticking, reload. The module stamps window.__tvTick.
+window.__tvTick = Date.now();
+setInterval(function () { if (Date.now() - window.__tvTick > 120000) location.reload(); }, 90000);
+</script>
 <div class="tv" id="tv">
   <header>
     <div class="brand"><span class="org">Golisano Institute</span><span class="club">Investment Club</span></div>
     <div class="status"><span class="pill" id="pill">…</span><span id="session-note"></span></div>
     <div class="clock" id="clock"></div>
   </header>
-  <div class="delay" id="delay"></div>
+  <div class="strip"><span class="notice" id="delay"></span><span class="asof" id="asof"></span></div>
   <div class="banner" id="banner" role="status"></div>
   <main>
-    <section class="left">
-      <div class="card">
-        <div class="label" id="hero-label">Portfolio value</div>
-        <div class="big" id="hero">—</div>
-        <div class="kpis">
-          <div class="kpi"><div class="s" id="day-label">Today</div><div class="v" id="day">—</div><div class="v2" id="day2"></div></div>
-          <div class="kpi"><div class="s" id="spy-label">S&amp;P 500 (SPY) today</div><div class="v" id="spy">—</div></div>
-          <div class="kpi"><div class="s" id="gain-label">Gain vs cost</div><div class="v" id="gain">—</div><div class="v2" id="gain2"></div></div>
-          <div class="kpi"><div class="s">Return since Sept 22</div><div class="v" id="since">—</div></div>
-          <div class="kpi"><div class="s" id="breadth-label">Holdings up / down</div><div class="v" id="breadth">—</div></div>
-          <div class="kpi"><div class="s">Largest holding</div><div class="v" id="largest">—</div></div>
-        </div>
-      </div>
+    <section class="card left">
+      <div><div class="label" id="hero-label">Invested value</div><div class="big" id="hero">—</div><div class="sub" id="hero-sub">Cash is not counted</div></div>
+      <div class="grp" id="grp-day"><div class="label" id="day-label">Today</div>
+        <div class="cmp"><span class="who">Club</span><span class="v" id="day">—</span></div>
+        <div class="cmp bench"><span class="who">S&amp;P 500</span><span class="v" id="spy">—</span></div></div>
+      <div class="grp" id="grp-since"><div class="label">Since Sept 22</div>
+        <div class="cmp"><span class="who">Club</span><span class="v" id="since">—</span></div>
+        <div class="cmp bench"><span class="who">S&amp;P 500</span><span class="v" id="spy-since">—</span></div></div>
     </section>
     <section class="right">
       <div class="panel-head"><h2 id="panel-title">Holdings</h2><div class="dots" id="dots"></div></div>
       <div class="panel newpos" id="p-new" data-title="New positions"></div>
-      <div id="holding-pages" style="display:contents"></div>
       <div class="panel trades" id="p-trades" data-title="Recent trades"></div>
-      <div class="panel movers" id="p-movers" data-title="Today's biggest moves"></div>
-      <div class="panel chart" id="p-chart" data-title="Portfolio since Sept 22">
+      <div id="holding-pages" style="display:contents"></div>
+      <div class="panel movers" id="p-movers" data-title="Stock moves today"></div>
+      <div class="panel chart" id="p-chart" data-title="Since Sept 22: Club vs S&amp;P 500">
         <div id="chart" style="position:relative; min-height:0"></div>
-        <div class="note">Gain over what we paid, at each saved price check. 0% = break-even. Stock picks = every holding except SPY.</div>
+        <div class="note">Club: time-weighted return, so money moved by a trade is not gain or loss. S&amp;P 500: SPY price, dividends not counted.</div>
       </div>
     </section>
   </main>
   <div class="tape" aria-hidden="true"><div class="track" id="tape"></div></div>
-  <footer><div id="disclosure"></div><div class="src" id="source"></div></footer>
+  <footer id="footer"></footer>
 </div>
 <script type="module">
 import {
-  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
-  sinceStatement, isNew, totalGain,
+  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, compareChart, el,
+  sinceStatement, spySinceStatement, isNew,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -212,13 +222,14 @@ const CONFIG = {
   data: samePath(params.get('data')) || 'data/portfolio.json',
   quotes: samePath(params.get('quotes')),                  // default: payload.live_quotes_url (api/quotes)
   hideAmounts: params.get('amounts') === 'hide',
-  rotateSeconds: Number(params.get('rotate') || 20),
+  rotateSeconds: params.get('rotate') ? Number(params.get('rotate')) : null, // overrides the per-panel times
   panel: params.get('panel'),                     // new | trades | h1 | h2 | h3 | movers | chart pins one panel
-
   pollSeconds: 60,
   reloadHours: 6,
   now: params.get('now') ? new Date(params.get('now')) : null, // test hook
 };
+// Seconds each panel stays up (84 s loop with two holdings pages).
+const DWELL = { 'p-new': 15, 'p-trades': 12, 'p-movers': 12, 'p-chart': 15, holdings: 15 };
 const now = () => CONFIG.now || new Date();
 const $ = id => document.getElementById(id);
 let payload;
@@ -229,6 +240,7 @@ async function boot() {
     payload = await fetchJson(CONFIG.data);
   } catch (e) {
     document.body.replaceChildren(el('div', { class: 'error' }, 'Portfolio data is unavailable. Retrying in one minute.'));
+    window.__tvTick = Date.now();
     setTimeout(() => location.reload(), 60000);
     return;
   }
@@ -237,9 +249,9 @@ async function boot() {
   CONFIG.quotes = CONFIG.quotes ?? payload.live_quotes_url ?? null;
   render();
   poll();
+  tick();
   setInterval(tick, 1000);
   setInterval(poll, CONFIG.pollSeconds * 1000);
-  setInterval(rotate, CONFIG.rotateSeconds * 1000);
   setInterval(shift, 180000);
   setTimeout(() => location.reload(), CONFIG.reloadHours * 3600000);
 }
@@ -263,6 +275,7 @@ async function poll() {
 }
 
 function tick() {
+  window.__tvTick = Date.now();
   $('clock').textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit' }).format(now());
   if (new Date().getSeconds() === 0) renderStatus();
 }
@@ -273,16 +286,14 @@ function render() {
   const s = compute(base);
   const showDollars = s.dollars && !forceHide;
   renderNew(s, showDollars);
-  renderHoldings(s);
-  renderStatus();      // after the pages exist: it writes their titles
-  renderHero(s, showDollars);
-  renderChart(base, s, showDollars);
-  renderMovers(s);
   renderTrades(s, showDollars);
+  renderHoldings(s);
+  renderMovers(s);
+  renderStatus();      // after the pages exist: it writes their titles
+  renderHero(base, s, showDollars);
+  renderChart(base, s);
   renderTape(s);
-  $('disclosure').textContent = payload.disclosure;
-  const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
-  $('source').textContent = `${src} · quotes ${fmtTime(oldestQuote(payload.quotes.items))}–${fmtTime(newestQuote(payload.quotes.items))}, ${fmtDay(newestQuote(payload.quotes.items))}`;
+  renderFooter();
   if (!document.querySelector('.panel.on')) rotate();
 }
 
@@ -290,82 +301,87 @@ function renderStatus() {
   const st = marketStatus(now(), payload.calendar);
   const fr = freshness(payload.quotes.items, st, now(), payload.quotes.meta?.delay_minutes || 0);
   $('delay').textContent = delayNotice(payload);
+  const items = payload.quotes.items;
+  $('asof').textContent = `Prices from ${fmtTime(oldestQuote(items))}–${fmtTime(newestQuote(items))}, ${fmtDay(newestQuote(items))}`;
   const pill = $('pill');
   pill.className = `pill ${st.state}`;
   pill.textContent = st.holiday ? 'Market holiday' : STATUS_LABEL[st.state];
   $('session-note').textContent = st.earlyClose && (st.state === 'pre' || st.state === 'open') ? `Closes ${st.earlyClose.replace(/^13:00$/, '1:00 PM')} ET today` : '';
   const b = $('banner');
-  const newest = fmtTime(fr.newest) + ', ' + fmtDay(fr.newest);
   if (!st.calendarKnown) {
     b.className = 'banner stale show';
     b.textContent = 'Exchange calendar needs updating (data/source/xnys-calendar.json); holidays and early closes are unknown.';
   } else if (fr.level === 'stale') {
     b.className = 'banner stale show';
-    b.textContent = `${fr.reason}. Last saved price: ${newest}. Numbers below are from then, not now.`;
-  } else if (fr.level === 'closed') {
-    b.className = 'banner closed show';
-    b.textContent = `Market closed. Showing the last saved prices (${newest}).`;
+    b.textContent = `${fr.reason}. Last saved price: ${fmtTime(fr.newest)}, ${fmtDay(fr.newest)}. Numbers below are from then, not now.`;
   } else {
     b.className = 'banner';
     b.textContent = '';
   }
-  $('day-label').textContent = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(fr.newest)}`;
-  $('spy-label').textContent = fr.level === 'live' ? 'S&P 500 (SPY) today' : `S&P 500 (SPY), ${fmtShortDate(fr.newest)}`;
   const when = fr.level === 'live' ? 'today' : fmtShortDate(fr.newest);
+  $('day-label').textContent = fr.level === 'live' ? 'Today' : fmtShortDate(fr.newest);
   holdingPages.forEach((id, i) => {
     const n = $(id).childElementCount, from = i * PER_PAGE + 1;
-    $(id).dataset.title = `Holdings ${from}–${from + n - 1} of ${holdingCount}, largest first · move ${when}`;
+    $(id).dataset.title = `Holdings ${from}–${from + n - 1} of ${holdingCount} · stock move ${when}`;
   });
-  $('p-movers').dataset.title = `Biggest moves · ${when}`;
+  $('p-movers').dataset.title = `Stock moves ${when} · ${breadth.up} up, ${breadth.down} down`;
   if (panelIdx >= 0) $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
 }
 
-function base() {
-  return payload.amounts === 'shown-hidden' ? { ...payload, amounts: 'shown' } : payload;
-}
+const pct2 = x => `${arrow(x)} ${fmtPct(x)}`;
+function setV(id, x) { const n = $(id); n.textContent = x === null || x === undefined ? '—' : pct2(x); n.className = `v ${x ? dir(x) : ''}`; }
 
-function renderHero(s, showDollars) {
-  const set = (id, text, d, cls = 'v') => { const n = $(id); n.textContent = text; n.className = `${cls} ${d ? dir(d) : ''}`; };
-  const since = sinceStatement(base(), s);
-  const tg = totalGain(base(), s);   // unrealized + gains locked in by sales
+// Left card: invested value, then today and since Sept 22, each as Club vs S&P 500.
+function renderHero(base, s, showDollars) {
+  const since = sinceStatement(base, s), spySince = spySinceStatement(base);
+  setV('day', s.dayPct);
+  setV('spy', s.spyDayPct);
   if (showDollars) {
-    $('hero-label').textContent = 'Portfolio value';
+    $('hero-label').textContent = 'Invested value';
     $('hero').textContent = fmtUsd(s.total);
     $('hero').className = 'big';
-    set('day', `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange);
-    set('day2', fmtPct(s.dayPct), s.dayChange, 'v2');
-    set('gain', fmtSignedUsd(tg.gain), tg.gain);
-    set('gain2', tg.realized ? `${fmtPct(tg.pct)} · ${fmtSignedUsd(tg.realized)} from sales` : fmtPct(tg.pct), tg.gain, 'v2');
+    $('hero-sub').textContent = 'Cash is not counted';
+    $('grp-since').style.display = '';
+    $('grp-day').parentElement.classList.remove('compact');
+    setV('since', since);
+    setV('spy-since', spySince);
   } else {
-    $('hero-label').textContent = 'Gain vs cost';
-    $('hero').textContent = fmtPct(tg.pct);
-    $('hero').className = `big ${dir(tg.pct)}`;
-    set('day', `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct);
-    set('day2', '', 0, 'v2');
-    set('gain', fmtPct(tg.pct), tg.pct);
-    set('gain2', '', 0, 'v2');
+    // Percent only: the headline becomes the club's return since Sept 22.
+    $('hero-label').textContent = 'Club since Sept 22';
+    $('hero').textContent = pct2(since);
+    $('hero').className = `big ${dir(since)}`;
+    $('hero-sub').textContent = spySince === null ? '' : `S&P 500 ${fmtPct(spySince, 1)}`;
+    $('grp-since').style.display = 'none';
+    $('grp-day').parentElement.classList.add('compact');
   }
-  set('since', fmtPct(since), since);
-  set('spy', s.spyDayPct === null ? '—' : `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct);
-  const ups = s.rows.filter(r => r.dayPct > 0).length, downs = s.rows.filter(r => r.dayPct < 0).length;
-  $('breadth').replaceChildren(el('span', { class: 'up' }, `▲ ${ups}`), '  ', el('span', { class: 'down' }, `▼ ${downs}`));
-  const top = [...s.rows].sort((a, b) => b.weight - a.weight)[0];
-  $('largest').textContent = `${top.symbol.replace('/', '.')} ${fmtWeight(top.weight)}`;
 }
 
-function renderChart(base, s, showDollars) {
-  $('p-chart').dataset.title = 'Gain over cost: portfolio vs our SPY position';
-  if (PANELS[panelIdx] === 'p-chart') $('panel-title').textContent = $('p-chart').dataset.title;
+// Club: history[].twr (time-weighted, from 0 at the statement) and the live link. S&P 500: SPY's
+// price over its statement price. Both start at 0% on Sept 22.
+function renderChart(base, s) {
   const box = $('chart');
   if (!box.clientHeight) return; // hidden panel; the ResizeObserver redraws it when shown
-  // The svg is absolutely positioned, so the box size comes from the layout alone.
+  const hist = base.history || [];
+  const spy0 = Number(hist[0]?.spy);
+  const newest = newestQuote(base.quotes.items);
+  const last = hist[hist.length - 1];
+  const live = !last || newest > Date.parse(last.as_of_utc) + 60000;
+  const club = hist.map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.twr) }));
+  const spy = spy0 > 0 ? hist.filter(h => Number(h.spy) > 0).map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.spy) / spy0 - 1 })) : [];
+  if (live) {
+    club.push({ t: newest, live: true, y: sinceStatement(base, s) });
+    const ss = spySinceStatement(base);
+    if (ss !== null && spy.length) spy.push({ t: newest, live: true, y: ss });
+  }
+  const series = [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
   const w = Math.max(200, box.clientWidth), h = Math.max(120, box.clientHeight);
   const unit = innerHeight / 1080;
-  box.replaceChildren(compareChart(comparisonSeries(base, s), { width: w, height: h, pad: 26 * unit, left: 92 * unit, right: 380 * unit, unit, charPx: 15 * unit }));
+  box.replaceChildren(compareChart(series, { width: w, height: h, pad: 30 * unit, left: 104 * unit, right: 300 * unit, unit, charPx: 18 * unit,
+    labelGap: 40 * unit, ariaNote: 'return since the Sept 22 statement' }));
   box.dataset.size = `${w}x${h}`;
 }
 
-// Redraw when the chart box changes size (banner appearing, delay line, window resize).
+// Redraw when the chart box changes size (banner appearing, window resize).
 new ResizeObserver(() => {
   const box = $('chart');
   if (payload && box.dataset.size !== `${box.clientWidth}x${box.clientHeight}`) render();
@@ -375,26 +391,29 @@ const barColor = pct => (pct > 0 ? 'var(--up)' : pct < 0 ? 'var(--down)' : 'var(
 const sym = r => r.symbol.replace('/', '.');
 const PER_PAGE = 10;
 let holdingPages = [], holdingCount = 0;
+let breadth = { up: 0, down: 0 };
 
 function stopText(r) {
   if (r.stopPrice === undefined) return null;
   if (r.stopLevel === 'hit') return `At or below the stop ($${fmtPrice(r.stopPrice)})`;
-  return `Stop $${fmtPrice(r.stopPrice)} · ${(r.stopGap * 100).toFixed(1)}% below`;
+  return `Stop $${fmtPrice(r.stopPrice)} · ${(r.stopGap * 100).toFixed(1)}% below today's price`;
 }
 
-// Holdings in pages of ten (two columns of five), largest first. Pages are made from the
-// holding count, so a new position adds a page instead of overflowing a fixed grid.
+// Holdings in pages of ten, largest first, read across the rows. Each tile shows the stock's own
+// move today (not the club's trade-adjusted day), its share of the total and the club's gain.
 function renderHoldings(s) {
   const rows = [...s.rows].sort((a, b) => b.weight - a.weight);
   const t = now().getTime();
-  const tile = r => el('div', { class: `tile ${r.stopLevel && r.stopLevel !== 'ok' ? `stop-${r.stopLevel}` : ''}`, style: `--bar:${barColor(r.dayPct)}` },
-    el('div', { class: 'sym' }, sym(r), isNew(r, t) ? el('span', { class: 'badge' }, 'NEW') : null),
-    el('div', { class: `day ${dir(r.dayPct)}` }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`),
-    el('div', { class: 'px' }, el('b', {}, `$${fmtPrice(r.price)}`), ` · ${fmtWeight(r.weight)}`),
-    r.stopLevel && r.stopLevel !== 'ok'
-      ? el('div', { class: 'meta' }, el('b', { class: r.stopLevel === 'hit' ? 'down' : 'warn' }, r.stopLevel === 'hit' ? 'AT STOP' : 'NEAR STOP'))
-      : el('div', { class: 'meta' }, isNew(r, t) ? 'since buy ' : 'vs cost ',
-        el('b', { class: dir(isNew(r, t) ? r.sinceBuy : r.costPct) }, fmtPct(isNew(r, t) ? r.sinceBuy : r.costPct, 1))));
+  const tile = r => {
+    const fresh = isNew(r, t), gain = fresh ? r.sinceBuy : r.costPct;
+    return el('div', { class: `tile ${r.stopLevel && r.stopLevel !== 'ok' ? `stop-${r.stopLevel}` : ''}`, style: `--bar:${barColor(r.stockDayPct)}` },
+      el('div', { class: 'sym' }, sym(r), fresh ? el('span', { class: 'badge' }, 'NEW') : null),
+      el('div', { class: `day ${dir(r.stockDayPct)}` }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct, 1)}`),
+      el('div', { class: 'px' }, el('b', {}, fmtWeight(r.weight)), ' of total'),
+      r.stopLevel && r.stopLevel !== 'ok'
+        ? el('div', { class: 'meta' }, el('b', { class: r.stopLevel === 'hit' ? 'down' : 'warn' }, r.stopLevel === 'hit' ? 'AT STOP' : 'NEAR STOP'))
+        : el('div', { class: 'meta' }, 'our gain ', el('b', { class: dir(gain) }, fmtPct(gain, 1))));
+  };
   const pages = [];
   for (let i = 0; i < rows.length; i += PER_PAGE) pages.push(rows.slice(i, i + PER_PAGE));
   holdingCount = rows.length;
@@ -407,12 +426,12 @@ function renderHoldings(s) {
   pages.forEach((pg, i) => $(ids[i]).replaceChildren(...pg.map(tile)));
 }
 
-// One large card per position bought in the last two weeks, with the stop-loss rule if one is
-// recorded. The panel leaves the rotation when there is nothing new.
+// One large card per position bought in the last two weeks (two at most, newest first).
 function renderNew(s, showDollars) {
   const t = now().getTime();
   const fresh = s.rows.filter(r => isNew(r, t)).sort((a, b) => b.openedAt - a.openedAt || a.symbol.localeCompare(b.symbol));
   newCount = fresh.length;
+  const stat = (label, v, d) => el('div', {}, el('div', { class: 's' }, label), el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v));
   const card = r => {
     const stop = stopText(r);
     const range = r.stopPrice !== undefined ? Math.max(0, Math.min(1, (r.price - r.stopPrice) / (r.buyPrice - r.stopPrice) / 1.5)) : 0;
@@ -420,35 +439,64 @@ function renderNew(s, showDollars) {
       el('div', { class: 'head' }, el('span', { class: 'sym' }, sym(r)), el('span', { class: 'nm' }, r.name),
         el('span', { class: 'badge' }, `BOUGHT ${fmtShortDate(r.openedAt).toUpperCase()}`)),
       r.industry ? el('div', { class: 'what' }, r.industry) : null,
+      el('div', { class: 'lead' }, el('div', { class: 's' }, 'Since we bought'),
+        el('div', { class: `v ${dir(r.sinceBuy)}` }, `${arrow(r.sinceBuy)} ${fmtPct(r.sinceBuy, 1)}`)),
       el('div', { class: 'nums' },
-        el('div', {}, el('div', { class: 's' }, 'Bought at'), el('div', { class: 'v' }, `$${fmtPrice(r.buyPrice)}`)),
-        el('div', {}, el('div', { class: 's' }, 'Now'), el('div', { class: 'v' }, `$${fmtPrice(r.price)}`)),
-        el('div', {}, el('div', { class: 's' }, 'Since we bought'), el('div', { class: `v ${dir(r.sinceBuy)}` }, `${arrow(r.sinceBuy)} ${fmtPct(r.sinceBuy, 1)}`)),
-        showDollars
-          ? el('div', {}, el('div', { class: 's' }, `${r.shares} shares, worth`), el('div', { class: 'v' }, fmtUsd(r.value)))
-          : el('div', {}, el('div', { class: 's' }, 'Share of portfolio'), el('div', { class: 'v' }, fmtWeight(r.weight)))),
-      el('div', { class: 'stop' },
-        stop
-          ? [el('div', { class: `line ${r.stopLevel === 'ok' ? '' : r.stopLevel === 'hit' ? 'down' : 'warn'}` }, stop),
-            el('div', { class: `stopbar ${r.stopLevel}`, role: 'img', 'aria-label': `Price distance above the stop: ${(r.stopGap * 100).toFixed(1)}%` },
-              el('i', { style: `width:${(range * 100).toFixed(1)}%` })),
-            el('div', { class: 'rule' }, r.stopRule ? `Rule: ${r.stopRule.replace(/\s*\(.*\)\.?$/, '.')}` : '')]
-          : el('div', { class: 'facts' },
-            el('div', {}, el('div', { class: 's' }, 'Stock today'), el('div', { class: `f ${dir(r.stockDayPct)}` }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct, 1)}`)),
-            el('div', {}, el('div', { class: 's' }, 'Share of portfolio'), el('div', { class: 'f' }, fmtWeight(r.weight))))));
+        stat('Bought at', `$${fmtPrice(r.buyPrice)}`), stat('Now', `$${fmtPrice(r.price)}`),
+        stat('Stock today', `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct, 1)}`, r.stockDayPct),
+        showDollars ? stat(`${r.shares} shares, worth`, fmtUsd(r.value)) : stat('Share of total', fmtWeight(r.weight))),
+      stop
+        ? el('div', { class: 'stop' },
+          el('div', { class: `line ${r.stopLevel === 'ok' ? '' : r.stopLevel === 'hit' ? 'down' : 'warn'}` }, stop),
+          el('div', { class: `stopbar ${r.stopLevel}`, role: 'img', 'aria-label': `Price distance above the stop: ${(r.stopGap * 100).toFixed(1)}%` },
+            el('i', { style: `width:${(range * 100).toFixed(1)}%` })),
+          el('div', { class: 'rule' }, r.stopRule ? `Club rule, checked at the close: ${r.stopRule.replace(/\s*\(.*\)\.?$/, '.')}` : ''))
+        : null);
   };
-  $('p-new').style.setProperty('--n', Math.min(Math.max(fresh.length, 1), 3));
-  $('p-new').replaceChildren(...fresh.slice(0, 3).map(card));
+  const shown = fresh.slice(0, 2);
+  $('p-new').style.setProperty('--n', Math.max(shown.length, 1));
+  $('p-new').replaceChildren(...shown.map(card));
   $('p-new').dataset.title = fresh.length === 1 ? `New position · bought ${fmtShortDate(fresh[0].openedAt)}` : `New positions · bought ${[...new Set(fresh.map(r => fmtShortDate(r.openedAt)))].join(', ')}`;
   if (Boolean(fresh.length) !== PANELS.includes('p-new')) setPanels();
 }
 
+// Recent trades, newest first. The move is the stock's price change since the trade, coloured by
+// its own direction.
+const TRADE_ROWS = 5;
+let tradeCount = 0;
+function renderTrades(s, showDollars) {
+  const prices = new Map(s.rows.map(r => [r.symbol, r.price]));
+  const list = [...(payload.trades || [])].sort((a, b) => b.executed_at_utc.localeCompare(a.executed_at_utc) || a.symbol.localeCompare(b.symbol));
+  tradeCount = list.length;
+  const row = t => {
+    const px = Number(t.price), cur = prices.get(t.symbol);
+    const x = cur ? cur / px - 1 : null;
+    const small = [t.estimated ? 'est.' : null, showDollars && t.realized_gain ? `${fmtSignedUsd(Number(t.realized_gain))} gain` : null].filter(Boolean).join(' · ')
+      || (showDollars && t.amount ? fmtUsd(Number(t.amount)) : '');
+    return el('div', { class: 'trow' },
+      el('div', { class: 'd' }, fmtShortDate(Date.parse(t.executed_at_utc))),
+      el('div', { class: `side ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'),
+      el('div', { class: 'sym' }, t.symbol.replace('/', '.')),
+      el('div', { class: 'fill' }, showDollars && t.shares ? `${t.shares} @ $${fmtPrice(px)}` : `at $${fmtPrice(px)}`, el('small', {}, small)),
+      el('div', { class: `since ${x === null ? '' : dir(x)}` }, x === null ? '—' : `${arrow(x)} ${fmtPct(x, 1)}`,
+        el('small', {}, t.type === 'buy' ? 'since we bought' : 'since we sold')));
+  };
+  const shown = list.slice(0, TRADE_ROWS);
+  $('p-trades').style.setProperty('--rows', Math.max(shown.length, 4));
+  $('p-trades').replaceChildren(...shown.map(row),
+    el('div', { class: 'tnote' }, list.length > shown.length ? `${list.length - shown.length} earlier trades on the trades page.` : 'Every trade since Sept 22 is on the trades page.'));
+  $('p-trades').dataset.title = list.length ? `Recent trades · ${list.length} since Sept 22` : 'Recent trades';
+  if (Boolean(list.length) !== PANELS.includes('p-trades')) setPanels();
+}
+
+// Stock moves today: top and bottom three by the stock's own move, and where the money is.
 function renderMovers(s) {
-  const byDay = [...s.rows].sort((a, b) => b.dayPct - a.dayPct);
+  const byMove = [...s.rows].sort((a, b) => b.stockDayPct - a.stockDayPct);
+  breadth = { up: s.rows.filter(r => r.stockDayPct > 0).length, down: s.rows.filter(r => r.stockDayPct < 0).length };
   const row = r => el('div', { class: 'mrow' },
     el('span', { class: 'sym' }, sym(r)),
     el('span', { class: 'nm' }, r.name),
-    el('span', { class: dir(r.dayPct) }, `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`));
+    el('span', { class: `mv ${dir(r.stockDayPct)}` }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`));
   const mag7 = new Set(['AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'NVDA', 'TSLA']);
   const w = pred => s.rows.filter(pred).reduce((a, r) => a + r.weight, 0);
   const groups = [
@@ -457,59 +505,40 @@ function renderMovers(s) {
     ['Other stocks', w(r => r.symbol !== 'SPY' && !mag7.has(r.symbol))],
   ];
   $('p-movers').replaceChildren(
-    el('div', {}, el('h3', {}, 'Leading'), byDay.slice(0, 4).map(row),
-      el('div', { class: 'alloc' }, el('h3', {}, 'Where the money is'),
-        groups.map(([name, x]) => el('div', { class: 'bar' }, el('span', {}, name),
-          el('span', { class: 'track' }, el('i', { style: `width:${x * 100}%` })), el('span', { class: 'pct' }, fmtWeight(x)))))),
-    el('div', {}, el('h3', {}, 'Lagging'), byDay.slice(-4).reverse().map(row),
-      el('div', { class: 'alloc' }, el('h3', {}, 'Largest positions'),
-        [...s.rows].sort((a, b) => b.weight - a.weight).slice(0, 3).map(r => el('div', { class: 'bar' }, el('span', {}, r.symbol.replace('/', '.')),
-          el('span', { class: 'track' }, el('i', { style: `width:${r.weight * 100}%` })), el('span', { class: 'pct' }, fmtWeight(r.weight)))))),
-  );
+    el('div', {}, el('h3', {}, 'Top 3'), byMove.slice(0, 3).map(row)),
+    el('div', {}, el('h3', {}, 'Bottom 3'), byMove.slice(-3).reverse().map(row)),
+    el('div', { class: 'alloc' }, el('h3', {}, 'Where the money is'),
+      groups.map(([name, x]) => el('div', { class: 'bar' }, el('span', {}, name),
+        el('span', { class: 'track' }, el('i', { style: `width:${x * 100}%` })), el('span', { class: 'pct' }, fmtWeight(x))))));
 }
 
-// Recent trades, newest first. "Since" is what the price did after the trade: for a buy it is our
-// gain on those shares; for a sale it is what we avoided or missed, so its colour is reversed.
-const TRADE_ROWS = 6;
-let tradeCount = 0;
-function renderTrades(s, showDollars) {
-  const prices = new Map(s.rows.map(r => [r.symbol, r.price]));
-  const list = [...(payload.trades || [])].sort((a, b) => b.executed_at_utc.localeCompare(a.executed_at_utc) || a.symbol.localeCompare(b.symbol));
-  tradeCount = list.length;
-  const row = t => {
-    const px = Number(t.price), now = prices.get(t.symbol);
-    const x = now ? now / px - 1 : null;
-    return el('div', { class: 'trow' },
-      el('div', { class: 'd' }, fmtShortDate(Date.parse(t.executed_at_utc))),
-      el('div', { class: `side ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'),
-      el('div', { class: 'who' }, el('b', {}, t.symbol.replace('/', '.')), el('span', {}, t.name)),
-      el('div', { class: 'fill' }, showDollars && t.shares ? `${t.shares} @ $${fmtPrice(px)}` : `at $${fmtPrice(px)}`,
-        el('small', {}, [t.estimated ? 'est. price' : null, showDollars && t.realized_gain ? `${fmtSignedUsd(Number(t.realized_gain))} gain` : null].filter(Boolean).join(' · ') || (showDollars && t.amount ? fmtUsd(Number(t.amount)) : ''))),
-      el('div', { class: `since ${x === null ? '' : dir(t.type === 'buy' ? x : -x)}` }, x === null ? '—' : `${arrow(x)} ${fmtPct(x, 1)}`,
-        el('small', {}, t.type === 'buy' ? 'since we bought' : 'since we sold')));
-  };
-  const shown = list.slice(0, TRADE_ROWS);
-  $('p-trades').style.setProperty('--rows', Math.max(shown.length, 4));
-  $('p-trades').replaceChildren(...shown.map(row),
-    el('div', { class: 'tnote' }, list.length > shown.length ? `${list.length - shown.length} earlier trades on the trades page. ` : '',
-      'Every trade since the Sept 22 statement is on the trades page.'));
-  $('p-trades').dataset.title = list.length ? `Recent trades · ${list.length} since Sept 22` : 'Recent trades';
-  if (Boolean(list.length) !== PANELS.includes('p-trades')) setPanels();
-}
-
+// The delay notice must recur on a ticker at least every 90 seconds: put it before every 7th
+// symbol (7 items x 4.5 s = 31.5 s apart).
 function renderTape(s) {
-  const items = s.rows.map(r => el('span', {}, el('b', {}, r.symbol.replace('/', '.')), `$${fmtPrice(r.price)} `,
-    el('span', { class: dir(r.stockDayPct), style: 'margin:0' }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`)));
-  // The delay notice must recur at least every 90 seconds on a ticker; the track holds
-  // two copies of the list, so it appears twice per scroll cycle.
-  items.unshift(el('span', { class: 'notice' }, delayNotice(payload)));
+  const items = [];
+  s.rows.forEach((r, i) => {
+    if (i % 7 === 0) items.push(el('span', { class: 'notice' }, delayNotice(payload)));
+    items.push(el('span', {}, el('b', {}, sym(r)), `$${fmtPrice(r.price)} `,
+      el('span', { class: dir(r.stockDayPct), style: 'margin:0' }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`)));
+  });
   const clone = items.map(n => n.cloneNode(true));
   $('tape').replaceChildren(...items, ...clone);
   $('tape').style.setProperty('--tape-duration', `${items.length * 4.5}s`);
 }
 
+// Footer: the disclosure sentences as separate spans (advice notice first; the time-weighted
+// sentence is in the chart note), then the price source.
+function renderFooter() {
+  const sentences = (payload.disclosure.match(/[^.]+\.(\s|$)/g) || [payload.disclosure]).map(x => x.trim())
+    .filter(x => !/time-weighted/i.test(x));
+  const advice = sentences.filter(x => /not investment advice/i.test(x));
+  const rest = sentences.filter(x => !/not investment advice/i.test(x));
+  const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
+  $('footer').replaceChildren(...[...advice, ...rest].map(x => el('span', {}, x)), el('span', { class: 'src' }, src));
+}
+
 let PANELS = [];
-let panelIdx = -1, newCount = 0;
+let panelIdx = -1, newCount = 0, rotateTimer = null;
 // Rotation: new positions (while any are new), recent trades, each holdings page, movers, chart.
 function setPanels() {
   const current = PANELS[panelIdx];
@@ -520,14 +549,18 @@ function setPanels() {
   PANELS.forEach((id, i) => $(id).classList.toggle('on', i === panelIdx));
   $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
 }
+function dwell(id) { return (CONFIG.rotateSeconds || DWELL[id] || DWELL.holdings) * 1000; }
 function rotate() {
+  clearTimeout(rotateTimer);
   if (!PANELS.length) return;
   const pinned = PANELS.indexOf(`p-${CONFIG.panel}`);
-  if (pinned >= 0 && panelIdx === pinned) return;
-  panelIdx = pinned >= 0 ? pinned : (panelIdx + 1) % PANELS.length;
-  document.querySelectorAll('.right .panel').forEach(n => n.classList.toggle('on', n.id === PANELS[panelIdx]));
-  $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
-  $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
+  if (!(pinned >= 0 && panelIdx === pinned)) {
+    panelIdx = pinned >= 0 ? pinned : (panelIdx + 1) % PANELS.length;
+    document.querySelectorAll('.right .panel').forEach(n => n.classList.toggle('on', n.id === PANELS[panelIdx]));
+    $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
+    $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
+  }
+  if (pinned < 0) rotateTimer = setTimeout(rotate, dwell(PANELS[panelIdx]));
 }
 
 // Small periodic shift of the whole layout to spread static pixels (burn-in care).

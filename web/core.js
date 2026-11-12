@@ -400,7 +400,8 @@ export function comparisonSeries(payload, summary) {
 }
 
 // Multi-line % change chart with a zero line and end labels. Returns an <svg>.
-export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit }) {
+export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit, labelGap = 16 * unit,
+  ariaNote = 'unrealized gain over cost since the Sept 22 statement; purchase dates unknown, so not a same-period return' }) {
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -423,7 +424,7 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
   const step = [0.0025, 0.005, 0.01, 0.02, 0.05, 0.1].find(s => (hi - lo) / s <= 7) || 0.2;
   for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {
     add('line', { x1: left, x2: width - right, y1: y(v), y2: y(v), class: Math.abs(v) < 1e-9 ? 'zero' : 'grid' });
-    add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
+    add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, Math.abs(v) < 1e-9 ? '0%' : `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
   }
   // date labels that do not overlap (newest and first kept)
   const pts0 = series[0].points;
@@ -436,10 +437,10 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
   for (const { s, last } of ends) {
     add('polyline', { points: s.points.map(p => `${x(p.t)},${y(p.y)}`).join(' '), class: `line ${s.cls}` });
     s.points.forEach(p => add('circle', { cx: x(p.t), cy: y(p.y), r: (p.live ? 5 : 3.5) * unit, class: `dot ${s.cls}` }));
-    const ly = Math.max(y(last.y) + 4 * unit, prevY + 16 * unit);
+    const ly = Math.max(y(last.y) + 4 * unit, prevY + labelGap);
     prevY = ly;
     add('text', { x: x(last.t) + 10 * unit, y: ly, class: `endlabel ${s.cls}` }, `${s.name} ${fmtPct(last.y, 1)}`);
   }
-  svg.setAttribute('aria-label', series.map(s => `${s.name} ${fmtPct(s.points[s.points.length - 1].y, 1)}`).join(', ') + ' unrealized gain over cost since the Sept 22 statement; purchase dates unknown, so not a same-period return');
+  svg.setAttribute('aria-label', series.map(s => `${s.name} ${fmtPct(s.points[s.points.length - 1].y, 1)}`).join(', ') + ' ' + ariaNote);
   return svg;
 }
