@@ -1,0 +1,25 @@
+name: Display or site problem
+description: A TV screen, the portfolio page or the trades page shows something wrong.
+title: "Display: "
+labels: ["display"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Which page or screen
+      placeholder: Cafe TV, tv.html / phone, index.html
+    validations:
+      required: true
+  - type: input
+    id: when
+    attributes:
+      label: When you saw it (date and time, Eastern Time)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: What you saw and what you expected. Attach a photo or screenshot.
+    validations:
+      required: true

@@ -1,0 +1,58 @@
+name: Record a trade
+description: The club bought or sold a position. One issue per order.
+title: "Record trade: "
+labels: ["trade"]
+body:
+  - type: markdown
+    attributes:
+      value: Fill this in from the brokerage confirmation. Attach a screenshot if you can (hide account numbers).
+  - type: dropdown
+    id: side
+    attributes:
+      label: Buy or sell
+      options: ["Buy", "Sell"]
+    validations:
+      required: true
+  - type: input
+    id: symbol
+    attributes:
+      label: Ticker symbol
+      placeholder: MU
+    validations:
+      required: true
+  - type: input
+    id: shares
+    attributes:
+      label: Shares
+    validations:
+      required: true
+  - type: input
+    id: price
+    attributes:
+      label: Fill price per share (USD)
+      description: Write "estimate" after the number if it is not the brokerage fill.
+    validations:
+      required: true
+  - type: input
+    id: when
+    attributes:
+      label: Date and time of the fill (Eastern Time)
+      placeholder: 2026-11-11 12:54 PM
+    validations:
+      required: true
+  - type: input
+    id: fees
+    attributes:
+      label: Fees (USD), if any
+  - type: textarea
+    id: stop
+    attributes:
+      label: Stop-loss decision
+      description: Did the club adopt a stop-loss for this position? If yes, give the level or rule and the meeting date.
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: Where the numbers come from (confirmation email, screenshot, broker app).
+    validations:
+      required: true
