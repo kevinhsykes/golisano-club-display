@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, selectUpdates, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -302,6 +302,29 @@ test('every page script parses (a stray quote once broke screens.html)', async (
       });
     }
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('company updates: only complete, recent sec.gov rows for holdings; capped; stale or broken file is null', () => {
+  const now = Date.parse('2026-11-12T15:00:00Z');
+  const row = (id, symbol, filed, extra = {}) => ({ id, symbol, company: symbol + ' Inc', label: 'Form 8-K: results of operations', filed,
+    url: `https://www.sec.gov/Archives/edgar/data/1/${id}-index.htm`, ...extra });
+  const doc = items => ({ checked_at_utc: '2026-11-12T14:47:00Z', symbols_failed: ['LIN'], items });
+  const ids = (items, opts) => selectUpdates(doc(items), now, opts).items.map(i => i.id);
+  // newest first; a row older than 7 days, dated in the future, off sec.gov, incomplete or not held is dropped
+  assert.deepEqual(ids([
+    row('a', 'MU', '2026-11-10'), row('b', 'CAT', '2026-11-11'), row('old', 'MU', '2026-11-04'), row('future', 'MU', '2026-11-20'),
+    row('evil', 'MU', '2026-11-10', { url: 'https://www.sec.gov.example.com/x' }), row('js', 'MU', '2026-11-10', { url: 'javascript:alert(1)' }),
+    row('nodate', 'MU', 'yesterday'), { ...row('nolabel', 'MU', '2026-11-10'), label: undefined }, row('gone', 'XOM', '2026-11-10'),
+  ], { held: new Set(['MU', 'CAT']) }), ['b', 'a']);
+  // one filing once; at most two per holding; at most max in all
+  assert.deepEqual(ids([row('a', 'MU', '2026-11-10'), row('a', 'MU', '2026-11-10'), row('c', 'MU', '2026-11-09'), row('d', 'MU', '2026-11-08')]), ['a', 'c']);
+  assert.equal(ids(['A', 'B', 'C', 'D'].map(s => row(s, s, '2026-11-10')), { max: 3 }).length, 3);
+  // an empty list is "none"; a failed count is reported
+  const empty = selectUpdates(doc([]), now);
+  assert.deepEqual([empty.items.length, empty.failed], [0, 1]);
+  // unusable: missing, wrong shape, no check time, or last checked more than four days ago
+  for (const bad of [null, {}, { items: [] }, { checked_at_utc: 'x', items: [] }, { checked_at_utc: '2026-11-07T14:00:00Z', items: [row('a', 'MU', '2026-11-10')] }])
+    assert.equal(selectUpdates(bad, now), null);
 });
 
 test('cost basis walk: statement + bought - cost of shares sold = today, and the change is the reinvested gain', () => {

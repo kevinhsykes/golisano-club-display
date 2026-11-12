@@ -37,6 +37,13 @@ jobs:
         run: |
           python3 tools/snapshot_quotes.py
           python3 tools/snapshot_history.py || echo "history refresh failed; previous files kept"
+      - name: Refresh company filings (scheduled runs only)
+        if: github.event_name != 'push'
+        env:
+          # SEC fair access: a name and a contact email. Set it as a repository variable; without it this step does nothing.
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+        run: |
+          python3 tools/snapshot_updates.py || echo "company filings refresh failed; previous file kept"
       - name: Build payloads
         run: |
           # A push that adds a holding may carry quotes without it; fetch a fresh snapshot then.

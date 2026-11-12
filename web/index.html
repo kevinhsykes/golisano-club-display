@@ -138,6 +138,16 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 }
 /* Narrow phones: tighter cells so symbol, price and the chosen pair fit without sideways scrolling. */
 @media (max-width: 400px) { th, td { padding: 8px 5px; } table { font-size: 14px; } .badge { margin-left: 3px; padding: 3px 4px; } }
+.updates { margin-top: 18px; }
+.updates h2 { margin: 0 0 6px; font: 500 17px var(--serif); }
+.updates ul { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.updates li { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; padding: 10px 12px; border-top: 1px solid var(--line); }
+.updates li:first-child { border-top: 0; }
+.updates li.none { display: block; color: var(--muted); }
+.updates .sym { font-weight: 700; }
+.updates .what a { color: inherit; }
+.updates .who { color: var(--muted); font-size: 13px; display: block; }
+.updates .when { color: var(--muted); font-size: 13px; white-space: nowrap; }
 tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
 .table-note { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
 .kpi .v2.plain { color: var(--muted); font-weight: 500; font-size: 12px; }
@@ -186,6 +196,11 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
     </table></div>
     <p class="table-note" id="table-note"></p>
   </section>
+  <section class="updates" id="updates" hidden>
+    <h2>Company filings, last 7 days</h2>
+    <ul id="update-list"></ul>
+    <p class="table-note" id="update-note"></p>
+  </section>
   <dialog id="detail" aria-labelledby="d-title">
     <div class="d-head"><h2 id="d-title"></h2><span class="sub" id="d-sub"></span><button type="button" id="d-close" aria-label="Close">×</button></div>
     <div class="d-body">
@@ -205,7 +220,7 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
   </footer>
 </div>
 <script type="module">
-import {
+import { selectUpdates,
   fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el, costBasisWalk,
   sinceStatement, spySinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
@@ -327,6 +342,7 @@ function render() {
   box.replaceChildren(compareChart(comparisonSeries(payload, s), { width: w, height: 260, left: 56, right: Math.min(210, w * 0.4) }));
 
   renderTable(s, dollars);
+  renderUpdates(s);
   $('disclosure').textContent = payload.disclosure;
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
   $('source').replaceChildren(`${src}. Quotes from ${fmtTime(oldestQuote(payload.quotes.items))} to ${fmtTime(newest)}. `,
@@ -348,6 +364,26 @@ function renderNew(s, dollars) {
       el('div', { class: r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : '' },
         r.stopLevel === 'hit' ? `At or below the stop, $${fmtPrice(r.stopPrice)}` : `Stop $${fmtPrice(r.stopPrice)}: ${(r.stopGap * 100).toFixed(1)}% below the price`),
       el('div', { class: 'rule' }, r.stopRule || '')]))));
+}
+
+// Recent SEC filings by the companies we hold. The file is separate from prices: if it is missing
+// the section stays hidden, and if its last check is old the section says so instead of "none".
+let updatesDoc;
+fetchJson('data/updates.json').then(d => { updatesDoc = d; if (lastSummary) renderUpdates(lastSummary); }).catch(() => {});
+function renderUpdates(s) {
+  if (updatesDoc === undefined) return;
+  const u = selectUpdates(updatesDoc, Date.now(), { held: new Set(s.rows.map(r => r.symbol)) });
+  const names = new Map(s.rows.map(r => [r.symbol, r.name]));
+  $('update-list').replaceChildren(...(!u ? [el('li', { class: 'none' }, 'Filings are unavailable right now.')]
+    : !u.items.length ? [el('li', { class: 'none' }, 'No 8-K, 10-Q or 10-K filings from our holdings in the last 7 days.')]
+    : u.items.map(i => el('li', {},
+      el('span', { class: 'sym' }, i.symbol.replace('/', '.')),
+      el('span', { class: 'what' }, el('a', { href: i.url, rel: 'noopener', target: '_blank' }, i.label), el('span', { class: 'who' }, names.get(i.symbol) || i.company)),
+      el('span', { class: 'when' }, `Filed ${fmtShortDate(Date.parse(i.filed + 'T12:00:00Z'))}`)))));
+  $('update-note').textContent = 'Source: SEC EDGAR. These are the companies\u2019 own filings; a filing does not explain a price change.'
+    + (u ? ` Checked ${fmtTime(u.checked)}, ${fmtDay(u.checked)}.${u.failed ? ` ${u.failed} holding${u.failed === 1 ? '' : 's'} could not be checked.` : ''}` : '')
+    + ' Funds such as SPY are not included.';
+  $('updates').hidden = false;
 }
 
 let phoneView = 'today';

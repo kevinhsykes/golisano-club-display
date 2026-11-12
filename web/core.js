@@ -233,6 +233,25 @@ export function spySinceStatement(payload) {
   return start > 0 && q && Number(q.price) > 0 ? Number(q.price) / start - 1 : null;
 }
 
+// Company updates (web/data/updates.json, written by tools/snapshot_updates.py): which filings to show.
+// Only rows that are complete, link to sec.gov, belong to a symbol we hold and are recent enough.
+// Newest first, at most `perSymbol` per holding and `max` in all. Returns null when the file is
+// unusable or its last check is older than `staleHours`, so a page can say "unavailable" and not "none".
+export function selectUpdates(doc, nowMs, { held = null, days = 7, perSymbol = 2, max = 8, staleHours = 96 } = {}) {
+  const checked = Date.parse(doc?.checked_at_utc);
+  if (!doc || !Array.isArray(doc.items) || !Number.isFinite(checked) || nowMs - checked > staleHours * 3600e3) return null;
+  const cutoff = new Date(nowMs - days * 86400e3).toISOString().slice(0, 10), today = new Date(nowMs + 86400e3).toISOString().slice(0, 10);
+  const seen = new Set(), count = new Map(), items = [];
+  const ok = i => i && typeof i.id === 'string' && typeof i.symbol === 'string' && typeof i.label === 'string' && typeof i.company === 'string'
+    && /^\d{4}-\d{2}-\d{2}$/.test(i.filed || '') && i.filed >= cutoff && i.filed <= today
+    && /^https:\/\/www\.sec\.gov\//.test(i.url || '') && (!held || held.has(i.symbol));
+  for (const i of [...doc.items].filter(ok).sort((a, b) => b.filed.localeCompare(a.filed) || b.id.localeCompare(a.id))) {
+    if (seen.has(i.id) || (count.get(i.symbol) || 0) >= perSymbol || items.length >= max) continue;
+    seen.add(i.id); count.set(i.symbol, (count.get(i.symbol) || 0) + 1); items.push(i);
+  }
+  return { items, checked, failed: Array.isArray(doc.symbols_failed) ? doc.symbols_failed.length : 0 };
+}
+
 // How the cost basis moved since the Sept 22 statement (full payload only):
 // start + bought - cost of shares sold = now. A sale removes only the sold shares' original cost,
 // while the buy spends the whole proceeds, so a gain that is reinvested raises the basis.
