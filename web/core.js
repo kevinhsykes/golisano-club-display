@@ -272,7 +272,7 @@ export function costBasisStory(w, estimated = false, boughtEstimated = false) {
     else if (w.cashKept > 0) s += ` ${usd(w.cashKept)} of the sale proceeds was not reinvested; the club records no cash balance.`;
     else s += ` The purchases cost ${usd(w.cashKept)} more than the sales brought in; that money did not come from these sales.`;
     out.push(s);
-    if (w.realized > 0 && w.change > 0 && w.cashKept >= -0.005 && zero(w.realized - w.cashKept - w.change)) {
+    if (w.realized >= 0.005 && w.change >= 0.005 && w.cashKept >= -0.005 && zero(w.realized - w.cashKept - w.change)) {
       out.push(zero(w.cashKept) ? 'The rise is the realized gain, reinvested. It is not money added by members.'
         : `The rise is the realized gain that was reinvested: ${usd(w.realized)} minus the ${usd(w.cashKept)} not reinvested. It is not money added by members.`);
     }

@@ -339,6 +339,10 @@ test('cost basis story: each sentence is true for a gain, a loss, a buy with oth
   t = text(mk(500, 500, 400));
   assert.match(t, /realized loss is \$100\.00/);
   assert.match(t, /cost basis did not change\. The purchases cost \$100\.00 more/);
+  // float residue is not a rise: 100.01 + 200.02 - 300.03 is 5.7e-14, not zero
+  t = text({ start: 1000, bought: 100.01 + 200.02, removed: 300.03, proceeds: 400.03, realized: 100, end: 1000, change: 100.01 + 200.02 - 300.03, cashKept: 400.03 - 300.03 });
+  assert.match(t, /did not change/);
+  assert.doesNotMatch(t, /The rise/);
   // an estimated buy is marked
   assert.match(costBasisStory(mk(500, 0, 0), false, true).join(' '), /bought \$500\.00 \(estimated\)/);
   // gain plus other money: the rise is not "the gain minus" anything
