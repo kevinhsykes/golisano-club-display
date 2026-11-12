@@ -105,6 +105,7 @@ redeploy_if_served_stale() {
   if [ "$age" = unknown ]; then log "live site prices: could not read $SITE_URL/api/quotes"; return 0; fi
   [ "$age" -gt "$MAX_SERVED_AGE_MIN" ] || return 0
   last=$(cat "$STATE_DIR/last-redeploy" 2>/dev/null || echo 0)
+  [[ "$last" =~ ^[0-9]+$ ]] || last=0   # empty or damaged file: treat as no recent redeploy; the write below still fails closed
   if [ $(( $(date +%s) - last )) -lt $(( REDEPLOY_COOLDOWN_MIN * 60 )) ]; then
     log "live site still ${age} min stale after a recent redeploy; waiting"; return 0
   fi
