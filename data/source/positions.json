@@ -145,10 +145,12 @@
       "status": "confirmed",
       "source": "Fill reported by Kevin Sykes (club member) in chat, 2026-11-11 1:17 PM ET: '824.7 micron 7 shares & cat 608.54 8 shares, about 12:54pm'. Brokerage confirmation not yet attached; fees not stated.",
       "stop_loss": {
-        "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11).",
+        "status": "proposed",
+        "rule": "Sell if MU closes 20% or more below the buy price.",
         "pct_below_buy": "20",
         "price": "659.76",
-        "kind": "closing-price rule; no stop order recorded at the broker"
+        "kind": "closing-price rule; no stop order recorded at the broker",
+        "note": "From the pitch notes (2026-11-10). Not presented in the pitch or adopted by the club (Kevin Sykes, 2026-11-11), so the TV and portfolio pages do not show it. The trades page lists it for discussion. Set status to adopted if the club adopts it."
       }
     },
     {

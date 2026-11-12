@@ -116,7 +116,9 @@ test('a recorded buy adds the position now but leaves earlier history points unc
   assert.equal(mu.shares, '7');
   assert.equal(mu.cost_basis, '5772.90');
   assert.equal(mu.opened.price, '824.70');
-  assert.equal(mu.stop.price, '659.76');
+  // MU's stop is a proposal (status "proposed"), so it stays off the holdings; the trade log keeps it.
+  assert.equal(mu.stop, undefined);
+  assert.equal(p.trades.find(t => t.id === '2026-11-11-buy-MU').stop.status, 'proposed');
   assert.equal(p.holdings.find(h => h.symbol === 'CAT').stop, undefined);
   const before = p.history.filter(h => h.as_of_utc < '2026-11-11T17:54:00Z');
   assert.ok(before.length > 5);

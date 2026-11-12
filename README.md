@@ -111,6 +111,9 @@ the opening positions or the CSV for a trade. Add one row per fill instead:
  "stop_loss": {"price": "659.76", "pct_below_buy": "20", "rule": "...", "kind": "..."}}
 ```
 
+- `stop_loss.status` is `adopted` or `proposed`. Only an adopted stop shows on the TV and the
+  portfolio page (level, distance, warnings). A proposed stop shows only on the trades page, marked
+  "for club discussion". A missing status counts as adopted.
 - `type` is `buy` or `sell`. A sell removes shares at average cost; its gain shows as realized.
 - Set `"estimated": true` when the price is not the brokerage fill yet; the footer says so.
   Replace it with the fill when it arrives. If no fill will come and the club accepts the

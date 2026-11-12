@@ -150,7 +150,9 @@ function render() {
         ...(dollars ? [['Realized', t => (t.realized_gain ? el('span', { class: dir(Number(t.realized_gain)) }, fmtSignedUsd(Number(t.realized_gain), true)) : '')]] : []),
       ];
       const notes = [
-        ...list.filter(t => t.stop).map(t => el('p', {}, el('b', {}, `${t.symbol} stop-loss: $${fmtPrice(Number(t.stop.price))}. `), t.stop.rule || '')),
+        ...list.filter(t => t.stop).map(t => el('p', {}, t.stop.status === 'proposed'
+          ? [el('b', {}, `${t.symbol} stop-loss idea, for club discussion: $${fmtPrice(Number(t.stop.price))}. `), `${t.stop.rule || ''} Proposed in the pitch notes; the club has not adopted it, and no sell order is placed.`]
+          : [el('b', {}, `${t.symbol} stop-loss: $${fmtPrice(Number(t.stop.price))}. `), `${t.stop.rule || ''} Checked at the close; no automatic sell order.`])),
         ...(list.some(t => t.estimated) ? [el('p', {}, 'EST: estimated price. ', list.find(t => t.estimated).price_note || '')] : []),
       ];
       return el('section', { class: 'day' },

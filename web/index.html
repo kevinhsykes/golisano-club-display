@@ -264,7 +264,7 @@ function renderNew(s, dollars) {
       stat('Bought at', `$${fmtPrice(r.buyPrice)}`), stat('Now', `$${fmtPrice(r.price)}`),
       stat('Since we bought', `${arrow(r.sinceBuy)} ${fmtPct(r.sinceBuy, 1)}`, r.sinceBuy),
       dollars ? stat(`${r.shares} shares, worth`, fmtUsd(r.value)) : stat('Weight', fmtWeight(r.weight))),
-    el('div', { class: 'stop' }, r.stopPrice === undefined ? el('span', { class: 'rule' }, 'No stop-loss level recorded.') : [
+    r.stopPrice === undefined ? null : el('div', { class: 'stop' }, [
       el('div', { class: r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : '' },
         r.stopLevel === 'hit' ? `At or below the stop, $${fmtPrice(r.stopPrice)}` : `Stop $${fmtPrice(r.stopPrice)}: ${(r.stopGap * 100).toFixed(1)}% below the price`),
       el('div', { class: 'rule' }, r.stopRule || '')]))));

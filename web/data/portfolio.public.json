@@ -226,12 +226,6 @@
     "time_note": "about 12:54 PM ET",
     "price": "824.70"
    },
-   "stop": {
-    "price": "659.76",
-    "pct_below_buy": "20",
-    "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11).",
-    "kind": "closing-price rule; no stop order recorded at the broker"
-   },
    "units": "0.000069422412"
   },
   {
@@ -289,7 +283,8 @@
    "price_note": null,
    "stop": {
     "price": "659.76",
-    "rule": "Sell if MU closes 20% or more below the buy price (club pitch, 2026-11-11)."
+    "rule": "Sell if MU closes 20% or more below the buy price.",
+    "status": "proposed"
    },
    "shares_units": "0.000069422412"
   },

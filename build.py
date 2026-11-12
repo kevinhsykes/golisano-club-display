@@ -166,7 +166,9 @@ def main(public, out):
             if t["symbol"] not in open_shares and t["symbol"] not in opened:
                 opened[t["symbol"]] = {"date": t["trade_date"], "executed_at_utc": t["executed_at_utc"],
                                        "time_note": t.get("time_note"), "price": t["price"]}
-            stops[t["symbol"]] = t.get("stop_loss")
+            # Only a stop the club adopted reaches the TV and portfolio page; a proposal stays on the trade log.
+            st = t.get("stop_loss")
+            stops[t["symbol"]] = st if st and st.get("status", "adopted") == "adopted" else None
     holdings = []
     for sym in shares:
         prof = profiles.get(sym, {})
@@ -199,7 +201,8 @@ def main(public, out):
                                                      "Estimated price; replaced when the brokerage fill is recorded."
                                                      if t.get("fill_expected", True) else
                                                      "Estimated from the market price at the time of the trade."),
-               "stop": ({"price": t["stop_loss"]["price"], "rule": t["stop_loss"].get("rule")} if t.get("stop_loss") else None)}
+               "stop": ({"price": t["stop_loss"]["price"], "rule": t["stop_loss"].get("rule"),
+                         "status": t["stop_loss"].get("status", "adopted")} if t.get("stop_loss") else None)}
         if public:
             row["shares_units"] = str((dec(t["shares"]) / open_total_basis).quantize(Decimal("1e-12")))
         else:
