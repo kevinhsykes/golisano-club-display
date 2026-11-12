@@ -167,6 +167,7 @@ class MatchingEdges(unittest.TestCase):
         self.assertFalse(mentions("Apple Hospitality REIT raises dividend", "AAPL", "Apple"))
         self.assertFalse(mentions("Fires in the Amazon rainforest", "AMZN", "Amazon"))
         self.assertFalse(mentions("Berkshire Hills Bancorp reports", "BRK/B", "Berkshire Hathaway Class B"))
+        self.assertFalse(mentions("Meta Critical Minerals Completes High-Resolution LiDAR Survey", "META", "Meta Platforms Class A"))
         self.assertFalse(mentions("Global Parcel Delivery Market Report 2026: UPS, FedEx", "UPS", "United Parcel Service Class B"))
 
     def test_market_research_forms_are_dropped(self):

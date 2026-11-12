@@ -45,7 +45,7 @@ ALIASES = {"GOOGL": ["Alphabet", "Google"], "META": ["Meta", "Facebook"], "BRK/B
            "UPS": ["United Parcel Service"], "SOFI": ["SoFi"], "NVDA": ["Nvidia"], "MU": ["Micron"], "MKSI": ["MKS Inc", "MKS Instruments"]}
 # Other organisations that share a holding's name, and generic market-research press releases.
 NOT_THE_COMPANY = {"AAPL": ["Apple Hospitality"], "AMZN": ["Amazon rainforest", "Amazon River", "Amazon basin"],
-                   "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial"]}
+                   "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial", "Meta Critical Minerals"]}
 # Market-research press releases ("Global Parcel Delivery Market Report 2026"), not news that uses
 # "market share" or "market outlook" in passing.
 # Market-research press releases. In the feeds they open with "Global ..." and name a market study
