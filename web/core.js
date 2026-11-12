@@ -462,8 +462,29 @@ export function comparisonSeries(payload, summary) {
   ];
 }
 
+// Same-period comparison since the Sept 22 statement, both lines from 0%:
+// Club = history[].twr (time-weighted, so a trade's money is not gain or loss) plus a live point
+// from sinceStatement; S&P 500 = SPY's price over its statement price (dividends not counted).
+export function sinceSeries(payload, summary) {
+  const hist = payload.history || [];
+  const spy0 = Number(hist[0]?.spy);
+  const newest = newestQuote(payload.quotes.items);
+  const last = hist[hist.length - 1];
+  const live = !last || newest > Date.parse(last.as_of_utc) + 60000;
+  // Older payloads have no twr: those points are skipped rather than drawn as NaN.
+  const club = hist.map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.twr) })).filter(p => Number.isFinite(p.y));
+  const spy = spy0 > 0 ? hist.filter(h => Number(h.spy) > 0).map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.spy) / spy0 - 1 })) : [];
+  if (live && hist.length) {
+    club.push({ t: newest, live: true, y: sinceStatement(payload, summary) });
+    const ss = spySinceStatement(payload);
+    if (ss !== null && spy.length) spy.push({ t: newest, live: true, y: ss });
+  }
+  return [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
+}
+
 // Multi-line % change chart with a zero line and end labels. Returns an <svg>.
-export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit }) {
+export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit, labelGap = 16 * unit,
+  ariaNote = 'unrealized gain over cost since the Sept 22 statement; purchase dates unknown, so not a same-period return' }) {
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -499,10 +520,10 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
   for (const { s, last } of ends) {
     add('polyline', { points: s.points.map(p => `${x(p.t)},${y(p.y)}`).join(' '), class: `line ${s.cls}` });
     s.points.forEach(p => add('circle', { cx: x(p.t), cy: y(p.y), r: (p.live ? 5 : 3.5) * unit, class: `dot ${s.cls}` }));
-    const ly = Math.max(y(last.y) + 4 * unit, prevY + 16 * unit);
+    const ly = Math.max(y(last.y) + 4 * unit, prevY + labelGap);
     prevY = ly;
     add('text', { x: x(last.t) + 10 * unit, y: ly, class: `endlabel ${s.cls}` }, `${s.name} ${fmtPct(last.y, 1)}`);
   }
-  svg.setAttribute('aria-label', series.map(s => `${s.name} ${fmtPct(s.points[s.points.length - 1].y, 1)}`).join(', ') + ' unrealized gain over cost since the Sept 22 statement; purchase dates unknown, so not a same-period return');
+  svg.setAttribute('aria-label', series.map(s => `${s.name} ${fmtPct(s.points[s.points.length - 1].y, 1)}`).join(', ') + ' ' + ariaNote);
   return svg;
 }
