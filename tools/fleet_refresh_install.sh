@@ -15,7 +15,8 @@ SRC="$(cd "$(dirname "$0")" && pwd)/fleet_refresh.sh"
 case "${1:-}" in
   install)
     off="${2:?usage: $0 install <offset-minutes 0-12>}"
-    [[ "$off" =~ ^[0-9]+$ ]] && [ "$off" -le 12 ] || { echo "offset must be 0-12" >&2; exit 2; }
+    [[ "$off" =~ ^[0-9]+$ ]] && [ "$((10#$off))" -le 12 ] || { echo "offset must be 0-12" >&2; exit 2; }
+    off=$((10#$off))   # "08" is not valid octal in bash arithmetic
     for t in git python3 flock timeout; do command -v "$t" >/dev/null || { echo "missing: $t" >&2; exit 2; }; done
     node_bin="${GOLISANO_NODE:-$(command -v node || true)}"
     node_major=$("$node_bin" -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 0)
@@ -54,6 +55,8 @@ EOF
     ;;
   uninstall)
     systemctl --user disable --now "$UNIT.timer" 2>/dev/null || true
+    # Also end a run in progress, so it cannot push after the repository moves.
+    systemctl --user stop "$UNIT.service" 2>/dev/null || true
     rm -f "$UNIT_DIR/$UNIT.service" "$UNIT_DIR/$UNIT.timer" "$BIN"
     systemctl --user daemon-reload
     echo "removed. The clone in ~/.local/share/golisano-refresh stays; delete it by hand if you want."

@@ -46,11 +46,19 @@ def main():
         time.sleep(0.3)
     if len(rows) != len(symbols):
         sys.exit(f"got {len(rows)} of {len(symbols)} quotes; nothing written")
-    old = json.loads((SRC / "quotes-current.json").read_text(encoding="utf-8"))
+    # An unusable previous snapshot must not block a fresh one: skip archiving it and say so.
+    try:
+        old = json.loads((SRC / "quotes-current.json").read_text(encoding="utf-8"))
+        old_at = old["collected_at_utc"]
+        if not isinstance(old_at, str) or not old.get("quotes"):
+            raise ValueError("no collected_at_utc or quotes")
+    except (OSError, ValueError, KeyError, TypeError) as e:
+        print(f"previous quotes-current.json unusable ({type(e).__name__}: {e}); not archived", file=sys.stderr)
+        old, old_at = None, None
     hist_path = SRC / "historical-quotes.json"
     hist = json.loads(hist_path.read_text(encoding="utf-8"))
     # Keep one saved snapshot per day in history (the last one for that day wins).
-    if old["collected_at_utc"][:10] != f(now)[:10] and old["collected_at_utc"] not in [h["collected_at_utc"] for h in hist]:
+    if old and old_at[:10] != f(now)[:10] and old_at not in [h["collected_at_utc"] for h in hist]:
         hist.append(old)
         hist_path.write_text(json.dumps(hist, indent=1), encoding="utf-8")
     snap = {"schema": "portfolio-quotes.v1", "collected_at_utc": f(now), "quotes": rows,
