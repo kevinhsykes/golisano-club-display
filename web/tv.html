@@ -28,7 +28,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
 body { font: 400 3vh/1.25 var(--sans); font-variant-numeric: tabular-nums; cursor: none; }
-.tv { height: 100vh; display: grid; grid-template-rows: auto auto auto 1fr auto auto; gap: 1.6vh; padding: 2.4vh 2.6vw 1.6vh; transition: transform 2s ease; }
+.tv { height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto 1fr auto auto; gap: 1.6vh; padding: 2.4vh 2.6vw 1.6vh; transition: transform 2s ease; }
 /* Fixed rows, so the hidden banner leaves an empty row instead of shifting the layout. */
 .tv > header { grid-row: 1; } .tv > .strip { grid-row: 2; } .tv > .banner { grid-row: 3; }
 .tv > main { grid-row: 4; } .tv > .tape { grid-row: 5; } .tv > footer { grid-row: 6; }
@@ -45,8 +45,8 @@ header { display: flex; align-items: center; gap: 2vw; padding-bottom: 1.2vh; bo
 .clock { font: 600 3.6vh var(--sans); min-width: 11vw; text-align: right; }
 
 /* One line under the header: the required notice on the left, the price time on the right. */
-.strip { display: flex; justify-content: space-between; gap: 2vw; font-size: 3vh; white-space: nowrap; margin-top: -.4vh; }
-.strip .notice { color: var(--gold-soft); font-weight: 600; flex: none; }
+.strip { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 2vw; font-size: 3vh; white-space: nowrap; margin-top: -.4vh; min-width: 0; }
+.strip .notice { color: var(--gold-soft); font-weight: 600; white-space: normal; min-width: 0; }
 .strip .asof { color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
 
 /* Stale and calendar warnings only. Market-closed is a calm state shown by the pill and the strip. */
@@ -99,13 +99,24 @@ main { display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 69fr); ga
 .np .sym { font: 700 7vh/1 var(--sans); }
 .np .nm { font: 500 3.2vh var(--serif); }
 .np .what { font-size: 3vh; color: var(--muted); line-height: 1.25; }
-.tv.has-banner .np .what { display: none; }
+.tv.has-banner .np .what, .np.has-stop .what { display: none; }
+/* When a card carries a stop, all cards drop the badge and industry (the panel title already says
+   when they were bought), so the stop block fits in every font and with a warning banner. */
+.newpos.any-stop .np .badge, .newpos.any-stop .np .what { display: none; }
+.np .stop .line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tv.has-banner .np .stop .rule { display: none; }
+.tv.has-banner .np, .np.has-stop { gap: .8vh; }
+.np.has-stop .lead .v { font-size: 5.4vh; }
+.np.has-stop .nums .v { font-size: 4vh; }
+.np.has-stop .nums { gap: .8vh 1.2vw; }
+.np.has-stop .stop { padding-top: 1vh; }
+.np.has-stop .stop .rule { margin-top: .3vh; }
 .np .lead .s, .np .nums .s { font-size: 3vh; color: var(--muted); }
 .np .lead .v { font: 700 7vh/1.05 var(--sans); }
 .np .nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4vh 1.2vw; margin-top: auto; }
 .np .nums .v { font: 700 4.6vh/1.1 var(--sans); white-space: nowrap; }
 .np .stop { border-top: 2px solid var(--line); padding-top: 1.4vh; }
-.np .stop .line { font: 600 3.2vh var(--sans); }
+.np .stop .line { font: 600 3vh var(--sans); }
 .np .stop .rule { font-size: 3vh; color: var(--muted); margin-top: .6vh; }
 .stopbar { position: relative; height: 2.4vh; border-radius: 99px; background: var(--panel-2); margin-top: 1.2vh; overflow: hidden; }
 .stopbar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--up); }
@@ -130,7 +141,7 @@ main { display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 69fr); ga
 /* Movers: ranked by the stock's own move today. */
 .movers { grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 1vh 1.6vw; align-content: start; }
 .movers h3 { margin: 0 0 .6vh; font: 600 3vh var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.mrow { display: grid; grid-template-columns: 10vw minmax(0, 1fr) auto; align-items: baseline; column-gap: .8vw; padding: 1.5vh 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.mrow { display: grid; grid-template-columns: 8vw minmax(0, 1fr) auto; align-items: baseline; column-gap: .8vw; padding: 1.5vh 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
 .mrow .sym { font: 700 4.2vh var(--sans); }
 .mrow .nm { color: var(--muted); font-size: 3vh; overflow: hidden; text-overflow: ellipsis; }
 .mrow .mv { font: 700 4.2vh var(--sans); }
@@ -163,7 +174,8 @@ main { display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 69fr); ga
 @media (prefers-reduced-motion: reduce) { .tape .track { animation: none; } .pill.open::before { animation: none; } }
 
 footer { display: flex; flex-wrap: wrap; gap: 0 1.6vw; font-size: 2.6vh; color: var(--muted); }
-footer span { white-space: nowrap; }
+footer span { white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+footer span.long { white-space: normal; }
 footer .src { margin-left: auto; }
 .error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
 </style>
@@ -343,6 +355,7 @@ function renderHero(base, s, showDollars) {
     $('hero-label').textContent = 'Invested value';
     $('hero').textContent = fmtUsd(s.total);
     $('hero').className = 'big';
+    $('hero').style.fontSize = '';
     $('hero-sub').textContent = 'Cash is not counted';
     $('grp-since').style.display = '';
     $('grp-day').parentElement.classList.remove('compact');
@@ -353,6 +366,7 @@ function renderHero(base, s, showDollars) {
     $('hero-label').textContent = 'Club since Sept 22';
     $('hero').textContent = pct2(since);
     $('hero').className = `big ${dir(since)}`;
+    $('hero').style.fontSize = '7.6vh';
     $('hero-sub').textContent = spySince === null ? '' : `S&P 500 ${fmtPct(spySince, 1)}`;
     $('grp-since').style.display = 'none';
     $('grp-day').parentElement.classList.add('compact');
@@ -379,7 +393,7 @@ function renderChart(base, s) {
   const series = [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
   const w = Math.max(200, box.clientWidth), h = Math.max(120, box.clientHeight);
   const unit = innerHeight / 1080;
-  box.replaceChildren(compareChart(series, { width: w, height: h, pad: 30 * unit, left: 104 * unit, right: 300 * unit, unit, charPx: 18 * unit,
+  box.replaceChildren(compareChart(series, { width: w, height: h, pad: 30 * unit, left: 124 * unit, right: 340 * unit, unit, charPx: 18 * unit,
     labelGap: 40 * unit, ariaNote: 'return since the Sept 22 statement' }));
   box.dataset.size = `${w}x${h}`;
 }
@@ -399,7 +413,7 @@ let breadth = { up: 0, down: 0 };
 function stopText(r) {
   if (r.stopPrice === undefined) return null;
   if (r.stopLevel === 'hit') return `At or below the stop ($${fmtPrice(r.stopPrice)})`;
-  return `Stop $${fmtPrice(r.stopPrice)} · ${(r.stopGap * 100).toFixed(1)}% below today's price`;
+  return `Stop $${fmtPrice(r.stopPrice)} (${(r.stopGap * 100).toFixed(1)}% below)`;
 }
 
 // Holdings in pages of ten, largest first, read across the rows. Each tile shows the stock's own
@@ -438,7 +452,7 @@ function renderNew(s, showDollars) {
   const card = r => {
     const stop = stopText(r);
     const range = r.stopPrice !== undefined ? Math.max(0, Math.min(1, (r.price - r.stopPrice) / (r.buyPrice - r.stopPrice) / 1.5)) : 0;
-    return el('div', { class: 'np' },
+    return el('div', { class: stop ? 'np has-stop' : 'np' },
       el('div', { class: 'head' }, el('span', { class: 'sym' }, sym(r)), el('span', { class: 'nm' }, r.name),
         el('span', { class: 'badge' }, `BOUGHT ${fmtShortDate(r.openedAt).toUpperCase()}`)),
       r.industry ? el('div', { class: 'what' }, r.industry) : null,
@@ -453,11 +467,12 @@ function renderNew(s, showDollars) {
           el('div', { class: `line ${r.stopLevel === 'ok' ? '' : r.stopLevel === 'hit' ? 'down' : 'warn'}` }, stop),
           el('div', { class: `stopbar ${r.stopLevel}`, role: 'img', 'aria-label': `Price distance above the stop: ${(r.stopGap * 100).toFixed(1)}%` },
             el('i', { style: `width:${(range * 100).toFixed(1)}%` })),
-          el('div', { class: 'rule' }, r.stopRule ? `Club rule, checked at the close: ${r.stopRule.replace(/\s*\(.*\)\.?$/, '.')}` : ''))
+          el('div', { class: 'rule' }, 'Club rule: sell after a close at or below the stop.'))
         : null);
   };
   const shown = fresh.slice(0, 2);
   $('p-new').style.setProperty('--n', Math.max(shown.length, 1));
+  $('p-new').classList.toggle('any-stop', shown.some(r => r.stopPrice !== undefined));
   $('p-new').replaceChildren(...shown.map(card));
   $('p-new').dataset.title = fresh.length === 1 ? `New position · bought ${fmtShortDate(fresh[0].openedAt)}` : `New positions · bought ${[...new Set(fresh.map(r => fmtShortDate(r.openedAt)))].join(', ')}`;
   if (Boolean(fresh.length) !== PANELS.includes('p-new')) setPanels();
@@ -516,7 +531,7 @@ function renderMovers(s) {
 }
 
 // The delay notice must recur on a ticker at least every 90 seconds: put it before every 7th
-// symbol (7 items x 4.5 s = 31.5 s apart).
+// symbol (about 31-37 s apart, measured; items differ in width).
 function renderTape(s) {
   const items = [];
   s.rows.forEach((r, i) => {
@@ -532,12 +547,12 @@ function renderTape(s) {
 // Footer: the disclosure sentences as separate spans (advice notice first; the time-weighted
 // sentence is in the chart note), then the price source.
 function renderFooter() {
-  const sentences = payload.disclosure.split(/(?<=[a-z)]\.)\s+(?=[A-Z])/).map(x => x.trim())
+  const sentences = payload.disclosure.split(/(?<=[a-z0-9)]\.)\s+(?=[A-Z])/).map(x => x.trim())
     .filter(x => x && !/time-weighted/i.test(x));
   const advice = sentences.filter(x => /not investment advice/i.test(x));
-  const rest = sentences.filter(x => !/not investment advice/i.test(x));
+  const rest = sentences.filter(x => !/not investment advice/i.test(x)).sort((a, b) => a.length - b.length);
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
-  $('footer').replaceChildren(...[...advice, ...rest].map(x => el('span', {}, x)), el('span', { class: 'src' }, src));
+  $('footer').replaceChildren(...[...advice, ...rest].map(x => el('span', { class: x.length > 110 ? 'long' : null }, x)), el('span', { class: 'src' }, src));
 }
 
 let PANELS = [];

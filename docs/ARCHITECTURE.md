@@ -211,7 +211,7 @@ The full and public payloads use the same browser calculation code. `compute` ca
 | Page | Data and behavior |
 |---|---|
 | `web/index.html` | Loads the portfolio payload, polls quotes and the build version every 60 seconds, and reloads when the build ID changes. It also loads TradingView widgets in the holding detail dialog. |
-| `web/tv.html` | Polls every 60 seconds and reloads when the build ID changes. It rotates panels every 20 seconds by default, shifts the layout every three minutes, and reloads every six hours. |
+| `web/tv.html` | Polls every 60 seconds and reloads when the build ID changes. It rotates panels for 12 to 15 seconds each (84-second loop; `?rotate=N` sets one time for all), shifts the layout every three minutes, and reloads every six hours. |
 | `web/trades.html` | Loads the payload and tries one quote merge at startup. It groups trades by day and shows estimates and realized gains. |
 | `web/board.html` | Loads TradingView widgets for a separate hard-coded symbol list. It rotates two groups every 20 seconds and reloads every six hours. It does not calculate portfolio value. |
 | `web/screens.html` | Builds display addresses from the current page origin. Its GitHub source link and one kiosk example still name Kevin's account. |

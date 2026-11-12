@@ -48,7 +48,7 @@
   <table>
     <tr><th>Add to the address</th><th>Effect</th></tr>
     <tr><td><code>?panel=new</code> · <code>trades</code> · <code>h1</code> · <code>h2</code> · <code>movers</code> · <code>chart</code></td><td>Pin one panel instead of rotating through all of them.</td></tr>
-    <tr><td><code>?rotate=40</code></td><td>Seconds per panel when rotating (default 20).</td></tr>
+    <tr><td><code>?rotate=40</code></td><td>Seconds per panel when rotating (default: 12 to 15 seconds, depending on the panel).</td></tr>
     <tr><td><code>?amounts=hide</code></td><td>Percent only: no dollar values on screen.</td></tr>
     <tr><td>Combine with <code>&amp;</code></td><td>Example: <code>tv.html?panel=movers&amp;amounts=hide</code></td></tr>
   </table>
@@ -68,19 +68,19 @@
 const base = location.href.replace(/[^/]*$/, '');
 const screens = [
   { img: 'screens/tv-largest.png', title: 'Rotating TV view (default)', url: 'tv.html',
-    text: 'The main cafe screen. Portfolio value, today, gain vs cost and holdings up/down on the left; the right side rotates every 20 seconds through the panels below. Price tape along the bottom.' },
+    text: 'The main cafe screen. On the left: invested value, then today and since Sept 22, each as Club vs S&P 500. The right side rotates through the panels below (12 to 15 seconds each). Price tape along the bottom.' },
   { img: 'screens/tv-new.png', title: 'New positions', url: 'tv.html?panel=new',
     text: 'Pinned panel: positions bought in the last two weeks, with buy price, move since we bought, the stock’s move today and its share of the portfolio (or an adopted stop-loss). In the rotation only while a position is new.' },
   { img: 'screens/tv-trades.png', title: 'Recent trades', url: 'tv.html?panel=trades',
     text: 'Pinned panel: the latest buys and sales, newest first: price, shares, gain locked in by a sale, and what the price did since.' },
   { img: 'screens/tv-largest.png', title: 'Holdings 1–10', url: 'tv.html?panel=h1',
-    text: 'Pinned panel: the ten biggest positions, one line each: price, weight, day move and gain vs cost.' },
+    text: 'Pinned panel: the ten biggest positions, one tile each: the stock’s move today, its share of the total and our gain on it.' },
   { img: 'screens/tv-more.png', title: 'Holdings 11–20', url: 'tv.html?panel=h2',
     text: 'Pinned panel: the rest of the portfolio in the same layout. A new position adds a page when needed.' },
-  { img: 'screens/tv-movers.png', title: "Today's biggest moves", url: 'tv.html?panel=movers',
-    text: 'Pinned panel: holdings ranked by today’s move with allocation bars.' },
-  { img: 'screens/tv-chart.png', title: 'Gain over cost chart', url: 'tv.html?panel=chart',
-    text: 'Pinned panel: portfolio vs our SPY position vs stock picks since the Sept 22 statement.' },
+  { img: 'screens/tv-movers.png', title: 'Stock moves today', url: 'tv.html?panel=movers',
+    text: 'Pinned panel: the top and bottom three holdings by the stock’s own move today, and where the money is.' },
+  { img: 'screens/tv-chart.png', title: 'Club vs S&P 500 chart', url: 'tv.html?panel=chart',
+    text: 'Pinned panel: the club’s time-weighted return against the S&P 500 (SPY price), both from 0% on Sept 22.' },
   { img: 'screens/board.png', title: 'Live board (TradingView)', url: 'board.html',
     text: 'Prices delayed 15 minutes straight from TradingView’s free widget, in groups of ten. No portfolio math; works with no account or feed.' },
   { img: 'screens/trades.png', title: 'Trade history (phones and laptops)', url: 'trades.html',

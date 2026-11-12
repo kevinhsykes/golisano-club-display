@@ -424,7 +424,7 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
   const step = [0.0025, 0.005, 0.01, 0.02, 0.05, 0.1].find(s => (hi - lo) / s <= 7) || 0.2;
   for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {
     add('line', { x1: left, x2: width - right, y1: y(v), y2: y(v), class: Math.abs(v) < 1e-9 ? 'zero' : 'grid' });
-    add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, Math.abs(v) < 1e-9 ? '0%' : `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
+    add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, Math.abs(v) < 1e-9 ? '0%' : `${v > 0 ? '+' : '\u2212'}${Math.abs(v * 100).toFixed(1)}%`);
   }
   // date labels that do not overlap (newest and first kept)
   const pts0 = series[0].points;
