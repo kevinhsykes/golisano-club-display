@@ -15,7 +15,7 @@
   h1 { margin: 0; font: 500 28px Georgia, "Times New Roman", serif; }
   .lead { color: var(--muted); max-width: 70ch; }
   .lead a, .card a, footer a { color: var(--green); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 20px; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
   .card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #000; }
   .card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
@@ -24,13 +24,16 @@
   .url a { color: inherit; text-decoration: none; }
   .url { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: #06111b; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; word-break: break-all; color: var(--text); }
   .actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn { display: inline-block; padding: 8px 14px; border-radius: 6px; background: var(--gold); color: #071019; font-weight: 600; text-decoration: none; font-size: 14px; }
-  .btn.alt { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .card a.btn { display: inline-block; padding: 8px 14px; border-radius: 6px; background: var(--gold); color: #071019; font-weight: 600; text-decoration: none; font-size: 14px; }
+  .card a.btn.alt { background: transparent; color: var(--text); border: 1px solid var(--line); }
   h3 { margin: 32px 0 8px; font: 600 16px Inter, system-ui, sans-serif; color: var(--gold); letter-spacing: .08em; text-transform: uppercase; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   td, th { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
   th { color: var(--muted); font-weight: 600; }
   code { font: 13px ui-monospace, Menlo, monospace; color: var(--green); }
+  code, td, footer { overflow-wrap: anywhere; }
+  .card, .card .body { min-width: 0; }
+  @media (max-width: 560px) { table, tbody, tr, td, th { display: block; width: 100%; } tr { margin-bottom: 14px; } td, th { padding: 6px 0; } }
   footer { margin-top: 32px; color: var(--muted); font-size: 13px; }
 </style>
 </head>
@@ -47,9 +50,9 @@
   <h3>Options for any TV screen</h3>
   <table>
     <tr><th>Add to the address</th><th>Effect</th></tr>
-    <tr><td><code>?panel=new</code> · <code>trades</code> · <code>h1</code> · <code>h2</code> · <code>movers</code> · <code>chart</code></td><td>Pin one panel instead of rotating through all of them.</td></tr>
+    <tr><td><code>?panel=new</code> · <code>trades</code> · <code>h1</code> · <code>h2</code> · <code>movers</code> · <code>chart</code></td><td>Pin one panel: new (only while a position is new), trades, h1, h2 and further holdings pages, movers, or chart.</td></tr>
     <tr><td><code>?rotate=40</code></td><td>Seconds per panel when rotating (default 20).</td></tr>
-    <tr><td><code>?amounts=hide</code></td><td>Percent only: no dollar values on screen.</td></tr>
+    <tr><td><code>?amounts=hide</code></td><td>Hide portfolio totals and share counts; stock prices remain visible.</td></tr>
     <tr><td>Combine with <code>&amp;</code></td><td>Example: <code>tv.html?panel=movers&amp;amounts=hide</code></td></tr>
   </table>
 
@@ -70,7 +73,7 @@ const screens = [
   { img: 'screens/tv-largest.png', title: 'Rotating TV view (default)', url: 'tv.html',
     text: 'The main cafe screen. Portfolio value, today, gain vs cost and holdings up/down on the left; the right side rotates every 20 seconds through the panels below. Price tape along the bottom.' },
   { img: 'screens/tv-new.png', title: 'New positions', url: 'tv.html?panel=new',
-    text: 'Pinned panel: positions bought in the last two weeks, with buy price, move since we bought, the stock's move today and its share of the portfolio (or an adopted stop-loss). In the rotation only while a position is new.' },
+    text: 'Pinned panel: positions bought in the last two weeks, with buy price, move since we bought, the stock’s move today and its share of the portfolio (or an adopted stop-loss). In the rotation only while a position is new.' },
   { img: 'screens/tv-trades.png', title: 'Recent trades', url: 'tv.html?panel=trades',
     text: 'Pinned panel: the latest buys and sales, newest first: price, shares, gain locked in by a sale, and what the price did since.' },
   { img: 'screens/tv-largest.png', title: 'Holdings 1–10', url: 'tv.html?panel=h1',
