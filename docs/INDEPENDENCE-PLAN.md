@@ -49,6 +49,11 @@ The club runs the site the way its members run other team projects on GitHub. Wo
 - **Pull requests** carry every change. The PR template (`.github/pull_request_template.md`) asks for the checks and screenshots. A second member reviews before merge. Only the automatic price refresh writes to `main` directly.
 - **AI tools** follow `AGENTS.md`. They never invent a fill, they add trades as new rows only, and they never commit secrets to this public repository.
 - **Labels** `trade` and `display` sort the work. The club can add more.
+- **Contributions are tracked by the pull requests themselves.** Since 2026-11-12 every change goes through a pull request, including the work done before the club has its own organization. Each pull request says who asked for the change, who reviewed it, and which issue it closes. The list of merged pull requests is the club's record of who did what. GitHub keeps issues, pull requests, reviews and commit history when the repository moves to an organization, so nothing has to be copied.
+
+## Existing GitHub organizations (checked 2026-11-12)
+
+A GitHub search found an organization `Golisano-Institute-for-Business` ("Golisano Institute for Business and Entrepreneurship", website golisanoinstitute.org, created 2025-03-28). It has no public repositories and no public members, and its owners are UNKNOWN. An older empty organization `Golisano-Institute` also exists (created 2025-01-15). No investment-club organization was found. Before the club creates its own organization, ask Institute staff whether they own `Golisano-Institute-for-Business`. If they do, the club repository can live there (Step 1.1, "select the existing Institute organization"), or the Institute can approve a separate club organization.
 
 ## Phase 0: Preserve the system and name owners
 
@@ -169,7 +174,7 @@ Target: complete before January 2027.
 6. Configure organization recovery under faculty control.
 7. Record the owners and recovery method in the access inventory.
 8. Add club members who work on the site as organization members, so they can open issues and pull requests.
-9. Protect `main`: require a pull request with one approving review from another member, and require the `pages` workflow checks to pass. Allow the price-refresh commits through (the GitHub Actions bot) so scheduled refreshes still land.
+9. Protect `main`: require a pull request with one approving review from another member, and require the `checks` job (`.github/workflows/checks.yml`, which runs the builds and all tests on every pull request) to pass. Allow the price-refresh commits through (the GitHub Actions bot) so scheduled refreshes still land.
 
 **Check:** The faculty sponsor and club officer can each open the organization owner settings. Kevin is not the only owner. A test pull request from a member needs a second member's review before it can merge.
 
@@ -218,16 +223,17 @@ Delete only the disposable practice directories and branch.
 
 **Actions:**
 
-1. Create a branch from the current `main`.
-2. Add one row per fill to `data/source/positions.json`.
+1. Open a "Record a trade" issue with the fill evidence.
+2. Create a branch from the current `main` and add one row per fill to `data/source/positions.json`.
 3. Link the fill evidence in the transaction `source` without exposing account credentials.
 4. Mark an estimated price only under the estimate rules in the README.
 5. For a new symbol, update `positions.json`, `instrument-profiles.json`, `worker/index.js`, and `web/board.html`.
 6. Refresh quotes when the newest saved quote predates the trade.
 7. Run both builds and all tests.
 8. Have the trade reviewer compare every fill with the evidence.
-9. Have the site maintainer check the generated diff and Pages result.
-10. Check `trades.html`, `index.html`, `tv.html`, and `board.html`.
+9. Commit, push the branch, and open a pull request that links the issue. Wait for the `checks` job to pass.
+10. Have the trade reviewer approve the pull request, then merge it. The merge to `main` deploys the site.
+11. After the `pages` run finishes, check `trades.html`, `index.html`, `tv.html`, and `board.html` on the live site.
 
 **Check:** The reviewer confirms the shares, execution times, prices, fees, estimate labels, and realized gains. All tests pass. All affected pages show the trade correctly.
 

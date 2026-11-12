@@ -1,0 +1,27 @@
+# Runs the builds and all tests on every pull request, without deploying or writing anything.
+# Branch protection on main can require this "checks" job (docs/INDEPENDENCE-PLAN.md, Step 1.1).
+name: checks
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build payloads
+        run: |
+          python3 build.py
+          python3 build.py --public --out web/data/portfolio.public.json
+      - name: Test
+        run: |
+          node --test test/core.test.mjs test/worker.test.mjs
+          python3 -m unittest discover -s test -p 'test_*.py'
