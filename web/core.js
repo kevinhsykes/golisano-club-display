@@ -408,9 +408,10 @@ export function sinceSeries(payload, summary) {
   const newest = newestQuote(payload.quotes.items);
   const last = hist[hist.length - 1];
   const live = !last || newest > Date.parse(last.as_of_utc) + 60000;
-  const club = hist.map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.twr) }));
+  // Older payloads have no twr: those points are skipped rather than drawn as NaN.
+  const club = hist.map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.twr) })).filter(p => Number.isFinite(p.y));
   const spy = spy0 > 0 ? hist.filter(h => Number(h.spy) > 0).map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.spy) / spy0 - 1 })) : [];
-  if (live) {
+  if (live && hist.length) {
     club.push({ t: newest, live: true, y: sinceStatement(payload, summary) });
     const ss = spySinceStatement(payload);
     if (ss !== null && spy.length) spy.push({ t: newest, live: true, y: ss });

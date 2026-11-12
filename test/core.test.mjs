@@ -314,3 +314,10 @@ test('since-Sept-22 chart: both lines start at 0 and end at the headline figures
     assert.equal(spy.points.at(-1).y.toFixed(4), spySinceStatement(p).toFixed(4));
   }
 });
+
+test('since-Sept-22 chart tolerates a payload without history or twr', () => {
+  const p = full(), s = compute(p);
+  assert.deepEqual(sinceSeries({ ...p, history: undefined }, s).map(x => x.points.length), [0]);
+  const noTwr = { ...p, history: p.history.map(({ twr, ...h }) => h) };
+  assert.ok(sinceSeries(noTwr, s)[0].points.every(pt => Number.isFinite(pt.y)));
+});
