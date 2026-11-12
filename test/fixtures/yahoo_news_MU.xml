@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss version="2.0">
+    <channel>
+        <description>Latest Financial News for MU</description>
+        <item>
+            <description>Body text that must never be shown.</description>
+            <guid isPermaLink="false">g1</guid>
+            <link>https://www.fool.com/investing/2026/11/12/memory/?.tsrc=rss</link>
+            <pubDate>Thu, 12 Nov 2026 11:50:00 +0000</pubDate>
+            <title>Micron and Sandisk surge as AI triggers a memory-chip shortage</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g2</guid>
+            <link>https://finance.yahoo.com/articles/mu-hbm-1.html?.tsrc=rss</link>
+            <pubDate>Thu, 12 Nov 2026 11:33:13 +0000</pubDate>
+            <title>  Micron (MU) Has Next Year’s HBM Sold: Can It Last?  </title>
+            <source>Motley Fool</source>
+        </item>
+        <item>
+            <guid isPermaLink="false">g3</guid>
+            <link>https://finance.yahoo.com/articles/unrelated-1.html</link>
+            <pubDate>Thu, 12 Nov 2026 10:00:00 +0000</pubDate>
+            <title>Why Cisco and Oracle jumped today</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g4</guid>
+            <link>https://www.fool.com/investing/2026/11/12/memory/?.tsrc=rss</link>
+            <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
+            <title>Micron: same link as the first row, different title</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g5</guid>
+            <link>https://example.com/other-link</link>
+            <pubDate>Thu, 12 Nov 2026 08:00:00 +0000</pubDate>
+            <title>micron and sandisk SURGE as AI triggers a memory-chip shortage</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g6</guid>
+            <link>https://finance.yahoo.com/articles/old.html</link>
+            <pubDate>Mon, 02 Nov 2026 12:00:00 +0000</pubDate>
+            <title>Micron (MU) older than a week</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g7</guid>
+            <link>https://finance.yahoo.com/articles/nodate.html</link>
+            <title>Micron item with no date</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g8</guid>
+            <link>https://finance.yahoo.com/articles/amp.html</link>
+            <pubDate>Wed, 11 Nov 2026 15:00:00 -0500</pubDate>
+            <title>Micron &amp; Nvidia: S&amp;P 500 “memory” rally</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g9</guid>
+            <link>http://insecure.example.com/x</link>
+            <pubDate>Thu, 12 Nov 2026 07:00:00 +0000</pubDate>
+            <title>Micron item with a non-https link</title>
+        </item>
+        <item>
+            <guid isPermaLink="false">g10</guid>
+            <link>https://finance.yahoo.com/articles/mumble.html</link>
+            <pubDate>Thu, 12 Nov 2026 06:00:00 +0000</pubDate>
+            <title>MUMBAI traders and mu-tant ETFs</title>
+        </item>
+    </channel>
+</rss>

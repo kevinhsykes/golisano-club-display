@@ -1,0 +1,810 @@
+{
+ "schema": "company-news.v1",
+ "source": "Yahoo Finance",
+ "checked_at_utc": "2026-11-12T12:42:49Z",
+ "symbols_checked": [
+  "AAPL",
+  "AMD",
+  "AMZN",
+  "BRK/B",
+  "CEG",
+  "DOCN",
+  "GOOGL",
+  "LIN",
+  "META",
+  "MKSI",
+  "MSFT",
+  "NFLX",
+  "NVDA",
+  "RDDT",
+  "SOFI",
+  "TSLA",
+  "UPS",
+  "MU",
+  "CAT"
+ ],
+ "symbols_failed": [],
+ "symbols_empty": [],
+ "items": [
+  {
+   "symbol": "NVDA",
+   "title": "Dow Jones Futures: Techs Fall As Nvidia Board Mulls Ousting CEO Jensen Huang; CoreWeave Rival Nebius Dives On Results",
+   "link": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs-fall.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:39:05Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Alice Huang, alleged spy at centre of Nvidia scandal, said to be back in China",
+   "link": "https://www.independent.co.uk/tech/nvidia-huang-affair-scandal-beijing-b3083768.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:32:06Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Meta Critical Minerals Completes High-Resolution LiDAR Survey at Its 100% Owned Table Mountain High-Purity Silica Project, Golden, British Columbia",
+   "link": "https://finance.yahoo.com/markets/commodities/articles/meta-critical-minerals-completes-high-123000009.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:30:00Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Stegra and Meta sign agreement for environmental attribute certificates to advance green steel",
+   "link": "https://finance.yahoo.com/energy/articles/stegra-meta-sign-agreement-environmental-122900885.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:29:00Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia tumbles early amid questions about Nvidia CEO Jensen Huang’s future",
+   "link": "https://finance.yahoo.com/technology/articles/nvidia-tumbles-early-amid-questions-122602360.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:26:02Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Wall Street backs away from Nvidia as Jensen Huang uncertainty unfolds: What analysts are saying",
+   "link": "https://finance.yahoo.com/markets/article/wall-street-backs-away-from-nvidia-as-jensen-huang-uncertainty-unfolds-what-analysts-are-saying-122600606.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:26:00Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD Has Opportunity As NVDA Faces Scrutiny And Potential Leadership Vacuum, William Blair Says — Sees Runway For Shares",
+   "link": "https://stocktwits.com/news-articles/markets/equity/amd-has-opportunity-as-nvda-faces-scrutiny-and-potential-leadership-vacuum-william-blair-says-sees-runway-for-shares/cNGzvc2R9af?.tsrc=rss",
+   "published_utc": "2026-11-12T12:24:57Z"
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "Scott Galloway: If AI Is “Like the Railroads,” Alphabet and Microsoft “Would Still Be Fine”",
+   "link": "https://www.tikr.com/blog/scott-galloway-if-ai-is-like-the-railroads-alphabet-and-microsoft-would-still-be-fine?ref=yahoofinance&tlnk=yf-261112-vp249j44&.tsrc=rss",
+   "published_utc": "2026-11-12T12:24:09Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Micron Out-Earned Apple Last Quarter, Yet It’s Worth 1/6 as Much. One of Those Two Things Is Wrong",
+   "link": "https://www.tikr.com/blog/micron-out-earned-apple-last-quarter-yet-its-worth-1-6-as-much-one-of-those-two-things-is-wrong?ref=yahoofinance&tlnk=yf-261112-h4h78q9x&.tsrc=rss",
+   "published_utc": "2026-11-12T12:23:05Z"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Cabilly & Co. Explains Legal Considerations in Unresolved Amazon Seller Disputes",
+   "link": "https://finance.yahoo.com/small-business/articles/cabilly-co-explains-legal-considerations-122000210.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:20:00Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Premarket movers: Nvidia sinks; Lilly gains on China approval",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/premarket-movers-nvidia-sinks-lilly-121833317.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:18:33Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Has Hired an Outside Firm to Find Jensen Huang’s Replacement",
+   "link": "https://247wallst.com/investing/2026/11/12/nvidia-has-hired-an-outside-firm-to-find-jensen-huangs-replacement/?.tsrc=rss",
+   "published_utc": "2026-11-12T12:17:24Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple Vs. Alphabet: Who’s The Better Flight-to-Quality Anchor Now?",
+   "link": "https://247wallst.com/investing/2026/11/12/apple-vs-alphabet-whos-the-better-flight-to-quality-anchor-now/?.tsrc=rss",
+   "published_utc": "2026-11-12T12:15:46Z"
+  },
+  {
+   "symbol": "SOFI",
+   "title": "SoFi Technologies (SOFI) Introduced The First Tokenized Deposit Product At A US Bank",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-sofi-introduced-first-121205305.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:12:05Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "TSX futures subdued amid reports Nvidia board preparing ouster of CEO Jensen Huang",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tsx-futures-subdued-amid-reports-121009808.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:10:09Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "RBC Says Nvidia's Valuation Already Prices In CEO Risk",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/rbc-says-nvidias-valuation-already-120805779.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:08:05Z"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Amazon Stock At $266: How Much Of Its Profit Is Anthropic?",
+   "link": "https://www.trefis.com/stock/amzn/articles/624614/amazon-stock-at-266-how-much-of-its-profit-is-anthropic/2026-11-12?.tsrc=rss",
+   "published_utc": "2026-11-12T12:02:22Z"
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Microsoft Stock At $521: Anthropic's Landlord, Customer And Rival?",
+   "link": "https://www.trefis.com/stock/msft/articles/624619/microsoft-stock-at-521-anthropic-s-landlord-customer-and-rival/2026-11-12?.tsrc=rss",
+   "published_utc": "2026-11-12T12:02:21Z"
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "What Does The Anthropic IPO Mean For Alphabet Stock?",
+   "link": "https://www.trefis.com/stock/googl/articles/624608/what-does-the-anthropic-ipo-mean-for-alphabet-stock/2026-11-12?.tsrc=rss",
+   "published_utc": "2026-11-12T12:02:21Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD Stock: What Does Its $2.5 Billion Anthropic Bet Buy?",
+   "link": "https://www.trefis.com/stock/amd/articles/624618/amd-stock-what-does-its-2-5-billion-anthropic-bet-buy/2026-11-12?.tsrc=rss",
+   "published_utc": "2026-11-12T12:02:21Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "Why AMD CEO Lisa Su is Yahoo Finance's 'CEO of the Year'",
+   "link": "https://finance.yahoo.com/technology/article/why-amd-ceo-lisa-su-is-yahoo-finances-ceo-of-the-year-120000902.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:00:00Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Sublime Systems and Meta Sign Agreement to Scale U.S. Manufacturing of Next Generation Low-Carbon Cement",
+   "link": "https://finance.yahoo.com/energy/articles/sublime-systems-meta-sign-agreement-120000588.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:00:00Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Nevoya and Meta Expand Partnership with 25 New Electric Trucks on the I-10 Corridor",
+   "link": "https://finance.yahoo.com/energy/articles/nevoya-meta-expand-partnership-25-120000563.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:00:00Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "Nvidia CEO Exit Reports Sends Shockwaves Through AI Chip Stocks --  AMD and Broadcom Stocks Jump",
+   "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-ceo-exit-reports-sends-115114044.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:51:14Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla's Texas Robotaxi Fleet Tops Waymo: Should You Get Bullish?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/teslas-texas-robotaxi-fleet-tops-113800730.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:38:00Z"
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron (MU) Has Next Year’s High-Bandwidth Memory Mostly Sold. Can That Anchor a Decade-Long Case?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-next-high-bandwidth-113313288.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:33:13Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Ron Baron Says Tesla (TSLA) Could Climb Within a Decade. Ark’s Model Leans on Robotaxis",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ron-baron-says-tesla-tsla-113238764.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:32:38Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Pershing Square Calls Meta’s (META) Business Model “One of the Clearest Beneficiaries of AI Integration”",
+   "link": "https://finance.yahoo.com/technology/ai/articles/pershing-square-calls-meta-meta-113158708.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:31:58Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla FSD Gains Ground in Europe: Is EU-Wide Approval Near?",
+   "link": "https://finance.yahoo.com/technology/ai/articles/tesla-fsd-gains-ground-europe-112700383.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:27:00Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD, Broadcom gain after reports say Nvidia board preparing to oust Huang",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/amd-broadcom-gain-reports-nvidia-112100529.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:21:00Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD's AI Sales Set to Overtake Server CPUs, William Blair Says",
+   "link": "https://finance.yahoo.com/technology/ai/articles/amds-ai-sales-set-overtake-111834124.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:18:34Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD, Broadcom rally as Nvidia faces a major leadership test",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/amd-broadcom-rally-nvidia-faces-111538495.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:15:38Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD and Broadcom Stocks Jump. What It Says About the Future of the AI Trade.",
+   "link": "https://finance.yahoo.com/m/e24000fb-771f-351d-965d-387bb526b5ce/amd-and-broadcom-stocks-jump..html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:14:00Z"
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "Google parent draws $5 billion in orders for AI debt sale",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/google-parent-draws-5-billion-111311273.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:13:11Z"
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron and Sandisk surge as AI triggers a memory-chip shortage",
+   "link": "https://finance.yahoo.com/technology/articles/micron-sandisk-surge-ai-triggers-111233029.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:12:33Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "What iShares MSCI USA Momentum Factor ETF (MTUM) Sold: AMD Leads on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ishares-msci-usa-momentum-factor-110608943.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:06:08Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "ProShares Ultra QQQ (QLD) Buys $10.6 Million More Apple on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/proshares-ultra-qqq-qld-buys-110601804.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:06:01Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Financial Select Sector SPDR (XLF) Sells $18.9 Million of Berkshire on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/financial-select-sector-spdr-xlf-110546923.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:05:46Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "JPMorgan Global Select Equity (JGLO) Adds Broadcom and AMD on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-global-select-equity-jglo-110540634.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:05:40Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "State Street SPDR Portfolio S&P 500 (SPYM) Buys $15.2 Million More Apple on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-spdr-portfolio-p-110516169.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:05:16Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Invesco NASDAQ 100 ETF (QQQM) Adds Apple and NVIDIA on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/invesco-nasdaq-100-etf-qqqm-110512326.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:05:12Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "iShares Core S&P 500 ETF (IVV) Sells $26.6 Million of Apple on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ishares-core-p-500-etf-110450403.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:04:50Z"
+  },
+  {
+   "symbol": "META",
+   "title": "What State Street Comm Services SPDR (XLC) Bought: No Buys, META Sold on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-comm-services-spdr-110445746.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:04:45Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "iShares Russell 1000 Growth (IWF) Sells NVIDIA and Apple on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ishares-russell-1000-growth-iwf-110437459.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:04:37Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "What SPDR S&P 500 ETF (SPY) Bought: Apple Leads on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110413896.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:04:13Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "INVESCO QQQ (QQQ) Adds Apple and NVIDIA on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/invesco-qqq-qqq-adds-apple-110409863.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:04:09Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "ETFs Are Net Sellers of Constellation Energy (CEG) on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-constellation-energy-110253077.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:02:53Z"
+  },
+  {
+   "symbol": "META",
+   "title": "ETFs Bought $99.7 Million of Meta Platforms (META) on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-99-7-million-110125797.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:01:25Z"
+  },
+  {
+   "symbol": "MU",
+   "title": "52 ETFs Add to Micron (MU) Holdings on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/52-etfs-add-micron-mu-110122722.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:01:22Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "ETFs Are Buying Tesla (TSLA) on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-tesla-tsla-nov-110053409.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:00:53Z"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "ETFs Bought $259.9 Million of Amazon (AMZN) on Tuesday",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-259-9-million-110047075.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:00:47Z"
+  },
+  {
+   "symbol": "MSFT",
+   "title": "ETFs Are Buying Microsoft (MSFT) on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-microsoft-msft-nov-110043033.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:00:43Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple (AAPL) Sees $460.3 Million in Net ETF Buying on Nov. 10",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-sees-460-3-110040473.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:00:40Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Finland approves Tesla driver assistance system ahead of EU-wide decision",
+   "link": "https://www.just-auto.com/news/finland-tesla-driver-assistance-system/?.tsrc=rss",
+   "published_utc": "2026-11-12T10:44:35Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Tuya Releases Open-Source Skill Enabling Meta Muse to Control Smart Devices Across 3,000+ Categories",
+   "link": "https://finance.yahoo.com/technology/ai/articles/tuya-releases-open-source-skill-100700517.html?.tsrc=rss",
+   "published_utc": "2026-11-12T10:07:00Z"
+  },
+  {
+   "symbol": "MU",
+   "title": "Great News for Nvidia, Micron, Broadcom, and AMD Stock Investors -- Wall Street Made a Mistake",
+   "link": "https://www.fool.com/investing/2026/11/12/great-news-nvidia-micron-broadcom-amd-wall-street-mistake/?.tsrc=rss",
+   "published_utc": "2026-11-12T09:33:02Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Hathaway (BRK.B) Stock Could Be 25% Undervalued Despite $359 Billion Cash Holdings",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-brk-b-stock-081052449.html?.tsrc=rss",
+   "published_utc": "2026-11-12T08:10:52Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla Robotaxi Now Works 24/7 While Elon Musk's Robots Head to Optimus Academy",
+   "link": "https://beincrypto.com/tesla-robotaxi-24-7-optimus-academy/?.tsrc=rss",
+   "published_utc": "2026-11-12T07:17:49Z"
+  },
+  {
+   "symbol": "UPS",
+   "title": "UPS (UPS) Stock Gets Fair Value Bump After Q3 Beat And Analyst Revisions",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ups-ups-stock-gets-fair-071311747.html?.tsrc=rss",
+   "published_utc": "2026-11-12T07:13:11Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "CAT's Record $78B Backlog Signals Strength: Can Growth Continue?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/cats-record-78b-backlog-signals-071100147.html?.tsrc=rss",
+   "published_utc": "2026-11-12T07:11:00Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "Revisiting Former Stock Picks Frontline, OneSpaWorld Holdings, Reddit",
+   "link": "https://finance.yahoo.com/m/4db6fcab-2b00-33a2-9260-6845234f1b6f/revisiting-former-stock-picks.html?.tsrc=rss",
+   "published_utc": "2026-11-12T06:21:00Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "Constellation Energy (CEG) Launched Peak+ Nuclear And Storage Contracts",
+   "link": "https://finance.yahoo.com/energy/articles/constellation-energy-ceg-launched-peak-051302047.html?.tsrc=rss",
+   "published_utc": "2026-11-12T05:13:02Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "How Earnings Beat At Constellation Energy Stock Has Changed Its Investment Story",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/earnings-beat-constellation-energy-stock-043337611.html?.tsrc=rss",
+   "published_utc": "2026-11-12T04:33:37Z"
+  },
+  {
+   "symbol": "DOCN",
+   "title": "DigitalOcean (DOCN) Stock Looks Fairly Priced After Strong Q3 Growth",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/digitalocean-docn-stock-looks-fairly-031813611.html?.tsrc=rss",
+   "published_utc": "2026-11-12T03:18:13Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "If SpaceX and Tesla Merge, Here's What a $10,000 Investment in the Combined Company Could Be Worth by 2030",
+   "link": "https://www.fool.com/investing/2026/11/11/if-spacex-and-tesla-merge-heres-what-a-10000-inves/?.tsrc=rss",
+   "published_utc": "2026-11-12T02:50:00Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "Reddit (RDDT) Stock May Be Undervalued Following Its Logged In Push",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/reddit-rddt-stock-may-undervalued-010911465.html?.tsrc=rss",
+   "published_utc": "2026-11-12T01:09:11Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "What Could Send Constellation Energy Stock Higher?",
+   "link": "https://www.trefis.com/stock/ceg/articles/624309/what-could-send-constellation-energy-stock-higher/2026-11-11?.tsrc=rss",
+   "published_utc": "2026-11-12T00:44:31Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Nasdaq 100 Futures Drop As Reports Relating To Jensen Huang’s Ousting Outweigh CoreWeave’s Strong Outlook —  NVDA, TSLA, SNDK, CAPR, CRWV In Focus",
+   "link": "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-futures-drop-as-reports-relating-to-jensen-huang-s-ousting/cNGzQslR997?.tsrc=rss",
+   "published_utc": "2026-11-12T00:22:06Z"
+  },
+  {
+   "symbol": "LIN",
+   "title": "Before You Buy Linde Stock, Settle This",
+   "link": "https://www.trefis.com/stock/lin/articles/624358/before-you-buy-linde-stock-settle-this/2026-11-11?.tsrc=rss",
+   "published_utc": "2026-11-12T00:20:13Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar (CAT) Stock Looks Like A Bargain On Its 222% Run",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-stock-looks-bargain-231435012.html?.tsrc=rss",
+   "published_utc": "2026-11-11T23:14:35Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Michael Burry just made a big move on Caterpillar stock",
+   "link": "https://www.thestreet.com/investing/michael-burry-caterpillar-puts-house-money?.tsrc=rss",
+   "published_utc": "2026-11-11T23:07:00Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Can Caterpillar Stock Hit $820?",
+   "link": "https://www.trefis.com/stock/cat/articles/624242/can-caterpillar-stock-hit-820/2026-11-11?.tsrc=rss",
+   "published_utc": "2026-11-11T21:44:27Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix Wipes Out Five Years of Gains",
+   "link": "https://app.moby.co/home/news/news-netflix-wipes-out-five-years-of-gains?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+   "published_utc": "2026-11-11T21:22:20Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "How Berkshire Hathaway Performed Vs. Warren Buffett's 3 Main Goals",
+   "link": "https://finance.yahoo.com/m/4474931d-c39c-3c2e-958e-d363308f0a3a/how-berkshire-hathaway.html?.tsrc=rss",
+   "published_utc": "2026-11-11T21:03:55Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire’s Geico Unit Struggles Despite Turnaround; Its Profitability Trails Progressive",
+   "link": "https://finance.yahoo.com/m/bd227f80-b86f-3108-8e33-3530b97da81e/berkshire%E2%80%99s-geico-unit.html?.tsrc=rss",
+   "published_utc": "2026-11-11T20:33:00Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Here is What to Know Beyond Why Berkshire Hathaway Inc. (BRK.B) is a Trending Stock",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/know-beyond-why-berkshire-hathaway-202121437.html?.tsrc=rss",
+   "published_utc": "2026-11-11T20:21:21Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla extends Cybertruck production to clear backlog, Musk says",
+   "link": "https://www.cbsnews.com/news/tesla-extend-cybertruck-production-backlog/?.tsrc=rss",
+   "published_utc": "2026-11-11T19:55:13Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla Extends Cybertruck’s Run. Its Driving Software Matters More.",
+   "link": "https://finance.yahoo.com/m/2c17d887-bd87-396e-a44f-ad396f16f758/tesla-extends-cybertruck%E2%80%99s.html?.tsrc=rss",
+   "published_utc": "2026-11-11T19:39:00Z"
+  },
+  {
+   "symbol": "SOFI",
+   "title": "Cathie Wood Sees Something in SoFi. Here’s Why ARK Made a $6.8 Million Bet",
+   "link": "https://www.barchart.com/story/news/8786166/cathie-wood-sees-something-in-sofi-heres-why-ark-made-a-6-8-million-bet?.tsrc=rss",
+   "published_utc": "2026-11-11T19:00:03Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar faces further valuation risks despite machinery strength, Bank of America warns",
+   "link": "https://www.proactiveinvestors.com/companies/news/1101618/caterpillar-faces-further-valuation-risks-despite-machinery-strength-bank-of-america-warns-1101618.html?.tsrc=rss",
+   "published_utc": "2026-11-11T19:00:00Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Clarion Partners’ loan on Netflix-occupied Hollywood campus hits market",
+   "link": "https://finance.yahoo.com/real-estate/articles/clarion-partners-loan-netflix-occupied-185958704.html?.tsrc=rss",
+   "published_utc": "2026-11-11T18:59:58Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "Constellation Energy’s Dividend Is Small. AI Power Demand Could Change That",
+   "link": "https://247wallst.com/investing/2026/11/11/constellation-energys-dividend-is-small-ai-power-demand-could-change-that/?.tsrc=rss",
+   "published_utc": "2026-11-11T18:17:15Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "AI Selloff Sends Berkshire to Its Biggest S&P 500 Lead Since 2010: Can It Last?",
+   "link": "https://beincrypto.com/ai-selloff-berkshire-sp-500-lead/?.tsrc=rss",
+   "published_utc": "2026-11-11T17:22:36Z"
+  },
+  {
+   "symbol": "UPS",
+   "title": "United Parcel Service (UPS) Opens $80 Million Philippines Air Hub As Asia Trade Shifts",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/united-parcel-ups-opens-80-171545684.html?.tsrc=rss",
+   "published_utc": "2026-11-11T17:15:45Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix (NFLX) Stock May Be a ‘Loser’ This Year, But You Can Still Scalp Profits From It",
+   "link": "https://www.barchart.com/story/news/8783928/netflix-nflx-stock-may-be-a-loser-this-year-but-you-can-still-scalp-profits-from-it?.tsrc=rss",
+   "published_utc": "2026-11-11T16:32:30Z"
+  },
+  {
+   "symbol": "LIN",
+   "title": "What Linde’s Customer Contracts Mean for This Jim Cramer Trust Holding’s Dividend",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/linde-customer-contracts-mean-jim-162509235.html?.tsrc=rss",
+   "published_utc": "2026-11-11T16:25:09Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "Reddit Rides on Strong Ad Growth: Can It Outpace META and SNAP?",
+   "link": "https://finance.yahoo.com/media-advertising/articles/reddit-rides-strong-ad-growth-162400217.html?.tsrc=rss",
+   "published_utc": "2026-11-11T16:24:00Z"
+  },
+  {
+   "symbol": "SOFI",
+   "title": "Could SoFi Actually Climb 59%? Or Is Scotiabank Totally Wrong?",
+   "link": "https://www.tikr.com/blog/could-sofi-actually-climb-59-or-is-scotiabank-totally-wrong?ref=yahoofinance&tlnk=yf-261111-wg4vr8ff&.tsrc=rss",
+   "published_utc": "2026-11-11T15:54:39Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar Keeps Sliding: Why Evercore ISI Still Sees 40% Upside",
+   "link": "https://www.tikr.com/blog/caterpillar-keeps-sliding-why-evercore-isi-still-sees-40-upside?ref=yahoofinance&tlnk=yf-261111-mm3976rj&.tsrc=rss",
+   "published_utc": "2026-11-11T15:43:36Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "What You Actually Own When You Buy a Share of Berkshire Hathaway",
+   "link": "https://www.fool.com/investing/2026/11/11/what-you-actually-own-when-you-buy-a-share-of-berkshire-hathaway/?.tsrc=rss",
+   "published_utc": "2026-11-11T14:37:02Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "Reddit Finds Strategy To Cash In On Candor",
+   "link": "https://www.mediapost.com/publications/article/419278/reddit-finds-strategy-to-cash-in-on-candor.html?.tsrc=rss",
+   "published_utc": "2026-11-11T13:44:28Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Warren Buffett’s Berkshire Just Bought $600 Million in Lennar Stock as the Housing Market Weakens",
+   "link": "https://247wallst.com/investing/2026/11/11/warren-buffetts-berkshire-just-bought-600-million-in-lennar-stock-as-the-housing-market-weakens/?.tsrc=rss",
+   "published_utc": "2026-11-11T13:27:20Z"
+  },
+  {
+   "symbol": "UPS",
+   "title": "UPS vs. FedEx: One has a Bigger Dividend. But Which Delivery Stock Has the Better Future?",
+   "link": "https://www.barchart.com/story/news/8775732/ups-vs-fedex-one-has-a-bigger-dividend-but-which-delivery-stock-has-the-better-future?.tsrc=rss",
+   "published_utc": "2026-11-11T13:14:42Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix trades at under 18x earnings after a steep valuation reset",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-trades-under-18x-earnings-120649905.html?.tsrc=rss",
+   "published_utc": "2026-11-11T12:06:49Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Greg Abel's Berkshire Hathaway Owns 37% of This Company. Here's Why the Stock Is Also a Buy for Retail Investors.",
+   "link": "https://www.fool.com/investing/2026/11/11/greg-abel-berkshire-hathaway-own-sirius-stock/?.tsrc=rss",
+   "published_utc": "2026-11-11T12:00:00Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Financial Select Sector SPDR (XLF) Buys $26.7 Million More Berkshire on Nov. 9",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/financial-select-sector-spdr-xlf-110424944.html?.tsrc=rss",
+   "published_utc": "2026-11-11T11:04:24Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "State Street Industrial Select Sector SPDR (XLI) Adds GE and CAT on Nov. 9",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-industrial-select-sector-110410356.html?.tsrc=rss",
+   "published_utc": "2026-11-11T11:04:10Z"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Bill Ackman Says Warren Buffett Told Him ‘I Haven’t Had Water in 48 Years’ — His Cherry Coke Habit Now Pays Berkshire $848 Million a Year",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/bill-ackman-says-warren-buffett-110007274.html?.tsrc=rss",
+   "published_utc": "2026-11-11T11:00:07Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Will Netflix Ever Pay a Dividend?",
+   "link": "https://www.fool.com/investing/2026/11/11/will-netflix-ever-pay-a-dividend/?.tsrc=rss",
+   "published_utc": "2026-11-11T08:58:02Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "NFLX Stock Slips Overnight: Co-CEO Gregory Peters Sells $1.74M Worth Of Company Shares",
+   "link": "https://stocktwits.com/news-articles/markets/equity/nflx-stock-slips-overnight-co-ceo-gregory-peters-sells-1-74-m-worth-of-company-shares/cNGDfuUR9Jr?.tsrc=rss",
+   "published_utc": "2026-11-11T04:52:59Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "CEG Stock Is On Track To Reverse Last Week's Losses: Here's Why This Analyst Sees An Upside Of 29%",
+   "link": "https://stocktwits.com/news-articles/markets/equity/ceg-stock-is-on-track-to-reverse-last-week-s-losses-here-s-why-this-analyst-sees-an-upside-of-29/cNGDf4dR9Jp?.tsrc=rss",
+   "published_utc": "2026-11-11T04:27:30Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "42% Upside for Reddit? Guggenheim Thinks So, and Here’s How",
+   "link": "https://www.tikr.com/blog/42-upside-for-reddit-guggenheim-thinks-so-and-heres-how?ref=yahoofinance&tlnk=yf-261111-ph27j359&.tsrc=rss",
+   "published_utc": "2026-11-11T03:06:03Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "Constellation Energy (CEG) Stock Cools After Q3 Earnings Powerhouse",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/constellation-energy-ceg-stock-cools-021550597.html?.tsrc=rss",
+   "published_utc": "2026-11-11T02:15:50Z"
+  },
+  {
+   "symbol": "CEG",
+   "title": "Surprised By Constellation Energy's Slide? What Investors Missed",
+   "link": "https://finance.yahoo.com/energy/articles/surprised-constellation-energys-slide-investors-001534913.html?.tsrc=rss",
+   "published_utc": "2026-11-11T00:15:34Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Is The Market Underpricing Caterpillar Stock?",
+   "link": "https://www.trefis.com/stock/cat/articles/623988/is-the-market-underpricing-caterpillar-stock/2026-11-10?.tsrc=rss",
+   "published_utc": "2026-11-10T23:42:51Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "What Could Lift Netflix Stock From Here?",
+   "link": "https://www.trefis.com/stock/nflx/articles/623989/what-could-lift-netflix-stock-from-here/2026-11-10?.tsrc=rss",
+   "published_utc": "2026-11-10T23:34:29Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar Stock Is Waiting On One Answer",
+   "link": "https://www.trefis.com/stock/cat/articles/624010/caterpillar-stock-is-waiting-on-one-answer/2026-11-10?.tsrc=rss",
+   "published_utc": "2026-11-10T21:38:32Z"
+  },
+  {
+   "symbol": "UPS",
+   "title": "An $850,000 Portfolio in Verizon, Enterprise Products and UPS Pays $51,000 a Year in Dividends. Here’s What Happens if One Cuts",
+   "link": "https://www.tikr.com/blog/an-850000-portfolio-in-verizon-enterprise-products-and-ups-pays-51000-a-year-in-dividends-heres-what-happens-if-one-cuts?ref=yahoofinancedividend&tlnk=yf-261110-c3g5w883&.tsrc=rss",
+   "published_utc": "2026-11-10T20:25:17Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar (CAT) Is Amongst The Notable Names Insiders Are Loading Up On After the Recent Crash",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-amongst-notable-names-191027709.html?.tsrc=rss",
+   "published_utc": "2026-11-10T19:10:27Z"
+  },
+  {
+   "symbol": "UPS",
+   "title": "UPS Takes CBP to Court Over Tariff Refunds",
+   "link": "https://wwd.com/sourcing-journal/logistics/ups-sues-cbp-over-tariff-refunds-court-international-trade-ieepa-1239409293/?.tsrc=rss",
+   "published_utc": "2026-11-10T18:28:22Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "How AI Power Order Will Impact Caterpillar (CAT) Investors",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ai-power-order-impact-caterpillar-181326275.html?.tsrc=rss",
+   "published_utc": "2026-11-10T18:13:26Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar Is the Quiet Winner in Anthropic’s IPO: a $3.4 Billion Generator Order",
+   "link": "https://www.tikr.com/blog/caterpillar-is-the-quiet-winner-in-anthropics-ipo-a-3-4-billion-generator-order?ref=yahoofinance&tlnk=yf-261110-pq5x5699&.tsrc=rss",
+   "published_utc": "2026-11-10T16:49:32Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Skydance Sinks 9% as Warner Bros. Film Slump Overshadows Earnings Beat; Netflix Falls 2%, Disney Dips",
+   "link": "https://247wallst.com/investing/2026/11/10/skydance-sinks-9-as-warner-bros-film-slump-overshadows-earnings-beat-netflix-falls-2-disney-dips/?.tsrc=rss",
+   "published_utc": "2026-11-10T16:03:51Z"
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar Inc. (CAT) Posted a Record $20 Billion Quarter: Is the AI Power Boom Fueling Its Next Growth Phase?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-inc-cat-posted-record-155820399.html?.tsrc=rss",
+   "published_utc": "2026-11-10T15:58:20Z"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix embraces 35mm film in international campaign",
+   "link": "https://www.marketingdive.com/news/netflix-embraces-35mm-film-in-international-campaign/874237/?.tsrc=rss",
+   "published_utc": "2026-11-10T15:42:00Z"
+  },
+  {
+   "symbol": "UPS",
+   "title": "UPS (UPS) Stock May Be 46% Undervalued On Fresh AI Data Center News",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ups-ups-stock-may-46-031224696.html?.tsrc=rss",
+   "published_utc": "2026-11-10T03:12:24Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "Reddit (RDDT), What Is Behind The Fresh Attention?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/reddit-rddt-behind-fresh-attention-220756302.html?.tsrc=rss",
+   "published_utc": "2026-11-09T22:07:56Z"
+  },
+  {
+   "symbol": "RDDT",
+   "title": "Reddit COO Says “Over 80% of Our Monetization” Is Logged In. Google Is Squeezing the Rest",
+   "link": "https://www.tikr.com/blog/reddit-coo-says-over-80-of-our-monetization-is-logged-in-google-is-squeezing-the-rest?ref=yahoofinance&tlnk=yf-261109-96x99fwx&.tsrc=rss",
+   "published_utc": "2026-11-09T17:34:29Z"
+  },
+  {
+   "symbol": "DOCN",
+   "title": "ZM vs. DOCN: Which Stock Is the Better Value Option?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/zm-vs-docn-stock-better-154003901.html?.tsrc=rss",
+   "published_utc": "2026-11-09T15:40:03Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKS (MKSI) Stock Looks Below Fair Value On Its 177% Run",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/mks-mksi-stock-looks-below-091137532.html?.tsrc=rss",
+   "published_utc": "2026-11-08T09:11:37Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKS (MKSI) Beat Q3 Guidance, Is The Stock Still Cheap?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/mks-mksi-beat-q3-guidance-070652372.html?.tsrc=rss",
+   "published_utc": "2026-11-08T07:06:52Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKSI Q3 Earnings Call Highlights AI Demand and Capacity Expansion",
+   "link": "https://finance.yahoo.com/technology/ai/articles/mksi-q3-earnings-call-highlights-174800622.html?.tsrc=rss",
+   "published_utc": "2026-11-06T17:48:00Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "What MKS (MKSI) Said on Its Q3 Earnings Call",
+   "link": "https://www.marketbeat.com/instant-alerts/transcript-what-mks-mksi-said-on-its-q3-earnings-call-2026-11-06/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published_utc": "2026-11-06T07:14:30Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKS Inc (MKSI) Q3 2026 Earnings Call Highlights: Record Margins, 33% Revenue Growth and a $500 ...",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/mks-inc-mksi-q3-2026-231850774.html?.tsrc=rss",
+   "published_utc": "2026-11-05T23:18:50Z"
+  },
+  {
+   "symbol": "DOCN",
+   "title": "DigitalOcean announces collaboration with Box",
+   "link": "https://finance.yahoo.com/technology/articles/digitalocean-announces-collaboration-box-221524663.html?.tsrc=rss",
+   "published_utc": "2026-11-05T22:15:24Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKS (MKSI) Q3 2026 Earnings Call Transcript",
+   "link": "https://www.fool.com/earnings/call-transcripts/2026/11/05/mks-mksi-q3-2026-earnings-call-transcript/?.tsrc=rss",
+   "published_utc": "2026-11-05T21:32:41Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKSI Q3 Earnings Beat Estimates on Strong Semiconductor Growth",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/mksi-q3-earnings-beat-estimates-171300453.html?.tsrc=rss",
+   "published_utc": "2026-11-05T17:13:00Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "Earnings Beat May Change The Case For MKS Stock",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/earnings-beat-may-change-case-161420058.html?.tsrc=rss",
+   "published_utc": "2026-11-05T16:14:20Z"
+  },
+  {
+   "symbol": "DOCN",
+   "title": "DigitalOcean Launches Cuttlefish to Supervise AI Agents From Anywhere, With Box as Launch Partner",
+   "link": "https://finance.yahoo.com/technology/ai/articles/digitalocean-launches-cuttlefish-supervise-ai-140000429.html?.tsrc=rss",
+   "published_utc": "2026-11-05T14:00:00Z"
+  },
+  {
+   "symbol": "MKSI",
+   "title": "MKS Inc. Q3 2026 Earnings Call Summary",
+   "link": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-mks-inc-q3-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+   "published_utc": "2026-11-05T13:30:00Z"
+  }
+ ]
+}

@@ -138,6 +138,16 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 }
 /* Narrow phones: tighter cells so symbol, price and the chosen pair fit without sideways scrolling. */
 @media (max-width: 400px) { th, td { padding: 8px 5px; } table { font-size: 14px; } .badge { margin-left: 3px; padding: 3px 4px; } }
+.news { margin-top: 18px; }
+.news h2 { margin: 0 0 6px; font: 500 17px var(--serif); }
+.news ul { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.news li { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 2px 12px; align-items: baseline; padding: 10px 12px; border-top: 1px solid var(--line); }
+.news li:first-child { border-top: 0; }
+.news li.none { display: block; color: var(--muted); }
+.news .chip { justify-self: start; font: 700 12px/1 var(--sans); letter-spacing: .04em; padding: 4px 7px; border-radius: 5px; background: var(--panel); border: 1px solid var(--line); }
+.news .title { color: inherit; overflow-wrap: anywhere; }
+.news .meta { grid-column: 2; color: var(--muted); font-size: 13px; }
+.news .credit { color: var(--muted); }
 tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
 .table-note { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
 .kpi .v2.plain { color: var(--muted); font-weight: 500; font-size: 12px; }
@@ -186,6 +196,11 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
     </table></div>
     <p class="table-note" id="table-note"></p>
   </section>
+  <section class="news" id="news" hidden>
+    <h2>Recent headlines</h2>
+    <ul id="news-list"></ul>
+    <p class="table-note" id="news-note"></p>
+  </section>
   <dialog id="detail" aria-labelledby="d-title">
     <div class="d-head"><h2 id="d-title"></h2><span class="sub" id="d-sub"></span><button type="button" id="d-close" aria-label="Close">×</button></div>
     <div class="d-body">
@@ -205,7 +220,7 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
   </footer>
 </div>
 <script type="module">
-import {
+import { selectNews, ago,
   fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, sinceSeries, compareChart, el, costBasisWalk,
   sinceStatement, spySinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
@@ -328,6 +343,7 @@ function render() {
     ariaNote: 'return since the Sept 22 statement' }));
 
   renderTable(s, dollars);
+  renderNews(s);
   $('disclosure').textContent = payload.disclosure;
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
   $('source').replaceChildren(`${src}. Quotes from ${fmtTime(oldestQuote(payload.quotes.items))} to ${fmtTime(newest)}. `,
@@ -349,6 +365,31 @@ function renderNew(s, dollars) {
       el('div', { class: r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : '' },
         r.stopLevel === 'hit' ? `At or below the stop, $${fmtPrice(r.stopPrice)}` : `Stop $${fmtPrice(r.stopPrice)}: ${(r.stopGap * 100).toFixed(1)}% below the price`),
       el('div', { class: 'rule' }, r.stopRule || '')]))));
+}
+
+// Recent headlines for the holdings, from Yahoo Finance's per-ticker feed. Titles are shown exactly as the
+// feed gave them, each linked to its article, with Yahoo credited (Yahoo's RSS terms). Separate from prices:
+// a missing file hides the section; a check older than 3 days says headlines are unavailable, never old ones.
+let newsDoc;
+fetchJson('data/news.json').then(d => { newsDoc = d; if (lastSummary) renderNews(lastSummary); }).catch(() => {});
+function renderNews(s) {
+  try { renderNewsInner(s); } catch (e) { const sec = document.getElementById('news'); if (sec) sec.hidden = true; }
+}
+function renderNewsInner(s) {
+  if (newsDoc === undefined) return;
+  const t = Date.now();
+  const n = selectNews(newsDoc, t, { held: new Set(s.rows.map(r => r.symbol)) });
+  const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
+  $('news-list').replaceChildren(...(!n ? [el('li', { class: 'none' }, 'Headlines are unavailable right now.')]
+    : !n.items.length ? [el('li', { class: 'none' }, 'No headlines about our holdings in the last 7 days.')]
+    : n.items.map(i => el('li', {},
+      el('span', { class: 'chip' }, i.symbol.replace('/', '.')),
+      el('a', { class: 'title', href: i.link, target: '_blank', rel: 'noopener' }, i.title),
+      el('span', { class: 'meta' }, [i.publisher || host(i.link), ago(Date.parse(i.published_utc), t)].filter(Boolean).join(' \u00b7 '))))));
+  $('news-note').replaceChildren(el('span', { class: 'credit' }, 'Headlines via ', el('a', { href: 'https://finance.yahoo.com/', target: '_blank', rel: 'noopener' }, 'Yahoo Finance')),
+    n ? ` \u00b7 Checked ${fmtTime(n.checked)}, ${fmtDay(n.checked)}.${n.failed ? ` ${n.failed} holding${n.failed === 1 ? '' : 's'} could not be checked.` : ''}` : '',
+    ' Funds such as SPY are not included. A headline does not explain a price change.');
+  $('news').hidden = false;
 }
 
 let phoneView = 'today';
