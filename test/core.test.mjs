@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, sinceSeries, hundredStory, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, sinceSeries, hundredStory, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain, selectNews, ago } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -446,4 +446,38 @@ test('since-Sept-22 chart with no history still yields a drawable Club line', ()
   const [club] = sinceSeries({ ...p, history: [] }, s);
   assert.equal(club.points.length, 1);
   assert.equal(club.points[0].y, 0);
+});
+
+test('headlines: recent, complete, https, held, 2 per holding, 10 in all, newest first', () => {
+  const now = Date.parse('2026-11-12T14:00:00Z');
+  const hr = h => new Date(now - h * 3600e3).toISOString();
+  const row = (symbol, link, h, title = `${symbol} ${link}`) => ({ symbol, title, link: `https://x.test/${link}`, published_utc: hr(h) });
+  const doc = { checked_at_utc: hr(2), symbols_failed: ['AMD'], items: [
+    row('MU', 'a', 5), row('MU', 'b', 3), row('MU', 'c', 1), row('CAT', 'd', 2), row('CAT', 'old', 24 * 8),
+    { ...row('CAT', 'http', 1), link: 'http://x.test/http' }, row('ZZZ', 'z', 1), row('AAPL', 'dup', 4, 'MU b'),
+    { ...row('AAPL', 'nodate', 1), published_utc: 'x' }, { ...row('AAPL', 'blank', 1), title: '  ' }] };
+  const r = selectNews(doc, now, { held: new Set(['MU', 'CAT', 'AAPL']) });
+  assert.deepEqual(r.items.map(i => i.link.slice(15)), ['c', 'd', 'b']);   // MU capped at 2 (a dropped); dup title dropped
+  assert.equal(r.failed, 1);
+  const many = { checked_at_utc: hr(1), items: 'ABCDEFGHIJKLMNO'.split('').map((s, n) => row(s, s, n + 1)) };
+  assert.equal(selectNews(many, now).items.length, 10);
+});
+
+test('headlines: a check older than 3 days, or a broken file, gives null (the page says unavailable)', () => {
+  const now = Date.parse('2026-11-12T14:00:00Z');
+  const item = { symbol: 'MU', title: 't', link: 'https://x.test/a', published_utc: '2026-11-12T10:00:00Z' };
+  assert.equal(selectNews({ checked_at_utc: '2026-11-09T13:00:00Z', items: [item] }, now), null);
+  assert.notEqual(selectNews({ checked_at_utc: '2026-11-09T15:00:00Z', items: [item] }, now), null);
+  for (const bad of [null, {}, { items: [] }, { checked_at_utc: 'x', items: [] }, { checked_at_utc: '2026-11-12T10:00:00Z' }]) assert.equal(selectNews(bad, now), null);
+});
+
+test('ago: relative time in words', () => {
+  const now = Date.parse('2026-11-12T14:00:00Z');
+  const at2 = ms => ago(now - ms, now);
+  assert.equal(at2(30e3), 'just now');
+  assert.equal(at2(25 * 60e3), '25 minutes ago');
+  assert.equal(at2(3600e3), '1 hour ago');
+  assert.equal(at2(5 * 3600e3), '5 hours ago');
+  assert.equal(at2(30 * 3600e3), 'yesterday');
+  assert.equal(at2(4 * 86400e3), '4 days ago');
 });

@@ -249,6 +249,30 @@ export function hundredStory(club, spy) {
     lo, hi, midPos: pos(10000), clubPos: pos(clubC), spyPos: pos(spyC) };
 }
 
+// Recent headlines (web/data/news.json, written by tools/snapshot_news.py): which ones to show.
+// Titles are shown exactly as Yahoo Finance's feed gave them; only complete https rows for symbols we hold and
+// inside the last `days` days pass. Newest first, at most `perSymbol` per holding and `max` in all.
+// Returns null when the file is unusable or its last check is older than `staleHours`, so a page can say
+// "unavailable" and never show old headlines as if they were current.
+export function selectNews(doc, nowMs, { held = null, days = 7, perSymbol = 2, max = 10, staleHours = 72 } = {}) {
+  const checked = Date.parse(doc?.checked_at_utc);
+  if (!doc || !Array.isArray(doc.items) || !Number.isFinite(checked) || nowMs - checked > staleHours * 3600e3) return null;
+  const seen = new Set(), count = new Map(), items = [];
+  const ok = i => {
+    const t = Date.parse(i?.published_utc);
+    return i && typeof i.symbol === 'string' && typeof i.title === 'string' && i.title.trim() && /^https:\/\//.test(i.link || '')
+      && Number.isFinite(t) && t >= nowMs - days * 86400e3 && t <= nowMs + 3600e3 && (!held || held.has(i.symbol));
+  };
+  for (const i of doc.items.filter(ok).sort((a, b) => Date.parse(b.published_utc) - Date.parse(a.published_utc))) {
+    const titleKey = i.title.replace(/\s+/g, ' ').toLowerCase();
+    if (seen.has(i.link) || seen.has(titleKey) || (count.get(i.symbol) || 0) >= perSymbol) continue;
+    seen.add(i.link); seen.add(titleKey); count.set(i.symbol, (count.get(i.symbol) || 0) + 1);
+    items.push(i);
+    if (items.length >= max) break;
+  }
+  return { items, checked, failed: Array.isArray(doc.symbols_failed) ? doc.symbols_failed.length : 0 };
+}
+
 // How the cost basis moved since the Sept 22 statement (full payload only):
 // start + bought - cost of shares sold = now. A sale removes only the sold shares' original cost,
 // while the buy spends the whole proceeds, so a gain that is reinvested raises the basis.
@@ -343,6 +367,16 @@ export const dir = x => (x > 0 ? 'up' : x < 0 ? 'down' : 'flat');
 export const fmtTime = t => new Intl.DateTimeFormat('en-US', { timeZone: ET, hour: 'numeric', minute: '2-digit' }).format(t) + ' ET';
 export const fmtDay = t => new Intl.DateTimeFormat('en-US', { timeZone: ET, weekday: 'short', month: 'short', day: 'numeric' }).format(t);
 export const fmtShortDate = t => new Intl.DateTimeFormat('en-US', { timeZone: ET, month: 'short', day: 'numeric' }).format(t);
+// "3 hours ago", "yesterday", "Nov 9": how long since a headline, in words.
+export function ago(thenMs, nowMs) {
+  const m = Math.max(0, Math.round((nowMs - thenMs) / 60000));
+  if (m < 2) return 'just now';
+  if (m < 60) return `${m} minutes ago`;
+  const h = Math.round(m / 60);
+  if (h < 24) return h === 1 ? '1 hour ago' : `${h} hours ago`;
+  const d = Math.floor(m / 1440);
+  return d === 1 ? 'yesterday' : `${d} days ago`;
+}
 export const fmtYmd = ymd => fmtDay(new Date(`${ymd}T16:00:00Z`));
 
 export const STATUS_LABEL = { open: 'Market open', pre: 'Pre-market', after: 'After hours', closed: 'Market closed' };
