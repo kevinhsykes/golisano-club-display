@@ -47,10 +47,12 @@ NOT_THE_COMPANY = {"AAPL": ["Apple Hospitality"], "AMZN": ["Amazon rainforest", 
                    "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial"]}
 # Market-research press releases ("Global Parcel Delivery Market Report 2026"), not news that uses
 # "market share" or "market outlook" in passing.
-# Market-research press releases are written in Title Case: "Global Parcel Delivery Market Report 2026",
-# "... Market Analysis 2026: UPS", "... Market Trends 2026-2032". News that mentions a market in a
-# sentence ("loses global market share", "chip market size could hit $1 trillion") stays. Case-sensitive.
-_NOISE = re.compile(r"\bMarket (Report|Size|Research)\b|\bMarket (Analysis|Forecast|Outlook|Trends?)\b.*\b20\d\d\b")
+# Market-research press releases. In the feeds they open with "Global ..." and name a market study
+# ("Global Logistics Market Report 2026-2030 | ..."), or say "Market Report". Real news, even in
+# Title Case ("Stock Market Outlook 2026: What To Expect From Apple", "UPS Global Market Forecast Cut",
+# "Nvidia Says AI Chip Market Size Could Hit $1 Trillion"), does not open that way. Case-sensitive.
+_NOISE = re.compile(r"^Global\b.*\bMarket (Report|Size|Share|Research|Analysis|Forecast|Outlook|Trends?|Growth|Insights)\b"
+                    r"|\bMarket Report\b")
 RUN_BUDGET = 240        # seconds for the whole fetch; later symbols keep their previous items
 _SUFFIX = re.compile(r"\s+(class\s+[a-z]|inc\.?|corp\.?|corporation|co\.?|ltd\.?)$", re.I)
 

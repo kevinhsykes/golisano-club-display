@@ -174,7 +174,7 @@ class MatchingEdges(unittest.TestCase):
         for title in [
             "Global Parcel Delivery Market Report 2026: UPS, FedEx",
             "Global Parcel Delivery Market Forecast 2030: UPS, FedEx",
-            "Parcel Delivery Market Size 2026: UPS, FedEx",
+            "Global Parcel Delivery Market Size 2026: UPS, FedEx",
         ]:
             with self.subTest(title=title):
                 self.assertFalse(mentions(title, "UPS", "United Parcel Service Class B"))
@@ -195,8 +195,10 @@ class PressReleaseFilter(unittest.TestCase):
         for title in ("Global Parcel Delivery Market Report 2026: UPS, FedEx",
                       "Global Parcel Delivery Market Analysis 2026: UPS",
                       "Global Parcel Delivery Market Trends 2026-2032: UPS",
-                      "Parcel Delivery Market Outlook 2030: UPS, FedEx",
-                      "Logistics Market Size, Share and Growth: UPS"):
+                      "Global Parcel Delivery Market Growth 2026-2032: UPS",
+                      "Global Parcel Delivery Market Share Analysis 2026: UPS",
+                      "Global Parcel Delivery Market Insights 2026: UPS",
+                      "Retail Logistics Market Report 2026 | UPS, FedEx"):
             with self.subTest(title=title):
                 self.assertFalse(mentions(title, "UPS", "United Parcel Service Class B"))
 
@@ -204,7 +206,12 @@ class PressReleaseFilter(unittest.TestCase):
         from snapshot_news import mentions
         for title, sym, name in (("Apple loses global market share in China, report says", "AAPL", "Apple"),
                                  ("Nvidia says AI chip market size could hit $1 trillion", "NVDA", "NVIDIA"),
-                                 ("UPS global market forecast cut as volumes slow", "UPS", "United Parcel Service Class B")):
+                                 ("UPS global market forecast cut as volumes slow", "UPS", "United Parcel Service Class B"),
+                                 ("Stock Market Outlook 2026: What To Expect From Apple", "AAPL", "Apple"),
+                                 ("Apple Stock Market Outlook For 2026", "AAPL", "Apple"),
+                                 ("Nvidia Says AI Chip Market Size Could Hit $1 Trillion", "NVDA", "NVIDIA"),
+                                 ("UPS Global Market Forecast Cut As Volumes Slow In 2026", "UPS", "United Parcel Service Class B"),
+                                 ("Apple Gains Market Share In China", "AAPL", "Apple")):
             with self.subTest(title=title):
                 self.assertTrue(mentions(title, sym, name))
 
