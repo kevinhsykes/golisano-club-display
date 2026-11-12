@@ -1,4 +1,5 @@
 """build.py guards, run against a scratch copy of the inputs: python3 -m unittest discover -s test -p 'test_*.py'"""
+import datetime
 import json
 import shutil
 import subprocess
@@ -55,9 +56,15 @@ class BuildGuards(unittest.TestCase):
         self.assertIn("MU", r.stderr)
 
     def test_trade_after_the_newest_quote_refuses(self):
+        # Derive the time from the saved quotes: a fixed date stops being "late" once newer quotes land.
+        cur = json.loads((self.src / "quotes-current.json").read_text())
+        newest = max(datetime.datetime.fromisoformat(q["provider_update_at_utc"].replace("Z", "+00:00"))
+                     for q in cur["quotes"])
+        late = newest + datetime.timedelta(minutes=5)
+
         def add(d):
-            d["transactions"].append({"id": "late", "type": "buy", "symbol": "AAPL", "trade_date": "2026-11-11",
-                                      "executed_at_utc": "2026-11-11T20:59:00Z", "shares": "1", "price": "355",
+            d["transactions"].append({"id": "late", "type": "buy", "symbol": "AAPL", "trade_date": late.date().isoformat(),
+                                      "executed_at_utc": late.strftime("%Y-%m-%dT%H:%M:%SZ"), "shares": "1", "price": "355",
                                       "fees": None, "status": "confirmed"})
         self.edit("positions.json", add)
         r = self.build()
