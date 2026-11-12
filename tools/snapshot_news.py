@@ -104,9 +104,10 @@ def iso(d):
 
 
 _BLOCK = {"p", "div", "br", "li", "ul", "ol", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "tr"}
-# A description counts as HTML only when it has a closing tag or a <br>/<img>: plain text that happens
-# to contain "<strong>" or "x < 5" is kept exactly as written.
-_HTML = re.compile(r"</[A-Za-z][A-Za-z0-9]*\s*>|<(br|img)\b[^<>]*>", re.I)
+# A description counts as HTML when it has a closing tag or a block-level/line-break tag (<p>, <div>,
+# <li>, <br>, <img> ..., with or without attributes, closed or not). Plain text that happens to contain
+# "<strong>" or "x < 5" is kept exactly as written.
+_HTML = re.compile(r"</[A-Za-z][A-Za-z0-9]*\s*>|<(p|div|br|li|ul|ol|h[1-6]|blockquote|tr|img)\b[^<>]*>", re.I)
 
 
 class _TextContent(HTMLParser):
@@ -207,7 +208,9 @@ def get(url, deadline=REQUEST_DEADLINE):
         while True:
             if time.monotonic() > end:
                 raise TimeoutError(f"feed took longer than {deadline} s")
-            chunk = resp.read(16384)
+            # read1 returns whatever has arrived (read(n) would wait for n bytes), so a server that
+            # trickles bytes cannot keep us inside one call past the deadline.
+            chunk = resp.read1(16384)
             if not chunk:
                 break
             size += len(chunk)

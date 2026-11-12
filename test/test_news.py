@@ -234,6 +234,8 @@ class Teasers(unittest.TestCase):
         self.assertEqual(sn.plain_teaser('<p>Micron beats.</p><p>Shares rise.</p>'), 'Micron beats.\nShares rise.')
         self.assertEqual(sn.plain_teaser('Line one<br>line two'), 'Line one\nline two')
         self.assertEqual(sn.plain_teaser('<p>Text</p><script>alert(1)</script>'), 'Text')
+        self.assertEqual(sn.plain_teaser('<p>Micron beats.<p>Shares rise.'), 'Micron beats.\nShares rise.')
+        self.assertEqual(sn.plain_teaser('<div class="x">Micron beats.</div>'), 'Micron beats.')
         self.assertEqual(self.parse('<description>One <b>bold</b> tail.</description>')[0]['teaser'], 'One bold tail.')
         self.assertEqual(sn.plain_teaser('Revenue < 5 &amp; > 2'), 'Revenue < 5 & > 2')
         # Literal text that only looks like a tag is kept as written.
@@ -257,23 +259,53 @@ class Teasers(unittest.TestCase):
 
 class FetchDeadline(unittest.TestCase):
     def test_a_trickling_server_cannot_hold_the_fetch(self):
-        class Trickle:
+        """A real local HTTP server that sends one byte every 50 ms (content-length and chunked)."""
+        import socket
+        import threading
+
+        def serve(chunked):
+            srv = socket.socket()
+            srv.bind(("127.0.0.1", 0))
+            srv.listen(1)
+
+            def run():
+                conn, _ = srv.accept()
+                conn.recv(4096)
+                head = b"HTTP/1.1 200 OK\r\n" + (b"Transfer-Encoding: chunked\r\n" if chunked else b"Content-Length: 100000\r\n") + b"\r\n"
+                conn.sendall(head)
+                try:
+                    for _ in range(200):
+                        conn.sendall(b"1\r\nx\r\n" if chunked else b"x")
+                        sn.time.sleep(0.05)
+                except OSError:
+                    pass
+                conn.close()
+                srv.close()
+            threading.Thread(target=run, daemon=True).start()
+            return srv.getsockname()[1]
+
+        for chunked in (False, True):
+            with self.subTest(chunked=chunked):
+                port = serve(chunked)
+                started = sn.time.monotonic()
+                with self.assertRaises(TimeoutError):
+                    sn.get(f"http://127.0.0.1:{port}/feed", deadline=0.3)
+                self.assertLess(sn.time.monotonic() - started, 1.0)
+
+    def test_size_cap(self):
+        class Big:
             def __enter__(self):
                 return self
 
             def __exit__(self, *a):
                 return False
 
-            def read(self, n):
-                import time as _t
-                _t.sleep(0.05)
-                return b"x"
+            def read1(self, n):
+                return b"x" * n
 
-        with mock.patch.object(sn.urllib.request, "urlopen", return_value=Trickle()):
-            started = sn.time.monotonic()
-            with self.assertRaises(TimeoutError):
-                sn.get("https://example.test/feed", deadline=0.3)
-            self.assertLess(sn.time.monotonic() - started, 2)
+        with mock.patch.object(sn.urllib.request, "urlopen", return_value=Big()):
+            with self.assertRaises(ValueError):
+                sn.get("https://example.test/feed")
 
 
 if __name__ == "__main__":
