@@ -448,6 +448,19 @@ test('since-Sept-22 chart with no history still yields a drawable Club line', ()
   assert.equal(club.points[0].y, 0);
 });
 
+test('since-Sept-22 chart omits unmeasured Club returns but keeps S&P history', () => {
+  const p = full();
+  const newest = Math.max(...p.quotes.items.map(q => Date.parse(q.provider_update_at_utc)));
+  p.history = [
+    { as_of_utc: new Date(newest - 86400000).toISOString(), spy: '100' },
+    { as_of_utc: new Date(newest).toISOString(), spy: '110', twr: 'unavailable' },
+  ];
+  const [club, spy] = sinceSeries(p, compute(p));
+  assert.deepEqual(club.points, []);
+  assert.equal(spy.name, 'S&P 500');
+  assert.deepEqual(spy.points.map(pt => pt.y), [0, 110 / 100 - 1]);
+});
+
 test('headlines: recent, complete, https, held, 2 per holding, 10 in all, newest first', () => {
   const now = Date.parse('2026-11-12T14:00:00Z');
   const hr = h => new Date(now - h * 3600e3).toISOString();

@@ -513,7 +513,7 @@ export function sinceSeries(payload, summary) {
     const ss = spySinceStatement(payload);
     if (ss !== null && spy.length) spy.push({ t: newest, live: true, y: ss });
   }
-  if (!club.length) club.push({ t: newest, live: true, y: 0 });   // no history yet: start the line at 0%
+  if (!hist.length) club.push({ t: newest, live: true, y: 0 });   // no history yet: start the line at 0%
   return [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
 }
 

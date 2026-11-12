@@ -47,7 +47,7 @@ NOT_THE_COMPANY = {"AAPL": ["Apple Hospitality"], "AMZN": ["Amazon rainforest", 
                    "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial"]}
 # Market-research press releases ("Global Parcel Delivery Market Report 2026"), not news that uses
 # "market share" or "market outlook" in passing.
-_NOISE = re.compile(r"\bmarket (report|size|research)\b|\bglobal\b.*\bmarket\b.*\b(report|forecast|20\d\d)\b", re.I)
+_NOISE = re.compile(r"\bmarket (report|size|research)\b|\bglobal\b.*\bmarket\s+(forecast|20\d\d)\b", re.I)
 RUN_BUDGET = 240        # seconds for the whole fetch; later symbols keep their previous items
 _SUFFIX = re.compile(r"\s+(class\s+[a-z]|inc\.?|corp\.?|corporation|co\.?|ltd\.?)$", re.I)
 

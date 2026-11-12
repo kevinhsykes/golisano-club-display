@@ -169,6 +169,20 @@ class MatchingEdges(unittest.TestCase):
         self.assertFalse(mentions("Berkshire Hills Bancorp reports", "BRK/B", "Berkshire Hathaway Class B"))
         self.assertFalse(mentions("Global Parcel Delivery Market Report 2026: UPS, FedEx", "UPS", "United Parcel Service Class B"))
 
+    def test_market_research_forms_are_dropped(self):
+        from snapshot_news import mentions
+        for title in [
+            "Global Parcel Delivery Market Report 2026: UPS, FedEx",
+            "Global Parcel Delivery Market Forecast 2030: UPS, FedEx",
+            "Parcel Delivery Market Size 2026: UPS, FedEx",
+        ]:
+            with self.subTest(title=title):
+                self.assertFalse(mentions(title, "UPS", "United Parcel Service Class B"))
+
+    def test_global_market_share_news_is_kept(self):
+        from snapshot_news import mentions
+        self.assertTrue(mentions("Apple loses global market share in China, report says", "AAPL", "Apple"))
+
     def test_market_share_news_is_kept(self):
         from snapshot_news import mentions
         self.assertTrue(mentions("AMD gains server CPU market share from Intel", "AMD", "Advanced Micro Devices"))
