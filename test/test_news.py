@@ -230,9 +230,15 @@ class Teasers(unittest.TestCase):
         self.assertEqual(self.parse('<description>A &amp;amp; B &#8212; C</description>')[0]['teaser'], 'A & B — C')
 
     def test_markup_text_only(self):
-        self.assertEqual(self.parse('<description><![CDATA[<p>One <b>bold</b> &amp; two.</p><p>Next.</p>]]></description>')[0]['teaser'], 'One bold & two.Next.')
+        self.assertEqual(self.parse('<description><![CDATA[<p>One <b>bold</b> &amp; two.</p><p>Next.</p>]]></description>')[0]['teaser'], 'One bold & two.\nNext.')
+        self.assertEqual(sn.plain_teaser('<p>Micron beats.</p><p>Shares rise.</p>'), 'Micron beats.\nShares rise.')
+        self.assertEqual(sn.plain_teaser('Line one<br>line two'), 'Line one\nline two')
+        self.assertEqual(sn.plain_teaser('<p>Text</p><script>alert(1)</script>'), 'Text')
         self.assertEqual(self.parse('<description>One <b>bold</b> tail.</description>')[0]['teaser'], 'One bold tail.')
         self.assertEqual(sn.plain_teaser('Revenue < 5 &amp; > 2'), 'Revenue < 5 & > 2')
+        # Literal text that only looks like a tag is kept as written.
+        self.assertEqual(sn.plain_teaser('Micron <strong> growth'), 'Micron <strong> growth')
+        self.assertEqual(self.parse('<description>Micron &lt;strong&gt; growth</description>')[0]['teaser'], 'Micron <strong> growth')
 
     def test_empty_omitted(self):
         for description in ('', '<description/>', '<description>  </description>', '<description>&lt;p&gt;&lt;/p&gt;</description>'):
@@ -247,6 +253,27 @@ class Teasers(unittest.TestCase):
         items = sn.parse_feed(feed, 'MU', 'Micron', NOW)
         self.assertEqual(items[0]['teaser'], 'Key TakeawaysMicron earned $37. 7 billion in its quarter to Sept.')
         self.assertEqual(len(items), 1)  # The second real title does not name Micron.
+
+
+class FetchDeadline(unittest.TestCase):
+    def test_a_trickling_server_cannot_hold_the_fetch(self):
+        class Trickle:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+            def read(self, n):
+                import time as _t
+                _t.sleep(0.05)
+                return b"x"
+
+        with mock.patch.object(sn.urllib.request, "urlopen", return_value=Trickle()):
+            started = sn.time.monotonic()
+            with self.assertRaises(TimeoutError):
+                sn.get("https://example.test/feed", deadline=0.3)
+            self.assertLess(sn.time.monotonic() - started, 2)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-12T13:02:36Z",
+ "checked_at_utc": "2026-11-12T13:27:15Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -28,24 +28,101 @@
  "items": [
   {
    "symbol": "NVDA",
+   "title": "Stock Market Today: Tech Futures Tumble As Nvidia Plunges On Latest Jensen Huang Reports (Live Coverage)",
+   "link": "https://finance.yahoo.com/m/b961f164-91b1-38c0-a2e1-5ab20b01108e/stock-market-today%3A-tech.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:20:02Z",
+   "teaser": "Tech futures tumble premarket Thursday as Nvidia stock plunges 8% on the latest Jensen Huang news."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Dow Jones Futures Fall, Techs Tumble As Nvidia Board Mulls Ousting CEO Jensen Huang; CoreWeave Rival Nebius Dives On Results",
+   "link": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures-fall%2C-techs.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:19:57Z",
+   "teaser": "Futures fell as Nvidia dived on news that the board may oust CEO Huang. CoreWeave rival Nebius beat views but sold off."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Can Jensen Huang stay on as Nvidia CEO amid second allegation?",
+   "link": "https://finance.yahoo.com/video/can-jensen-huang-stay-on-as-nvidia-ceo-amid-second-allegation-131627899.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:16:27Z",
+   "teaser": "Yahoo Finance Executive Editor Brian Sozzi is joined by Yahoo Finance host Deirdre Bosa at Yahoo Finance's 2026 Invest conference to discuss the latest development in the Nvidia (NVDA) CEO Jensen Huang affair scandal."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Data443 Brings Convaa.ai™ to iPhone Duo: Live, Multi-Person AI Collaboration Now Available on the App Store for Apple’s New Foldable",
+   "link": "https://finance.yahoo.com/technology/ai/articles/data443-brings-convaa-ai-iphone-131500832.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:15:00Z",
+   "teaser": "Data443 Risk Mitigation, Inc. Data443 Brings Convaa.ai™ to iPhone Duo: Live, Multi-Person AI Collaboration Now Available on the App Store for Apple’s New Foldable Teams — including people from other companies — can now work with AI together, live, on the 7.6-inch inner display of iPhone Duo, with enterprise IT still in control RESEARCH TRIANGLE PARK, N.C., Nov. 12, 2026 (GLOBE NEWSWIRE) -- Data443 Risk Mitigation, Inc. (OTCPK: ATDS) (“Data443” or the “Company”), a data security and privacy softw"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Five things to know about Nvidia",
+   "link": "https://finance.yahoo.com/technology/ai/articles/five-things-know-nvidia-130739903.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:07:39Z",
+   "teaser": "After launching as a small gaming start-up and morphing into the top chip designer for artificial intelligence, US tech giant Nvidia faces unprecedented turbulence after  its co-founder and CEO Jensen Huang reportedly had a second extramarital affair with an employee. - Video games to data centers - After its launch, Nvidia became the first company entirely dedicated to graphics processors, hoping to ride the video games wave as they started to feature more sophisticated animation and 3D graphi"
+  },
+  {
+   "symbol": "AMD",
+   "title": "Buy, Sell, or Hold? Thursday’s Top Upgrades and Downgrades: Advanced Micro Devices, Alibaba Group, Cleveland-Cliffs, Conoco Phillips, Diamondback Energy, General Mills, NVIDIA, Toyota, Wendy’s and More",
+   "link": "https://247wallst.com/investing/2026/11/12/buy-sell-or-hold-thursdays-top-upgrades-and-downgrades-advanced-micro-devices-alibaba-group-cleveland-cliffs-conoco-phillips-diamondback-energy-general-mills-nvidia-toyota-wendys-and-m/?.tsrc=rss",
+   "published_utc": "2026-11-12T13:07:06Z",
+   "teaser": "Bernstein and Oppenheimer both just soured on NVIDIA, with one analyst saying \"we've had enough,\" while a CEO shake-up rumor rattles futures and a blockbuster AI IPO draws a frenzy of orders. Which stocks did analysts upgrade instead?"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Bernstein Just Gave Up on Nvidia, Cutting Its Target in Half to $200",
+   "link": "https://247wallst.com/investing/2026/11/12/bernstein-just-gave-up-on-nvidia-cutting-its-target-in-half-to-200/?.tsrc=rss",
+   "published_utc": "2026-11-12T13:05:07Z",
+   "teaser": "Two brokers landed on the same price target within hours, a board shake-up looms, and the stock sits below its 52-week low. Does a 14x forward multiple mean Wall Street is overreacting, or seeing something earnings haven't shown yet?"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Potential Nvidia CEO Ouster Weighs on US Equity Futures Pre-Bell",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/potential-nvidia-ceo-ouster-weighs-130342944.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:03:42Z",
+   "teaser": "US equity futures were mostly lower pre-bell Thursday as Nvidia (NVDA) shares fell amid the potentia"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple Is Hovering Around an All-Time High Despite the Broader Tech Sell-Off. Will New Products Like the iPhone Duo and HomeView Give Apple Even More Room to Run?",
+   "link": "https://www.fool.com/investing/2026/11/12/apple-all-time-high-tech-sell-off-duo-homeview/?.tsrc=rss",
+   "published_utc": "2026-11-12T13:03:00Z",
+   "teaser": "The innovation pipeline is robust under new CEO John Ternus."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Musk Says it Would be an 'Honor' to Hire Jensen Huang as Nvidia's Board Reportedly Gears up to Remove Him",
+   "link": "https://www.ibtimes.com/elon-musk-hire-nvidia-ceo-jensen-huang-3809671?.tsrc=rss",
+   "published_utc": "2026-11-12T13:02:35Z",
+   "teaser": "Musk made the remark when replying to a social media post asking him to \"hire Jensen.\""
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Leadership Crisis Drags on U.S. Stock Futures, Pressures AI Trade",
+   "link": "https://www.wsj.com/finance/stocks/nvidia-leadership-scandal-drags-on-u-s-stock-futures-pressures-ai-trade-e7f6e5b8?.tsrc=rss",
+   "published_utc": "2026-11-12T13:01:00Z",
+   "teaser": "Nvidia dragged futures for major U.S. indexes lower, putting the brakes on a rally in artificial-intelligence stocks."
+  },
+  {
+   "symbol": "AMD",
+   "title": "PsiQuantum and AMD Collaborate to Build the Computing Foundation for Utility-Scale Quantum Computing",
+   "link": "https://finance.yahoo.com/technology/ai/articles/psiquantum-amd-collaborate-build-computing-130000396.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:00:00Z",
+   "teaser": "PALO ALTO, Calif. & SANTA CLARA, Calif., November 12, 2026--Industry leaders PsiQuantum and AMD have announced a strategic partnership to advance the future of quantum, high-performance, and AI computing."
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "The AI Summit New York 2026 Announces Keynote and Featured Speaker Lineup with Leaders from Google, L’Oréal and Dell Technologies",
+   "link": "https://finance.yahoo.com/technology/ai/articles/ai-summit-york-2026-announces-130000796.html?.tsrc=rss",
+   "published_utc": "2026-11-12T13:00:00Z",
+   "teaser": "NEW YORK, November 12, 2026--The AI Summit New York today announced its 2026 keynote and featured speaker lineup, bringing together an influential cross-section of business executives and technology pioneers from companies including Google, L’Oréal and Dell Technologies. Joining previously announced speakers from Paramount, The Walt Disney Company, JPMorgan Chase and eBay, these industry leaders will examine how artificial intelligence is transforming industries, reshaping business strategies an"
+  },
+  {
+   "symbol": "NVDA",
    "title": "3 challenges for Nvidia if Jensen Huang is removed as CEO",
    "link": "https://finance.yahoo.com/markets/article/3-challenges-for-nvidia-if-jensen-huang-is-removed-as-ceo-125854580.html?.tsrc=rss",
    "published_utc": "2026-11-12T12:58:54Z",
    "teaser": "The challenges for Nvidia don't stop with Jensen leaving."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Dow Jones Futures: Techs Fall As Nvidia Board Mulls Ousting CEO Jensen Huang; CoreWeave Rival Nebius Dives On Results",
-   "link": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs-fall.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:54:44Z",
-   "teaser": "Techs fell as Nvidia dived on news that it may oust CEO Jensen Huang. AMD extended gains. Will the Nvidia woes sink the new market rally?"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "WSJ Says Nvidia Is Preparing to Oust Jensen Huang Over Alleged Affairs; Here’s How Much 2,000 Shares Have Lost Over the Last Month",
-   "link": "https://247wallst.com/investing/2026/11/12/wsj-says-nvidia-is-preparing-to-oust-jensen-huang-over-alleged-affairs-heres-how-much-2000-shares-have-lost-over-the-last-month/?.tsrc=rss",
-   "published_utc": "2026-11-12T12:47:00Z",
-   "teaser": "A boardroom meeting, an unconfirmed report, and a stock already sliding for weeks. Nvidia's next move on its founder could reveal whether investors fear a governance scandal or something deeper about the business itself."
   },
   {
    "symbol": "GOOGL",
@@ -55,39 +132,11 @@
    "teaser": "Alphabet is spending big to build out its cloud computing platform."
   },
   {
-   "symbol": "NVDA",
-   "title": "If Nvidia’s Board Fires Jensen Huang, Is His Ultimate ‘Revenge’ Pairing Up With Elon Musk to Build Terafab?",
-   "link": "https://247wallst.com/investing/2026/11/12/if-nvidias-board-fires-jensen-huang-is-his-ultimate-revenge-pairing-up-with-elon-musk-to-build-terafab/?.tsrc=rss",
-   "published_utc": "2026-11-12T12:33:00Z",
-   "teaser": "Nvidia's board is weighing whether to remove Jensen Huang, and the stock was down 7.9% before Thursday's open. Late Wednesday, Zero Hedge posted 'Elon please hire Jensen' and Elon Musk replied 'That would be an honor.' Here is what Terafab, Musk's Tesla and SpaceX chip complex, could offer Huang."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Alice Huang, alleged spy at centre of Nvidia scandal, said to be back in China",
-   "link": "https://www.independent.co.uk/tech/nvidia-huang-affair-scandal-beijing-b3083768.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:32:06Z",
-   "teaser": "She’s reportedly living in Beijing with knowledge of security officials"
-  },
-  {
    "symbol": "META",
    "title": "Stegra and Meta sign agreement for environmental attribute certificates to advance green steel",
    "link": "https://finance.yahoo.com/energy/articles/stegra-meta-sign-agreement-environmental-122900885.html?.tsrc=rss",
    "published_utc": "2026-11-12T12:29:00Z",
    "teaser": "Stegra has signed a multi-year agreement with Meta for environmental attribute certificates (EACs) linked to Stegra's green steel plant in Northern Sweden, currently under construction. As part of the agreement, the EACs associated with the physical steel are verified by an accredited third party. Meta is purchasing EACs to drive demand for lower carbon materials, address emissions in its supply chain, and help scale and finance early-stage manufacturing."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia tumbles early amid questions about Nvidia CEO Jensen Huang’s future",
-   "link": "https://finance.yahoo.com/technology/articles/nvidia-tumbles-early-amid-questions-122602360.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:26:02Z",
-   "teaser": "NEW YORK (AP) — Shares of Nvidia, the chipmaker at the center of the global artificial intelligence boom, tumbled early Thursday with the tenure of CEO Jensen Huang threatened by revelations of an affair with a woman reported to be a suspected Chinese spy. The company's stock has been under pressure for weeks, both because of reporting about the affair and questions about a potential bubble in the AI sector."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Wall Street backs away from Nvidia as Jensen Huang uncertainty unfolds: What analysts are saying",
-   "link": "https://finance.yahoo.com/markets/article/wall-street-backs-away-from-nvidia-as-jensen-huang-uncertainty-unfolds-what-analysts-are-saying-122600606.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:26:00Z",
-   "teaser": "Nvidia is in one of its toughest fights in some time."
   },
   {
    "symbol": "AMD",
@@ -258,13 +307,6 @@
    "teaser": "Shares of Nvidia's rivals are rising as CEO Jensen Huang faces mounting pressure."
   },
   {
-   "symbol": "GOOGL",
-   "title": "Google parent draws $5 billion in orders for AI debt sale",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/google-parent-draws-5-billion-111311273.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:13:11Z",
-   "teaser": "The Google parent is tapping Asian debt markets through seven bond tranches, with HSBC and JPMorgan coordinating the offerings."
-  },
-  {
    "symbol": "MU",
    "title": "Micron and Sandisk surge as AI triggers a memory-chip shortage",
    "link": "https://finance.yahoo.com/technology/articles/micron-sandisk-surge-ai-triggers-111233029.html?.tsrc=rss",
@@ -291,13 +333,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/financial-select-sector-spdr-xlf-110546923.html?.tsrc=rss",
    "published_utc": "2026-11-12T11:05:46Z",
    "teaser": "The fund sold $142.7 million of stock and bought nothing, trimming all 76 of its positions."
-  },
-  {
-   "symbol": "AMD",
-   "title": "JPMorgan Global Select Equity (JGLO) Adds Broadcom and AMD on Nov. 10",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-global-select-equity-jglo-110540634.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:05:40Z",
-   "teaser": "The fund bought $22.6 million of Broadcom and $22.0 million of AMD while selling $58.8 million of Nvidia."
   },
   {
    "symbol": "AAPL",
@@ -375,20 +410,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-tesla-tsla-nov-110053409.html?.tsrc=rss",
    "published_utc": "2026-11-12T11:00:53Z",
    "teaser": "ETFs bought $131.1 million of Tesla stock on balance Tuesday."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "ETFs Bought $259.9 Million of Amazon (AMZN) on Tuesday",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-259-9-million-110047075.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:00:47Z",
-   "teaser": "47 ETFs bought Amazon stock versus 18 that sold, for a net inflow of $259.9 million."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "ETFs Are Buying Microsoft (MSFT) on Nov. 10",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-microsoft-msft-nov-110043033.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:00:43Z",
-   "teaser": "ETFs bought $337.7 million of Microsoft stock on Tuesday, with 53 funds buying and 16 selling."
   },
   {
    "symbol": "AAPL",

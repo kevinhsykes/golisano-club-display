@@ -16,6 +16,7 @@ An item is kept when its title names the ticker or the company, is no older than
 is not a duplicate (same link, or same title, within the file). Funds (SPY) are skipped.
 """
 import datetime
+import html
 import email.utils
 import json
 from html.parser import HTMLParser
@@ -102,21 +103,47 @@ def iso(d):
     return d.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+_BLOCK = {"p", "div", "br", "li", "ul", "ol", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "tr"}
+# A description counts as HTML only when it has a closing tag or a <br>/<img>: plain text that happens
+# to contain "<strong>" or "x < 5" is kept exactly as written.
+_HTML = re.compile(r"</[A-Za-z][A-Za-z0-9]*\s*>|<(br|img)\b[^<>]*>", re.I)
+
+
 class _TextContent(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.parts = []
+        self.parts, self.skip = [], 0
+
+    def _newline(self):
+        if self.parts and not self.parts[-1].endswith("\n"):
+            self.parts.append("\n")
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style"):
+            self.skip += 1
+        elif tag in _BLOCK:
+            self._newline()
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.skip = max(0, self.skip - 1)
+        elif tag in _BLOCK:
+            self._newline()
 
     def handle_data(self, data):
-        self.parts.append(data)
+        if not self.skip:
+            self.parts.append(data)
 
 
 def plain_teaser(description):
-    """Decode HTML entities and keep only text content, without editing its wording or spacing."""
+    """The feed's teaser as plain text, words unchanged. Plain descriptions only have entities decoded.
+    HTML descriptions keep their text, with a line break where a paragraph, list item or <br> ends."""
+    if not _HTML.search(description):
+        return html.unescape(description)
     parser = _TextContent()
     parser.feed(description)
     parser.close()
-    return "".join(parser.parts)
+    return "".join(parser.parts).strip("\n")
 
 
 def parse_feed(xml_bytes, symbol, name, now):
@@ -167,9 +194,27 @@ def merge(previous, fresh, failed, now):
     return dedupe(fresh + kept)
 
 
-def get(url):
+REQUEST_DEADLINE = 30   # seconds per feed, for the whole response (the socket timeout only covers silence)
+MAX_BYTES = 2_000_000
+
+
+def get(url, deadline=REQUEST_DEADLINE):
+    """Read one feed, giving up after `deadline` seconds in total even if the server keeps trickling bytes."""
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/xml"})
-    return urllib.request.urlopen(req, timeout=20).read()
+    end = time.monotonic() + deadline
+    chunks, size = [], 0
+    with urllib.request.urlopen(req, timeout=10) as resp:
+        while True:
+            if time.monotonic() > end:
+                raise TimeoutError(f"feed took longer than {deadline} s")
+            chunk = resp.read(16384)
+            if not chunk:
+                break
+            size += len(chunk)
+            if size > MAX_BYTES:
+                raise ValueError("feed larger than expected")
+            chunks.append(chunk)
+    return b"".join(chunks)
 
 
 def main(fetch=get, pause=PAUSE):
