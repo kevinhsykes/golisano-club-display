@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, hundredStory, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, sinceSeries, hundredStory, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -281,6 +281,24 @@ test('comparison chart with no SPY position draws only the portfolio line', () =
   assert.ok(series[0].points.every(pt => Number.isFinite(pt.y)));
 });
 
+test('since-Sept-22 chart: both lines start at 0 and end at the headline figures', () => {
+  for (const f of ['portfolio.json', 'portfolio.public.json']) {
+    const p = load(f), s = compute(p);
+    const [club, spy] = sinceSeries(p, s);
+    assert.equal(club.name, 'Club'); assert.equal(spy.name, 'S&P 500');
+    assert.equal(club.points[0].y, 0); assert.equal(spy.points[0].y, 0);
+    assert.equal(club.points.at(-1).y.toFixed(4), sinceStatement(p, s).toFixed(4));
+    assert.equal(spy.points.at(-1).y.toFixed(4), spySinceStatement(p).toFixed(4));
+  }
+});
+
+test('since-Sept-22 chart tolerates a payload without history or twr', () => {
+  const p = full(), s = compute(p);
+  assert.deepEqual(sinceSeries({ ...p, history: undefined }, s).map(x => x.points.length), [1]);   // one 0% point, so the chart still draws
+  const noTwr = { ...p, history: p.history.map(({ twr, ...h }) => h) };
+  assert.ok(sinceSeries(noTwr, s)[0].points.every(pt => Number.isFinite(pt.y)));
+});
+
 test('every page script parses (a stray quote once broke screens.html)', async () => {
   const { readdirSync, writeFileSync, mkdtempSync, rmSync } = await import('node:fs');
   const { execFileSync } = await import('node:child_process');
@@ -421,4 +439,11 @@ test('cost basis story: each sentence is true for a gain, a loss, a buy with oth
 test('trades page: the cost basis section needs dollar amounts on', () => {
   const src = readFileSync(new URL('../web/trades.html', import.meta.url), 'utf8');
   assert.match(src, /if \(dollars && ties && /);
+});
+
+test('since-Sept-22 chart with no history still yields a drawable Club line', () => {
+  const p = full(), s = compute(p);
+  const [club] = sinceSeries({ ...p, history: [] }, s);
+  assert.equal(club.points.length, 1);
+  assert.equal(club.points[0].y, 0);
 });

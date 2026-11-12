@@ -170,10 +170,10 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
   <section class="kpis" id="kpis"></section>
   <section class="newpos" id="newpos" aria-label="New positions"></section>
   <section class="chart">
-    <h2 id="chart-title">Saved observations since Sept 22</h2>
+    <h2 id="chart-title">Since Sept 22: Club vs S&P 500</h2>
     <div id="chart"></div>
-    <div class="note">Gain over what we paid, at each saved price check. 0% is break-even. Stock picks = every holding except SPY.</div>
-    <details class="note"><summary>How to read this chart</summary>Each dot is how far above cost the holdings were on that date. Dots are saved prices only, no days filled in. SPY is a large part of the portfolio, so "stock picks" shows every other holding on its own. Each dot uses the holdings and cost on that date, so a new purchase does not move earlier dots. Purchase dates of the Sept 22 holdings are not on record, so this compares gains on what we paid, not returns over the same period.</details>
+    <div class="note">Club: our return since Sept 22; buying or selling is not counted as gain or loss. &ldquo;Gain vs cost&rdquo; counts from earlier purchase prices, so it differs. S&amp;P 500: SPY price, dividends not counted.</div>
+    <details class="note"><summary>How to read this chart</summary>Both lines start at 0% on the Sept 22 statement. Dots are saved prices only, no days filled in. "Gain vs cost" above compares with what we paid, which for the Sept 22 holdings was earlier and is not on record.</details>
   </section>
   <section class="holdings">
     <h2>Holdings</h2>
@@ -206,7 +206,7 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
 </div>
 <script type="module">
 import {
-  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el, costBasisWalk,
+  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, sinceSeries, compareChart, el, costBasisWalk,
   sinceStatement, spySinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
@@ -321,10 +321,11 @@ function render() {
   const newest = newestQuote(payload.quotes.items);
   renderNew(s, dollars);
 
-  $('chart-title').textContent = 'Gain over cost basis: portfolio vs our SPY position (the IPS benchmark)';
+  $('chart-title').textContent = 'Since Sept 22: Club vs S&P 500';
   const box = $('chart');
   const w = Math.max(320, box.clientWidth || 700);
-  box.replaceChildren(compareChart(comparisonSeries(payload, s), { width: w, height: 260, left: 56, right: Math.min(210, w * 0.4) }));
+  box.replaceChildren(compareChart(sinceSeries(payload, s), { width: w, height: 260, left: 56, right: Math.min(160, w * 0.35),
+    ariaNote: 'return since the Sept 22 statement' }));
 
   renderTable(s, dollars);
   $('disclosure').textContent = payload.disclosure;
