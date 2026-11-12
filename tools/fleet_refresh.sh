@@ -61,8 +61,10 @@ build_commit() {
   timeout 300 python3 -m unittest discover -s test -p 'test_*.py' >>"$STATE_DIR/last-test.log" 2>&1 \
     || { log "python tests failed (see $STATE_DIR/last-test.log)"; return 1; }
   git checkout -q -- web/version.json 2>/dev/null || true   # CI writes the deployed build stamp
-  git add -A data/source web/data web/api
-  git diff --cached --quiet && { log "no price change"; return 2; }
+  git add -A data/source web/data web/api || { log "git add failed"; return 1; }
+  git diff --cached --quiet; local d=$?
+  [ "$d" = 0 ] && { log "no price change"; return 2; }
+  [ "$d" = 1 ] || { log "git diff failed ($d)"; return 1; }
   git -c user.name="price-refresh[$HOST]" -c user.email="price-refresh@users.noreply.github.com" \
     commit -q -m "Price snapshot $(date -u +%Y-%m-%dT%H:%MZ) ($HOST)"
 }
