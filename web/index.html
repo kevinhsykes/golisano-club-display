@@ -47,7 +47,12 @@ header .org { display: block; font: 600 11px var(--sans); letter-spacing: .28em;
 .banner.show { display: block; }
 .banner.stale { background: var(--warn-bg); color: var(--warn); border: 1px solid currentColor; }
 .banner.closed { background: var(--panel); color: var(--muted); }
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0; }
+.kpis { margin: 14px 0; display: grid; gap: 10px; }
+.kpis > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.kpis .pri { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.kpis .pri .kpi .v { font-size: 30px; }
+.kpis .sec .kpi { padding: 8px 12px; } .kpis .sec .kpi .v { font-size: 18px; }
+@media (max-width: 640px) { .kpis > div, .kpis .pri { grid-template-columns: 1fr 1fr; } .kpis .pri .kpi:first-child { grid-column: 1 / -1; } .kpis .pri .kpi .v { font-size: 24px; } .kpis .pri .kpi:first-child .v { font-size: 32px; } }
 .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
 .kpi .s { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
 .kpi .v { font: 600 22px var(--sans); margin-top: 2px; }
@@ -114,6 +119,21 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
   th, td { padding: 8px 8px; }
   table { font-size: 15px; }
 }
+.split { margin: 0 0 12px; }
+.split .track { height: 14px; border-radius: 99px; background: var(--picks, #7a5fc0); overflow: hidden; }
+.split .track i { display: block; height: 100%; background: var(--spy, #3f7fd0); border-right: 3px solid var(--bg); }
+.split .legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 6px; font-size: 13px; color: var(--muted); }
+.split .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.split .legend b { color: var(--text); }
+.views { display: none; }
+@media (max-width: 640px) {
+  .views { display: flex; margin: 0 0 8px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .views button { flex: 1; padding: 9px 0; font: 600 14px var(--sans); background: none; color: var(--muted); border: 0; border-left: 1px solid var(--line); }
+  .views button:first-child { border-left: 0; }
+  .views button[aria-pressed="true"] { background: var(--panel); color: var(--text); box-shadow: inset 0 -2px 0 var(--gold); }
+  .ph-today, .ph-gain, .ph-weight { display: none; }
+  table[data-view="today"] .ph-today, table[data-view="gain"] .ph-gain, table[data-view="weight"] .ph-weight { display: table-cell; }
+}
 tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
 .table-note { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
 .kpi .v2.plain { color: var(--muted); font-weight: 500; font-size: 12px; }
@@ -148,11 +168,14 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
   <section class="chart">
     <h2 id="chart-title">Saved observations since Sept 22</h2>
     <div id="chart"></div>
-    <div class="note">Each dot is how far above cost the holdings were on that date; 0% is break-even. Dots are saved prices only, no days filled in. SPY is about half the portfolio, so "stock picks" shows every other holding on its own. Each dot uses the holdings and cost on that date, so a new purchase does not move earlier dots. Purchase dates of the Sept 22 holdings are not on record, so this compares gains on what we paid, not returns over the same period.</div>
+    <div class="note">Gain over what we paid, at each saved price check. 0% is break-even. Stock picks = every holding except SPY.</div>
+    <details class="note"><summary>How to read this chart</summary>Each dot is how far above cost the holdings were on that date. Dots are saved prices only, no days filled in. SPY is a large part of the portfolio, so "stock picks" shows every other holding on its own. Each dot uses the holdings and cost on that date, so a new purchase does not move earlier dots. Purchase dates of the Sept 22 holdings are not on record, so this compares gains on what we paid, not returns over the same period.</details>
   </section>
   <section class="holdings">
     <h2>Holdings</h2>
-    <div class="table-wrap"><table>
+    <div class="split" id="split"></div>
+    <div class="views" id="views" role="group" aria-label="Columns to show"></div>
+    <div class="table-wrap"><table id="tbl" data-view="today">
       <thead><tr id="head"></tr></thead>
       <tbody id="rows"></tbody>
       <tfoot id="foot"></tfoot>
@@ -272,15 +295,19 @@ function renderKpis(s, dollars) {
   const kpi = (label, v, d, v2, plain) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
     el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: plain ? 'v2 plain' : `v2 ${dir(d)}` }, v2) : null);
   const spyKpi = spySince === null ? [] : [kpi('S&P 500 since Sept 22', fmtPct(spySince), spySince, 'price return, no dividends', true)];
-  $('kpis').replaceChildren(
-    dollars ? kpi('Holdings value', fmtUsd(s.total), undefined, 'cash not counted', true) : kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
-    dollars ? kpi(when, `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange, fmtPct(s.dayPct)) : kpi(when, `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct),
-    kpi(fr.level === 'live' ? 'S&P 500 (SPY) today' : `SPY, ${fmtShortDate(newest)}`, `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct),
-    dollars ? kpi('Gain vs cost', fmtSignedUsd(tg.gain), tg.gain,
-      tg.realized ? `${fmtPct(tg.pct)} · incl. ${fmtSignedUsd(tg.realized)} realized` : fmtPct(tg.pct)) : kpi('Return since Sept 22', fmtPct(since), since),
-    ...(dollars ? [costKpi(s), kpi('Club since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []),
-    ...spyKpi,
-  );
+  const spyDay = kpi(fr.level === 'live' ? 'S&P 500 (SPY) today' : `SPY, ${fmtShortDate(newest)}`, `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct);
+  // The three figures a member looks for first, then the context for them.
+  const pri = dollars ? [
+    kpi('Holdings value', fmtUsd(s.total), undefined, 'cash not counted', true),
+    kpi(when, `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange, fmtPct(s.dayPct)),
+    kpi('Gain vs cost', fmtSignedUsd(tg.gain), tg.gain, tg.realized ? `${fmtPct(tg.pct)} · incl. ${fmtSignedUsd(tg.realized)} realized` : fmtPct(tg.pct)),
+  ] : [
+    kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
+    kpi(when, `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct),
+    kpi('Return since Sept 22', fmtPct(since), since),
+  ];
+  const sec = [spyDay, ...(dollars ? [costKpi(s), kpi('Club since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []), ...spyKpi];
+  $('kpis').replaceChildren(el('div', { class: 'pri' }, pri), el('div', { class: 'sec' }, sec));
 }
 
 function render() {
@@ -319,6 +346,7 @@ function renderNew(s, dollars) {
       el('div', { class: 'rule' }, r.stopRule || '')]))));
 }
 
+let phoneView = 'today';
 function renderTable(s, dollars) {
   const t = now().getTime();
   const tg = totalGain(payload, s);
@@ -330,9 +358,9 @@ function renderTable(s, dollars) {
     ...(dollars ? [['shares', 'Shares', r => String(r.shares), null, 'hide-ph']] : []),
     ['price', 'Price', r => `$${fmtPrice(r.price)}`, null, ''],
     ['prev', 'Prev close', r => `$${fmtPrice(r.prev)}`, null, 'hide-ph hide-md'],
-    ...(dollars ? [['dayValue', 'Our day $', r => fmtSignedUsd(r.dayValue, true), r => dir(r.dayValue), 'hide-ph',
+    ...(dollars ? [['dayValue', 'Our day $', r => fmtSignedUsd(r.dayValue, true), r => dir(r.dayValue), 'ph-today',
       'The club\'s own day on this holding. A position bought today counts from the buy price.']] : []),
-    ['dayPct', 'Our day %', r => `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r => dir(r.dayPct), '',
+    ['dayPct', 'Our day %', r => `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r => dir(r.dayPct), 'ph-today',
       'The club\'s own day on this holding. A position bought today counts from the buy price, so it can differ from the stock\'s move.'],
     ['stockDayPct', 'Stock day %', r => `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`, r => dir(r.stockDayPct), 'hide-ph',
       'The stock\'s own move since the previous close, whatever we paid.'],
@@ -340,11 +368,26 @@ function renderTable(s, dollars) {
     // Only adopted stop-losses reach the holdings; the column appears only when one exists.
     ...(s.rows.some(r => r.stopPrice !== undefined) ? [['stopPrice', 'Stop', r => (r.stopPrice === undefined ? '' : `$${fmtPrice(r.stopPrice)}`),
       r => (r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : null), 'hide-ph']] : []),
-    ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true), null, 'hide-ph hide-md'], ['value', 'Value', r => fmtUsd(r.value, true), null, 'hide-ph'],
-      ['gainValue', 'Gain $', r => fmtSignedUsd(r.gainValue, true), r => dir(r.gainValue), 'hide-ph']] : []),
-    ['costPct', 'Gain %', r => fmtPct(r.costPct, 1), r => dir(r.costPct), ''],
-    ['weight', 'Weight', r => fmtWeight(r.weight), null, 'hide-ph'],
+    ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true), null, 'hide-ph hide-md'], ['value', 'Value', r => fmtUsd(r.value, true), null, 'ph-weight'],
+      ['gainValue', 'Gain $', r => fmtSignedUsd(r.gainValue, true), r => dir(r.gainValue), 'ph-gain']] : []),
+    ['costPct', 'Gain %', r => fmtPct(r.costPct, 1), r => dir(r.costPct), 'ph-gain'],
+    ['weight', 'Weight', r => fmtWeight(r.weight), null, 'ph-weight'],
   ];
+  // Position weight, not look-through exposure: SPY itself holds hundreds of stocks.
+  const spyW = s.rows.filter(r => r.symbol === 'SPY').reduce((a, r) => a + r.weight, 0), picks = s.rows.filter(r => r.symbol !== 'SPY').length;
+  $('split').replaceChildren(...(spyW > 0 && picks ? [
+    el('div', { class: 'track', role: 'img', 'aria-label': `S&P 500 fund ${fmtWeight(spyW)} of holdings, ${picks} stock picks ${fmtWeight(1 - spyW)}` }, el('i', { style: `width:${spyW * 100}%` })),
+    el('div', { class: 'legend' },
+      el('span', {}, el('i', { style: 'background:var(--spy, #3f7fd0)' }), el('b', {}, fmtWeight(spyW)), ' S&P 500 fund (SPY)'),
+      el('span', {}, el('i', { style: 'background:var(--picks, #7a5fc0)' }), el('b', {}, fmtWeight(1 - spyW)), ` ${picks} stock picks`)),
+  ] : []));
+  // Phone only: one pair of columns at a time, so nothing scrolls sideways.
+  $('views').replaceChildren(...[['today', 'Today'], ['gain', 'Gain'], ['weight', 'Weight']].map(([v, label]) => {
+    const b = el('button', { type: 'button', 'aria-pressed': String(phoneView === v) }, label);
+    b.addEventListener('click', () => { phoneView = v; renderTable(s, dollars); $('views').querySelector('[aria-pressed="true"]').focus(); });
+    return b;
+  }));
+  $('tbl').dataset.view = phoneView;
   const cellClass = (cls, vis, r) => [typeof cls === 'function' ? cls(r) : cls, vis].filter(Boolean).join(' ') || null;
   // Totals row: sums for dollar columns, portfolio-level percents. Gain cells are unrealized only.
   const totals = {
