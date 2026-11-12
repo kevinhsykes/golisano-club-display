@@ -34,6 +34,7 @@ After=network-online.target
 Type=oneshot
 ExecStart=$BIN
 Environment=GOLISANO_NODE=$node_bin
+Environment=GOLISANO_SERVED_CHECK=${GOLISANO_SERVED_CHECK:-}
 TimeoutStartSec=900
 Nice=10
 EOF
