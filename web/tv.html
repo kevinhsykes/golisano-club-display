@@ -159,8 +159,9 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 @keyframes scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .tape .track { animation: none; } .pill.open::before { animation: none; } }
 
-footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.2vh; color: var(--muted); white-space: nowrap; }
-footer .src { text-align: right; }
+footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.2vh; color: var(--muted); }
+footer #disclosure { white-space: nowrap; flex: none; }
+footer .src { text-align: right; min-width: 0; }   /* a long attribution wraps here; it is never cut off */
 .error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
 </style>
 </head>
