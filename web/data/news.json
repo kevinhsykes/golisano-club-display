@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-12T12:39:24Z",
+ "checked_at_utc": "2026-11-12T12:42:49Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -24,18 +24,31 @@
   "CAT"
  ],
  "symbols_failed": [],
+ "symbols_empty": [],
  "items": [
+  {
+   "symbol": "NVDA",
+   "title": "Dow Jones Futures: Techs Fall As Nvidia Board Mulls Ousting CEO Jensen Huang; CoreWeave Rival Nebius Dives On Results",
+   "link": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs-fall.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:39:05Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Alice Huang, alleged spy at centre of Nvidia scandal, said to be back in China",
+   "link": "https://www.independent.co.uk/tech/nvidia-huang-affair-scandal-beijing-b3083768.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:32:06Z"
+  },
+  {
+   "symbol": "META",
+   "title": "Meta Critical Minerals Completes High-Resolution LiDAR Survey at Its 100% Owned Table Mountain High-Purity Silica Project, Golden, British Columbia",
+   "link": "https://finance.yahoo.com/markets/commodities/articles/meta-critical-minerals-completes-high-123000009.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:30:00Z"
+  },
   {
    "symbol": "META",
    "title": "Stegra and Meta sign agreement for environmental attribute certificates to advance green steel",
    "link": "https://finance.yahoo.com/energy/articles/stegra-meta-sign-agreement-environmental-122900885.html?.tsrc=rss",
    "published_utc": "2026-11-12T12:29:00Z"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Dow Jones Futures: Techs Fall As Nvidia Board Mulls Ousting CEO Jensen Huang; CoreWeave Rival Nebius Beats Views",
-   "link": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs-fall.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:26:26Z"
   },
   {
    "symbol": "NVDA",
@@ -158,6 +171,12 @@
    "published_utc": "2026-11-12T11:51:14Z"
   },
   {
+   "symbol": "TSLA",
+   "title": "Tesla's Texas Robotaxi Fleet Tops Waymo: Should You Get Bullish?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/teslas-texas-robotaxi-fleet-tops-113800730.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:38:00Z"
+  },
+  {
    "symbol": "MU",
    "title": "Micron (MU) Has Next Year’s High-Bandwidth Memory Mostly Sold. Can That Anchor a Decade-Long Case?",
    "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-next-high-bandwidth-113313288.html?.tsrc=rss",
@@ -174,6 +193,12 @@
    "title": "Pershing Square Calls Meta’s (META) Business Model “One of the Clearest Beneficiaries of AI Integration”",
    "link": "https://finance.yahoo.com/technology/ai/articles/pershing-square-calls-meta-meta-113158708.html?.tsrc=rss",
    "published_utc": "2026-11-12T11:31:58Z"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla FSD Gains Ground in Europe: Is EU-Wide Approval Near?",
+   "link": "https://finance.yahoo.com/technology/ai/articles/tesla-fsd-gains-ground-europe-112700383.html?.tsrc=rss",
+   "published_utc": "2026-11-12T11:27:00Z"
   },
   {
    "symbol": "AMD",
@@ -390,12 +415,6 @@
    "title": "If SpaceX and Tesla Merge, Here's What a $10,000 Investment in the Combined Company Could Be Worth by 2030",
    "link": "https://www.fool.com/investing/2026/11/11/if-spacex-and-tesla-merge-heres-what-a-10000-inves/?.tsrc=rss",
    "published_utc": "2026-11-12T02:50:00Z"
-  },
-  {
-   "symbol": "META",
-   "title": "Mark Zuckerberg Net Worth Tops $225 Billion: Meta Founder’s Shares Won’t Go to Family",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/mark-zuckerberg-net-worth-tops-030657420.html?.tsrc=rss",
-   "published_utc": "2026-11-12T01:30:00Z"
   },
   {
    "symbol": "RDDT",

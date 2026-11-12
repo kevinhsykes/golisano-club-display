@@ -130,7 +130,8 @@ class Main(unittest.TestCase):
             return b"<rss><channel></channel></rss>" if "s=CAT" in url else FEED
         out, code = self.run_main(fetch, old)
         doc = json.loads(out.read_text())
-        self.assertEqual(doc["symbols_failed"], ["CAT"])
+        self.assertEqual(doc["symbols_failed"], [])          # no news is not a failure
+        self.assertEqual(doc["symbols_empty"], ["CAT"])
         self.assertIn("Caterpillar earlier", [i["title"] for i in doc["items"]])
 
     def test_every_symbol_failing_leaves_the_previous_file_untouched(self):
@@ -150,8 +151,6 @@ class Main(unittest.TestCase):
         self.assertIn("golisano-club-display", sn.UA)
 
 
-if __name__ == "__main__":
-    unittest.main()
 
 
 class MatchingEdges(unittest.TestCase):
@@ -169,3 +168,12 @@ class MatchingEdges(unittest.TestCase):
         self.assertFalse(mentions("Fires in the Amazon rainforest", "AMZN", "Amazon"))
         self.assertFalse(mentions("Berkshire Hills Bancorp reports", "BRK/B", "Berkshire Hathaway Class B"))
         self.assertFalse(mentions("Global Parcel Delivery Market Report 2026: UPS, FedEx", "UPS", "United Parcel Service Class B"))
+
+    def test_market_share_news_is_kept(self):
+        from snapshot_news import mentions
+        self.assertTrue(mentions("AMD gains server CPU market share from Intel", "AMD", "Advanced Micro Devices"))
+        self.assertTrue(mentions("Stock market outlook: Tesla to report", "TSLA", "Tesla"))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -45,7 +45,9 @@ ALIASES = {"GOOGL": ["Alphabet", "Google"], "META": ["Meta", "Facebook"], "BRK/B
 # Other organisations that share a holding's name, and generic market-research press releases.
 NOT_THE_COMPANY = {"AAPL": ["Apple Hospitality"], "AMZN": ["Amazon rainforest", "Amazon River", "Amazon basin"],
                    "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial"]}
-_NOISE = re.compile(r"\bmarket (report|size|share|forecast|analysis|outlook|research)\b", re.I)
+# Market-research press releases ("Global Parcel Delivery Market Report 2026"), not news that uses
+# "market share" or "market outlook" in passing.
+_NOISE = re.compile(r"\bmarket (report|size|research)\b|\bglobal\b.*\bmarket\b.*\b(report|forecast|20\d\d)\b", re.I)
 RUN_BUDGET = 240        # seconds for the whole fetch; later symbols keep their previous items
 _SUFFIX = re.compile(r"\s+(class\s+[a-z]|inc\.?|corp\.?|corporation|co\.?|ltd\.?)$", re.I)
 
@@ -151,7 +153,7 @@ def main(fetch=get, pause=PAUSE):
         previous = json.loads(OUT.read_text(encoding="utf-8")).get("items", [])
     except (OSError, ValueError):
         previous = []
-    fresh, failed = [], []
+    fresh, failed, empty = [], [], []
     started = time.monotonic()
     for n, s in enumerate(symbols):
         if time.monotonic() - started > RUN_BUDGET:
@@ -163,16 +165,18 @@ def main(fetch=get, pause=PAUSE):
         try:
             root_items = fetch(FEED.format(s=urllib.parse.quote(s.replace("/", "-"))))
             if not ET.fromstring(root_items).findall(".//item"):
-                raise ValueError("feed returned no items")   # keep the previous items rather than none
+                empty.append(s)      # no news (or a blank feed): keep the previous items rather than none
+                continue
             fresh += parse_feed(root_items, s, names.get(s), now)
         except Exception as e:
             print(f"{s}: {type(e).__name__}: {e}")
             failed.append(s)
-    if len(failed) == len(symbols):
-        sys.exit("every symbol failed; previous file kept")
+    if len(failed) + len(empty) == len(symbols):
+        sys.exit("no feed returned items; previous file kept")
     doc = {"schema": SCHEMA, "source": SOURCE, "checked_at_utc": iso(now),
            "symbols_checked": [s for s in symbols if s not in failed], "symbols_failed": failed,
-           "items": merge(previous, fresh, set(failed), now)}
+           "symbols_empty": empty,
+           "items": merge(previous, fresh, set(failed) | set(empty), now)}
     tmp = OUT.with_suffix(".tmp")
     tmp.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     tmp.replace(OUT)
