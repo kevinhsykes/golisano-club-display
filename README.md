@@ -150,6 +150,6 @@ reloads itself every 6 hours. The site sends no frame-blocking headers. `/screen
 template with its address and a copy button.
 
 Any other device: open `https://<host>/tv.html` full screen in kiosk mode on the cafe TV's device. Options:
-`?amounts=hide` (percent only), `?panel=new|h1|h2|movers|chart` (pin one panel), `?rotate=40`
+`?amounts=hide` (percent only), `?panel=new|trades|h1|h2|movers|chart` (pin one panel), `?rotate=40`
 (seconds per panel). The page reloads itself every 6 hours and survives network drops by
 keeping the last prices with an age warning.

@@ -133,6 +133,19 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 .bar .track i { display: block; height: 100%; background: var(--gold); }
 .bar .pct { text-align: right; font-weight: 600; }
 
+/* Recent trades: one row per order, newest first. */
+.trades { grid-template-rows: repeat(var(--rows, 6), minmax(0, 1fr)) auto; gap: 1vh; }
+.trow { display: grid; grid-template-columns: 6.5vw 6.5vw minmax(0, 1fr) 15vw 12vw; align-items: center; column-gap: 1.2vw;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 1.2vh; padding: 0 1.4vw; min-height: 0; }
+.trow .d { font: 600 2.8vh var(--sans); color: var(--muted); }
+.trow .side { font: 700 2.2vh/1 var(--sans); letter-spacing: .1em; padding: .8vh 0; border-radius: .6vh; text-align: center; color: var(--bg); }
+.trow .side.buy { background: var(--up); } .trow .side.sell { background: var(--down); }
+.trow .who { min-width: 0; display: flex; align-items: baseline; overflow: hidden; } .trow .who b { font: 700 4.2vh/1.05 var(--sans); margin-right: .8vw; }
+.trow .who span { font: 500 2.6vh var(--serif); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.trow .fill { font: 600 3.2vh var(--sans); white-space: nowrap; min-width: 0; } .trow .fill small { display: block; font: 500 2.4vh var(--sans); color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.trow .since { text-align: right; font: 700 3.6vh var(--sans); white-space: nowrap; } .trow .since small { display: block; font: 500 2.4vh var(--sans); color: var(--muted); }
+.trades .tnote { font-size: 2.4vh; color: var(--muted); }
+
 .tape { overflow: hidden; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); padding: 1vh 0; white-space: nowrap; }
 .tape .track { display: inline-block; animation: scroll var(--tape-duration, 80s) linear infinite; }
 .tape span { margin-right: 3.2vw; font-size: 2.9vh; }
@@ -173,6 +186,7 @@ footer .src { text-align: right; }
       <div class="panel-head"><h2 id="panel-title">Holdings</h2><div class="dots" id="dots"></div></div>
       <div class="panel newpos" id="p-new" data-title="New positions"></div>
       <div id="holding-pages" style="display:contents"></div>
+      <div class="panel trades" id="p-trades" data-title="Recent trades"></div>
       <div class="panel movers" id="p-movers" data-title="Today's biggest moves"></div>
       <div class="panel chart" id="p-chart" data-title="Portfolio since Sept 22">
         <div id="chart" style="position:relative; min-height:0"></div>
@@ -199,7 +213,7 @@ const CONFIG = {
   quotes: samePath(params.get('quotes')),                  // default: payload.live_quotes_url (api/quotes)
   hideAmounts: params.get('amounts') === 'hide',
   rotateSeconds: Number(params.get('rotate') || 20),
-  panel: params.get('panel'),                     // new | h1 | h2 | h3 | movers | chart pins one panel
+  panel: params.get('panel'),                     // new | trades | h1 | h2 | h3 | movers | chart pins one panel
 
   pollSeconds: 60,
   reloadHours: 6,
@@ -264,6 +278,7 @@ function render() {
   renderHero(s, showDollars);
   renderChart(base, s, showDollars);
   renderMovers(s);
+  renderTrades(s, showDollars);
   renderTape(s);
   $('disclosure').textContent = payload.disclosure;
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
@@ -453,6 +468,35 @@ function renderMovers(s) {
   );
 }
 
+// Recent trades, newest first. "Since" is what the price did after the trade: for a buy it is our
+// gain on those shares; for a sale it is what we avoided or missed, so its colour is reversed.
+const TRADE_ROWS = 6;
+let tradeCount = 0;
+function renderTrades(s, showDollars) {
+  const prices = new Map(s.rows.map(r => [r.symbol, r.price]));
+  const list = [...(payload.trades || [])].sort((a, b) => b.executed_at_utc.localeCompare(a.executed_at_utc) || a.symbol.localeCompare(b.symbol));
+  tradeCount = list.length;
+  const row = t => {
+    const px = Number(t.price), now = prices.get(t.symbol);
+    const x = now ? now / px - 1 : null;
+    return el('div', { class: 'trow' },
+      el('div', { class: 'd' }, fmtShortDate(Date.parse(t.executed_at_utc))),
+      el('div', { class: `side ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'),
+      el('div', { class: 'who' }, el('b', {}, t.symbol.replace('/', '.')), el('span', {}, t.name)),
+      el('div', { class: 'fill' }, showDollars && t.shares ? `${t.shares} @ $${fmtPrice(px)}` : `at $${fmtPrice(px)}`,
+        el('small', {}, [t.estimated ? 'est. price' : null, showDollars && t.realized_gain ? `${fmtSignedUsd(Number(t.realized_gain))} gain` : null].filter(Boolean).join(' · ') || (showDollars && t.amount ? fmtUsd(Number(t.amount)) : ''))),
+      el('div', { class: `since ${x === null ? '' : dir(t.type === 'buy' ? x : -x)}` }, x === null ? '—' : `${arrow(x)} ${fmtPct(x, 1)}`,
+        el('small', {}, t.type === 'buy' ? 'since we bought' : 'since we sold')));
+  };
+  const shown = list.slice(0, TRADE_ROWS);
+  $('p-trades').style.setProperty('--rows', Math.max(shown.length, 4));
+  $('p-trades').replaceChildren(...shown.map(row),
+    el('div', { class: 'tnote' }, list.length > shown.length ? `${list.length - shown.length} earlier trades on the trades page. ` : '',
+      'Every trade since the Sept 22 statement is on the trades page.'));
+  $('p-trades').dataset.title = list.length ? `Recent trades · ${list.length} since Sept 22` : 'Recent trades';
+  if (Boolean(list.length) !== PANELS.includes('p-trades')) setPanels();
+}
+
 function renderTape(s) {
   const items = s.rows.map(r => el('span', {}, el('b', {}, r.symbol.replace('/', '.')), `$${fmtPrice(r.price)} `,
     el('span', { class: dir(r.stockDayPct), style: 'margin:0' }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`)));
@@ -466,10 +510,10 @@ function renderTape(s) {
 
 let PANELS = [];
 let panelIdx = -1, newCount = 0;
-// Rotation: new positions first (while any are new), then each holdings page, movers, chart.
+// Rotation: new positions (while any are new), recent trades, each holdings page, movers, chart.
 function setPanels() {
   const current = PANELS[panelIdx];
-  PANELS = [...(newCount ? ['p-new'] : []), ...holdingPages, 'p-movers', 'p-chart'];
+  PANELS = [...(newCount ? ['p-new'] : []), ...(tradeCount ? ['p-trades'] : []), ...holdingPages, 'p-movers', 'p-chart'];
   panelIdx = PANELS.indexOf(current);
   // A pinned panel (?panel=) may only exist once its page is built: switch to it then.
   if (panelIdx < 0 || (PANELS.includes(`p-${CONFIG.panel}`) && current !== `p-${CONFIG.panel}`)) { panelIdx = -1; rotate(); return; }
