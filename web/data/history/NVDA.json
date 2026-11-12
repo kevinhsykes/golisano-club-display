@@ -3,12 +3,12 @@
  "name": "NVIDIA Corporation",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-12T15:17:17Z",
- "price": 163.45,
+ "as_of_utc": "2026-11-12T15:39:26Z",
+ "price": 164.8,
  "previous_close": 193.8,
- "day_high": 163.72,
+ "day_high": 166.0,
  "day_low": 148.8,
- "volume": 340963654,
+ "volume": 395877538,
  "week52_high": 243.37,
  "week52_low": 148.8,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-12",
-   "close": 163.45
+   "close": 164.8
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-12T15:17:19Z"
+ "retrieved_at_utc": "2026-11-12T15:39:27Z"
 }
