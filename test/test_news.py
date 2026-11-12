@@ -169,10 +169,51 @@ class MatchingEdges(unittest.TestCase):
         self.assertFalse(mentions("Berkshire Hills Bancorp reports", "BRK/B", "Berkshire Hathaway Class B"))
         self.assertFalse(mentions("Global Parcel Delivery Market Report 2026: UPS, FedEx", "UPS", "United Parcel Service Class B"))
 
+    def test_market_research_forms_are_dropped(self):
+        from snapshot_news import mentions
+        for title in [
+            "Global Parcel Delivery Market Report 2026: UPS, FedEx",
+            "Global Parcel Delivery Market Forecast 2030: UPS, FedEx",
+            "Global Parcel Delivery Market Size 2026: UPS, FedEx",
+        ]:
+            with self.subTest(title=title):
+                self.assertFalse(mentions(title, "UPS", "United Parcel Service Class B"))
+
+    def test_global_market_share_news_is_kept(self):
+        from snapshot_news import mentions
+        self.assertTrue(mentions("Apple loses global market share in China, report says", "AAPL", "Apple"))
+
     def test_market_share_news_is_kept(self):
         from snapshot_news import mentions
         self.assertTrue(mentions("AMD gains server CPU market share from Intel", "AMD", "Advanced Micro Devices"))
         self.assertTrue(mentions("Stock market outlook: Tesla to report", "TSLA", "Tesla"))
+
+
+class PressReleaseFilter(unittest.TestCase):
+    def test_title_case_market_research_releases_are_dropped(self):
+        from snapshot_news import mentions
+        for title in ("Global Parcel Delivery Market Report 2026: UPS, FedEx",
+                      "Global Parcel Delivery Market Analysis 2026: UPS",
+                      "Global Parcel Delivery Market Trends 2026-2032: UPS",
+                      "Global Parcel Delivery Market Growth 2026-2032: UPS",
+                      "Global Parcel Delivery Market Share Analysis 2026: UPS",
+                      "Global Parcel Delivery Market Insights 2026: UPS",
+                      "Retail Logistics Market Report 2026 | UPS, FedEx"):
+            with self.subTest(title=title):
+                self.assertFalse(mentions(title, "UPS", "United Parcel Service Class B"))
+
+    def test_news_sentences_about_a_market_are_kept(self):
+        from snapshot_news import mentions
+        for title, sym, name in (("Apple loses global market share in China, report says", "AAPL", "Apple"),
+                                 ("Nvidia says AI chip market size could hit $1 trillion", "NVDA", "NVIDIA"),
+                                 ("UPS global market forecast cut as volumes slow", "UPS", "United Parcel Service Class B"),
+                                 ("Stock Market Outlook 2026: What To Expect From Apple", "AAPL", "Apple"),
+                                 ("Apple Stock Market Outlook For 2026", "AAPL", "Apple"),
+                                 ("Nvidia Says AI Chip Market Size Could Hit $1 Trillion", "NVDA", "NVIDIA"),
+                                 ("UPS Global Market Forecast Cut As Volumes Slow In 2026", "UPS", "United Parcel Service Class B"),
+                                 ("Apple Gains Market Share In China", "AAPL", "Apple")):
+            with self.subTest(title=title):
+                self.assertTrue(mentions(title, sym, name))
 
 
 if __name__ == "__main__":
