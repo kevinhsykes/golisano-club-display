@@ -99,6 +99,7 @@ main { display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 69fr); ga
 .np .sym { font: 700 7vh/1 var(--sans); }
 .np .nm { font: 500 3.2vh var(--serif); }
 .np .what { font-size: 3vh; color: var(--muted); line-height: 1.25; }
+.tv.has-banner .np .what { display: none; }
 .np .lead .s, .np .nums .s { font-size: 3vh; color: var(--muted); }
 .np .lead .v { font: 700 7vh/1.05 var(--sans); }
 .np .nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4vh 1.2vw; margin-top: auto; }
@@ -308,6 +309,7 @@ function renderStatus() {
   pill.textContent = st.holiday ? 'Market holiday' : STATUS_LABEL[st.state];
   $('session-note').textContent = st.earlyClose && (st.state === 'pre' || st.state === 'open') ? `Closes ${st.earlyClose.replace(/^13:00$/, '1:00 PM')} ET today` : '';
   const b = $('banner');
+  const tvEl = $('tv');
   if (!st.calendarKnown) {
     b.className = 'banner stale show';
     b.textContent = 'Exchange calendar needs updating (data/source/xnys-calendar.json); holidays and early closes are unknown.';
@@ -318,6 +320,7 @@ function renderStatus() {
     b.className = 'banner';
     b.textContent = '';
   }
+  tvEl.classList.toggle('has-banner', b.classList.contains('show'));
   const when = fr.level === 'live' ? 'today' : fmtShortDate(fr.newest);
   $('day-label').textContent = fr.level === 'live' ? 'Today' : fmtShortDate(fr.newest);
   holdingPages.forEach((id, i) => {
@@ -529,8 +532,8 @@ function renderTape(s) {
 // Footer: the disclosure sentences as separate spans (advice notice first; the time-weighted
 // sentence is in the chart note), then the price source.
 function renderFooter() {
-  const sentences = (payload.disclosure.match(/[^.]+\.(\s|$)/g) || [payload.disclosure]).map(x => x.trim())
-    .filter(x => !/time-weighted/i.test(x));
+  const sentences = payload.disclosure.split(/(?<=[a-z)]\.)\s+(?=[A-Z])/).map(x => x.trim())
+    .filter(x => x && !/time-weighted/i.test(x));
   const advice = sentences.filter(x => /not investment advice/i.test(x));
   const rest = sentences.filter(x => !/not investment advice/i.test(x));
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
