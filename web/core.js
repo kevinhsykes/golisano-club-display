@@ -399,6 +399,25 @@ export function comparisonSeries(payload, summary) {
   ];
 }
 
+// Same-period comparison since the Sept 22 statement, both lines from 0%:
+// Club = history[].twr (time-weighted, so a trade's money is not gain or loss) plus a live point
+// from sinceStatement; S&P 500 = SPY's price over its statement price (dividends not counted).
+export function sinceSeries(payload, summary) {
+  const hist = payload.history || [];
+  const spy0 = Number(hist[0]?.spy);
+  const newest = newestQuote(payload.quotes.items);
+  const last = hist[hist.length - 1];
+  const live = !last || newest > Date.parse(last.as_of_utc) + 60000;
+  const club = hist.map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.twr) }));
+  const spy = spy0 > 0 ? hist.filter(h => Number(h.spy) > 0).map(h => ({ t: Date.parse(h.as_of_utc), y: Number(h.spy) / spy0 - 1 })) : [];
+  if (live) {
+    club.push({ t: newest, live: true, y: sinceStatement(payload, summary) });
+    const ss = spySinceStatement(payload);
+    if (ss !== null && spy.length) spy.push({ t: newest, live: true, y: ss });
+  }
+  return [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
+}
+
 // Multi-line % change chart with a zero line and end labels. Returns an <svg>.
 export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit }) {
   const NS = 'http://www.w3.org/2000/svg';

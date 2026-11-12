@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, sinceSeries, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -302,4 +302,15 @@ test('every page script parses (a stray quote once broke screens.html)', async (
       });
     }
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('since-Sept-22 chart: both lines start at 0 and end at the headline figures', () => {
+  for (const f of ['portfolio.json', 'portfolio.public.json']) {
+    const p = load(f), s = compute(p);
+    const [club, spy] = sinceSeries(p, s);
+    assert.equal(club.name, 'Club'); assert.equal(spy.name, 'S&P 500');
+    assert.equal(club.points[0].y, 0); assert.equal(spy.points[0].y, 0);
+    assert.equal(club.points.at(-1).y.toFixed(4), sinceStatement(p, s).toFixed(4));
+    assert.equal(spy.points.at(-1).y.toFixed(4), spySinceStatement(p).toFixed(4));
+  }
 });

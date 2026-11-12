@@ -147,7 +147,7 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
   <section class="chart">
     <h2 id="chart-title">Saved observations since Sept 22</h2>
     <div id="chart"></div>
-    <div class="note">Each dot is how far above cost the holdings were on that date; 0% is break-even. Dots are saved prices only, no days filled in. SPY is about half the portfolio, so "stock picks" shows every other holding on its own. Each dot uses the holdings and cost on that date, so a new purchase does not move earlier dots. Purchase dates of the Sept 22 holdings are not on record, so this compares gains on what we paid, not returns over the same period.</div>
+    <div class="note">Both lines start at 0% on the Sept 22 statement. Club: time-weighted return, so money moved by a trade is not counted as gain or loss. S&amp;P 500: SPY's price, dividends not counted. Dots are saved prices only, no days filled in. "Gain vs cost" above compares with what we paid, which for the Sept 22 holdings was earlier and is not on record.</div>
   </section>
   <section class="holdings">
     <h2>Holdings</h2>
@@ -178,7 +178,7 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
 </div>
 <script type="module">
 import {
-  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, sinceSeries, compareChart, el,
   sinceStatement, spySinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
@@ -256,7 +256,7 @@ function renderKpis(s, dollars) {
   const tg = totalGain(payload, s);
   const kpi = (label, v, d, v2, plain) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
     el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: plain ? 'v2 plain' : `v2 ${dir(d)}` }, v2) : null);
-  const spyKpi = spySince === null ? [] : [kpi('S&P 500 since Sept 22', fmtPct(spySince), spySince, 'price return, no dividends', true)];
+  const spyKpi = spySince === null ? [] : [kpi('S&P 500, same period', fmtPct(spySince), spySince, 'price return, no dividends', true)];
   $('kpis').replaceChildren(
     dollars ? kpi('Holdings value', fmtUsd(s.total), undefined, 'cash not counted', true) : kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
     dollars ? kpi(when, `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange, fmtPct(s.dayPct)) : kpi(when, `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct),
@@ -275,10 +275,11 @@ function render() {
   const newest = newestQuote(payload.quotes.items);
   renderNew(s, dollars);
 
-  $('chart-title').textContent = 'Gain over cost basis: portfolio vs our SPY position (the IPS benchmark)';
+  $('chart-title').textContent = 'Since Sept 22: Club vs S&P 500';
   const box = $('chart');
   const w = Math.max(320, box.clientWidth || 700);
-  box.replaceChildren(compareChart(comparisonSeries(payload, s), { width: w, height: 260, left: 56, right: Math.min(210, w * 0.4) }));
+  box.replaceChildren(compareChart(sinceSeries(payload, s), { width: w, height: 260, left: 56, right: Math.min(160, w * 0.35),
+    ariaNote: 'return since the Sept 22 statement' }));
 
   renderTable(s, dollars);
   $('disclosure').textContent = payload.disclosure;
