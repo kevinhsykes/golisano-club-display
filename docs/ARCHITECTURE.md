@@ -333,7 +333,6 @@ The following items need live evidence or a named owner:
 
 - The exact GitHub Pages, Actions, branch-protection, and organization settings are UNKNOWN.
 - The exact backup credential type, scope, storage location, and revocation procedure are UNKNOWN.
-- The older timer's service name, unit contents, installed files, and current state are UNKNOWN.
 - Other clones, scheduled jobs, or credentials outside the documented paths are UNKNOWN.
 - The number of TVs and their exact Yodeck configuration are UNKNOWN.
 - The Canvas course, stored link HTML, and course administrator are UNKNOWN.
