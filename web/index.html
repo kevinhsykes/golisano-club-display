@@ -136,6 +136,8 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
   .ph-today, .ph-gain, .ph-weight { display: none; }
   table[data-view="today"] .ph-today, table[data-view="gain"] .ph-gain, table[data-view="weight"] .ph-weight { display: table-cell; }
 }
+/* Narrow phones: tighter cells so symbol, price and the chosen pair fit without sideways scrolling. */
+@media (max-width: 400px) { th, td { padding: 8px 5px; } table { font-size: 14px; } .badge { margin-left: 3px; padding: 3px 4px; } }
 tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
 .table-note { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
 .kpi .v2.plain { color: var(--muted); font-weight: 500; font-size: 12px; }
