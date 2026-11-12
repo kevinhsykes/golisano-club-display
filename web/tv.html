@@ -144,7 +144,7 @@ main { display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 69fr); ga
 .mrow { display: grid; grid-template-columns: 8vw minmax(0, 1fr) auto; align-items: baseline; column-gap: .8vw; padding: 1.5vh 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
 .mrow .sym { font: 700 4.2vh var(--sans); }
 .mrow .nm { color: var(--muted); font-size: 3vh; overflow: hidden; text-overflow: ellipsis; }
-.mrow .mv { font: 700 4.2vh var(--sans); }
+.mrow .mv { font: 700 3.8vh var(--sans); }
 .alloc { grid-column: 1 / -1; align-self: end; }
 .bar { display: grid; grid-template-columns: 22vw 1fr 8vw; align-items: center; gap: 1vw; margin: 1vh 0; font-size: 3vh; white-space: nowrap; }
 .bar .track { height: 2.6vh; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
@@ -178,6 +178,24 @@ footer span { white-space: nowrap; max-width: 100%; overflow: hidden; text-overf
 footer span.long { white-space: normal; }
 footer .src { margin-left: auto; }
 .error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
+
+/* Tight layout: fit() switches it on when anything overflows its box (a long licensed-feed notice,
+   a warning banner, an adopted stop, a wide font, or all of them). Same content, smaller type. */
+.tv.tight .strip .asof { display: none; }
+.tv.tight .big { font-size: 7.4vh; }
+.tv.tight .cmp .v { font-size: 4vh; }
+.tv.tight .cmp .who { font-size: 3vh; }
+.tv.tight .grp { padding-top: .8vh; }
+.tv.tight .np { gap: .6vh; padding: 1.4vh 1.4vw; }
+.tv.tight .np .what, .tv.tight .np .badge, .tv.tight .np .stop .rule { display: none; }
+.tv.tight .np .sym { font-size: 6vh; }
+.tv.tight .np .lead .v { font-size: 5vh; }
+.tv.tight .np .nums .v { font-size: 4vh; }
+.tv.tight .tile .sym, .tv.tight .tile .day { font-size: 3.8vh; }
+.tv.tight .trow .sym { font-size: 3.6vh; }
+.tv.tight .mrow { padding: .8vh 0; }
+.tv.tight .bar { margin: .4vh 0; }
+.tv.tight footer { max-height: 6.6vh; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -308,6 +326,17 @@ function render() {
   renderTape(s);
   renderFooter();
   if (!document.querySelector('.panel.on')) rotate();
+  fit();
+}
+
+// Switch to the tight layout when the left card, the current panel or any card in it overflows.
+function fit() {
+  const tv = $('tv');
+  const over = () => [document.querySelector('.left'), document.querySelector('.panel.on'),
+    ...document.querySelectorAll('.panel.on .np, .panel.on .tile, .panel.on .trow')]
+    .some(n => n && n.scrollHeight > n.clientHeight + 1);
+  tv.classList.remove('tight');
+  if (over() || $('delay').getBoundingClientRect().height > innerHeight * 0.05) tv.classList.add('tight');
 }
 
 function renderStatus() {
@@ -393,7 +422,7 @@ function renderChart(base, s) {
   const series = [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
   const w = Math.max(200, box.clientWidth), h = Math.max(120, box.clientHeight);
   const unit = innerHeight / 1080;
-  box.replaceChildren(compareChart(series, { width: w, height: h, pad: 30 * unit, left: 124 * unit, right: 340 * unit, unit, charPx: 18 * unit,
+  box.replaceChildren(compareChart(series, { width: w, height: h, pad: 30 * unit, left: 150 * unit, right: 340 * unit, unit, charPx: 18 * unit,
     labelGap: 40 * unit, ariaNote: 'return since the Sept 22 statement' }));
   box.dataset.size = `${w}x${h}`;
 }
@@ -413,7 +442,7 @@ let breadth = { up: 0, down: 0 };
 function stopText(r) {
   if (r.stopPrice === undefined) return null;
   if (r.stopLevel === 'hit') return `At or below the stop ($${fmtPrice(r.stopPrice)})`;
-  return `Stop $${fmtPrice(r.stopPrice)} (${(r.stopGap * 100).toFixed(1)}% below)`;
+  return `Stop $${fmtPrice(r.stopPrice)} (${(r.stopGap * 100).toFixed(1)}% below price)`;
 }
 
 // Holdings in pages of ten, largest first, read across the rows. Each tile shows the stock's own
@@ -577,6 +606,7 @@ function rotate() {
     document.querySelectorAll('.right .panel').forEach(n => n.classList.toggle('on', n.id === PANELS[panelIdx]));
     $('panel-title').textContent = $(PANELS[panelIdx]).dataset.title;
     $('dots').replaceChildren(...PANELS.map((_, i) => el('i', { class: i === panelIdx ? 'on' : '' })));
+    fit();
   }
   if (pinned < 0) rotateTimer = setTimeout(rotate, dwell(PANELS[panelIdx]));
 }
