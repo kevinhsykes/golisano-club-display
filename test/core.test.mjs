@@ -307,6 +307,12 @@ test('every page script parses (a stray quote once broke screens.html)', async (
 test('cost basis walk: statement + bought - cost of shares sold = today, and the change is the reinvested gain', () => {
   const p = full(), s = compute(p), w = costBasisWalk(p);
   assert.equal(w.start, 100831.99);
+  // totals known from the three Nov 11 trades, so a walk that ignores the trades fails here
+  assert.equal(w.bought.toFixed(2), '10641.22');
+  assert.equal(w.removed.toFixed(2), '9783.48');
+  assert.equal(w.proceeds.toFixed(2), '10658.34');
+  assert.equal(w.realized.toFixed(2), '874.86');
+  assert.equal(w.end.toFixed(2), '101689.73');
   assert.equal(w.end.toFixed(2), s.cost.toFixed(2));
   assert.equal(w.change.toFixed(2), (w.realized - w.cashKept).toFixed(2));
   assert.equal(costBasisWalk(load('portfolio.public.json')), null);
