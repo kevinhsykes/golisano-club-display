@@ -149,12 +149,14 @@ export function compute(payload) {
     const sizeAtOpen = size - bought.reduce((a, t) => a + tradeSize(t), 0) + sold.reduce((a, t) => a + tradeSize(t), 0);
     const money = (p, n) => (dollars ? (cents(p) * n) / 100 : p * n);
     const value = money(price, size);
-    const prevValue = money(prev, sizeAtOpen) + bought.reduce((a, t) => a + money(Number(t.price), tradeSize(t)), 0);
+    const openValue = money(prev, sizeAtOpen);
+    const boughtValue = bought.reduce((a, t) => a + money(Number(t.price), tradeSize(t)), 0);
+    const prevValue = openValue + boughtValue;
     const proceeds = sold.reduce((a, t) => a + money(Number(t.price), tradeSize(t)), 0);
     const dayValue = value + proceeds - prevValue;
     const cost = dollars ? Number(h.cost_basis) : Number(h.avg_cost) * size;
     return {
-      ...h, price, prev, value, prevValue, cost,
+      ...h, price, prev, value, prevValue, openValue, boughtValue, proceeds, cost,
       // dayPct is the club's own day on this holding; stockDayPct is the stock's move (tape, SPY benchmark).
       dayChange: price - prev, stockDayPct: price / prev - 1,
       dayValue, dayPct: prevValue > 0 ? dayValue / prevValue : price / prev - 1,
@@ -166,13 +168,15 @@ export function compute(payload) {
   });
   const sum = k => rows.reduce((a, r) => a + r[k], 0);
   const total = sum('value');
-  const prevTotal = sum('prevValue');
+  // Day % base: the holdings at yesterday's close plus only the NEW money a buy needed. Money moved
+  // from a sale into a buy on the same day is a reallocation, so it is not counted twice.
+  const dayBase = sum('openValue') + Math.max(0, sum('boughtValue') - sum('proceeds'));
   const cost = sum('cost');
   rows.forEach(r => { r.weight = r.value / total; });
   const spy = rows.find(r => r.symbol === 'SPY');
   return {
     rows, dollars, total, cost,
-    dayChange: sum('dayValue'), dayPct: sum('dayValue') / prevTotal,
+    dayChange: sum('dayValue'), dayPct: sum('dayValue') / dayBase, dayBase,
     gain: total - cost, gainPct: total / cost - 1,
     spyDayPct: spy ? spy.stockDayPct : null,
   };
@@ -219,6 +223,14 @@ export function sinceStatement(payload, summary) {
     .filter(f => Date.parse(f.effective_utc) > lastT && Date.parse(f.effective_utc) <= newest)
     .reduce((a, f) => a + Number(dollars ? f.amount : f.amount_units), 0);
   return (1 + Number(last.twr)) * summary.total / (valueOf(last) + flowAfter) - 1;
+}
+
+// The S&P 500 over the same period as sinceStatement: SPY's price now over its price at the Sept 22
+// statement (history[0].spy). Price return only: SPY's dividends are not in the saved quotes.
+export function spySinceStatement(payload) {
+  const start = Number(payload.history?.[0]?.spy);
+  const q = payload.quotes.items.find(x => x.symbol === 'SPY');
+  return start > 0 && q && Number(q.price) > 0 ? Number(q.price) / start - 1 : null;
 }
 
 // Gain including sales: unrealized gain on what we hold plus gain realized by sales up to the

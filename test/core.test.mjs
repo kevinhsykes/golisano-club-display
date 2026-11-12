@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -241,6 +241,36 @@ test('a reallocation at unchanged prices leaves gain % unchanged', () => {
   assert.equal(b.pct.toFixed(6), '0.100000');
   // The reviewed bug divided by cost + sold cost: 1000 / 21000.
   assert.notEqual(b.pct.toFixed(6), (1000 / 21000).toFixed(6));
+});
+
+test('day % does not count money moved from a sale into a same-day buy twice', () => {
+  // 100 X at 100 yesterday. Today X is 101 (+1%): sell 50 X at 101, put the 5,050 into 101 Y at 50 (flat).
+  // The portfolio made 100 on 10,000 = 1%. The reviewed bug divided by 10,000 + 5,050.
+  const t = '2026-11-12T15:00:00Z', q = '2026-11-12T16:00:00Z';
+  const p = { amounts: 'shown',
+    holdings: [{ symbol: 'X', shares: '50', cost_basis: '5000', avg_cost: '100' }, { symbol: 'Y', shares: '101', cost_basis: '5050', avg_cost: '50' }],
+    quotes: { items: [{ symbol: 'X', price: '101', previous_close: '100', provider_update_at_utc: q },
+                      { symbol: 'Y', price: '50', previous_close: '50', provider_update_at_utc: q }] },
+    trades: [{ type: 'sell', symbol: 'X', shares: '50', price: '101', executed_at_utc: t },
+             { type: 'buy', symbol: 'Y', shares: '101', price: '50', executed_at_utc: t }] };
+  const s = compute(p);
+  assert.equal(s.dayChange.toFixed(2), '100.00');
+  assert.equal(s.dayPct.toFixed(6), '0.010000');
+  assert.notEqual(s.dayPct.toFixed(6), (100 / 15050).toFixed(6));
+  // New money (a buy with no sale) is still part of the base.
+  p.trades = [p.trades[1]]; p.holdings[0].shares = '100';
+  const s2 = compute(p);
+  assert.equal(s2.dayBase.toFixed(2), (100 * 100 + 5050).toFixed(2));
+});
+
+test('S&P 500 since the statement: SPY price now over its Sept 22 statement price, same in both payloads', () => {
+  const p = full();
+  const spy = Number(p.quotes.items.find(q => q.symbol === 'SPY').price);
+  assert.equal(p.history[0].spy, '774.35');
+  assert.equal(spySinceStatement(p).toFixed(6), (spy / 774.35 - 1).toFixed(6));
+  assert.equal(spySinceStatement(load('portfolio.public.json')).toFixed(6), (spy / 774.35 - 1).toFixed(6));
+  p.quotes.items = p.quotes.items.filter(q => q.symbol !== 'SPY');
+  assert.equal(spySinceStatement(p), null);
 });
 
 test('comparison chart with no SPY position draws only the portfolio line', () => {
