@@ -253,7 +253,7 @@ function renderStatus() {
 function costKpi(s) {
   const w = costBasisWalk(payload);
   const card = el('div', { class: 'kpi' }, el('div', { class: 's' }, 'Cost basis'), el('div', { class: 'v' }, fmtUsd(s.cost)));
-  if (w && Math.abs(w.change) >= 0.005) {
+  if (w && Math.abs(w.change) >= 0.005 && Math.abs(w.end - s.cost) < 0.005) {
     card.append(el('div', { class: 'v2 plain' }, `Sept 22: ${fmtUsd(w.start)} · ${fmtSignedUsd(w.change)} `,
       el('a', { href: 'trades.html#cost-basis' }, 'why')));
   }

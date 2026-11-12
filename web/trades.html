@@ -213,7 +213,10 @@ function render() {
 
   // How the cost basis moved: statement + bought - original cost of shares sold = now.
   const w = costBasisWalk(payload);
-  if (w && (w.bought || w.removed)) {
+  // A wrong explanation is worse than none: show it only when it adds up to today's basis to the cent.
+  const ties = w && Math.abs(w.end - compute(payload).cost) < 0.005;
+  const est = (payload.trades || []).some(t => t.type === 'sell' && t.estimated) ? ' (estimated)' : '';
+  if (ties && (w.bought || w.removed)) {
     const row = (label, v, cls) => el('tr', { class: cls || null }, el('td', {}, label), el('td', { class: 'n' }, v));
     $('basis').replaceChildren(
       el('table', { class: 'walk' }, el('tbody', {},
@@ -222,8 +225,9 @@ function render() {
         row('\u2212 Original cost of shares sold', fmtSignedUsd(-w.removed, true)),
         row('= Cost basis now', fmtUsd(w.end, true), 'total'))),
       el('p', {}, `A sale removes only the original cost of the shares sold (${fmtUsd(w.removed, true)}), but the sale brought in ${fmtUsd(w.proceeds, true)}. `,
-        `The difference is the realized gain (${fmtSignedUsd(w.realized, true)}). Reinvesting it in new positions raises the cost basis by ${fmtSignedUsd(w.change, true)}`,
-        Math.abs(w.cashKept) >= 0.005 ? ` (the gain minus ${fmtUsd(Math.abs(w.cashKept), true)} ${w.cashKept > 0 ? 'kept as cash' : 'added'}).` : '.'),
+        `The difference is the realized gain (${fmtSignedUsd(w.realized, true)}${est}). Reinvesting it in new positions raises the cost basis by ${fmtSignedUsd(w.change, true)}`,
+        Math.abs(w.cashKept) >= 0.005 ? ` (the gain minus ${fmtUsd(Math.abs(w.cashKept), true)} ${w.cashKept > 0 ? 'not reinvested; the club records no cash balance' : 'of new money'}).` : '.'),
+      el('p', {}, 'Cost basis is what we paid for what we hold now. It rises when a gain is reinvested. It is not money added by members, and it does not move with prices.'),
       el('p', {}, '"Gain vs cost" on the portfolio page counts the realized gain once and divides by the money the club put in, so a reinvested gain does not inflate the percentage.'));
     $('cost-basis').hidden = false;
   }
