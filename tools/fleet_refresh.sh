@@ -15,7 +15,13 @@ MAX_AGE_MIN=${GOLISANO_MAX_AGE_MIN:-16}
 # The deployed site. Its saved prices can be stale even when main is fresh, if GitHub's deploy
 # step fails (it did six times on 2026-11-11). Change this after the repository moves.
 SITE_URL=${GOLISANO_SITE_URL:-https://kevinhsykes.github.io/golisano-club-display}
-MAX_SERVED_AGE_MIN=${GOLISANO_MAX_SERVED_AGE_MIN:-30}
+# Live-site check: on one computer only (GOLISANO_SERVED_CHECK=1), so two hosts never take turns
+# redeploying. GitHub Pages caches api/quotes for up to 10 minutes and a query string does not
+# bypass it, so the limit is 45 minutes (30 + cache + margin).
+SERVED_CHECK=${GOLISANO_SERVED_CHECK:-}
+MAX_SERVED_AGE_MIN=${GOLISANO_MAX_SERVED_AGE_MIN:-45}
+REDEPLOY_COOLDOWN_MIN=${GOLISANO_REDEPLOY_COOLDOWN_MIN:-45}
+MIN_HEAD_AGE_MIN=${GOLISANO_MIN_HEAD_AGE_MIN:-15}
 NODE=${GOLISANO_NODE:-node}           # Node 22 or newer (the Worker test imports JSON with "with")
 DRY_RUN=${GOLISANO_DRY_RUN:-}          # set to 1: do everything except the push
 HOST=$(hostname -s)
@@ -86,20 +92,25 @@ except Exception:
 
 # Main is fresh but the live site is not: the deploy failed or never ran. Ask GitHub to run the
 # pages workflow (one API call); if that fails, push an empty commit, which also deploys.
-# A fresh main (under 5 minutes) may still be deploying, so wait for the next run then.
+# Waits until the newest commit on main is 15 minutes old (deploy time plus the Pages cache), and
+# allows one redeploy per REDEPLOY_COOLDOWN_MIN by either path (state file on this computer).
+# Known gap: the timer's last run is 4:24 PM ET, so a deploy that fails after that is not
+# retried until the next market day.
 redeploy_if_served_stale() {
-  local main_age="$1" age
-  [ "$main_age" -ge 5 ] || return 0
+  [ -n "$SERVED_CHECK" ] || return 0
+  local head_age age last
+  head_age=$(( $(date +%s) - $(git log -1 --format=%ct origin/main) ))
+  [ "$head_age" -ge $(( MIN_HEAD_AGE_MIN * 60 )) ] || return 0
   age=$(served_age)
   if [ "$age" = unknown ]; then log "live site prices: could not read $SITE_URL/api/quotes"; return 0; fi
   [ "$age" -gt "$MAX_SERVED_AGE_MIN" ] || return 0
-  # One redeploy at a time: skip if the newest commit on main is a redeploy under 30 minutes old.
-  if git log -1 --format=%s origin/main | grep -q '^Redeploy:' && \
-     [ $(( $(date +%s) - $(git log -1 --format=%ct origin/main) )) -lt 1800 ]; then
-    log "live site still stale after a recent redeploy; waiting"; return 0
+  last=$(cat "$STATE_DIR/last-redeploy" 2>/dev/null || echo 0)
+  if [ $(( $(date +%s) - last )) -lt $(( REDEPLOY_COOLDOWN_MIN * 60 )) ]; then
+    log "live site still ${age} min stale after a recent redeploy; waiting"; return 0
   fi
   log "live site serves ${age}-min-old prices while main is fresh; redeploying"
   if [ -n "$DRY_RUN" ]; then log "dry run: no redeploy"; return 0; fi
+  date +%s > "$STATE_DIR/last-redeploy"
   if timeout 60 gh workflow run pages -R "$REPO_SLUG" --ref main 2>/dev/null; then log "asked GitHub to run pages"; return 0; fi
   git reset -q --hard origin/main && \
     git -c user.name="price-refresh[$HOST]" -c user.email="price-refresh@users.noreply.github.com" \
@@ -110,7 +121,7 @@ redeploy_if_served_stale() {
 state=$(check_freshness)
 case "$state" in
   fresh*) log "prices are fresh (${state#fresh }); nothing to do"
-          a=${state#fresh }; redeploy_if_served_stale "${a%min}"; exit 0 ;;
+          redeploy_if_served_stale; exit 0 ;;
   error*) log "git fetch failed"; exit 1 ;;
 esac
 log "prices are stale (${state#stale }); refreshing on this host"
