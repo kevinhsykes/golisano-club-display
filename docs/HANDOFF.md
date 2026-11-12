@@ -2,7 +2,8 @@
 
 Kevin Sykes built and runs this site until he graduates in February 2027. This page tells the next
 owner what they get, what to do each week, and what to do before the handoff. The README has the
-technical detail. This page links to it.
+technical detail. This page links to it. Read `docs/ARCHITECTURE.md` for the complete system and
+dependency inventory. Read `docs/INDEPENDENCE-PLAN.md` for the phased plan through February 2027.
 
 ## What the club owns
 
