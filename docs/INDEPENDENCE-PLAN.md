@@ -35,11 +35,20 @@ Record each decision, its date, and its approvers in club-controlled storage. Do
 | Site address and hosting | Organization GitHub Pages, an Institute-managed custom domain on Pages, Institute hosting, or Cloudflare | Transfer to organization GitHub Pages first. Keep the repository name to limit changes. Consider an Institute-managed custom domain later. |
 | Public price-data licence | Licensed feed, TradingView board only, or no public price display | Apply for a licensed non-profit feed now. Use `board.html` as the interim TV display after its terms are checked. Remove Yahoo-powered public displays until the licence allows them. |
 | Trade recording | One officer, faculty only, or any member | Assign one trade recorder and a separate trade reviewer. Require fill evidence and a checked build for every trade. |
-| Dollar amounts on public pages | Full payload, percent-only public payload, or member-only full data | Use the percent-only public payload unless the club records a new decision to publish dollar amounts. Do not treat `?amounts=hide` as data removal. |
+| Dollar amounts on public pages | Full payload, percent-only public payload, or member-only full data | Current decision: the full payload with dollar amounts (Kevin Sykes, 2026-10-26, README "Public vs full data"). The next officers and the faculty sponsor should confirm it or switch to the percent-only payload. `?amounts=hide` only hides numbers on screen. The JSON still carries them. |
 | Backup price refresh | Another student's computer, an Institute-managed computer, or GitHub only | Use GitHub as the only routine refresher. Add a backup only on an Institute-managed host with a scoped club credential. |
 | Cloudflare Worker | Deploy after licensing or keep GitHub Pages | Keep GitHub Pages during transfer. Deploy the Worker only after the club owns the feed licence, Cloudflare account, and operating procedure. |
 | Custom domain | Keep the organization Pages address or use an Institute domain | Keep the organization Pages address for the transfer. Add a custom domain only if Institute staff own DNS and renewal. |
 | Account recovery | Officer only, faculty only, or two controlled recovery paths | Give the faculty sponsor and club officer separate recovery methods. Store recovery evidence outside the public repository. |
+
+## How the club works on GitHub
+
+The club runs the site the way its members run other team projects on GitHub. Work is visible and reviewable, and no one person holds it in their head.
+
+- **Issues** are the to-do list and the record. A trade starts as a "Record a trade" issue (`.github/ISSUE_TEMPLATE/record-a-trade.yml`) with the brokerage fill or a screenshot. A display problem starts as a "Display or site problem" issue. Ideas and decisions (stop-loss rules, the data licence, the payload) are issues too, so the discussion and the decision stay with the code.
+- **Pull requests** carry every change. The PR template (`.github/pull_request_template.md`) asks for the checks and screenshots. A second member reviews before merge. Only the automatic price refresh writes to `main` directly.
+- **AI tools** follow `AGENTS.md`. They never invent a fill, they add trades as new rows only, and they never commit secrets to this public repository.
+- **Labels** `trade` and `display` sort the work. The club can add more.
 
 ## Phase 0: Preserve the system and name owners
 
@@ -114,8 +123,8 @@ The reported commit must match the source commit selected for the backup. Both b
    systemctl --user list-timers --all
    ```
 
-6. Record the old `golisano-refresh` unit and installed paths before changing them.
-7. Record the Git push credential type and storage location without copying its value.
+6. Record the old `golisano-refresh` timer state (disabled 2026-11-11; files still in `~/.local/bin` and `~/.config/systemd/user` on KPC).
+7. Record the Git push credential location (GitHub CLI login on each backup computer) without copying its value.
 
 **Check:** The baseline names every working page, every physical screen, every timer, and every credential location. Any unreadable item stays UNKNOWN.
 
@@ -159,8 +168,10 @@ Target: complete before January 2027.
 5. Turn on two-factor authentication for each owner.
 6. Configure organization recovery under faculty control.
 7. Record the owners and recovery method in the access inventory.
+8. Add club members who work on the site as organization members, so they can open issues and pull requests.
+9. Protect `main`: require a pull request with one approving review from another member, and require the `pages` workflow checks to pass. Allow the price-refresh commits through (the GitHub Actions bot) so scheduled refreshes still land.
 
-**Check:** The faculty sponsor and club officer can each open the organization owner settings. Kevin is not the only owner.
+**Check:** The faculty sponsor and club officer can each open the organization owner settings. Kevin is not the only owner. A test pull request from a member needs a second member's review before it can merge.
 
 **Rollback:** Remove incorrect memberships. Keep the current repository in place until the transfer phase.
 
@@ -235,7 +246,7 @@ Delete only the disposable practice directories and branch.
 3. Get written confirmation that the plan covers the cafe TVs and Canvas-linked page.
 4. Record whether real-time, delayed, consolidated, or partial-market prices are allowed.
 5. Review TradingView's current terms before using `board.html` as the interim public display.
-6. Record the full or percent-only payload decision.
+6. Confirm or change the payload decision. Today the site publishes dollar amounts (decided 2026-10-26).
 7. Give any paid commitment to the authorized Institute approver.
 
 **Check:** The written terms name the actual display use. The selected pages and payload match the decision.
@@ -523,6 +534,7 @@ Target: complete after transfer and before graduation where possible.
 5. Schedule a restore test for the independent Git backup.
 6. Schedule an officer-to-officer practice handoff before each graduation cycle.
 7. Record all schedules in a club-owned calendar with two recipients.
+8. Triage open issues at each club meeting: assign an owner to each new trade, display problem and decision.
 
 **Check:** Each recurring task has a named owner, backup owner, due date, and evidence location.
 

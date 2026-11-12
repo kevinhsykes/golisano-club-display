@@ -80,7 +80,7 @@ The displayed portfolio excludes cash, dividends, unrecorded fees, and unrecorde
 
 ### Trades
 
-The club records trades by hand in `data/source/positions.json`. Each transaction has a type, symbol, execution time, shares, price, status, and source. Optional fields cover fees, estimates, and stop-loss rules.
+The club records trades by hand in `data/source/positions.json`. Each transaction has a type, symbol, execution time, shares, price, status, and source. Optional fields cover fees, estimates, and stop-loss rules. A stop-loss has a `status`: only an `adopted` stop reaches the TV and portfolio page. A `proposed` stop (MU's 20% rule from the pitch notes, as of 2026-11-11) appears only on the trades page, marked for club discussion.
 
 `tools/holdings.py` accepts only confirmed buy and sell rows after the statement date. It requires positive shares and prices. A buy adds shares and cost. A sell removes shares and average cost, then calculates a realized gain. A sale above the recorded holding stops the build.
 
@@ -176,9 +176,9 @@ The installer requires Git, Python 3, `flock`, `timeout`, systemd user services,
 
 The uninstall action disables the timer, stops an active service, removes the new unit files and installed binary, and reloads systemd. It leaves the dedicated clone for manual deletion.
 
-An older timer using `~/.local/bin/golisano-refresh` is being replaced. Its unit definition and current state are UNKNOWN. The new uninstall action does not remove that older binary or any older unit.
+The older timer `golisano-refresh.timer` on KPC (script `~/.local/bin/golisano-refresh`, units in `~/.config/systemd/user/golisano-refresh.{service,timer}`) asked GitHub to run the workflow through the API, with a local fallback. It was disabled on 2026-11-11 when the new backup was installed. Its files are still on KPC. The new uninstall action does not remove them.
 
-The backup needs working Git push credentials on each computer. The credential type and storage location are UNKNOWN. No API token is needed by the script itself.
+The backup pushes over HTTPS with the GitHub CLI's git credential helper (`gh auth git-credential`) on each computer, logged in as Kevin's GitHub account. No API token is used by the script itself, and the GitHub API rate limit does not apply to git pushes.
 
 ## Deployment path
 
