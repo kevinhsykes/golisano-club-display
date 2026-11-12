@@ -5,7 +5,7 @@ Source: Yahoo Finance per-ticker RSS (feeds.finance.yahoo.com/rss/2.0/headline?s
 Yahoo's Terms of Service, section 2(o) "RSS Feeds" (https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html),
 allow showing the feed's content "without modification", with attribution to Yahoo and a link to
 the full article, and with no advertising. So this file keeps each title exactly as the feed gave
-it (no rewriting, no summary, no description text), keeps each item's own article link, and the
+it (no rewriting, no summary; descriptions become plain-text teasers), keeps each item's own article link, and the
 page that shows it credits "Headlines via Yahoo Finance". Never add ads next to these items.
 
 Yahoo may stop the feeds at any time. Every failure is quiet: a symbol whose fetch fails keeps its
@@ -18,6 +18,7 @@ is not a duplicate (same link, or same title, within the file). Funds (SPY) are 
 import datetime
 import email.utils
 import json
+from html.parser import HTMLParser
 import re
 import sys
 import time
@@ -101,6 +102,23 @@ def iso(d):
     return d.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+class _TextContent(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.parts = []
+
+    def handle_data(self, data):
+        self.parts.append(data)
+
+
+def plain_teaser(description):
+    """Decode HTML entities and keep only text content, without editing its wording or spacing."""
+    parser = _TextContent()
+    parser.feed(description)
+    parser.close()
+    return "".join(parser.parts)
+
+
 def parse_feed(xml_bytes, symbol, name, now):
     """Items of one feed that pass the filters. The title is the feed's own text, only stripped of outer whitespace."""
     root = ET.fromstring(xml_bytes)
@@ -117,6 +135,11 @@ def parse_feed(xml_bytes, symbol, name, now):
         if not mentions(title, symbol, name):
             continue
         row = {"symbol": symbol, "title": title, "link": link, "published_utc": iso(when)}
+        description = it.find("description")
+        # itertext also handles literal XML child markup, besides RSS's usual escaped HTML.
+        teaser = plain_teaser("".join(description.itertext())) if description is not None else ""
+        if teaser.strip():
+            row["teaser"] = teaser
         pub = (it.findtext("source") or "").strip()
         if pub:
             row["publisher"] = pub

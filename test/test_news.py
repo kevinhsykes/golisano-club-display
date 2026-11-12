@@ -51,11 +51,11 @@ class Feed(unittest.TestCase):
         self.assertEqual(by_link["https://finance.yahoo.com/articles/mu-hbm-1.html?.tsrc=rss"], "Micron (MU) Has Next Year’s HBM Sold: Can It Last?")
         self.assertEqual(by_link["https://finance.yahoo.com/articles/amp.html"], "Micron & Nvidia: S&P 500 “memory” rally")
 
-    def test_links_are_the_feeds_own_and_no_description_is_kept(self):
+    def test_links_are_the_feeds_own(self):
         for r in rows():
             self.assertTrue(r["link"].startswith("https://"))
-            self.assertEqual(set(r) - {"publisher"}, {"symbol", "title", "link", "published_utc"})
-        self.assertNotIn("never be shown", json.dumps(rows()))
+            self.assertEqual(set(r) - {"publisher", "teaser"}, {"symbol", "title", "link", "published_utc"})
+
 
     def test_age_cutoff_missing_date_irrelevant_and_non_https_are_dropped(self):
         titles = " | ".join(r["title"] for r in rows())
@@ -214,6 +214,38 @@ class PressReleaseFilter(unittest.TestCase):
                                  ("Apple Gains Market Share In China", "AAPL", "Apple")):
             with self.subTest(title=title):
                 self.assertTrue(mentions(title, sym, name))
+
+
+
+
+class Teasers(unittest.TestCase):
+    def parse(self, description, title="Micron news"):
+        feed = f'<rss><channel><item><title>{title}</title><link>https://example.com/a</link><pubDate>Thu, 12 Nov 2026 12:00:00 +0000</pubDate>{description}</item></channel></rss>'
+        return sn.parse_feed(feed.encode(), "MU", "Micron", NOW)
+
+    def test_verbatim_and_entities(self):
+        text = '  First sentence.  Second & third — “unchanged”.\n'
+        self.assertEqual(self.parse('<description><![CDATA[' + text.replace('&', '&amp;') + ']]></description>')[0]['teaser'], text)
+        self.assertEqual(self.parse('<description>A &amp;amp; B &#8212; C</description>')[0]['teaser'], 'A & B — C')
+
+    def test_markup_text_only(self):
+        self.assertEqual(self.parse('<description><![CDATA[<p>One <b>bold</b> &amp; two.</p><p>Next.</p>]]></description>')[0]['teaser'], 'One bold & two.Next.')
+        self.assertEqual(self.parse('<description>One <b>bold</b> tail.</description>')[0]['teaser'], 'One bold tail.')
+        self.assertEqual(sn.plain_teaser('Revenue < 5 &amp; > 2'), 'Revenue < 5 & > 2')
+
+    def test_empty_omitted(self):
+        for description in ('', '<description/>', '<description>  </description>', '<description>&lt;p&gt;&lt;/p&gt;</description>'):
+            self.assertNotIn('teaser', self.parse(description)[0])
+
+    def test_only_title_controls_relevance(self):
+        self.assertEqual(self.parse('<description>Micron MU</description>', 'Unrelated company'), [])
+        self.assertEqual(len(self.parse('<description>Apple Hospitality Market Report</description>')), 1)
+
+    def test_real_yahoo_sample(self):
+        feed = (ROOT / 'test/fixtures/yahoo_news_MU_live.xml').read_bytes()
+        items = sn.parse_feed(feed, 'MU', 'Micron', NOW)
+        self.assertEqual(items[0]['teaser'], 'Key TakeawaysMicron earned $37. 7 billion in its quarter to Sept.')
+        self.assertEqual(len(items), 1)  # The second real title does not name Micron.
 
 
 if __name__ == "__main__":
