@@ -72,6 +72,11 @@ the prices as a backup. This backup is not part of what the club owns.
   GitHub. If the prices are less than 16 minutes old, it stops. If they are older, it refreshes
   the prices in its own copy of the repository, runs the checks, and pushes. The push starts the
   normal `pages` workflow, which deploys the site.
+- **Live-site check:** when the saved prices on GitHub are fresh, it also reads the prices the
+  live site serves (`api/quotes`). If those are over 30 minutes old, the deploy failed, so it asks
+  GitHub to run the `pages` workflow again, or pushes an empty "Redeploy" commit if that request
+  fails. It waits 30 minutes between redeploys. After the repository moves, set
+  `GOLISANO_SITE_URL` to the new site address.
 - **Why it uses no GitHub API:** it uses only git, so the API rate limit of Kevin's shared
   token cannot stop it.
 - **Commits:** its commit messages end with the computer's name, for example
