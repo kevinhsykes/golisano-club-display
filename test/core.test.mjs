@@ -494,3 +494,29 @@ test('ago: relative time in words', () => {
   assert.equal(at2(30 * 3600e3), 'yesterday');
   assert.equal(at2(4 * 86400e3), '4 days ago');
 });
+
+test('selectNews preserves full teaser and renderer appends it as text', async () => {
+  const { runInNewContext } = await import('node:vm');
+  const { el } = await import('../web/core.js');
+  const teaser = 'Full <img src=x onerror=alert(1)> & teaser.  Second sentence.';
+  const now = Date.now();
+  const item = { symbol: 'MU', title: 'Micron news', link: 'https://example.com/a', published_utc: new Date(now).toISOString(), teaser };
+  const doc = { checked_at_utc: item.published_utc, items: [item, { ...item, title: 'Legacy headline', link: 'https://example.com/b', teaser: undefined }] };
+  assert.equal(selectNews(doc, now).items[0].teaser, teaser);
+  const node = tag => ({ tag, children: [], attrs: {}, append(kid) { this.children.push(kid); }, setAttribute(k, v) { this.attrs[k] = v; }, replaceChildren(...kids) { this.children = kids; } });
+  const nodes = Object.fromEntries(['news', 'news-list', 'news-note'].map(id => [id, node('div')]));
+  const oldDocument = globalThis.document;
+  globalThis.document = { createElement: node };
+  try {
+    const html = readFileSync(new URL('../web/index.html', import.meta.url), 'utf8');
+    const render = html.slice(html.indexOf('function renderNewsInner(s) {'), html.indexOf('\n}', html.indexOf('function renderNewsInner(s) {')) + 2);
+    runInNewContext(render + '\nrenderNewsInner({ rows: [{symbol: "MU"}] });', {
+      newsDoc: doc, selectNews, el, Date, URL, $: id => nodes[id], ago: () => 'now', fmtTime: () => 'now', fmtDay: () => 'today'
+    });
+    const [current, legacy] = nodes['news-list'].children;
+    const rendered = current.children.find(n => n.className === 'teaser');
+    assert.deepEqual(rendered.children, [teaser]);
+    assert.equal(legacy.children.some(n => n.className === 'teaser'), false);
+    assert.equal(current.children[1].attrs.href, item.link);
+  } finally { globalThis.document = oldDocument; }
+});

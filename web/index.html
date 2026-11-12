@@ -146,6 +146,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 .news li.none { display: block; color: var(--muted); }
 .news .chip { justify-self: start; font: 700 12px/1 var(--sans); letter-spacing: .04em; padding: 4px 7px; border-radius: 5px; background: var(--panel); border: 1px solid var(--line); }
 .news .title { color: inherit; overflow-wrap: anywhere; }
+.news .teaser { grid-column: 2; color: var(--muted); font-size: 14px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
 .news .meta { grid-column: 2; color: var(--muted); font-size: 13px; }
 .news .credit { color: var(--muted); }
 tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
@@ -385,6 +386,7 @@ function renderNewsInner(s) {
     : n.items.map(i => el('li', {},
       el('span', { class: 'chip' }, i.symbol.replace('/', '.')),
       el('a', { class: 'title', href: i.link, target: '_blank', rel: 'noopener' }, i.title),
+      typeof i.teaser === 'string' && i.teaser ? el('span', { class: 'teaser' }, i.teaser) : null,
       el('span', { class: 'meta' }, [i.publisher || host(i.link), ago(Date.parse(i.published_utc), t)].filter(Boolean).join(' \u00b7 '))))));
   $('news-note').replaceChildren(el('span', { class: 'credit' }, 'Headlines via ', el('a', { href: 'https://finance.yahoo.com/', target: '_blank', rel: 'noopener' }, 'Yahoo Finance')),
     n ? ` \u00b7 Checked ${fmtTime(n.checked)}, ${fmtDay(n.checked)}.${n.failed ? ` ${n.failed} holding${n.failed === 1 ? '' : 's'} could not be checked.` : ''}` : '',
