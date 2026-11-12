@@ -287,7 +287,7 @@ function render() {
   renderTrades(s, showDollars);
   renderTape(s);
   // One line on the TV; the full notes (what is and is not counted, how the return is worked out) are on the portfolio page.
-  $('disclosure').textContent = 'Educational display, not investment advice. Cash, dividends and fees are not counted'
+  $('disclosure').textContent = 'Educational display, not investment advice. Cash, dividends and unrecorded fees are not counted'
     + ((payload.trades || []).some(t => t.estimated) ? '; some trade prices are estimates.' : '.');
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
   $('source').textContent = `${src} · quotes ${fmtTime(oldestQuote(payload.quotes.items))}–${fmtTime(newestQuote(payload.quotes.items))}, ${fmtDay(newestQuote(payload.quotes.items))}`;
