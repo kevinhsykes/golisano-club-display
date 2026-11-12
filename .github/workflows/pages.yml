@@ -38,7 +38,7 @@ jobs:
           python3 tools/snapshot_quotes.py
           python3 tools/snapshot_history.py || echo "history refresh failed; previous files kept"
           # Yahoo may end its RSS feeds at any time: a failure here never blocks prices or the deploy.
-          python3 tools/snapshot_news.py || echo "headlines refresh failed; previous file kept"
+          timeout 300 python3 tools/snapshot_news.py || echo "headlines refresh failed or timed out; previous file kept"
       - name: Build payloads
         run: |
           # A push that adds a holding may carry quotes without it; fetch a fresh snapshot then.

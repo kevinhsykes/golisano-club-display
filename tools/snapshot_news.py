@@ -16,11 +16,14 @@ An item is kept when its title names the ticker or the company, is no older than
 is not a duplicate (same link, or same title, within the file). Funds (SPY) are skipped.
 """
 import datetime
+import html
 import email.utils
 import json
 from html.parser import HTMLParser
 import re
+import signal
 import sys
+import threading
 import time
 import urllib.parse
 import urllib.request
@@ -102,21 +105,48 @@ def iso(d):
     return d.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+_BLOCK = {"p", "div", "br", "li", "ul", "ol", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "tr"}
+# A description counts as HTML when it has a closing tag or a block-level/line-break tag (<p>, <div>,
+# <li>, <br>, <img> ..., with or without attributes, closed or not). Plain text that happens to contain
+# "<strong>" or "x < 5" is kept exactly as written.
+_HTML = re.compile(r"</[A-Za-z][A-Za-z0-9]*\s*>|<(p|div|br|li|ul|ol|h[1-6]|blockquote|tr|img)\b[^<>]*>", re.I)
+
+
 class _TextContent(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.parts = []
+        self.parts, self.skip = [], 0
+
+    def _newline(self):
+        if self.parts and not self.parts[-1].endswith("\n"):
+            self.parts.append("\n")
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style"):
+            self.skip += 1
+        elif tag in _BLOCK:
+            self._newline()
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.skip = max(0, self.skip - 1)
+        elif tag in _BLOCK:
+            self._newline()
 
     def handle_data(self, data):
-        self.parts.append(data)
+        if not self.skip:
+            self.parts.append(data)
 
 
 def plain_teaser(description):
-    """Decode HTML entities and keep only text content, without editing its wording or spacing."""
+    """The feed's teaser as plain text, words unchanged. Plain descriptions only have entities decoded.
+    HTML descriptions keep their text, with a line break where a paragraph, list item or <br> ends."""
+    if not _HTML.search(description):
+        return html.unescape(description)
     parser = _TextContent()
     parser.feed(description)
     parser.close()
-    return "".join(parser.parts)
+    return "".join(parser.parts).strip("\n")
 
 
 def parse_feed(xml_bytes, symbol, name, now):
@@ -167,9 +197,58 @@ def merge(previous, fresh, failed, now):
     return dedupe(fresh + kept)
 
 
-def get(url):
+REQUEST_DEADLINE = 30   # seconds per feed, for the whole response (the socket timeout only covers silence)
+MAX_BYTES = 2_000_000
+
+
+class _Deadline:
+    """A real-time alarm that interrupts any blocking read (body, chunk framing, headers, TLS) once the
+    deadline passes. Only possible in the main thread on Unix; elsewhere the read1 loop below is the guard."""
+
+    def __init__(self, seconds):
+        self.seconds = seconds
+        self.armed = threading.current_thread() is threading.main_thread() and hasattr(signal, "setitimer")
+
+    def _fire(self, signum, frame):
+        raise TimeoutError(f"feed took longer than {self.seconds} s")
+
+    def __enter__(self):
+        if self.armed:
+            self.previous = signal.signal(signal.SIGALRM, self._fire)
+            signal.setitimer(signal.ITIMER_REAL, self.seconds)
+        return self
+
+    def __exit__(self, *exc):
+        if self.armed:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            signal.signal(signal.SIGALRM, self.previous)
+        return False
+
+
+def get(url, deadline=REQUEST_DEADLINE):
+    """Read one feed, giving up after `deadline` seconds in total even if the server keeps trickling bytes."""
+    with _Deadline(deadline):
+        return _get(url, deadline)
+
+
+def _get(url, deadline):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/xml"})
-    return urllib.request.urlopen(req, timeout=20).read()
+    end = time.monotonic() + deadline
+    chunks, size = [], 0
+    with urllib.request.urlopen(req, timeout=10) as resp:
+        while True:
+            if time.monotonic() > end:
+                raise TimeoutError(f"feed took longer than {deadline} s")
+            # read1 returns whatever has arrived (read(n) would wait for n bytes), so a server that
+            # trickles bytes cannot keep us inside one call past the deadline.
+            chunk = resp.read1(16384)
+            if not chunk:
+                break
+            size += len(chunk)
+            if size > MAX_BYTES:
+                raise ValueError("feed larger than expected")
+            chunks.append(chunk)
+    return b"".join(chunks)
 
 
 def main(fetch=get, pause=PAUSE):
