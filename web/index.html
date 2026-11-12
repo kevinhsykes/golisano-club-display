@@ -254,8 +254,9 @@ function costKpi(s) {
   const w = costBasisWalk(payload);
   const card = el('div', { class: 'kpi' }, el('div', { class: 's' }, 'Cost basis'), el('div', { class: 'v' }, fmtUsd(s.cost)));
   // Whole dollars here: show the line only when the rounded figures still add up to the rounded total.
-  const adds = w && Math.round(w.start) + Math.round(w.change) === Math.round(s.cost);
-  if (w && adds && Math.abs(Math.round(w.change)) >= 1 && Math.abs(w.end - s.cost) < 0.005) {
+  const whole = v => Math.sign(v) * Math.round(Math.abs(v));   // the way the formatter rounds: half away from zero
+  const adds = w && whole(w.start) + whole(w.change) === whole(s.cost);
+  if (w && adds && Math.abs(whole(w.change)) >= 1 && Math.abs(w.end - s.cost) < 0.005) {
     card.append(el('div', { class: 'v2 plain' }, `Sept 22: ${fmtUsd(w.start)} · ${fmtSignedUsd(w.change)} `,
       el('a', { href: 'trades.html#cost-basis', 'aria-label': 'Why the cost basis changed' }, 'why')));
   }

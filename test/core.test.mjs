@@ -328,6 +328,19 @@ test('cost basis story: each sentence is true for a gain, a loss, a buy with oth
   assert.match(t, /brought in \$10,658\.34 \(estimated\)/);
   assert.match(t, /cost basis rose by \$857\.74/);
   assert.match(t, /\$874\.86 minus the \$17\.12 not reinvested/);
+  assert.match(t, /\$17\.12 of the sale proceeds was not reinvested/);
+  assert.doesNotMatch(t, /more than the sales brought in/);
+  // zero gain, all proceeds reinvested: nothing moved, and an estimate stays marked
+  t = text(mk(500, 500, 500), true);
+  assert.match(t, /no realized gain or loss \(estimated\)/);
+  assert.match(t, /cost basis did not change\. All of the sale proceeds were reinvested\./);
+  assert.doesNotMatch(t, /rose|fell/);
+  // loss with the basis unchanged: the buy cost more than the sale brought in
+  t = text(mk(500, 500, 400));
+  assert.match(t, /realized loss is \$100\.00/);
+  assert.match(t, /cost basis did not change\. The purchases cost \$100\.00 more/);
+  // an estimated buy is marked
+  assert.match(costBasisStory(mk(500, 0, 0), false, true).join(' '), /bought \$500\.00 \(estimated\)/);
   // gain plus other money: the rise is not "the gain minus" anything
   t = text(mk(700, 500, 600));
   assert.match(t, /rose by \$200\.00/);
