@@ -235,16 +235,18 @@ export function spySinceStatement(payload) {
 
 // "If $100 had followed us": the club's time-weighted return and SPY's price return over the same
 // period, as dollars per $100. Works in whole cents so the two values and the gap always agree.
-// Null when either return is unknown. The scale is a symmetric range around $100 that holds both.
+// Null when either return is unknown. The scale always holds both values: $100 plus and minus a
+// round step, never below $0, so past a 100% move it is no longer centred (midPos says where $100 is).
 export function hundredStory(club, spy) {
   if (club === null || spy === null || !Number.isFinite(club) || !Number.isFinite(spy)) return null;
   const clubC = Math.round(10000 * (1 + club)), spyC = Math.round(10000 * (1 + spy));
   const gapC = clubC - spyC;
   const far = Math.max(Math.abs(clubC - 10000), Math.abs(spyC - 10000)) / 100;
-  const R = [5, 10, 20, 50].find(r => far * 1.25 <= r) || 50;
-  const pos = c => Math.min(1, Math.max(0, (c / 100 - (100 - R)) / (2 * R)));
+  const R = [5, 10, 20, 50, 100, 200, 500, 1000].find(r => far * 1.25 <= r) || Math.ceil(far * 1.25 / 1000) * 1000;
+  const lo = Math.max(0, 100 - R), hi = 100 + R;
+  const pos = c => (c / 100 - lo) / (hi - lo);
   return { clubC, spyC, gapC, verdict: gapC > 0 ? 'ahead' : gapC < 0 ? 'behind' : 'level',
-    lo: 100 - R, hi: 100 + R, clubPos: pos(clubC), spyPos: pos(spyC) };
+    lo, hi, midPos: pos(10000), clubPos: pos(clubC), spyPos: pos(spyC) };
 }
 
 // How the cost basis moved since the Sept 22 statement (full payload only):

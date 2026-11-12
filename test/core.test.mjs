@@ -317,8 +317,16 @@ test('$100 story: club and SPY per $100 in whole cents, with a gap that matches 
   // the scale is symmetric around $100, holds both points and grows in steps
   assert.deepEqual([h.lo, h.hi], [95, 105]);
   assert.deepEqual([hundredStory(-0.05, 0).lo, hundredStory(0.1, 0).lo, hundredStory(-0.3, 0.3).lo], [90, 80, 50]);
+  // far moves: the scale grows to hold both values, never below $0, and unequal values never share a point
   h = hundredStory(-0.9, 0.9);
-  assert.deepEqual([h.clubPos, h.spyPos], [0, 1]);
+  assert.deepEqual([h.lo, h.hi], [0, 300]);
+  assert.ok(Math.abs(h.clubPos - 10 / 300) < 1e-9 && Math.abs(h.spyPos - 190 / 300) < 1e-9 && Math.abs(h.midPos - 1 / 3) < 1e-9);
+  for (const [c, sp] of [[3, 2], [-0.99, -0.8], [40, 0.01], [0.5, -0.5]]) {
+    const x = hundredStory(c, sp);
+    assert.ok(x.clubPos >= 0 && x.clubPos <= 1 && x.spyPos >= 0 && x.spyPos <= 1 && x.clubPos > x.spyPos === c > sp, `${c} vs ${sp}`);
+    assert.ok(x.lo <= Math.min(x.clubC, x.spyC) / 100 && x.hi >= Math.max(x.clubC, x.spyC) / 100);
+  }
+  assert.equal(hundredStory(-0.0454, -0.0188).midPos, 0.5);
   h = hundredStory(-0.0454, -0.0188);
   assert.ok(h.clubPos > 0 && h.clubPos < h.spyPos && h.spyPos < 0.5);
 });

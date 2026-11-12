@@ -416,7 +416,7 @@ function renderHundred(base, s) {
         el('div', { class: 'hcards' }, card('club', 'The club', h.clubC, club), card('spy', 'S&P 500 (SPY)', h.spyC, spy)),
         el('div', { class: 'nline' },
           el('div', { class: 'track' }, el('u', { class: dir(h.gapC), style: `left:${a * 100}%; width:${(b - a) * 100}%` })),
-          el('span', { class: 'tick', style: 'left:0' }, `$${h.lo}`), el('span', { class: 'tick mid', style: 'left:50%' }, '$100'), el('span', { class: 'tick end', style: 'left:100%' }, `$${h.hi}`),
+          el('span', { class: 'tick', style: 'left:0' }, `$${h.lo}`), el('span', { class: 'tick mid', style: `left:${h.midPos * 100}%` }, '$100'), el('span', { class: 'tick end', style: 'left:100%' }, `$${h.hi}`),
           dot('club', 'Club', h.clubPos, false), dot('spy', 'SPY', h.spyPos, close)),
         el('div', { class: `verdict ${dir(h.gapC)}` }, verdict)),
       el('div', { class: 'cap' }, `Prices only; dividends are not counted. Last saved prices ${fmtShortDate(newestQuote(payload.quotes.items))}. Past results do not predict future ones.`));
