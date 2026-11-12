@@ -233,6 +233,21 @@ export function spySinceStatement(payload) {
   return start > 0 && q && Number(q.price) > 0 ? Number(q.price) / start - 1 : null;
 }
 
+// How the cost basis moved since the Sept 22 statement (full payload only):
+// start + bought - cost of shares sold = now. A sale removes only the sold shares' original cost,
+// while the buy spends the whole proceeds, so a gain that is reinvested raises the basis.
+export function costBasisWalk(payload) {
+  if (payload.amounts !== 'shown' || !payload.statement?.basis) return null;
+  const trades = payload.trades || [];
+  const sum = (f, k) => trades.filter(f).reduce((a, t) => a + Number(t[k] || 0), 0);
+  const start = Number(payload.statement.basis);
+  const bought = sum(t => t.type === 'buy', 'amount');
+  const removed = sum(t => t.type === 'sell', 'cost_removed');
+  const proceeds = sum(t => t.type === 'sell', 'amount');
+  const realized = sum(t => t.type === 'sell', 'realized_gain');
+  return { start, bought, removed, proceeds, realized, end: start + bought - removed, change: bought - removed, cashKept: proceeds - bought };
+}
+
 // Gain including sales: unrealized gain on what we hold plus gain realized by sales up to the
 // newest quote. The percent is over the net money put in (see below).
 export function totalGain(payload, summary) {

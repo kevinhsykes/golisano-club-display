@@ -117,6 +117,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
 .table-note { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
 .kpi .v2.plain { color: var(--muted); font-weight: 500; font-size: 12px; }
+.kpi .v2.plain a { color: inherit; }
 
 /* New positions and stop-loss rules */
 .newpos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin: 0 0 14px; }
@@ -178,7 +179,7 @@ th button[title] { text-decoration: underline dotted var(--muted); text-underlin
 </div>
 <script type="module">
 import {
-  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
+  fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el, costBasisWalk,
   sinceStatement, spySinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
@@ -248,6 +249,17 @@ function renderStatus() {
   return { fr, newest };
 }
 
+// Cost basis card: today's figure, where it started, and a link to the trades page explanation.
+function costKpi(s) {
+  const w = costBasisWalk(payload);
+  const card = el('div', { class: 'kpi' }, el('div', { class: 's' }, 'Cost basis'), el('div', { class: 'v' }, fmtUsd(s.cost)));
+  if (w && Math.abs(w.change) >= 0.005) {
+    card.append(el('div', { class: 'v2 plain' }, `Sept 22: ${fmtUsd(w.start)} · ${fmtSignedUsd(w.change)} `,
+      el('a', { href: 'trades.html#cost-basis' }, 'why')));
+  }
+  return card;
+}
+
 function renderKpis(s, dollars) {
   const { fr, newest } = renderStatus();
   const when = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(newest)}`;
@@ -263,7 +275,7 @@ function renderKpis(s, dollars) {
     kpi(fr.level === 'live' ? 'S&P 500 (SPY) today' : `SPY, ${fmtShortDate(newest)}`, `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct),
     dollars ? kpi('Gain vs cost', fmtSignedUsd(tg.gain), tg.gain,
       tg.realized ? `${fmtPct(tg.pct)} · incl. ${fmtSignedUsd(tg.realized)} realized` : fmtPct(tg.pct)) : kpi('Return since Sept 22', fmtPct(since), since),
-    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Club since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []),
+    ...(dollars ? [costKpi(s), kpi('Club since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []),
     ...spyKpi,
   );
 }

@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, costBasisWalk, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -302,4 +302,12 @@ test('every page script parses (a stray quote once broke screens.html)', async (
       });
     }
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('cost basis walk: statement + bought - cost of shares sold = today, and the change is the reinvested gain', () => {
+  const p = full(), s = compute(p), w = costBasisWalk(p);
+  assert.equal(w.start, 100831.99);
+  assert.equal(w.end.toFixed(2), s.cost.toFixed(2));
+  assert.equal(w.change.toFixed(2), (w.realized - w.cashKept).toFixed(2));
+  assert.equal(costBasisWalk(load('portfolio.public.json')), null);
 });
