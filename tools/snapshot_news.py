@@ -21,7 +21,9 @@ import email.utils
 import json
 from html.parser import HTMLParser
 import re
+import signal
 import sys
+import threading
 import time
 import urllib.parse
 import urllib.request
@@ -199,8 +201,37 @@ REQUEST_DEADLINE = 30   # seconds per feed, for the whole response (the socket t
 MAX_BYTES = 2_000_000
 
 
+class _Deadline:
+    """A real-time alarm that interrupts any blocking read (body, chunk framing, headers, TLS) once the
+    deadline passes. Only possible in the main thread on Unix; elsewhere the read1 loop below is the guard."""
+
+    def __init__(self, seconds):
+        self.seconds = seconds
+        self.armed = threading.current_thread() is threading.main_thread() and hasattr(signal, "setitimer")
+
+    def _fire(self, signum, frame):
+        raise TimeoutError(f"feed took longer than {self.seconds} s")
+
+    def __enter__(self):
+        if self.armed:
+            self.previous = signal.signal(signal.SIGALRM, self._fire)
+            signal.setitimer(signal.ITIMER_REAL, self.seconds)
+        return self
+
+    def __exit__(self, *exc):
+        if self.armed:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            signal.signal(signal.SIGALRM, self.previous)
+        return False
+
+
 def get(url, deadline=REQUEST_DEADLINE):
     """Read one feed, giving up after `deadline` seconds in total even if the server keeps trickling bytes."""
+    with _Deadline(deadline):
+        return _get(url, deadline)
+
+
+def _get(url, deadline):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/xml"})
     end = time.monotonic() + deadline
     chunks, size = [], 0

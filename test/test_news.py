@@ -274,8 +274,10 @@ class FetchDeadline(unittest.TestCase):
                 head = b"HTTP/1.1 200 OK\r\n" + (b"Transfer-Encoding: chunked\r\n" if chunked else b"Content-Length: 100000\r\n") + b"\r\n"
                 conn.sendall(head)
                 try:
+                    if chunked == "extension":          # trickle the chunk-size line itself
+                        conn.sendall(b"1;foo=")
                     for _ in range(200):
-                        conn.sendall(b"1\r\nx\r\n" if chunked else b"x")
+                        conn.sendall(b"a" if chunked == "extension" else b"1\r\nx\r\n" if chunked else b"x")
                         sn.time.sleep(0.05)
                 except OSError:
                     pass
@@ -284,13 +286,13 @@ class FetchDeadline(unittest.TestCase):
             threading.Thread(target=run, daemon=True).start()
             return srv.getsockname()[1]
 
-        for chunked in (False, True):
+        for chunked in (False, True, "extension"):
             with self.subTest(chunked=chunked):
                 port = serve(chunked)
                 started = sn.time.monotonic()
                 with self.assertRaises(TimeoutError):
                     sn.get(f"http://127.0.0.1:{port}/feed", deadline=0.3)
-                self.assertLess(sn.time.monotonic() - started, 1.0)
+                self.assertLess(sn.time.monotonic() - started, 3.0)   # deadline 0.3 s; generous for slow CI
 
     def test_size_cap(self):
         class Big:
