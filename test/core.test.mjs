@@ -327,6 +327,10 @@ test('$100 story: club and SPY per $100 in whole cents, with a gap that matches 
     assert.ok(x.lo <= Math.min(x.clubC, x.spyC) / 100 && x.hi >= Math.max(x.clubC, x.spyC) / 100);
   }
   assert.equal(hundredStory(-0.0454, -0.0188).midPos, 0.5);
+  // the scale follows whichever value is further from $100, and steps exactly at its thresholds
+  h = hundredStory(0, 0.15);
+  assert.deepEqual([h.lo, h.hi, h.spyPos], [80, 120, 0.875]);
+  assert.deepEqual([hundredStory(0.04, 0).hi, hundredStory(0.0401, 0).hi], [105, 110]);
   h = hundredStory(-0.0454, -0.0188);
   assert.ok(h.clubPos > 0 && h.clubPos < h.spyPos && h.spyPos < 0.5);
 });
