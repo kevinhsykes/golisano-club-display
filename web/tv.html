@@ -80,6 +80,29 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 .chart .endlabel.spy { fill: #7fb0ec; } .chart .endlabel.picks { fill: #b9a0f0; }
 .chart .note { font-size: 2.4vh; color: var(--muted); }
 
+/* If $100 had followed us: two values, one number line, one verdict. */
+.panel.hundred.on { grid-template-rows: 1fr auto; gap: 1.2vh; background: var(--panel); border: 1px solid var(--line); border-radius: 1.4vh; padding: 2.4vh 1.6vw; }
+.hundred .hbody { display: grid; grid-template-rows: auto 1fr auto; gap: 1vh; min-height: 0; overflow: hidden; }
+.hcards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6vw; }
+.hcard { background: var(--panel-2); border-radius: 1.4vh; padding: 1.2vh 1.4vw; border-left: .7vw solid var(--gold); }
+.hcard.spy { border-left-color: #7fb0ec; }
+.hcard .s { font-size: 2.8vh; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.hcard .v { font: 700 8vh/1.05 var(--sans); color: var(--gold-soft); }
+.hcard.spy .v { color: #7fb0ec; }
+.hcard .p { font: 600 3.2vh var(--sans); }
+.nline { position: relative; align-self: center; height: 11.5vh; margin: 0 3vw; }
+.nline .track { position: absolute; left: 0; right: 0; top: 5.2vh; height: 1.2vh; border-radius: 99px; background: var(--panel-2); border: 1px solid var(--line); }
+.nline .track u { position: absolute; top: 0; bottom: 0; background: currentColor; opacity: .55; }
+.nline .tick { position: absolute; top: 8.2vh; transform: translateX(-50%); font-size: 2.5vh; color: var(--muted); }
+.nline .tick.mid::before { content: ""; position: absolute; left: 50%; top: -4.2vh; height: 3.4vh; border-left: .2vh dashed var(--muted); }
+.nline i { position: absolute; top: 4.3vh; width: 3vh; height: 3vh; margin-left: -1.5vh; border-radius: 50%; background: var(--gold); border: .4vh solid var(--bg); }
+.nline i.spy { background: #7fb0ec; }
+.nline i b { position: absolute; left: 50%; bottom: 3.4vh; transform: translateX(-50%); font: 700 2.8vh var(--sans); font-style: normal; color: var(--gold-soft); white-space: nowrap; }
+.nline i.spy b { color: #7fb0ec; }
+.nline i.below b { bottom: auto; top: 6.6vh; }
+.hundred .verdict { font: 700 4.2vh/1.2 var(--sans); text-align: center; }
+.hundred .cap { font-size: 2.5vh; color: var(--muted); }
+
 .right { position: relative; min-height: 0; display: grid; grid-template-rows: auto 1fr; gap: 1.2vh; }
 .panel-head { display: flex; justify-content: space-between; align-items: baseline; }
 .panel-head h2 { margin: 0; font: 500 3.2vh var(--serif); }
@@ -194,6 +217,7 @@ footer .src { text-align: right; min-width: 0; overflow-wrap: anywhere; }   /* a
       <div id="holding-pages" style="display:contents"></div>
       <div class="panel trades" id="p-trades" data-title="Recent trades"></div>
       <div class="panel movers" id="p-movers" data-title="Today's biggest moves"></div>
+      <div class="panel hundred" id="p-hundred" data-title="If $100 had followed us"></div>
       <div class="panel chart" id="p-chart" data-title="Portfolio since Sept 22">
         <div id="chart" style="position:relative; min-height:0"></div>
         <div class="note">Gain over what we paid, at each saved price check. 0% = break-even. Stock picks = every holding except SPY.</div>
@@ -206,7 +230,7 @@ footer .src { text-align: right; min-width: 0; overflow-wrap: anywhere; }   /* a
 <script type="module">
 import {
   fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
-  sinceStatement, isNew, totalGain,
+  sinceStatement, spySinceStatement, hundredStory, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -219,7 +243,7 @@ const CONFIG = {
   quotes: samePath(params.get('quotes')),                  // default: payload.live_quotes_url (api/quotes)
   hideAmounts: params.get('amounts') === 'hide',
   rotateSeconds: Number(params.get('rotate') || 20),
-  panel: params.get('panel'),                     // new | trades | h1 | h2 | h3 | movers | chart pins one panel
+  panel: params.get('panel'),                     // new | trades | h1 | h2 | h3 | movers | hundred | chart pins one panel
 
   pollSeconds: 60,
   reloadHours: 6,
@@ -283,6 +307,7 @@ function render() {
   renderStatus();      // after the pages exist: it writes their titles
   renderHero(s, showDollars);
   renderChart(base, s, showDollars);
+  renderHundred(base, s);
   renderMovers(s);
   renderTrades(s, showDollars);
   renderTape(s);
@@ -365,6 +390,39 @@ function renderHero(s, showDollars) {
       el('span', {}, el('i', { style: 'background:#7fb0ec' }), el('b', {}, fmtWeight(spyW)), ' S&P 500 fund (SPY)'),
       el('span', {}, el('i', { style: 'background:#b9a0f0' }), el('b', {}, fmtWeight(1 - spyW)), ` ${picks} stock pick${picks === 1 ? '' : 's'}`)),
   ] : []));
+}
+
+// The club against the S&P 500 over the same period, as dollars per $100. No fund dollars appear,
+// so the slide is the same with amounts hidden. The wording is the same shape ahead or behind.
+function renderHundred(base, s) {
+  const club = sinceStatement(base, s), spy = spySinceStatement(base);
+  const h = hundredStory(club, spy);
+  const start = base.history?.[0]?.as_of_utc;
+  hundredOk = Boolean(h && start);
+  if (hundredOk) {
+    const since = fmtShortDate(Date.parse(start)).replace(/^Sep /, 'Sept ');   // the rest of the screen writes Sept
+    $('p-hundred').dataset.title = `$100 in each on ${since} is now worth`;
+    if (PANELS[panelIdx] === 'p-hundred') $('panel-title').textContent = $('p-hundred').dataset.title;
+    const usd = c => `$${(c / 100).toFixed(2)}`;
+    const card = (cls, label, c, x) => el('div', { class: `hcard ${cls}` }, el('div', { class: 's' }, label), el('div', { class: 'v' }, usd(c)),
+      el('div', { class: `p ${dir(x)}` }, `${arrow(x)} ${fmtPct(x, 1)} since ${since}`));
+    const close = Math.abs(h.clubPos - h.spyPos) < 0.12;   // labels would collide: put one above the line, one below
+    const dot = (cls, label, pos, below) => el('i', { class: `${cls}${below ? ' below' : ''}`, style: `left:${pos * 100}%` }, el('b', {}, label));
+    const a = Math.min(h.clubPos, h.spyPos), b = Math.max(h.clubPos, h.spyPos);
+    const verdict = h.verdict === 'level' ? 'Level with the S&P 500'
+      : `${h.verdict === 'ahead' ? 'Ahead of' : 'Behind'} the S&P 500 by ${usd(Math.abs(h.gapC))} per $100`;
+    $('p-hundred').replaceChildren(
+      el('div', { class: 'hbody' },
+        el('div', { class: 'hcards' }, card('club', 'The club', h.clubC, club), card('spy', 'S&P 500 (SPY)', h.spyC, spy)),
+        el('div', { class: 'nline' },
+          el('div', { class: 'track' }, el('u', { class: dir(h.gapC), style: `left:${a * 100}%; width:${(b - a) * 100}%` })),
+          // Past a 1,000% move the $100 mark sits almost on the low end: one label there, not two on top of each other.
+          h.midPos < 0.08 ? null : el('span', { class: 'tick', style: 'left:0' }, `$${h.lo}`), el('span', { class: 'tick mid', style: `left:${h.midPos * 100}%` }, '$100'), el('span', { class: 'tick end', style: 'left:100%' }, `$${h.hi}`),
+          dot('club', 'Club', h.clubPos, false), dot('spy', 'SPY', h.spyPos, close)),
+        el('div', { class: `verdict ${dir(h.gapC)}` }, verdict)),
+      el('div', { class: 'cap' }, `Prices only; dividends are not counted. Last saved prices ${fmtShortDate(newestQuote(payload.quotes.items))}. Past results do not predict future ones.`));
+  }
+  if (hundredOk !== PANELS.includes('p-hundred')) setPanels();
 }
 
 function renderChart(base, s, showDollars) {
@@ -526,11 +584,12 @@ function renderTape(s) {
 }
 
 let PANELS = [];
+let hundredOk = false;
 let panelIdx = -1, newCount = 0;
 // Rotation: new positions (while any are new), recent trades, each holdings page, movers, chart.
 function setPanels() {
   const current = PANELS[panelIdx];
-  PANELS = [...(newCount ? ['p-new'] : []), ...(tradeCount ? ['p-trades'] : []), ...holdingPages, 'p-movers', 'p-chart'];
+  PANELS = [...(newCount ? ['p-new'] : []), ...(tradeCount ? ['p-trades'] : []), ...holdingPages, 'p-movers', ...(hundredOk ? ['p-hundred'] : []), 'p-chart'];
   panelIdx = PANELS.indexOf(current);
   // A pinned panel (?panel=) may only exist once its page is built: switch to it then.
   if (panelIdx < 0 || (PANELS.includes(`p-${CONFIG.panel}`) && current !== `p-${CONFIG.panel}`)) { panelIdx = -1; rotate(); return; }

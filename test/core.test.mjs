@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, hundredStory, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -302,6 +302,48 @@ test('every page script parses (a stray quote once broke screens.html)', async (
       });
     }
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('$100 story: club and SPY per $100 in whole cents, with a gap that matches the two values shown', () => {
+  let h = hundredStory(-0.0454, -0.0188);
+  assert.deepEqual([h.clubC, h.spyC, h.gapC, h.verdict], [9546, 9812, -266, 'behind']);
+  assert.equal(hundredStory(-0.0188, -0.0454).verdict, 'ahead');
+  assert.equal(hundredStory(0.00004, -0.00004).verdict, 'level');
+  // independent rounding of the gap would give 1 cent here; the shown values differ by 2
+  h = hundredStory(0.000051, -0.000051);
+  assert.deepEqual([h.clubC, h.spyC, h.gapC], [10001, 9999, 2]);
+  for (const bad of [null, NaN, Infinity]) { assert.equal(hundredStory(bad, 0.01), null); assert.equal(hundredStory(0.01, bad), null); }
+  assert.notEqual(hundredStory(0, 0), null);
+  // the scale is symmetric around $100, holds both points and grows in steps
+  assert.deepEqual([h.lo, h.hi], [95, 105]);
+  assert.deepEqual([hundredStory(-0.05, 0).lo, hundredStory(0.1, 0).lo, hundredStory(-0.3, 0.3).lo], [90, 80, 50]);
+  // far moves: the scale grows to hold both values, never below $0, and unequal values never share a point
+  h = hundredStory(-0.9, 0.9);
+  assert.deepEqual([h.lo, h.hi], [0, 300]);
+  assert.ok(Math.abs(h.clubPos - 10 / 300) < 1e-9 && Math.abs(h.spyPos - 190 / 300) < 1e-9 && Math.abs(h.midPos - 1 / 3) < 1e-9);
+  for (const [c, sp] of [[3, 2], [-0.99, -0.8], [40, 0.01], [0.5, -0.5]]) {
+    const x = hundredStory(c, sp);
+    assert.ok(x.clubPos >= 0 && x.clubPos <= 1 && x.spyPos >= 0 && x.spyPos <= 1 && x.clubPos > x.spyPos === c > sp, `${c} vs ${sp}`);
+    assert.ok(x.lo <= Math.min(x.clubC, x.spyC) / 100 && x.hi >= Math.max(x.clubC, x.spyC) / 100);
+  }
+  assert.equal(hundredStory(-0.0454, -0.0188).midPos, 0.5);
+  // the scale follows whichever value is further from $100, and steps exactly at its thresholds
+  h = hundredStory(0, 0.15);
+  assert.deepEqual([h.lo, h.hi, h.spyPos], [80, 120, 0.875]);
+  assert.deepEqual([hundredStory(0.04, 0).hi, hundredStory(0.0401, 0).hi], [105, 110]);
+  h = hundredStory(-0.0454, -0.0188);
+  assert.ok(h.clubPos > 0 && h.clubPos < h.spyPos && h.spyPos < 0.5);
+});
+
+test('$100 story: the full and public payloads tell the same story, and the slide says dividends are not counted', () => {
+  const a = full(), b = load('portfolio.public.json');
+  const ha = hundredStory(sinceStatement(a, compute(a)), spySinceStatement(a));
+  const hb = hundredStory(sinceStatement(b, compute(b)), spySinceStatement(b));
+  assert.deepEqual([ha.clubC, ha.spyC, ha.gapC], [hb.clubC, hb.spyC, hb.gapC]);
+  assert.equal(ha.verdict, ha.gapC > 0 ? 'ahead' : ha.gapC < 0 ? 'behind' : 'level');
+  const tv = readFileSync(new URL('../web/tv.html', import.meta.url), 'utf8');
+  assert.match(tv, /dividends are not counted/);
+  assert.match(tv, /Past results do not predict future ones/);
 });
 
 test('cost basis walk: statement + bought - cost of shares sold = today, and the change is the reinvested gain', () => {
