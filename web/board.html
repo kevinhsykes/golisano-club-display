@@ -116,7 +116,9 @@ stage.appendChild(fallback);
 setTimeout(() => {
   if (stage.querySelector('iframe')) return;
   fallback.hidden = false;
-  const seen = setInterval(() => { if (stage.querySelector('iframe')) { fallback.hidden = true; clearInterval(seen); } }, 5000);
+  // Hide the message the moment a widget frame is added, not on a timer.
+  const seen = new MutationObserver(() => { if (stage.querySelector('iframe')) { fallback.hidden = true; seen.disconnect(); } });
+  seen.observe(stage, { childList: true, subtree: true });
 }, 15000);
 let shown = 0;
 setInterval(() => {

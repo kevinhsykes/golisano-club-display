@@ -41,7 +41,7 @@ header { display: flex; align-items: center; gap: 2vw; padding-bottom: 1.4vh; bo
 .pill.open::before { content: "● "; animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: .35; } }
 .clock { font: 600 3.4vh var(--sans); min-width: 11vw; text-align: right; }
-.delay { font-size: 2.2vh; color: var(--gold-soft); margin-top: -.6vh; }
+.delay { font-size: 2.5vh; color: var(--gold-soft); margin-top: -.6vh; }
 .brand, .status, .pill { white-space: nowrap; }
 .tape .notice { color: var(--gold-soft); }
 
@@ -159,7 +159,7 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 @keyframes scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .tape .track { animation: none; } .pill.open::before { animation: none; } }
 
-footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.2vh; color: var(--muted); }
+footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.2vh; color: var(--muted); white-space: nowrap; }
 footer .src { text-align: right; }
 .error { display: grid; place-items: center; height: 100vh; font-size: 3vh; color: var(--muted); }
 </style>
@@ -285,7 +285,8 @@ function render() {
   renderMovers(s);
   renderTrades(s, showDollars);
   renderTape(s);
-  $('disclosure').textContent = payload.disclosure;
+  // One line on the TV; the full notes (what is and is not counted, how the return is worked out) are on the portfolio page.
+  $('disclosure').textContent = 'Educational display, not investment advice. Cash and dividends are not counted.';
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
   $('source').textContent = `${src} · quotes ${fmtTime(oldestQuote(payload.quotes.items))}–${fmtTime(newestQuote(payload.quotes.items))}, ${fmtDay(newestQuote(payload.quotes.items))}`;
   if (!document.querySelector('.panel.on')) rotate();
@@ -294,7 +295,6 @@ function render() {
 function renderStatus() {
   const st = marketStatus(now(), payload.calendar);
   const fr = freshness(payload.quotes.items, st, now(), payload.quotes.meta?.delay_minutes || 0);
-  $('delay').textContent = delayNotice(payload);
   const pill = $('pill');
   pill.className = `pill ${st.state}`;
   pill.textContent = st.holiday ? 'Market holiday' : STATUS_LABEL[st.state];
@@ -308,12 +308,14 @@ function renderStatus() {
     b.className = 'banner stale show';
     b.textContent = `${fr.reason}. Last saved price: ${newest}. Numbers below are from then, not now.`;
   } else if (fr.level === 'closed') {
-    b.className = 'banner closed show';
-    b.textContent = `Market closed. Showing the last saved prices (${newest}).`;
+    // Not a warning, so it does not take a row of its own: it joins the notice line under the header.
+    b.className = 'banner';
+    b.textContent = '';
   } else {
     b.className = 'banner';
     b.textContent = '';
   }
+  $('delay').textContent = delayNotice(payload) + (st.calendarKnown && fr.level === 'closed' ? ` · Market closed: prices from ${newest}` : '');
   $('day-label').textContent = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(fr.newest)}`;
   $('spy-label').textContent = fr.level === 'live' ? 'SPY today' : `SPY, ${fmtShortDate(fr.newest)}`;
   const when = fr.level === 'live' ? 'today' : fmtShortDate(fr.newest);
