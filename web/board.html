@@ -28,6 +28,7 @@ header { display: flex; align-items: baseline; gap: 2vw; padding-bottom: 1.2vh; 
 /* The widget renders at a fixed size and is scaled to fill the stage. */
 .stage { position: relative; min-height: 0; overflow: hidden; }
 .scaled { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+.fallback { margin: 0; height: 100%; display: grid; place-items: center; text-align: center; font-size: 3.4vh; color: var(--muted); padding: 0 8vw; }
 footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1vh; color: var(--muted); }
 .phone-link { display: none; }
 @media (max-width: 600px) {
@@ -104,6 +105,14 @@ const boards = groups.map((group, i) => {
   stage.appendChild(wrap);
   return wrap;
 });
+// If TradingView never loads (offline or blocked), say so instead of leaving a blank screen.
+setTimeout(() => {
+  if (stage.querySelector('iframe')) return;
+  const m = document.createElement('p');
+  m.className = 'fallback';
+  m.textContent = 'Live prices are unavailable on this screen right now. The portfolio screen (tv.html) shows the club\u2019s saved prices.';
+  stage.replaceChildren(m);
+}, 15000);
 let shown = 0;
 setInterval(() => {
   shown = (shown + 1) % boards.length;
