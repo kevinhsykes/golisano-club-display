@@ -11,7 +11,7 @@
   "basis": null,
   "units_value": "1.089655872110"
  },
- "disclosure": "Holdings: the Sept 22, 2026 statement plus trades recorded through Nov 11 (some at estimated market prices). Cash, dividends and unrecorded fees are not included. Return since Sept 22 is time-weighted, so money moved by a trade is not counted as gain or loss. Educational display, not investment advice.",
+ "disclosure": "Holdings: the Sept 22, 2026 statement plus trades recorded through Nov 11 (some at estimated prices until the brokerage fills are recorded). Cash, dividends and unrecorded fees are not included. Return since Sept 22 is time-weighted, so money moved by a trade is not counted as gain or loss. Educational display, not investment advice.",
  "holdings": [
   {
    "symbol": "AAPL",
@@ -312,7 +312,7 @@
    "time_note": "about 12:54 PM ET",
    "price": "761.31",
    "estimated": true,
-   "price_note": "Estimated from SPY's market price at about 12:54 PM ET; the club accepted this estimate.",
+   "price_note": "Estimated from SPY's market price at about 12:54 PM ET; replaced when the exact fill is recorded.",
    "stop": null,
    "shares_units": "0.000138844825"
   }

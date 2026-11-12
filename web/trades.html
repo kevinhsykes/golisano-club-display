@@ -58,6 +58,10 @@ td.name { color: var(--muted); max-width: 240px; overflow: hidden; text-overflow
 .notes p { margin: 4px 0; }
 .start { background: var(--panel); border: 1px dashed var(--line); border-radius: 10px; padding: 12px; font-size: 14px; }
 .start b { font-weight: 600; }
+.walk { width: auto; border-collapse: collapse; margin: 6px 0 10px; font-variant-numeric: tabular-nums; }
+.walk td { padding: 3px 14px 3px 0; border: 0; text-align: left; white-space: nowrap; }
+.walk td.n { text-align: right; }
+.walk tr.total td { border-top: 1px solid var(--line); font-weight: 700; padding-top: 6px; }
 .empty { color: var(--muted); }
 footer { margin-top: 14px; font-size: 12px; color: var(--muted); }
 footer a { color: var(--gold); }
@@ -94,6 +98,10 @@ footer a { color: var(--gold); }
   <section class="kpis" id="kpis"></section>
   <h2>Trade history, newest first</h2>
   <div id="days"></div>
+  <section id="cost-basis" hidden>
+    <h2>How the cost basis moved</h2>
+    <div class="start" id="basis"></div>
+  </section>
   <h2>Starting point</h2>
   <div class="start" id="start"></div>
   <footer>
@@ -102,7 +110,7 @@ footer a { color: var(--gold); }
   </footer>
 </div>
 <script type="module">
-import { fetchJson, mergeQuotes, compute, totalGain, el, fmtUsd, fmtSignedUsd, fmtPct, fmtPrice, arrow, dir, fmtTime, fmtDay, newestQuote, marketStatus, freshness } from './core.js';
+import { costBasisWalk, costBasisStory, fetchJson, mergeQuotes, compute, totalGain, el, fmtUsd, fmtSignedUsd, fmtPct, fmtPrice, arrow, dir, fmtTime, fmtDay, newestQuote, marketStatus, freshness } from './core.js';
 
 const params = new URLSearchParams(location.search);
 const samePath = v => (v && !/^[a-z]+:|^\/\//i.test(v) ? v : null);
@@ -132,6 +140,7 @@ async function refreshQuotes() {
   finally { refreshing = false; render(); }
 }
 
+let jumped = false;
 function render() {
   const dollars = payload.amounts === 'shown' && !hideAmounts;
   const trades = [...(payload.trades || [])].sort((a, b) => b.executed_at_utc.localeCompare(a.executed_at_utc));
@@ -203,6 +212,27 @@ function render() {
     }));
   }
 
+  // How the cost basis moved: statement + bought - original cost of shares sold = now.
+  const w = costBasisWalk(payload);
+  // A wrong explanation is worse than none: show it only when it adds up to today's basis to the cent.
+  const ties = w && Math.abs(w.end - compute(payload).cost) < 0.005;
+  const est = type => (payload.trades || []).some(t => t.type === type && t.estimated);
+  $('cost-basis').hidden = true;
+  if (dollars && ties && (w.bought || w.removed)) {   // dollar figures: never with ?amounts=hide
+    const row = (label, v, cls) => el('tr', cls ? { class: cls } : {}, el('td', {}, label), el('td', { class: 'n' }, v));
+    $('basis').replaceChildren(
+      el('table', { class: 'walk' }, el('tbody', {},
+        row('Sept 22 statement', fmtUsd(w.start, true)),
+        row('+ Bought', fmtSignedUsd(w.bought, true)),
+        row('\u2212 Original cost of shares sold', fmtSignedUsd(-w.removed, true)),
+        row('= Cost basis now', fmtUsd(w.end, true), 'total'))),
+      ...costBasisStory(w, est('sell'), est('buy')).map(t => el('p', {}, t)),
+      el('p', {}, 'Cost basis is what we paid for what we hold now. It does not move with prices. It rises when shares are bought and falls by the original cost of shares that are sold.'),
+      el('p', {}, '"Gain vs cost" on the portfolio page counts the realized gain once and divides by the money the club put in, so a reinvested gain does not inflate the percentage.'));
+    $('cost-basis').hidden = false;
+    // The section appears after the data loads, so a link to it has to be followed by hand, once.
+    if (location.hash === '#cost-basis' && !jumped) { jumped = true; $('cost-basis').scrollIntoView(); }
+  }
   $('start').replaceChildren(
     el('b', {}, 'Sept 22, 2026 brokerage statement. '),
     dollars && payload.statement.value

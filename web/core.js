@@ -233,6 +233,53 @@ export function spySinceStatement(payload) {
   return start > 0 && q && Number(q.price) > 0 ? Number(q.price) / start - 1 : null;
 }
 
+// How the cost basis moved since the Sept 22 statement (full payload only):
+// start + bought - cost of shares sold = now. A sale removes only the sold shares' original cost,
+// while the buy spends the whole proceeds, so a gain that is reinvested raises the basis.
+export function costBasisWalk(payload) {
+  if (payload.amounts !== 'shown' || !payload.statement?.basis) return null;
+  const trades = payload.trades || [];
+  const sum = (f, k) => trades.filter(f).reduce((a, t) => a + Number(t[k] || 0), 0);
+  const start = Number(payload.statement.basis);
+  const bought = sum(t => t.type === 'buy', 'amount');
+  const removed = sum(t => t.type === 'sell', 'cost_removed');
+  const proceeds = sum(t => t.type === 'sell', 'amount');
+  const realized = sum(t => t.type === 'sell', 'realized_gain');
+  return { start, bought, removed, proceeds, realized, end: start + bought - removed, change: bought - removed, cashKept: proceeds - bought };
+}
+
+// The walk in sentences. Every branch must stay true for any mix of buys and sales: a gain or a
+// loss, proceeds reinvested in full, in part or not at all, and buys paid for with other money.
+export function costBasisStory(w, estimated = false, boughtEstimated = false) {
+  const usd = v => fmtUsd(Math.abs(v), true), zero = v => Math.abs(v) < 0.005;
+  const est = estimated ? ' (estimated)' : '', bEst = boughtEstimated ? ' (estimated)' : '';
+  const out = [];
+  const sold = !zero(w.removed) || !zero(w.proceeds);
+  if (sold) {
+    const result = zero(w.realized) ? `so there is no realized gain or loss${est}`
+      : `so the realized ${w.realized > 0 ? 'gain' : 'loss'} is ${usd(w.realized)}${est}`;
+    const perSale = zero(w.proceeds - w.removed - w.realized) ? '' : ' (each sale is rounded to the cent)';
+    out.push(`A sale removes only the original cost of the shares sold (${usd(w.removed)}). The sales brought in ${usd(w.proceeds)}${est}, ${result}${perSale}.`);
+  }
+  const moved = zero(w.change) ? 'did not change' : `${w.change > 0 ? 'rose' : 'fell'} by ${usd(w.change)}`;
+  if (!sold) {
+    out.push(`The club bought ${usd(w.bought)}${bEst} of shares and sold nothing, so the cost basis ${moved}.`);
+  } else if (zero(w.bought)) {
+    out.push(`Nothing was bought, so the cost basis ${moved}: the original cost of the shares sold.`);
+  } else {
+    let s = `The club bought ${usd(w.bought)}${bEst} of shares. Bought minus the original cost of the shares sold: the cost basis ${moved}.`;
+    if (zero(w.cashKept)) s += ' All of the sale proceeds were reinvested.';
+    else if (w.cashKept > 0) s += ` ${usd(w.cashKept)} of the sale proceeds was not reinvested; the club records no cash balance.`;
+    else s += ` The purchases cost ${usd(w.cashKept)} more than the sales brought in; that money did not come from these sales.`;
+    out.push(s);
+    if (w.realized >= 0.005 && w.change >= 0.005 && w.cashKept >= -0.005 && zero(w.realized - w.cashKept - w.change)) {
+      out.push(zero(w.cashKept) ? 'The rise is the realized gain, reinvested. It is not money added by members.'
+        : `The rise is the realized gain that was reinvested: ${usd(w.realized)} minus the ${usd(w.cashKept)} not reinvested. It is not money added by members.`);
+    }
+  }
+  return out;
+}
+
 // Gain including sales: unrealized gain on what we hold plus gain realized by sales up to the
 // newest quote. The percent is over the net money put in (see below).
 export function totalGain(payload, summary) {
@@ -287,7 +334,7 @@ export const STATUS_LABEL = { open: 'Market open', pre: 'Pre-market', after: 'Af
 export function el(tag, attrs = {}, ...kids) {
   const n = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
-    if (k === 'class') n.className = v;
+    if (k === 'class') { if (v) n.className = v; }
     else if (k === 'style') n.style.cssText = v;
     else if (v !== null && v !== undefined && v !== false) n.setAttribute(k, v);
   }

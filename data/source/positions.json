@@ -179,9 +179,9 @@
       "fees": null,
       "status": "confirmed",
       "estimated": true,
-      "source": "Kevin Sykes in chat, 2026-11-11 1:29-1:30 PM ET: 'We are selling whatever spy was needed for this. This isn't new money coming in, but reallocation.' / 'We don't have to be spot on ... 12:54pm ish.' Shares = fewest whole SPY shares covering the MU + CAT cost ($10,641.22); price = SPY 1-minute bar 17:54Z (Yahoo Finance chart API, open 761.27 / close 761.31). Kevin Sykes in chat, 2026-11-11 evening ET: no brokerage fill is coming; 'roughly is close enough', so this estimate stands.",
-      "fill_expected": false,
-      "price_note": "Estimated from SPY's market price at about 12:54 PM ET; the club accepted this estimate.",
+      "source": "Kevin Sykes in chat, 2026-11-11 1:29-1:30 PM ET: 'We are selling whatever spy was needed for this. This isn't new money coming in, but reallocation.' / 'We don't have to be spot on ... 12:54pm ish.' Shares = fewest whole SPY shares covering the MU + CAT cost ($10,641.22); price = SPY 1-minute bar 17:54Z (Yahoo Finance chart API, open 761.27 / close 761.31). Kevin Sykes in chat, 2026-11-11 evening ET: 'roughly is close enough' for now; 2026-11-12: a club member may still supply the exact exit fill, so this stays an estimate until then.",
+      "fill_expected": true,
+      "price_note": "Estimated from SPY's market price at about 12:54 PM ET; replaced when the exact fill is recorded.",
       "stop_loss": null
     }
   ],
