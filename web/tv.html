@@ -26,7 +26,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
 body { font: 400 2.4vh/1.25 var(--sans); font-variant-numeric: tabular-nums; cursor: none; }
-.tv { height: 100vh; display: grid; grid-template-rows: auto auto auto 1fr auto auto; gap: 1.6vh; padding: 2.4vh 2.6vw 1.6vh; transition: transform 2s ease; }
+.tv { height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto 1fr auto auto; gap: 1.6vh; padding: 2.4vh 2.6vw 1.6vh; transition: transform 2s ease; }
 /* Fixed rows, so the hidden banner leaves an empty row instead of shifting the layout. */
 .tv > header { grid-row: 1; } .tv > .delay { grid-row: 2; } .tv > .banner { grid-row: 3; }
 .tv > main { grid-row: 4; } .tv > .tape { grid-row: 5; } .tv > footer { grid-row: 6; }
@@ -287,7 +287,8 @@ function render() {
   renderTrades(s, showDollars);
   renderTape(s);
   // One line on the TV; the full notes (what is and is not counted, how the return is worked out) are on the portfolio page.
-  $('disclosure').textContent = 'Educational display, not investment advice. Cash and dividends are not counted.';
+  $('disclosure').textContent = 'Educational display, not investment advice. Cash, dividends and fees are not counted'
+    + ((payload.trades || []).some(t => t.estimated) ? '; some trade prices are estimates.' : '.');
   const src = payload.quotes.meta?.attribution || [...new Set(payload.quotes.items.map(q => q.provider))].join(', ');
   $('source').textContent = `${src} · quotes ${fmtTime(oldestQuote(payload.quotes.items))}–${fmtTime(newestQuote(payload.quotes.items))}, ${fmtDay(newestQuote(payload.quotes.items))}`;
   if (!document.querySelector('.panel.on')) rotate();
