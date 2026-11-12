@@ -2,7 +2,8 @@
 
 Kevin Sykes built and runs this site until he graduates in February 2027. This page tells the next
 owner what they get, what to do each week, and what to do before the handoff. The README has the
-technical detail. This page links to it.
+technical detail. This page links to it. Read `docs/ARCHITECTURE.md` for the complete system and
+dependency inventory. Read `docs/INDEPENDENCE-PLAN.md` for the phased plan through February 2027.
 
 ## What the club owns
 
@@ -39,7 +40,7 @@ Nothing in this list depends on Kevin's computers or accounts after the transfer
 ## Weekly and per-trade work
 
 - **After a trade:** add one row per fill to `data/source/positions.json`. README, "When the portfolio changes", shows the exact fields. A new ticker needs three more small edits that the same section lists. A test fails until all of them are done.
-- **Stop-loss levels:** put them in the trade row (`stop_loss`). The TV's "New positions" panel shows the level for 14 days after the buy.
+- **Stop-loss levels:** put them in the trade row (`stop_loss`) with a `status`. Use `"adopted"` only when the club decided it, and write who decided and when in the row. An adopted stop shows on the TV's "New positions" panel for 14 days after the buy and on the portfolio page. A `"proposed"` stop shows only on the trades page, marked for discussion. A row with no status counts as adopted.
 - **No fill price yet:** record the trade with `"estimated": true`. The pages mark it "EST". If the club accepts the estimate and no fill will come, add `"fill_expected": false` and a `price_note`.
 - **Nothing else is routine.** Prices refresh by themselves every 15 minutes while the market is open.
 
@@ -56,7 +57,8 @@ Nothing in this list depends on Kevin's computers or accounts after the transfer
 |---|---|
 | Yellow banner "prices stopped updating" on a market day | Open the repository's Actions tab. Read the last failed `pages` run. Click "Run workflow" to try again. |
 | Grey banner | The market is closed. Nothing is wrong. |
-| A wrong share count or price | Fix the trade row in `positions.json`. Do not edit `opening_positions` or the statement CSV. |
+| A wrong share count or fill price for a trade | Compare it with the brokerage confirmation. If the trade row is wrong, fix it in `positions.json` through a pull request. Do not edit `opening_positions` or the statement CSV. |
+| A wrong current market price | Do not edit any trade row. The price comes from the saved quote snapshot. Wait for the next refresh, or run the `pages` workflow by hand. If it stays wrong, open a "Display or site problem" issue. |
 | A TV shows an old page | The page reloads itself every 6 hours and when the site changes. Restart the screen in Yodeck. |
 | The `pages` workflow shows "disabled" | GitHub turns off scheduled workflows in a public repository after 60 days with no repository activity. Click "Enable workflow" on the Actions tab. |
 

@@ -73,7 +73,9 @@ use `?amounts=hide` on either page to show percentages only.
 
 ### Hand it to the school
 
-`docs/HANDOFF.md` is the full handoff checklist for the next owner. The steps below move the site.
+`docs/HANDOFF.md` is the full handoff checklist for the next owner. Read
+`docs/ARCHITECTURE.md` for the complete system and dependency inventory. Read
+`docs/INDEPENDENCE-PLAN.md` for the phased move away from Kevin's accounts and computers. The steps below move the site.
 
 1. In GitHub: Settings > General > Transfer ownership, to the Institute's or club's GitHub organization
    (or a faculty sponsor's account). History, the workflow and the Pages site move with it; the site
