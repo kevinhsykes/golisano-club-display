@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, costBasisWalk, positionNotes, isNew, totalGain } from '../web/core.js';
+import { compute, marketStatus, freshness, mergeQuotes, historySeries, comparisonSeries, sinceStatement, spySinceStatement, costBasisWalk, costBasisStory, positionNotes, isNew, totalGain } from '../web/core.js';
 
 const load = f => JSON.parse(readFileSync(new URL(`../web/data/${f}`, import.meta.url), 'utf8'));
 const full = () => load('portfolio.json');
@@ -310,4 +310,42 @@ test('cost basis walk: statement + bought - cost of shares sold = today, and the
   assert.equal(w.end.toFixed(2), s.cost.toFixed(2));
   assert.equal(w.change.toFixed(2), (w.realized - w.cashKept).toFixed(2));
   assert.equal(costBasisWalk(load('portfolio.public.json')), null);
+});
+
+test('cost basis story: each sentence is true for a gain, a loss, a buy with other money, a buy only and a sale only', () => {
+  const mk = (bought, removed, proceeds) => ({ start: 1000, bought, removed, proceeds, realized: proceeds - removed,
+    end: 1000 + bought - removed, change: bought - removed, cashKept: proceeds - bought });
+  const text = (w, est) => costBasisStory(w, est).join(' ');
+  // today's shape: gain, nearly all reinvested
+  let t = text(costBasisWalk(full()), true);
+  assert.match(t, /realized gain is \$874\.86 \(estimated\)/);
+  assert.match(t, /brought in \$10,658\.34 \(estimated\)/);
+  assert.match(t, /cost basis rose by \$857\.74/);
+  assert.match(t, /\$874\.86 minus the \$17\.12 not reinvested/);
+  // gain plus other money: the rise is not "the gain minus" anything
+  t = text(mk(700, 500, 600));
+  assert.match(t, /rose by \$200\.00/);
+  assert.match(t, /cost \$100\.00 more than the sales brought in/);
+  assert.doesNotMatch(t, /minus the \$|not money added/);
+  // loss, fully reinvested
+  t = text(mk(400, 500, 400));
+  assert.match(t, /realized loss is \$100\.00/);
+  assert.match(t, /fell by \$100\.00/);
+  assert.doesNotMatch(t, /gain|rose|-\$|−/);
+  // buy only
+  t = text(mk(500, 0, 0));
+  assert.match(t, /sold nothing, so the cost basis rose by \$500\.00/);
+  assert.doesNotMatch(t, /realized|sale removes/);
+  // sale only
+  t = text(mk(0, 500, 600));
+  assert.match(t, /Nothing was bought, so the cost basis fell by \$500\.00/);
+  assert.doesNotMatch(t, /reinvest|rose/);
+  // per-sale rounding that does not add up says so
+  t = text({ ...mk(0, 33.33, 50.01), realized: 16.67 });
+  assert.match(t, /rounded to the cent/);
+});
+
+test('trades page: the cost basis section needs dollar amounts on', () => {
+  const src = readFileSync(new URL('../web/trades.html', import.meta.url), 'utf8');
+  assert.match(src, /if \(dollars && ties && /);
 });
