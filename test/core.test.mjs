@@ -294,7 +294,7 @@ test('since-Sept-22 chart: both lines start at 0 and end at the headline figures
 
 test('since-Sept-22 chart tolerates a payload without history or twr', () => {
   const p = full(), s = compute(p);
-  assert.deepEqual(sinceSeries({ ...p, history: undefined }, s).map(x => x.points.length), [0]);
+  assert.deepEqual(sinceSeries({ ...p, history: undefined }, s).map(x => x.points.length), [1]);   // one 0% point, so the chart still draws
   const noTwr = { ...p, history: p.history.map(({ twr, ...h }) => h) };
   assert.ok(sinceSeries(noTwr, s)[0].points.every(pt => Number.isFinite(pt.y)));
 });
@@ -439,4 +439,11 @@ test('cost basis story: each sentence is true for a gain, a loss, a buy with oth
 test('trades page: the cost basis section needs dollar amounts on', () => {
   const src = readFileSync(new URL('../web/trades.html', import.meta.url), 'utf8');
   assert.match(src, /if \(dollars && ties && /);
+});
+
+test('since-Sept-22 chart with no history still yields a drawable Club line', () => {
+  const p = full(), s = compute(p);
+  const [club] = sinceSeries({ ...p, history: [] }, s);
+  assert.equal(club.points.length, 1);
+  assert.equal(club.points[0].y, 0);
 });

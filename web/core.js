@@ -479,12 +479,14 @@ export function sinceSeries(payload, summary) {
     const ss = spySinceStatement(payload);
     if (ss !== null && spy.length) spy.push({ t: newest, live: true, y: ss });
   }
+  if (!club.length) club.push({ t: newest, live: true, y: 0 });   // no history yet: start the line at 0%
   return [{ name: 'Club', cls: 'port', points: club }, ...(spy.length ? [{ name: 'S&P 500', cls: 'spy', points: spy }] : [])];
 }
 
 // Multi-line % change chart with a zero line and end labels. Returns an <svg>.
-export function compareChart(series, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit, labelGap = 16 * unit,
+export function compareChart(seriesIn, { width, height, pad = 18, left = 62, right = 200, unit = 1, charPx = 8 * unit, labelGap = 16 * unit,
   ariaNote = 'unrealized gain over cost since the Sept 22 statement; purchase dates unknown, so not a same-period return' }) {
+  const series = seriesIn.filter(s => s.points && s.points.length);
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -507,7 +509,7 @@ export function compareChart(series, { width, height, pad = 18, left = 62, right
   const step = [0.0025, 0.005, 0.01, 0.02, 0.05, 0.1].find(s => (hi - lo) / s <= 7) || 0.2;
   for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {
     add('line', { x1: left, x2: width - right, y1: y(v), y2: y(v), class: Math.abs(v) < 1e-9 ? 'zero' : 'grid' });
-    add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
+    add('text', { x: left - 8 * unit, y: y(v) + 4 * unit, class: 'axis', 'text-anchor': 'end' }, Math.abs(v) < 1e-9 ? '0%' : `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`);
   }
   // date labels that do not overlap (newest and first kept)
   const pts0 = series[0].points;
