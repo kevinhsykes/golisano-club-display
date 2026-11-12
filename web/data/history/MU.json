@@ -3,12 +3,12 @@
  "name": "Micron Technology, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-12T17:54:22Z",
- "price": 796.905,
+ "as_of_utc": "2026-11-12T18:17:20Z",
+ "price": 792.64,
  "previous_close": 244.9,
  "day_high": 798.35,
  "day_low": 764.57,
- "volume": 18329186,
+ "volume": 19101329,
  "week52_high": 1255.0,
  "week52_low": 192.59,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-12",
-   "close": 796.905
+   "close": 792.64
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-12T17:54:23Z"
+ "retrieved_at_utc": "2026-11-12T18:17:22Z"
 }
