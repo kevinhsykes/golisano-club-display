@@ -343,6 +343,14 @@ test('cost basis story: each sentence is true for a gain, a loss, a buy with oth
   t = text({ start: 1000, bought: 100.01 + 200.02, removed: 300.03, proceeds: 400.03, realized: 100, end: 1000, change: 100.01 + 200.02 - 300.03, cashKept: 400.03 - 300.03 });
   assert.match(t, /did not change/);
   assert.doesNotMatch(t, /The rise/);
+  // gain with every dollar reinvested
+  t = text(mk(600, 500, 600));
+  assert.match(t, /The rise is the realized gain, reinvested\. It is not money added by members\./);
+  // sale only: the fall is the original cost, not the proceeds
+  assert.match(text(mk(0, 500, 600)), /fell by \$500\.00: the original cost of the shares sold\./);
+  // an estimated buy is marked whether or not something was sold; an exact buy is not
+  assert.match(costBasisStory(mk(700, 500, 600), false, true).join(' '), /bought \$700\.00 \(estimated\)/);
+  assert.doesNotMatch(text(mk(700, 500, 600)) + text(mk(500, 0, 0)), /estimated/);
   // an estimated buy is marked
   assert.match(costBasisStory(mk(500, 0, 0), false, true).join(' '), /bought \$500\.00 \(estimated\)/);
   // gain plus other money: the rise is not "the gain minus" anything
