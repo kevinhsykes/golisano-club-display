@@ -280,3 +280,26 @@ test('comparison chart with no SPY position draws only the portfolio line', () =
   assert.equal(series.length, 1);
   assert.ok(series[0].points.every(pt => Number.isFinite(pt.y)));
 });
+
+test('every page script parses (a stray quote once broke screens.html)', async () => {
+  const { readdirSync, writeFileSync, mkdtempSync, rmSync } = await import('node:fs');
+  const { execFileSync } = await import('node:child_process');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const web = new URL('../web/', import.meta.url);
+  const dir = mkdtempSync(join(tmpdir(), 'club-pages-'));
+  try {
+    const pages = readdirSync(web).filter(f => f.endsWith('.html'));
+    assert.ok(pages.length >= 5);
+    for (const page of pages) {
+      const html = readFileSync(new URL(page, web), 'utf8');
+      const scripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+      scripts.forEach((code, i) => {
+        const f = join(dir, `${page}.${i}.mjs`);
+        writeFileSync(f, code);
+        try { execFileSync(process.execPath, ['--check', f], { stdio: 'pipe' }); }
+        catch (e) { assert.fail(`${page} script ${i}: ${String(e.stderr).split('\n').find(l => /Error/.test(l))}`); }
+      });
+    }
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
