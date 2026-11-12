@@ -373,6 +373,9 @@ function renderNew(s, dollars) {
 let newsDoc;
 fetchJson('data/news.json').then(d => { newsDoc = d; if (lastSummary) renderNews(lastSummary); }).catch(() => {});
 function renderNews(s) {
+  try { renderNewsInner(s); } catch (e) { const sec = document.getElementById('news'); if (sec) sec.hidden = true; }
+}
+function renderNewsInner(s) {
   if (newsDoc === undefined) return;
   const t = Date.now();
   const n = selectNews(newsDoc, t, { held: new Set(s.rows.map(r => r.symbol)) });
@@ -383,7 +386,7 @@ function renderNews(s) {
       el('span', { class: 'chip' }, i.symbol.replace('/', '.')),
       el('a', { class: 'title', href: i.link, target: '_blank', rel: 'noopener' }, i.title),
       el('span', { class: 'meta' }, [i.publisher || host(i.link), ago(Date.parse(i.published_utc), t)].filter(Boolean).join(' \u00b7 '))))));
-  $('news-note').replaceChildren(el('span', { class: 'credit' }, 'Headlines via Yahoo Finance'),
+  $('news-note').replaceChildren(el('span', { class: 'credit' }, 'Headlines via ', el('a', { href: 'https://finance.yahoo.com/', target: '_blank', rel: 'noopener' }, 'Yahoo Finance')),
     n ? ` \u00b7 Checked ${fmtTime(n.checked)}, ${fmtDay(n.checked)}.${n.failed ? ` ${n.failed} holding${n.failed === 1 ? '' : 's'} could not be checked.` : ''}` : '',
     ' Funds such as SPY are not included. A headline does not explain a price change.');
   $('news').hidden = false;

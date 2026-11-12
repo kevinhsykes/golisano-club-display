@@ -112,9 +112,7 @@ class Main(unittest.TestCase):
         def fetch(url):
             if "s=CAT" in url:
                 raise OSError("boom")
-            if "s=MU" in url:
-                return FEED
-            return b"<rss><channel></channel></rss>"
+            return FEED       # a feed with items (only MU's titles pass the filter for MU)
         out, code = self.run_main(fetch, old)
         self.assertIsNone(code)
         doc = json.loads(out.read_text())
@@ -124,6 +122,16 @@ class Main(unittest.TestCase):
         self.assertIn("Caterpillar earlier", [i["title"] for i in doc["items"]])
         self.assertEqual(doc["checked_at_utc"], "2026-11-12T14:00:00Z")
         self.assertTrue(any(i["symbol"] == "MU" for i in doc["items"]))
+
+    def test_an_empty_feed_keeps_that_symbols_old_items(self):
+        old = {"items": [{"symbol": "CAT", "title": "Caterpillar earlier", "link": "https://x/cat", "published_utc": "2026-11-11T10:00:00Z"}]}
+
+        def fetch(url):
+            return b"<rss><channel></channel></rss>" if "s=CAT" in url else FEED
+        out, code = self.run_main(fetch, old)
+        doc = json.loads(out.read_text())
+        self.assertEqual(doc["symbols_failed"], ["CAT"])
+        self.assertIn("Caterpillar earlier", [i["title"] for i in doc["items"]])
 
     def test_every_symbol_failing_leaves_the_previous_file_untouched(self):
         old = {"checked_at_utc": "2026-11-11T00:00:00Z", "items": []}
@@ -144,3 +152,20 @@ class Main(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MatchingEdges(unittest.TestCase):
+    def test_whole_words_and_case(self):
+        from snapshot_news import mentions
+        self.assertFalse(mentions("Catalyst ahead for chip stocks", "CAT", "Caterpillar"))
+        self.assertFalse(mentions("A meta-analysis of interest rates", "META", "Meta Platforms Class A"))
+        self.assertTrue(mentions("Meta beats on revenue", "META", "Meta Platforms Class A"))
+        self.assertTrue(mentions("BRK-B hits a record", "BRK/B", "Berkshire Hathaway Class B"))
+        self.assertTrue(mentions("BRK.B hits a record", "BRK/B", "Berkshire Hathaway Class B"))
+
+    def test_other_organisations_and_press_releases(self):
+        from snapshot_news import mentions
+        self.assertFalse(mentions("Apple Hospitality REIT raises dividend", "AAPL", "Apple"))
+        self.assertFalse(mentions("Fires in the Amazon rainforest", "AMZN", "Amazon"))
+        self.assertFalse(mentions("Berkshire Hills Bancorp reports", "BRK/B", "Berkshire Hathaway Class B"))
+        self.assertFalse(mentions("Global Parcel Delivery Market Report 2026: UPS, FedEx", "UPS", "United Parcel Service Class B"))

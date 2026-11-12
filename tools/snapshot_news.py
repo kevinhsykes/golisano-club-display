@@ -2,7 +2,7 @@
 """Recent headlines for the companies the club holds -> web/data/news.json.
 
 Source: Yahoo Finance per-ticker RSS (feeds.finance.yahoo.com/rss/2.0/headline?s=<TICKER>).
-Yahoo's Terms of Service, section 2.15 "RSS Feeds" (https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html),
+Yahoo's Terms of Service, section 2(o) "RSS Feeds" (https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html),
 allow showing the feed's content "without modification", with attribution to Yahoo and a link to
 the full article, and with no advertising. So this file keeps each title exactly as the feed gave
 it (no rewriting, no summary, no description text), keeps each item's own article link, and the
@@ -42,6 +42,11 @@ SCHEMA = "company-news.v1"
 # Names a headline may use for a holding, besides what instruments carry. Matched as whole words.
 ALIASES = {"GOOGL": ["Alphabet", "Google"], "META": ["Meta", "Facebook"], "BRK/B": ["Berkshire"], "AMD": ["AMD"],
            "UPS": ["United Parcel Service"], "SOFI": ["SoFi"], "NVDA": ["Nvidia"], "MU": ["Micron"], "MKSI": ["MKS Inc", "MKS Instruments"]}
+# Other organisations that share a holding's name, and generic market-research press releases.
+NOT_THE_COMPANY = {"AAPL": ["Apple Hospitality"], "AMZN": ["Amazon rainforest", "Amazon River", "Amazon basin"],
+                   "BRK/B": ["Berkshire Hills", "Berkshire Grey", "Berkshire Bank"], "META": ["Meta Materials", "Meta Financial"]}
+_NOISE = re.compile(r"\bmarket (report|size|share|forecast|analysis|outlook|research)\b", re.I)
+RUN_BUDGET = 240        # seconds for the whole fetch; later symbols keep their previous items
 _SUFFIX = re.compile(r"\s+(class\s+[a-z]|inc\.?|corp\.?|corporation|co\.?|ltd\.?)$", re.I)
 
 
@@ -60,13 +65,15 @@ def company_names(symbol, name):
 
 
 def mentions(title, symbol, name):
-    """True when the title names the ticker (exact case, whole token) or the company (any case, whole words)."""
+    """True when the title names the ticker or the company: exact case, whole words (so "meta-analysis" is
+    not Meta), not another organisation with the same name, and not a market-research press release."""
+    if _NOISE.search(title) or any(x.casefold() in title.casefold() for x in NOT_THE_COMPANY.get(symbol, [])):
+        return False
     for t in tickers(symbol):
         if re.search(r"(?<![A-Za-z0-9.\-/])" + re.escape(t) + r"(?![A-Za-z0-9\-/]|\.[A-Za-z0-9])", title):
             return True
     for n in company_names(symbol, name):
-        flags = 0 if n.isupper() and len(n) <= 4 else re.I     # short all-caps names (AMD) stay case-exact
-        if re.search(r"(?<![A-Za-z0-9])" + re.escape(n) + r"(?![A-Za-z0-9])", title, flags):
+        if re.search(r"(?<![A-Za-z0-9])" + re.escape(n) + r"(?![A-Za-z0-9])", title):
             return True
     return False
 
@@ -145,11 +152,19 @@ def main(fetch=get, pause=PAUSE):
     except (OSError, ValueError):
         previous = []
     fresh, failed = [], []
+    started = time.monotonic()
     for n, s in enumerate(symbols):
+        if time.monotonic() - started > RUN_BUDGET:
+            print(f"{s}: skipped, time budget used")
+            failed.append(s)
+            continue
         if n:
             time.sleep(pause)
         try:
-            fresh += parse_feed(fetch(FEED.format(s=urllib.parse.quote(s.replace("/", "-")))), s, names.get(s), now)
+            root_items = fetch(FEED.format(s=urllib.parse.quote(s.replace("/", "-"))))
+            if not ET.fromstring(root_items).findall(".//item"):
+                raise ValueError("feed returned no items")   # keep the previous items rather than none
+            fresh += parse_feed(root_items, s, names.get(s), now)
         except Exception as e:
             print(f"{s}: {type(e).__name__}: {e}")
             failed.append(s)

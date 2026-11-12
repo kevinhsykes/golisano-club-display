@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-12T12:21:36Z",
+ "checked_at_utc": "2026-11-12T12:39:24Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -26,10 +26,76 @@
  "symbols_failed": [],
  "items": [
   {
+   "symbol": "META",
+   "title": "Stegra and Meta sign agreement for environmental attribute certificates to advance green steel",
+   "link": "https://finance.yahoo.com/energy/articles/stegra-meta-sign-agreement-environmental-122900885.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:29:00Z"
+  },
+  {
    "symbol": "NVDA",
-   "title": "Dow Jones Futures: Techs Fall As Nvidia Board Mulls Ousting CEO Jensen Huang",
+   "title": "Dow Jones Futures: Techs Fall As Nvidia Board Mulls Ousting CEO Jensen Huang; CoreWeave Rival Nebius Beats Views",
    "link": "https://finance.yahoo.com/m/672e6ef4-2ba3-319b-b948-a356a7f1fcbe/dow-jones-futures%3A-techs-fall.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:13:10Z"
+   "published_utc": "2026-11-12T12:26:26Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia tumbles early amid questions about Nvidia CEO Jensen Huang’s future",
+   "link": "https://finance.yahoo.com/technology/articles/nvidia-tumbles-early-amid-questions-122602360.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:26:02Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Wall Street backs away from Nvidia as Jensen Huang uncertainty unfolds: What analysts are saying",
+   "link": "https://finance.yahoo.com/markets/article/wall-street-backs-away-from-nvidia-as-jensen-huang-uncertainty-unfolds-what-analysts-are-saying-122600606.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:26:00Z"
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD Has Opportunity As NVDA Faces Scrutiny And Potential Leadership Vacuum, William Blair Says — Sees Runway For Shares",
+   "link": "https://stocktwits.com/news-articles/markets/equity/amd-has-opportunity-as-nvda-faces-scrutiny-and-potential-leadership-vacuum-william-blair-says-sees-runway-for-shares/cNGzvc2R9af?.tsrc=rss",
+   "published_utc": "2026-11-12T12:24:57Z"
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "Scott Galloway: If AI Is “Like the Railroads,” Alphabet and Microsoft “Would Still Be Fine”",
+   "link": "https://www.tikr.com/blog/scott-galloway-if-ai-is-like-the-railroads-alphabet-and-microsoft-would-still-be-fine?ref=yahoofinance&tlnk=yf-261112-vp249j44&.tsrc=rss",
+   "published_utc": "2026-11-12T12:24:09Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Micron Out-Earned Apple Last Quarter, Yet It’s Worth 1/6 as Much. One of Those Two Things Is Wrong",
+   "link": "https://www.tikr.com/blog/micron-out-earned-apple-last-quarter-yet-its-worth-1-6-as-much-one-of-those-two-things-is-wrong?ref=yahoofinance&tlnk=yf-261112-h4h78q9x&.tsrc=rss",
+   "published_utc": "2026-11-12T12:23:05Z"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Cabilly & Co. Explains Legal Considerations in Unresolved Amazon Seller Disputes",
+   "link": "https://finance.yahoo.com/small-business/articles/cabilly-co-explains-legal-considerations-122000210.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:20:00Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Premarket movers: Nvidia sinks; Lilly gains on China approval",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/premarket-movers-nvidia-sinks-lilly-121833317.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:18:33Z"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Has Hired an Outside Firm to Find Jensen Huang’s Replacement",
+   "link": "https://247wallst.com/investing/2026/11/12/nvidia-has-hired-an-outside-firm-to-find-jensen-huangs-replacement/?.tsrc=rss",
+   "published_utc": "2026-11-12T12:17:24Z"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple Vs. Alphabet: Who’s The Better Flight-to-Quality Anchor Now?",
+   "link": "https://247wallst.com/investing/2026/11/12/apple-vs-alphabet-whos-the-better-flight-to-quality-anchor-now/?.tsrc=rss",
+   "published_utc": "2026-11-12T12:15:46Z"
+  },
+  {
+   "symbol": "SOFI",
+   "title": "SoFi Technologies (SOFI) Introduced The First Tokenized Deposit Product At A US Bank",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-sofi-introduced-first-121205305.html?.tsrc=rss",
+   "published_utc": "2026-11-12T12:12:05Z"
   },
   {
    "symbol": "NVDA",
@@ -50,12 +116,6 @@
    "published_utc": "2026-11-12T12:02:22Z"
   },
   {
-   "symbol": "NVDA",
-   "title": "Anthropic IPO: Buy, Sell Or Hold Nvidia Stock?",
-   "link": "https://www.trefis.com/stock/nvda/articles/624617/anthropic-ipo-buy-sell-or-hold-nvidia-stock/2026-11-12?.tsrc=rss",
-   "published_utc": "2026-11-12T12:02:21Z"
-  },
-  {
    "symbol": "MSFT",
    "title": "Microsoft Stock At $521: Anthropic's Landlord, Customer And Rival?",
    "link": "https://www.trefis.com/stock/msft/articles/624619/microsoft-stock-at-521-anthropic-s-landlord-customer-and-rival/2026-11-12?.tsrc=rss",
@@ -74,12 +134,6 @@
    "published_utc": "2026-11-12T12:02:21Z"
   },
   {
-   "symbol": "NVDA",
-   "title": "Nvidia may oust Jensen Huang. The AI economy isn't ready",
-   "link": "https://finance.yahoo.com/video/nvidia-may-oust-jensen-huang-120000795.html?.tsrc=rss",
-   "published_utc": "2026-11-12T12:00:00Z"
-  },
-  {
    "symbol": "AMD",
    "title": "Why AMD CEO Lisa Su is Yahoo Finance's 'CEO of the Year'",
    "link": "https://finance.yahoo.com/technology/article/why-amd-ceo-lisa-su-is-yahoo-finances-ceo-of-the-year-120000902.html?.tsrc=rss",
@@ -96,24 +150,6 @@
    "title": "Nevoya and Meta Expand Partnership with 25 New Electric Trucks on the I-10 Corridor",
    "link": "https://finance.yahoo.com/energy/articles/nevoya-meta-expand-partnership-25-120000563.html?.tsrc=rss",
    "published_utc": "2026-11-12T12:00:00Z"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Elon Musk Says Hiring Nvidia CEO Jensen Huang 'Would Be an Honor'",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-hiring-nvidia-115844619.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:58:44Z"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia's $164 billion AI strategy faces an unexpected threat",
-   "link": "https://finance.yahoo.com/technology/ai/articles/nvidias-164-billion-ai-strategy-115432025.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:54:32Z"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia shares plunge as spy scandal threatens chief executive",
-   "link": "https://www.independent.co.uk/tech/nvidia-share-price-huang-ceo-b3083807.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:51:37Z"
   },
   {
    "symbol": "AMD",
@@ -248,12 +284,6 @@
    "published_utc": "2026-11-12T11:02:53Z"
   },
   {
-   "symbol": "GOOGL",
-   "title": "ETFs Bought $83.8 Million of Alphabet (GOOG) on Nov. 10",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-83-8-million-110149451.html?.tsrc=rss",
-   "published_utc": "2026-11-12T11:01:49Z"
-  },
-  {
    "symbol": "META",
    "title": "ETFs Bought $99.7 Million of Meta Platforms (META) on Nov. 10",
    "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-99-7-million-110125797.html?.tsrc=rss",
@@ -290,40 +320,16 @@
    "published_utc": "2026-11-12T11:00:40Z"
   },
   {
-   "symbol": "MSFT",
-   "title": "Simform Recognized as a Finalist of 2026 Microsoft Innovate with Azure AI Apps and Agents Partner of the Year",
-   "link": "https://finance.yahoo.com/technology/ai/articles/simform-recognized-finalist-2026-microsoft-105200364.html?.tsrc=rss",
-   "published_utc": "2026-11-12T10:52:00Z"
-  },
-  {
    "symbol": "TSLA",
    "title": "Finland approves Tesla driver assistance system ahead of EU-wide decision",
    "link": "https://www.just-auto.com/news/finland-tesla-driver-assistance-system/?.tsrc=rss",
    "published_utc": "2026-11-12T10:44:35Z"
   },
   {
-   "symbol": "AAPL",
-   "title": "Apple is the Best-Performing AI Stock in the “Magnificent Seven” This Year, and Alphabet is the Worst. Here’s the Better Buy for 2027.",
-   "link": "https://www.fool.com/investing/2026/11/12/apple-is-the-best-performing-ai-stock-in-the-magnificent-seven-this-year-and-alphabet-is-the-worst-here-s-the-better-buy-for-2027/?.tsrc=rss",
-   "published_utc": "2026-11-12T10:30:01Z"
-  },
-  {
-   "symbol": "AAPL",
-   "title": "Greg Abel Has Plowed $14.4 Billion Into Warren Buffett's Favorite Stock This Year, and It's Not Apple",
-   "link": "https://www.fool.com/investing/2026/11/12/greg-abel-144-billion-warren-buffetts-stock-apple/?.tsrc=rss",
-   "published_utc": "2026-11-12T10:17:00Z"
-  },
-  {
    "symbol": "META",
    "title": "Tuya Releases Open-Source Skill Enabling Meta Muse to Control Smart Devices Across 3,000+ Categories",
    "link": "https://finance.yahoo.com/technology/ai/articles/tuya-releases-open-source-skill-100700517.html?.tsrc=rss",
    "published_utc": "2026-11-12T10:07:00Z"
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Anthropic IPO Or Amazon, Google, Microsoft Stock?",
-   "link": "https://www.trefis.com/stock/amzn/articles/624197/anthropic-ipo-or-amazon-google-microsoft-stock/2026-11-12?.tsrc=rss",
-   "published_utc": "2026-11-12T09:42:40Z"
   },
   {
    "symbol": "MU",
@@ -360,12 +366,6 @@
    "title": "Revisiting Former Stock Picks Frontline, OneSpaWorld Holdings, Reddit",
    "link": "https://finance.yahoo.com/m/4db6fcab-2b00-33a2-9260-6845234f1b6f/revisiting-former-stock-picks.html?.tsrc=rss",
    "published_utc": "2026-11-12T06:21:00Z"
-  },
-  {
-   "symbol": "MU",
-   "title": "Micron vs. Sandisk: The AI Memory Supercycle Is Big Enough for Both, but Here's the Better Buy.",
-   "link": "https://www.fool.com/investing/2026/11/12/micron-vs-sandisk-the-ai-memory-supercycle-is-big/?.tsrc=rss",
-   "published_utc": "2026-11-12T05:20:00Z"
   },
   {
    "symbol": "CEG",
@@ -420,12 +420,6 @@
    "title": "Before You Buy Linde Stock, Settle This",
    "link": "https://www.trefis.com/stock/lin/articles/624358/before-you-buy-linde-stock-settle-this/2026-11-11?.tsrc=rss",
    "published_utc": "2026-11-12T00:20:13Z"
-  },
-  {
-   "symbol": "META",
-   "title": "Meta Platforms (META) Braces For EU Rules With 6% Revenue Penalty Risk",
-   "link": "https://finance.yahoo.com/technology/ai/articles/meta-platforms-meta-braces-eu-231720243.html?.tsrc=rss",
-   "published_utc": "2026-11-11T23:17:20Z"
   },
   {
    "symbol": "CAT",
@@ -546,24 +540,6 @@
    "title": "Caterpillar Keeps Sliding: Why Evercore ISI Still Sees 40% Upside",
    "link": "https://www.tikr.com/blog/caterpillar-keeps-sliding-why-evercore-isi-still-sees-40-upside?ref=yahoofinance&tlnk=yf-261111-mm3976rj&.tsrc=rss",
    "published_utc": "2026-11-11T15:43:36Z"
-  },
-  {
-   "symbol": "UPS",
-   "title": "Global Logistics Market Report 2026-2030: Size, Share, Trends and Forecast | Capitalize on AI, Automation and 3PL as DHL, UPS, Maersk and DSV Target $8.06 Trillion Opportunity by 2030",
-   "link": "https://finance.yahoo.com/markets/articles/global-logistics-market-report-2026-152400708.html?.tsrc=rss",
-   "published_utc": "2026-11-11T15:24:00Z"
-  },
-  {
-   "symbol": "UPS",
-   "title": "Global Relief and Aid Transportation Logistics Market Report 2026 | Capture the $135.09 Billion Opportunity by 2030 - DHL, UPS, FedEx, Maersk and CMA CGM Scale Cold Chains and Rapid Response",
-   "link": "https://finance.yahoo.com/markets/articles/global-relief-aid-transportation-logistics-152300093.html?.tsrc=rss",
-   "published_utc": "2026-11-11T15:23:00Z"
-  },
-  {
-   "symbol": "UPS",
-   "title": "Global Retail Logistics Solutions Market Report 2026 | Capitalize on $268.64B by 2030 as UPS, FedEx, DHL Supply Chain and Maersk Accelerate AI Automation and Omnichannel Fulfillment",
-   "link": "https://finance.yahoo.com/markets/articles/global-retail-logistics-solutions-market-143900606.html?.tsrc=rss",
-   "published_utc": "2026-11-11T14:39:00Z"
   },
   {
    "symbol": "BRK/B",
@@ -744,12 +720,6 @@
    "title": "ZM vs. DOCN: Which Stock Is the Better Value Option?",
    "link": "https://finance.yahoo.com/markets/stocks/articles/zm-vs-docn-stock-better-154003901.html?.tsrc=rss",
    "published_utc": "2026-11-09T15:40:03Z"
-  },
-  {
-   "symbol": "UPS",
-   "title": "Global Drone Logistics Market Report 2026 | Capitalize on 36.3% CAGR Through 2030 as Amazon, UPS, Zipline and Wing Scale AI-Powered BVLOS Delivery Networks",
-   "link": "https://finance.yahoo.com/technology/ai/articles/global-drone-logistics-market-report-142900292.html?.tsrc=rss",
-   "published_utc": "2026-11-09T14:29:00Z"
   },
   {
    "symbol": "MKSI",
