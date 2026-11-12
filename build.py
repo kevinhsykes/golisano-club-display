@@ -72,8 +72,11 @@ def disclosure(trades):
         last = max(t["trade_date"] for t in trades)
         d = datetime.date.fromisoformat(last)
         base += f" plus trades recorded through {d.strftime('%b')} {d.day}"
-        if any(t.get("estimated") for t in trades):
+        est = [t for t in trades if t.get("estimated")]
+        if any(t.get("fill_expected", True) for t in est):
             base += " (some at estimated prices until the brokerage fills are recorded)"
+        elif est:
+            base += " (some at estimated market prices)"
     return (base + ". Cash, dividends and unrecorded fees are not included. Return since Sept 22 is "
             "time-weighted, so money moved by a trade is not counted as gain or loss. "
             "Educational display, not investment advice.")
@@ -192,8 +195,10 @@ def main(public, out):
         row = {"id": t.get("id"), "type": t["type"], "symbol": t["symbol"], "name": names.get(t["symbol"], t["symbol"]),
                "trade_date": t["trade_date"], "executed_at_utc": t["executed_at_utc"], "time_note": t.get("time_note"),
                "price": t["price"], "estimated": bool(t.get("estimated")),
-               "price_note": t.get("price_note") or ("Estimated price; replaced when the brokerage fill is recorded."
-                                                     if t.get("estimated") else None),
+               "price_note": t.get("price_note") or (None if not t.get("estimated") else
+                                                     "Estimated price; replaced when the brokerage fill is recorded."
+                                                     if t.get("fill_expected", True) else
+                                                     "Estimated from the market price at the time of the trade."),
                "stop": ({"price": t["stop_loss"]["price"], "rule": t["stop_loss"].get("rule")} if t.get("stop_loss") else None)}
         if public:
             row["shares_units"] = str((dec(t["shares"]) / open_total_basis).quantize(Decimal("1e-12")))

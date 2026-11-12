@@ -73,6 +73,8 @@ use `?amounts=hide` on either page to show percentages only.
 
 ### Hand it to the school
 
+`docs/HANDOFF.md` is the full handoff checklist for the next owner. The steps below move the site.
+
 1. In GitHub: Settings > General > Transfer ownership, to the Institute's or club's GitHub organization
    (or a faculty sponsor's account). History, the workflow and the Pages site move with it; the site
    address becomes `https://<org>.github.io/golisano-club-display/`.
@@ -111,7 +113,9 @@ the opening positions or the CSV for a trade. Add one row per fill instead:
 
 - `type` is `buy` or `sell`. A sell removes shares at average cost; its gain shows as realized.
 - Set `"estimated": true` when the price is not the brokerage fill yet; the footer says so.
-  Replace it with the fill when it arrives.
+  Replace it with the fill when it arrives. If no fill will come and the club accepts the
+  estimate, also set `"fill_expected": false` and a `price_note`; the page keeps the EST mark but
+  stops saying a fill is pending.
 - A new symbol also needs a row in `instruments` (with `tv_symbol`, e.g. `NASDAQ:MU`) and in
   `instrument-profiles.json`, and must be added to `SYMBOLS` in `worker/index.js` (a test fails
   until it is). `tools/snapshot_quotes.py` and `tools/snapshot_history.py` pick it up by themselves.
