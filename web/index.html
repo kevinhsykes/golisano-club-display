@@ -35,7 +35,7 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 var(--sans); font-variant-numeric: tabular-nums; }
-.wrap { max-width: 1320px; margin: 0 auto; padding: 16px; }
+.wrap { max-width: 1480px; margin: 0 auto; padding: 16px; }
 header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
 header h1 { margin: 0; font: 500 24px var(--serif); margin-right: auto; }
 header .links { flex-basis: 100%; font: 13px var(--sans); } header .links a { color: inherit; }
@@ -256,14 +256,14 @@ function renderKpis(s, dollars) {
   const tg = totalGain(payload, s);
   const kpi = (label, v, d, v2, plain) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
     el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: plain ? 'v2 plain' : `v2 ${dir(d)}` }, v2) : null);
-  const spyKpi = spySince === null ? [] : [kpi('S&P 500 (SPY) since Sept 22', fmtPct(spySince), spySince, 'price return, no dividends', true)];
+  const spyKpi = spySince === null ? [] : [kpi('S&P 500 since Sept 22', fmtPct(spySince), spySince, 'price return, no dividends', true)];
   $('kpis').replaceChildren(
-    dollars ? kpi('Value (listed holdings)', fmtUsd(s.total)) : kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
+    dollars ? kpi('Holdings value', fmtUsd(s.total), undefined, 'cash not counted', true) : kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
     dollars ? kpi(when, `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange, fmtPct(s.dayPct)) : kpi(when, `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct),
     kpi(fr.level === 'live' ? 'S&P 500 (SPY) today' : `SPY, ${fmtShortDate(newest)}`, `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct),
     dollars ? kpi('Gain vs cost', fmtSignedUsd(tg.gain), tg.gain,
       tg.realized ? `${fmtPct(tg.pct)} · incl. ${fmtSignedUsd(tg.realized)} realized` : fmtPct(tg.pct)) : kpi('Return since Sept 22', fmtPct(since), since),
-    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Return since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []),
+    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Club since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []),
     ...spyKpi,
   );
 }
@@ -322,8 +322,9 @@ function renderTable(s, dollars) {
     ['stockDayPct', 'Stock day %', r => `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`, r => dir(r.stockDayPct), 'hide-ph',
       'The stock\'s own move since the previous close, whatever we paid.'],
     ['avg_cost', 'Avg cost', r => `$${fmtPrice(Number(r.avg_cost))}`, null, 'hide-ph hide-md'],
-    ['stopPrice', 'Stop', r => (r.stopPrice === undefined ? '' : `$${fmtPrice(r.stopPrice)}`),
-      r => (r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : null), 'hide-ph'],
+    // Only adopted stop-losses reach the holdings; the column appears only when one exists.
+    ...(s.rows.some(r => r.stopPrice !== undefined) ? [['stopPrice', 'Stop', r => (r.stopPrice === undefined ? '' : `$${fmtPrice(r.stopPrice)}`),
+      r => (r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : null), 'hide-ph']] : []),
     ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true), null, 'hide-ph hide-md'], ['value', 'Value', r => fmtUsd(r.value, true), null, 'hide-ph'],
       ['gainValue', 'Gain $', r => fmtSignedUsd(r.gainValue, true), r => dir(r.gainValue), 'hide-ph']] : []),
     ['costPct', 'Gain %', r => fmtPct(r.costPct, 1), r => dir(r.costPct), ''],
@@ -341,7 +342,8 @@ function renderTable(s, dollars) {
   $('foot').replaceChildren(el('tr', {}, ...cols.map(([key, , , , vis]) => el('td', { class: [tdir[key] !== undefined ? dir(tdir[key]) : null, vis].filter(Boolean).join(' ') || null },
     totals[key] ?? '', unrealized.has(key) ? el('div', { class: 'sub' }, 'unrealized') : null))));
   $('table-note').textContent = `${s.rows.length} holdings.` + (tg.realized && dollars
-    ? ` The Total row is unrealized gain only; ${fmtSignedUsd(tg.realized, true)} more was realized from sales.` : '');
+    ? ` The Total row is unrealized gain only; ${fmtSignedUsd(tg.realized, true)} more was realized from sales.` : '')
+    + ' "Our day" counts shares bought today from the buy price; "Stock day" is the stock’s own move.';
   $('head').replaceChildren(...cols.map(([key, label, , cls, vis, tip]) => {
     const th = el('th', { class: [typeof cls === 'string' ? cls : null, vis].filter(Boolean).join(' ') || null, scope: 'col', 'aria-sort': sortKey === key ? (sortDir > 0 ? 'ascending' : 'descending') : null },
       el('button', { type: 'button', title: tip || null }, label + (sortKey === key ? (sortDir > 0 ? ' ↑' : ' ↓') : '')));
