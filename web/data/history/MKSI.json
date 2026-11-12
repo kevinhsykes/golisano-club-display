@@ -3,12 +3,12 @@
  "name": "MKS Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-12T19:54:17Z",
- "price": 220.73,
+ "as_of_utc": "2026-11-12T20:16:27Z",
+ "price": 220.285,
  "previous_close": 153.17,
  "day_high": 225.95,
  "day_low": 214.35,
- "volume": 768410,
+ "volume": 789798,
  "week52_high": 447.62,
  "week52_low": 134.74,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-12",
-   "close": 220.73
+   "close": 220.285
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-12T19:54:20Z"
+ "retrieved_at_utc": "2026-11-12T20:17:14Z"
 }
