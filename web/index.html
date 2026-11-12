@@ -105,7 +105,18 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 .d-chart { height: 460px; }
 .d-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
 @media (max-width: 760px) { .d-grid { grid-template-columns: 1fr; } .d-chart { height: 360px; } }
-@media (max-width: 560px) { td.name, th.name, .narrow-hide { display: none; } }
+/* Column visibility. hide-md: lower-value columns below 1400px so Gain % and Weight stay on screen at laptop width.
+   hide-ph: everything but symbol, price, our day % and gain % at phone width, so nothing scrolls sideways. */
+@media (max-width: 1399px) { .hide-md { display: none; } }
+@media (max-width: 1099px) { td.name, th.name { display: none; } }
+@media (max-width: 640px) {
+  .hide-ph { display: none; }
+  th, td { padding: 8px 8px; }
+  table { font-size: 15px; }
+}
+tfoot td .sub { font: 500 11px var(--sans); color: var(--muted); }
+.table-note { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
+.kpi .v2.plain { color: var(--muted); font-weight: 500; font-size: 12px; }
 
 /* New positions and stop-loss rules */
 .newpos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin: 0 0 14px; }
@@ -118,6 +129,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 .np .stop { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 14px; }
 .np .stop .rule { color: var(--muted); font-size: 12px; }
 .badge { font: 700 10px/1 var(--sans); letter-spacing: .08em; padding: 3px 6px; border-radius: 4px; background: var(--gold); color: var(--bg); vertical-align: middle; margin-left: 6px; }
+th button[title] { text-decoration: underline dotted var(--muted); text-underline-offset: 3px; }
 .warn-text { color: var(--warn); font-weight: 700; }
 </style>
 </head>
@@ -144,6 +156,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
       <tbody id="rows"></tbody>
       <tfoot id="foot"></tfoot>
     </table></div>
+    <p class="table-note" id="table-note"></p>
   </section>
   <dialog id="detail" aria-labelledby="d-title">
     <div class="d-head"><h2 id="d-title"></h2><span class="sub" id="d-sub"></span><button type="button" id="d-close" aria-label="Close">×</button></div>
@@ -166,7 +179,7 @@ dialog#detail::backdrop { background: rgba(6, 26, 40, .55); }
 <script type="module">
 import {
   fetchJson, fetchVersion, buildChanged, mergeQuotes, marketStatus, freshness, compute, comparisonSeries, compareChart, el,
-  sinceStatement, isNew, totalGain,
+  sinceStatement, spySinceStatement, isNew, totalGain,
   fmtUsd, fmtSignedUsd, fmtPct, fmtWeight, fmtPrice, arrow, dir, fmtTime, fmtDay, fmtShortDate,
   STATUS_LABEL, newestQuote, oldestQuote, delayNotice,
 } from './core.js';
@@ -199,22 +212,29 @@ async function boot() {
   render();
   poll();
   setInterval(poll, 60000);
+  // Market status, "Today" labels and the stale banner depend on the clock, not only on new quotes.
+  setInterval(refreshStatus, 60000);
 }
 
 async function poll() {
-  if (buildChanged(bootVersion, await fetchVersion())) { location.reload(); return; }
   try {
+    if (buildChanged(bootVersion, await fetchVersion())) { location.reload(); return; }
     if (CONFIG.quotes && mergeQuotes(payload, await fetchJson(CONFIG.quotes))) render();
     else if (!CONFIG.quotes) {
       const fresh = await fetchJson(CONFIG.data);
       if (newestQuote(fresh.quotes.items) > newestQuote(payload.quotes.items)) { payload = fresh; render(); }
     }
   } catch { /* keep last good data */ }
+  finally { refreshStatus(); }   // also after a failed poll: the data aged even if nothing arrived
 }
 
-function render() {
-  const s = compute(payload);
-  const dollars = s.dollars && !CONFIG.hideAmounts;
+// Redraws only what depends on the clock: pill, as-of line, banner and the KPI labels.
+function refreshStatus() {
+  if (!payload) return;
+  try { const s = compute(payload); renderStatus(); renderKpis(s, s.dollars && !CONFIG.hideAmounts); } catch { /* keep what is shown */ }
+}
+
+function renderStatus() {
   const st = marketStatus(now(), payload.calendar);
   const fr = freshness(payload.quotes.items, st, now(), payload.quotes.meta?.delay_minutes || 0);
   const newest = newestQuote(payload.quotes.items);
@@ -225,20 +245,34 @@ function render() {
   if (fr.level === 'stale') { b.className = 'banner stale show'; b.textContent = `${fr.reason}. These numbers are from ${fmtTime(newest)}, ${fmtDay(newest)}.`; }
   else if (fr.level === 'closed') { b.className = 'banner closed show'; b.textContent = 'Market closed. Showing the last saved prices.'; }
   else { b.className = 'banner'; b.textContent = ''; }
+  return { fr, newest };
+}
 
+function renderKpis(s, dollars) {
+  const { fr, newest } = renderStatus();
   const when = fr.level === 'live' ? 'Today' : `Day change, ${fmtShortDate(newest)}`;
   const since = sinceStatement(payload, s);
+  const spySince = spySinceStatement(payload);
   const tg = totalGain(payload, s);
-  const kpi = (label, v, d, v2) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
-    el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: `v2 ${dir(d)}` }, v2) : null);
+  const kpi = (label, v, d, v2, plain) => el('div', { class: 'kpi' }, el('div', { class: 's' }, label),
+    el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v), v2 ? el('div', { class: plain ? 'v2 plain' : `v2 ${dir(d)}` }, v2) : null);
+  const spyKpi = spySince === null ? [] : [kpi('S&P 500 (SPY) since Sept 22', fmtPct(spySince), spySince, 'price return, no dividends', true)];
   $('kpis').replaceChildren(
     dollars ? kpi('Value (listed holdings)', fmtUsd(s.total)) : kpi('Gain vs cost', fmtPct(tg.pct), tg.pct),
     dollars ? kpi(when, `${arrow(s.dayChange)} ${fmtSignedUsd(s.dayChange)}`, s.dayChange, fmtPct(s.dayPct)) : kpi(when, `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, s.dayPct),
     kpi(fr.level === 'live' ? 'S&P 500 (SPY) today' : `SPY, ${fmtShortDate(newest)}`, `${arrow(s.spyDayPct)} ${fmtPct(s.spyDayPct)}`, s.spyDayPct),
     dollars ? kpi('Gain vs cost', fmtSignedUsd(tg.gain), tg.gain,
       tg.realized ? `${fmtPct(tg.pct)} · incl. ${fmtSignedUsd(tg.realized)} realized` : fmtPct(tg.pct)) : kpi('Return since Sept 22', fmtPct(since), since),
-    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Return since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain')] : []),
+    ...(dollars ? [kpi('Cost basis', fmtUsd(s.cost)), kpi('Return since Sept 22', fmtPct(since), since, 'time-weighted; purchases are not gain', true)] : []),
+    ...spyKpi,
   );
+}
+
+function render() {
+  const s = compute(payload);
+  const dollars = s.dollars && !CONFIG.hideAmounts;
+  renderKpis(s, dollars);
+  const newest = newestQuote(payload.quotes.items);
   renderNew(s, dollars);
 
   $('chart-title').textContent = 'Gain over cost basis: portfolio vs our SPY position (the IPS benchmark)';
@@ -273,34 +307,44 @@ function renderNew(s, dollars) {
 function renderTable(s, dollars) {
   const t = now().getTime();
   const tg = totalGain(payload, s);
+  // [key, label, cell text, class (string or function of the row), visibility class, header tooltip]
+  // Body, header and footer all read this one list, so their cells always line up.
   const cols = [
-    ['symbol', 'Symbol', r => r.symbol.replace('/', '.'), 'sym'],
-    ['name', 'Name', r => r.name, 'name'],
-    ...(dollars ? [['shares', 'Shares', r => String(r.shares), 'narrow-hide']] : []),
-    ['price', 'Price', r => `$${fmtPrice(r.price)}`],
-    ['prev', 'Prev close', r => `$${fmtPrice(r.prev)}`, 'narrow-hide'],
-    ...(dollars ? [['dayValue', 'Day $', r => fmtSignedUsd(r.dayValue, true), r => dir(r.dayValue)]] : []),
-    ['dayPct', 'Day %', r => `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r => dir(r.dayPct)],
-    ['avg_cost', 'Avg cost', r => `$${fmtPrice(Number(r.avg_cost))}`, 'narrow-hide'],
+    ['symbol', 'Symbol', r => r.symbol.replace('/', '.'), 'sym', ''],
+    ['name', 'Name', r => r.name, 'name', 'hide-ph'],
+    ...(dollars ? [['shares', 'Shares', r => String(r.shares), null, 'hide-ph']] : []),
+    ['price', 'Price', r => `$${fmtPrice(r.price)}`, null, ''],
+    ['prev', 'Prev close', r => `$${fmtPrice(r.prev)}`, null, 'hide-ph hide-md'],
+    ...(dollars ? [['dayValue', 'Our day $', r => fmtSignedUsd(r.dayValue, true), r => dir(r.dayValue), 'hide-ph',
+      'The club\'s own day on this holding. A position bought today counts from the buy price.']] : []),
+    ['dayPct', 'Our day %', r => `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r => dir(r.dayPct), '',
+      'The club\'s own day on this holding. A position bought today counts from the buy price, so it can differ from the stock\'s move.'],
+    ['stockDayPct', 'Stock day %', r => `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`, r => dir(r.stockDayPct), 'hide-ph',
+      'The stock\'s own move since the previous close, whatever we paid.'],
+    ['avg_cost', 'Avg cost', r => `$${fmtPrice(Number(r.avg_cost))}`, null, 'hide-ph hide-md'],
     ['stopPrice', 'Stop', r => (r.stopPrice === undefined ? '' : `$${fmtPrice(r.stopPrice)}`),
-      r => (r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : null)],
-    ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true), 'narrow-hide'], ['value', 'Value', r => fmtUsd(r.value, true)],
-      ['gainValue', 'Gain $', r => fmtSignedUsd(r.gainValue, true), r => dir(r.gainValue)]] : []),
-    ['costPct', 'Gain %', r => fmtPct(r.costPct, 1), r => dir(r.costPct)],
-    ['weight', 'Weight', r => fmtWeight(r.weight)],
+      r => (r.stopLevel === 'hit' ? 'down' : r.stopLevel === 'near' ? 'warn-text' : null), 'hide-ph'],
+    ...(dollars ? [['cost', 'Cost basis', r => fmtUsd(r.cost, true), null, 'hide-ph hide-md'], ['value', 'Value', r => fmtUsd(r.value, true), null, 'hide-ph'],
+      ['gainValue', 'Gain $', r => fmtSignedUsd(r.gainValue, true), r => dir(r.gainValue), 'hide-ph']] : []),
+    ['costPct', 'Gain %', r => fmtPct(r.costPct, 1), r => dir(r.costPct), ''],
+    ['weight', 'Weight', r => fmtWeight(r.weight), null, 'hide-ph'],
   ];
-  // Totals row: sums for dollar columns, portfolio-level percents.
+  const cellClass = (cls, vis, r) => [typeof cls === 'function' ? cls(r) : cls, vis].filter(Boolean).join(' ') || null;
+  // Totals row: sums for dollar columns, portfolio-level percents. Gain cells are unrealized only.
   const totals = {
     symbol: 'Total', dayValue: fmtSignedUsd(s.dayChange, true),
     dayPct: `${arrow(s.dayPct)} ${fmtPct(s.dayPct)}`, cost: fmtUsd(s.cost, true), value: fmtUsd(s.total, true),
     gainValue: fmtSignedUsd(s.gain, true), costPct: fmtPct(s.gainPct, 1), weight: '100.0%',
-    name: `${s.rows.length} holdings${tg.realized && dollars ? ` · unrealized; ${fmtSignedUsd(tg.realized, true)} realized from sales` : ''}`,
   };
   const tdir = { dayValue: s.dayChange, dayPct: s.dayPct, gainValue: s.gain, costPct: s.gainPct };
-  $('foot').replaceChildren(el('tr', {}, ...cols.map(([key]) => el('td', { class: tdir[key] !== undefined ? dir(tdir[key]) : null }, totals[key] ?? ''))));
-  $('head').replaceChildren(...cols.map(([key, label, , cls]) => {
-    const th = el('th', { class: typeof cls === 'string' ? cls : null, scope: 'col', 'aria-sort': sortKey === key ? (sortDir > 0 ? 'ascending' : 'descending') : null },
-      el('button', { type: 'button' }, label + (sortKey === key ? (sortDir > 0 ? ' ↑' : ' ↓') : '')));
+  const unrealized = new Set(['gainValue', 'costPct']);
+  $('foot').replaceChildren(el('tr', {}, ...cols.map(([key, , , , vis]) => el('td', { class: [tdir[key] !== undefined ? dir(tdir[key]) : null, vis].filter(Boolean).join(' ') || null },
+    totals[key] ?? '', unrealized.has(key) ? el('div', { class: 'sub' }, 'unrealized') : null))));
+  $('table-note').textContent = `${s.rows.length} holdings.` + (tg.realized && dollars
+    ? ` The Total row is unrealized gain only; ${fmtSignedUsd(tg.realized, true)} more was realized from sales.` : '');
+  $('head').replaceChildren(...cols.map(([key, label, , cls, vis, tip]) => {
+    const th = el('th', { class: [typeof cls === 'string' ? cls : null, vis].filter(Boolean).join(' ') || null, scope: 'col', 'aria-sort': sortKey === key ? (sortDir > 0 ? 'ascending' : 'descending') : null },
+      el('button', { type: 'button', title: tip || null }, label + (sortKey === key ? (sortDir > 0 ? ' ↑' : ' ↓') : '')));
     th.querySelector('button').addEventListener('click', () => {
       sortDir = sortKey === key ? -sortDir : (key === 'symbol' || key === 'name' ? 1 : -1);
       sortKey = key;
@@ -315,8 +359,8 @@ function renderTable(s, dollars) {
     return (typeof x === 'string' ? x.localeCompare(y) : x - y) * sortDir;
   });
   lastSummary = s; lastDollars = dollars;
-  $('rows').replaceChildren(...rows.map(r => el('tr', { 'data-symbol': r.symbol, title: `Details for ${r.symbol.replace('/', '.')}` }, ...cols.map(([key, , f, cls]) =>
-    el('td', { class: typeof cls === 'function' ? cls(r) : cls || null },
+  $('rows').replaceChildren(...rows.map(r => el('tr', { 'data-symbol': r.symbol, title: `Details for ${r.symbol.replace('/', '.')}` }, ...cols.map(([key, , f, cls, vis]) =>
+    el('td', { class: cellClass(cls, vis, r) },
       key === 'symbol' ? [el('button', { type: 'button', 'aria-haspopup': 'dialog' }, f(r)), isNew(r, t) ? el('span', { class: 'badge' }, 'NEW') : null] : f(r))))));
 }
 
@@ -349,8 +393,9 @@ function openDetail(symbol) {
   const stat = (label, v, d) => el('div', {}, el('div', { class: 's' }, label), el('div', { class: `v ${d === undefined ? '' : dir(d)}` }, v));
   $('d-stats').replaceChildren(
     stat('Price', `$${fmtPrice(r.price)}`),
-    stat('Day', `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r.dayPct),
-    ...(lastDollars ? [stat('Day $', fmtSignedUsd(r.dayValue, true), r.dayValue), stat('Shares', String(r.shares)),
+    stat('Our day', `${arrow(r.dayPct)} ${fmtPct(r.dayPct)}`, r.dayPct),
+    stat('Stock day', `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`, r.stockDayPct),
+    ...(lastDollars ? [stat('Our day $', fmtSignedUsd(r.dayValue, true), r.dayValue), stat('Shares', String(r.shares)),
       stat('Cost basis', fmtUsd(r.cost, true)), stat('Value', fmtUsd(r.value, true)), stat('Gain $', fmtSignedUsd(r.gainValue, true), r.gainValue)] : []),
     stat('Avg cost', `$${fmtPrice(Number(r.avg_cost))}`),
     stat('Gain %', fmtPct(r.costPct, 1), r.costPct),
