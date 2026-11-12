@@ -145,7 +145,7 @@ main { display: grid; grid-template-columns: 31fr 69fr; gap: 1.4vw; min-height: 
 .trow .d { font: 600 2.8vh var(--sans); color: var(--muted); }
 .trow .side { font: 700 2.2vh/1 var(--sans); letter-spacing: .1em; padding: .8vh 0; border-radius: .6vh; text-align: center; color: var(--bg); }
 .trow .side.buy { background: var(--up); } .trow .side.sell { background: var(--down); }
-.trow .who { min-width: 0; display: flex; flex-direction: column; overflow: hidden; } .trow .who b { font: 700 4.2vh/1.05 var(--sans); margin-right: .8vw; }
+.trow .who { min-width: 0; display: flex; flex-direction: column; overflow: hidden; } .trow .who b { font: 700 4.2vh/1.05 var(--sans); }
 .trow .who span { font: 500 2.6vh var(--serif); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .trow .fill { font: 600 3.2vh var(--sans); white-space: nowrap; min-width: 0; } .trow .fill small { display: block; font: 500 2.4vh var(--sans); color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
 .trow .since { text-align: right; font: 700 3.6vh var(--sans); white-space: nowrap; } .trow .since small { display: block; font: 500 2.4vh var(--sans); color: var(--muted); }
@@ -359,7 +359,7 @@ function renderHero(s, showDollars) {
     el('div', { class: 'track' }, el('i', { style: `width:${spyW * 100}%` })),
     el('div', { class: 'legend' },
       el('span', {}, el('i', { style: 'background:#7fb0ec' }), el('b', {}, fmtWeight(spyW)), ' S&P 500 fund (SPY)'),
-      el('span', {}, el('i', { style: 'background:#b9a0f0' }), el('b', {}, fmtWeight(1 - spyW)), ` ${picks} stock picks`)),
+      el('span', {}, el('i', { style: 'background:#b9a0f0' }), el('b', {}, fmtWeight(1 - spyW)), ` ${picks} stock pick${picks === 1 ? '' : 's'}`)),
   ] : []));
 }
 
@@ -509,7 +509,8 @@ function renderTrades(s, showDollars) {
 
 function renderTape(s) {
   const t = now();
-  const order = [...s.rows].sort((a, b) => isNew(b, t) - isNew(a, t));   // stable: new positions lead, the rest keep their order
+  // New positions lead, in the same order as the New positions panel; the rest keep their order (the sort is stable).
+  const order = [...s.rows].sort((a, b) => isNew(b, t) - isNew(a, t) || (isNew(a, t) ? b.openedAt - a.openedAt || a.symbol.localeCompare(b.symbol) : 0));
   const items = order.map(r => el('span', {}, el('b', {}, r.symbol.replace('/', '.')), isNew(r, t) ? el('span', { class: 'badge' }, 'NEW') : null, `$${fmtPrice(r.price)} `,
     el('span', { class: dir(r.stockDayPct), style: 'margin:0' }, `${arrow(r.stockDayPct)} ${fmtPct(r.stockDayPct)}`)));
   // The delay notice must recur at least every 90 seconds on a ticker; the track holds
