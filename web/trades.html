@@ -9,19 +9,19 @@
 :root {
   --bg: #ffffff; --panel: #f6f4ef; --line: #e2ddd2; --text: #0b1f2e; --muted: #5b6874;
   --gold: #9a7a35; --up: #11804a; --down: #c0392b; --warn-bg: #fff4d6; --warn: #7a5200;
-  --buy: #11804a; --sell: #b5532a;
+  --buy: #11804a; --sell: #b5532a; --badge-text: #fff;
   --serif: Georgia, "DejaVu Serif", serif;
   --sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0b1620; --panel: #12212e; --line: #22384a; --text: #eef2f5; --muted: #9fb0bd;
-    --gold: #d5ba7e; --up: #3ccf86; --down: #ff7a6e; --warn-bg: #3d2d00; --warn: #ffd27a; --buy: #3ccf86; --sell: #ff9f6e;
+    --gold: #d5ba7e; --up: #3ccf86; --down: #ff7a6e; --warn-bg: #3d2d00; --warn: #ffd27a; --buy: #3ccf86; --sell: #ff9f6e; --badge-text: #0b1f2e;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0b1620; --panel: #12212e; --line: #22384a; --text: #eef2f5; --muted: #9fb0bd;
-  --gold: #d5ba7e; --up: #3ccf86; --down: #ff7a6e; --warn-bg: #3d2d00; --warn: #ffd27a; --buy: #3ccf86; --sell: #ff9f6e;
+  --gold: #d5ba7e; --up: #3ccf86; --down: #ff7a6e; --warn-bg: #3d2d00; --warn: #ffd27a; --buy: #3ccf86; --sell: #ff9f6e; --badge-text: #0b1f2e;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 var(--sans); font-variant-numeric: tabular-nums; }
@@ -51,7 +51,7 @@ th.l, td.l { text-align: left; }
 tr:last-child td { border-bottom: 0; }
 td.sym { font-weight: 700; }
 td.name { color: var(--muted); max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
-.act { display: inline-block; min-width: 42px; text-align: center; font: 700 11px/1 var(--sans); letter-spacing: .08em; padding: 4px 6px; border-radius: 4px; color: #fff; }
+.act { display: inline-block; min-width: 42px; text-align: center; font: 700 11px/1 var(--sans); letter-spacing: .08em; padding: 4px 6px; border-radius: 4px; color: var(--badge-text); }
 .act.buy { background: var(--buy); } .act.sell { background: var(--sell); }
 .est { display: inline-block; font: 700 10px/1 var(--sans); letter-spacing: .06em; padding: 3px 5px; border-radius: 4px; background: var(--warn-bg); color: var(--warn); border: 1px solid currentColor; margin-left: 6px; }
 .notes { padding: 8px 12px 12px; font-size: 13px; color: var(--muted); }
@@ -61,7 +61,26 @@ td.name { color: var(--muted); max-width: 240px; overflow: hidden; text-overflow
 .empty { color: var(--muted); }
 footer { margin-top: 14px; font-size: 12px; color: var(--muted); }
 footer a { color: var(--gold); }
-@media (max-width: 560px) { .narrow-hide { display: none; } }
+
+.banner { margin-top: 12px; padding: 8px 12px; border-radius: 8px; }
+.banner:empty { display: none; }
+.banner.closed { background: var(--panel); color: var(--muted); }
+.banner.stale { background: var(--warn-bg); color: var(--warn); }
+@media (max-width: 560px) {
+  .table-wrap { overflow: visible; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { display: none; }
+  tbody tr { padding: 12px; border-bottom: 1px solid var(--line); }
+  td, td.l { text-align: left; padding: 3px 0; border: 0; white-space: normal; overflow-wrap: anywhere; }
+  td.name { max-width: none; overflow: visible; }
+  td::before { content: attr(data-label); color: var(--muted); margin-right: 8px; font: 400 15px var(--sans); }
+  td.blank { display: none; }
+  /* Card heading: the BUY/SELL badge and the symbol on one line, without labels. */
+  td.side, td.sym { display: inline-block; width: auto; margin-right: 10px; vertical-align: middle; }
+  td.side::before, td.sym::before { content: none; }
+  td.sym { font-size: 20px; font-weight: 700; }
+}
+
 </style>
 </head>
 <body>
@@ -71,6 +90,7 @@ footer a { color: var(--gold); }
     <span class="asof" id="asof"></span>
     <nav class="links"><a href="index.html">Portfolio</a> · <b>Trades</b> · <a href="screens.html">TV screens</a> · <a href="board.html">Live board</a></nav>
   </header>
+  <div class="banner" id="banner" role="status"></div>
   <section class="kpis" id="kpis"></section>
   <h2>Trade history, newest first</h2>
   <div id="days"></div>
@@ -82,7 +102,7 @@ footer a { color: var(--gold); }
   </footer>
 </div>
 <script type="module">
-import { fetchJson, mergeQuotes, compute, totalGain, el, fmtUsd, fmtSignedUsd, fmtPct, fmtPrice, arrow, dir, fmtTime, fmtDay, newestQuote } from './core.js';
+import { fetchJson, mergeQuotes, compute, totalGain, el, fmtUsd, fmtSignedUsd, fmtPct, fmtPrice, arrow, dir, fmtTime, fmtDay, newestQuote, marketStatus, freshness } from './core.js';
 
 const params = new URLSearchParams(location.search);
 const samePath = v => (v && !/^[a-z]+:|^\/\//i.test(v) ? v : null);
@@ -98,8 +118,18 @@ async function boot() {
     $('days').replaceChildren(el('p', { class: 'empty' }, 'Trade data is unavailable right now. Try reloading the page.'));
     return;
   }
-  try { if (payload.live_quotes_url) mergeQuotes(payload, await fetchJson(payload.live_quotes_url)); } catch { /* saved prices */ }
   render();
+  void refreshQuotes();
+  setInterval(refreshQuotes, 60000);
+}
+let refreshing = false;
+async function refreshQuotes() {
+  if (refreshing) return;
+  refreshing = true;
+  try {
+    if (payload.live_quotes_url) mergeQuotes(payload, await fetchJson(payload.live_quotes_url));
+  } catch { /* Keep saved prices and update their age status. */ }
+  finally { refreshing = false; render(); }
 }
 
 function render() {
@@ -108,6 +138,14 @@ function render() {
   const prices = new Map(payload.quotes.items.map(q => [q.symbol, Number(q.price)]));
   const newest = newestQuote(payload.quotes.items);
   $('asof').textContent = `Prices as of ${fmtTime(newest)}, ${fmtDay(newest)}`;
+
+  const now = Date.now();
+  const st = marketStatus(now, payload.calendar);
+  const fr = freshness(payload.quotes.items, st, now, payload.quotes.meta?.delay_minutes || 0);
+  $('banner').className = 'banner ' + fr.level;
+  $('banner').textContent = fr.level === 'stale'
+    ? `${fr.reason}. These numbers are from ${fmtTime(newest)}, ${fmtDay(newest)}.`
+    : fr.level === 'closed' ? 'Market closed. Showing the last saved prices.' : '';
 
   const s = compute(payload);
   const tg = totalGain(payload, s);
@@ -134,7 +172,7 @@ function render() {
       const sold = list.filter(t => t.type === 'sell').reduce((a, t) => a + Number(t.amount || 0), 0);
       const cols = [
         ['Time', t => t.time_note || fmtTime(Date.parse(t.executed_at_utc)), 'l narrow-hide'],
-        ['', t => el('span', { class: `act ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'), 'l'],
+        ['', t => el('span', { class: `act ${t.type}` }, t.type === 'buy' ? 'BUY' : 'SELL'), 'l side'],
         ['Symbol', t => t.symbol.replace('/', '.'), 'l sym'],
         ['Name', t => t.name, 'l name narrow-hide'],
         ...(dollars ? [['Shares', t => t.shares]] : []),
@@ -160,7 +198,7 @@ function render() {
           dollars ? el('span', {}, `Bought ${fmtUsd(bought, true)} · Sold ${fmtUsd(sold, true)} · Net ${fmtSignedUsd(sold - bought, true)} cash`) : null),
         el('div', { class: 'table-wrap' }, el('table', {},
           el('thead', {}, el('tr', {}, ...cols.map(([h, , c]) => el('th', { class: c || null, scope: 'col' }, h)))),
-          el('tbody', {}, ...list.map(t => el('tr', {}, ...cols.map(([, f, c]) => el('td', { class: c || null }, f(t)))))))),
+          el('tbody', {}, ...list.map(t => el('tr', {}, ...cols.map(([h, f, c]) => { const v = f(t); return el('td', { class: [c, v === '' || v === null ? 'blank' : null].filter(Boolean).join(' ') || null, 'data-label': h }, v); })))))),
         notes.length ? el('div', { class: 'notes' }, notes) : null);
     }));
   }

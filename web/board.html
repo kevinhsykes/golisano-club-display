@@ -29,6 +29,19 @@ header { display: flex; align-items: baseline; gap: 2vw; padding-bottom: 1.2vh; 
 .stage { position: relative; min-height: 0; overflow: hidden; }
 .scaled { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
 footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1vh; color: var(--muted); }
+.phone-link { display: none; }
+@media (max-width: 600px) {
+  html, body { overflow: auto; cursor: auto; height: auto; }
+  body { font-size: 16px; }
+  .wrap { height: auto; min-height: 100vh; display: flex; flex-direction: column; padding: 20px 16px; gap: 16px; }
+  header { flex-wrap: wrap; white-space: normal; gap: 12px; }
+  .org { width: 100%; font-size: 12px; }
+  .club { width: 100%; font-size: 26px; }
+  .pill, .clock, .delay { font-size: 16px; }
+  .phone-link { display: block; color: var(--gold-soft); font-size: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+  .stage { display: none; }
+  footer { flex-direction: column; font-size: 14px; gap: 12px; }
+}
 </style>
 </head>
 <body>
@@ -38,6 +51,7 @@ footer { display: flex; justify-content: space-between; gap: 2vw; font-size: 2.1
     <span class="pill" id="pill">…</span><span class="clock" id="clock"></span>
   </header>
   <div class="delay">Prices delayed 15 minutes · Market data by TradingView (Cboe One delayed) · our 20 holdings</div>
+  <a class="phone-link" href="index.html">Open the portfolio for readable prices and market status on your phone →</a>
   <div class="stage" id="stage"></div>
   <footer>
     <span>Student-managed portfolio. Educational display, not investment advice.</span>
