@@ -94,10 +94,10 @@ except Exception:
 # pages workflow (one API call); if that fails, push an empty commit, which also deploys.
 # Waits until the newest commit on main is 15 minutes old (deploy time plus the Pages cache), and
 # allows one redeploy per REDEPLOY_COOLDOWN_MIN by either path (state file on this computer).
-# Known gap: the timer's last run is 4:24 PM ET, so a deploy that fails after that is not
+# Known gap: the last check on KPC (offset 0) is 4:17 PM ET, so a deploy that fails after that is not
 # retried until the next market day.
 redeploy_if_served_stale() {
-  [ -n "$SERVED_CHECK" ] || return 0
+  [ "$SERVED_CHECK" = 1 ] || return 0
   local head_age age last
   head_age=$(( $(date +%s) - $(git log -1 --format=%ct origin/main) ))
   [ "$head_age" -ge $(( MIN_HEAD_AGE_MIN * 60 )) ] || return 0
@@ -110,7 +110,8 @@ redeploy_if_served_stale() {
   fi
   log "live site serves ${age}-min-old prices while main is fresh; redeploying"
   if [ -n "$DRY_RUN" ]; then log "dry run: no redeploy"; return 0; fi
-  date +%s > "$STATE_DIR/last-redeploy"
+  # Fail closed: without a recorded cooldown, do not redeploy.
+  date +%s > "$STATE_DIR/last-redeploy" || { log "cannot record the redeploy cooldown; not redeploying"; return 0; }
   if timeout 60 gh workflow run pages -R "$REPO_SLUG" --ref main 2>/dev/null; then log "asked GitHub to run pages"; return 0; fi
   git reset -q --hard origin/main && \
     git -c user.name="price-refresh[$HOST]" -c user.email="price-refresh@users.noreply.github.com" \

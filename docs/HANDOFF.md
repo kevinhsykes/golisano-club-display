@@ -77,7 +77,7 @@ the prices as a backup. This backup is not part of what the club owns.
   serves (`api/quotes`). If those are over 45 minutes old (GitHub caches them for up to 10), the
   deploy failed, so it asks GitHub to run the `pages` workflow again, or pushes an empty
   "Redeploy" commit if that request fails. At most one redeploy per 45 minutes. A deploy that
-  fails after the last check (4:24 PM ET) waits for the next market day. After the repository
+  fails after the last check on KPC (4:17 PM ET) waits for the next market day. After the repository
   moves, set `GOLISANO_SITE_URL` to the new site address.
 - **Why it uses no GitHub API:** it uses only git, so the API rate limit of Kevin's shared
   token cannot stop it.
