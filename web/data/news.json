@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-13T20:38:11Z",
+ "checked_at_utc": "2026-11-13T20:48:39Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -26,6 +26,62 @@
  "symbols_failed": [],
  "symbols_empty": [],
  "items": [
+  {
+   "symbol": "NVDA",
+   "title": "'Nothing has changed': Why some Nvidia stock bulls aren't wavering after Jensen Huang ouster",
+   "link": "https://finance.yahoo.com/technology/article/nothing-has-changed-why-some-nvidia-stock-bulls-arent-wavering-after-jensen-huang-ouster-204522204.html?.tsrc=rss",
+   "published_utc": "2026-11-13T20:45:22Z",
+   "teaser": "The bulls refuse to completely throw in the towel on Nvidia."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Rene Haas, Ian Buck, Chris Malachowsky: Wall Street zeroes in on potential Nvidia CEO successors",
+   "link": "https://finance.yahoo.com/markets/article/rene-haas-ian-buck-chris-malachowsky-wall-street-zeroes-in-on-potential-nvidia-ceo-successors-204105759.html?.tsrc=rss",
+   "published_utc": "2026-11-13T20:41:05Z",
+   "teaser": "Wall Street has a list of names that could replace Jensen Haung, including Rene Haas, Ian Buck and others."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "America's Greatest Opportunities: The Earnings Gap That Put Tesla Stock At Ludicrous Speed",
+   "link": "https://finance.yahoo.com/m/969ba2c7-b205-3700-9f94-d81105d70786/america%27s-greatest.html?.tsrc=rss",
+   "published_utc": "2026-11-13T20:36:16Z",
+   "teaser": "An earnings gap changed the fundamental story of Tesla. The chart allowed investors to capitalize on the historic move."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "1 Wall Street Analyst Says Nvidia Will Double From Here. Are They Right?",
+   "link": "https://www.fool.com/investing/2026/11/13/1-wall-street-analyst-says-nvidia-will-double-from-here-could-they-be-right/?.tsrc=rss",
+   "published_utc": "2026-11-13T20:35:02Z",
+   "teaser": "Nvidia stock was shaken by Jensen Huang's departure. Could it be a buying opportunity?"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Board Reportedly Approached Arm CEO Rene Haas To Succeed Jensen Huang As Top Execs Threaten To Quit, Join SpaceX Terafab",
+   "link": "https://stocktwits.com/news-articles/markets/equity/nvidia-board-reportedly-approached-arm-ceo-rene-haas-to-succeed-jensen-huang-as-top-execs-threaten-to-quit-join-space-x-terafab/cNbRWJ2R9Qb?.tsrc=rss",
+   "published_utc": "2026-11-13T20:33:03Z",
+   "teaser": "Haas is among multiple candidates being evaluated for Huang’s position, FT reported."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia approaches boss of Britain’s biggest tech firm to replace Huang",
+   "link": "https://uk.finance.yahoo.com/news/nvidia-approaches-boss-britain-biggest-203243161.html?.tsrc=rss",
+   "published_utc": "2026-11-13T20:32:43Z",
+   "teaser": "The boss of British technology giant Arm has been approached about the possibility of leading Nvidia after Jensen Huang was ousted following a string of extramarital affairs."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Arm Stock Took a Hit Because Investors Fear Nvidia Might Poach Its CEO. Is It Time to Sell?",
+   "link": "https://www.fool.com/investing/2026/11/13/arm-stock-took-a-hit-because-investors-fear-nvidia-might-poach-its-ceo-is-it-time-to-sell/?.tsrc=rss",
+   "published_utc": "2026-11-13T20:31:34Z",
+   "teaser": "Nvidia's board has reportedly approached Rene Haas about replacing Jensen Huang. So investors suddenly have to price in the risk of losing the leader behind its data center push."
+  },
+  {
+   "symbol": "META",
+   "title": "Meta tests prediction-market app for employees, WSJ reports",
+   "link": "https://finance.yahoo.com/technology/articles/meta-tests-prediction-market-app-203017664.html?.tsrc=rss",
+   "published_utc": "2026-11-13T20:30:17Z",
+   "teaser": "Investing.com -- Meta Platforms is testing an internal prediction-market app called Takes, allowing employees to predict the outcomes of events using virtual points rather than real money, The Wall Street Journal reported Friday."
+  },
   {
    "symbol": "NVDA",
    "title": "3 Favorite Warren Buffett Stocks Hit Record Highs As Nvidia Sinks",
@@ -67,27 +123,6 @@
    "link": "https://247wallst.com/investing/2026/11/13/amdl-2x-amd-etf-tumbles-18-as-amd-sinks-amid-michael-burrys-bearish-chip-bets/?.tsrc=rss",
    "published_utc": "2026-11-13T20:02:20Z",
    "teaser": "A leveraged AMD fund is getting crushed just as a famous short seller doubles down on chips and NVIDIA's turmoil shakes the sector. Why is AMD falling harder than the stock at the center of the storm?"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "U.S. Stocks Decline as Nvidia Shares Slide Again",
-   "link": "https://www.wsj.com/finance/stocks/stock-futures-lower-as-investors-look-to-u-s-inflation-data-5b1b5988?.tsrc=rss",
-   "published_utc": "2026-11-13T20:02:00Z",
-   "teaser": "U.S. stocks declined as the tumult surrounding Jensen Huang’s ouster from Nvidia continues to cloud the outlook for the AI trade."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Lutnick Under Fire as Bessent Blames Commerce for Nvidia Crisis",
-   "link": "https://finance.yahoo.com/video/lutnick-under-fire-bessent-blames-195618046.html?.tsrc=rss",
-   "published_utc": "2026-11-13T19:56:18Z",
-   "teaser": "Denver Riggleman, CEO of RIIG Technology, said that it is 'mind boggling' that anyone would defend Jensen Huang's actions as he faces the personal, political and legal fallout from his affair with an alleged Chinese spy. Riggleman, who served in Congress as a representative from Virginia, said that lawmakers who want to get real answers from both Jensen Huang and Commerce Secretary Howard Lutnick should call on intelligence experts to advise them on their line of questioning."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Stock Market Today: Indexes Pare Losses; S&P's Worst Performer Sells Chips, And It's Not Nvidia (Live Coverage)",
-   "link": "https://finance.yahoo.com/m/59c1380c-6194-35f8-be3b-4a6a3148bfa4/stock-market-today%3A-indexes.html?.tsrc=rss",
-   "published_utc": "2026-11-13T19:55:51Z",
-   "teaser": "The Dow Jones index fell Friday despite cooler-than-expected inflation data. AI giant Nvidia continued to fall."
   },
   {
    "symbol": "NFLX",
@@ -503,13 +538,6 @@
    "teaser": "The 8:30 hosts, Julie Hyman, Pras Subramanian, and Jake Conley, discuss Bloomberg reporting that a Tesla (TSLA)-SpaceX (SPCX) merger could be announced as early as December but may slip into early 2027."
   },
   {
-   "symbol": "TSLA",
-   "title": "SpaceX and Tesla merger talks advance as December announcement considered",
-   "link": "https://www.proactiveinvestors.com/companies/news/1101770/spacex-and-tesla-merger-talks-advance-as-december-announcement-considered-1101770.html?.tsrc=rss",
-   "published_utc": "2026-11-13T15:21:00Z",
-   "teaser": "SpaceX Corp (NASDAQ:SPCX) and Tesla Inc (NASDAQ:TSLA) are progressing with merger negotiations, with an announcement possible as early as December, although discussions could extend into 2027. Bloomberg News reported on Thursday, citing people familiar with the talks, that the companies'..."
-  },
-  {
    "symbol": "META",
    "title": "Form Energy Adds Meta and Tesla Veterans Lori Goler and Jon McNeill to Board as It Ramps Production for Commercial Growth",
    "link": "https://finance.yahoo.com/energy/articles/form-energy-adds-meta-tesla-150000589.html?.tsrc=rss",
@@ -536,13 +564,6 @@
    "link": "https://www.tikr.com/blog/ups-or-comcast-i-can-only-pick-one-dividend-stock-for-the-next-10-years-heres-mine?ref=yahoofinancedividend&tlnk=yf-261113-p8h7vh7v&.tsrc=rss",
    "published_utc": "2026-11-13T14:48:09Z",
    "teaser": "Key TakeawaysUPS yields 6% and Comcast 5%, and each held its quarterly dividend flat in its latest declaration. UPS’s dividend took 85% of its free cash flow over the twelve months to Sept."
-  },
-  {
-   "symbol": "META",
-   "title": "As Meta Platforms Continues To Weaken, A Bearish Trade May Be In Order",
-   "link": "https://finance.yahoo.com/m/e0b63d96-9f56-392f-a130-3037c876b724/as-meta-platforms-continues.html?.tsrc=rss",
-   "published_utc": "2026-11-13T14:34:26Z",
-   "teaser": "Meta Platforms stock crossed below the 200-day moving average this week and has been showing other signs of weakness lately."
   },
   {
    "symbol": "NFLX",
