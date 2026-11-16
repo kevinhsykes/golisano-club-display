@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-16T22:59:46Z",
+ "checked_at_utc": "2026-11-16T23:15:56Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,6 +27,27 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "BRK/B",
+   "title": "Berkshire Boosts Lennar, Starts Bending Spoons, Trims Bank Of America In Q3",
+   "link": "https://stocktwits.com/news-articles/markets/equity/berkshire-boosts-lennar-starts-bending-spoons-trims-bank-of-america-in-q3/cNbJ2orR9g1?.tsrc=rss",
+   "published_utc": "2026-11-16T23:02:47Z",
+   "teaser": "According to the company’s filing with the Securities and Exchange Commission on Monday, the firm’s overall equity portfolio stood at roughly $304 billion across about 30 positions as of the end of the quarter."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Huang’s ‘trillion-dollar dinners’ with Taiwan chip bosses were Nvidia’s secret weapon. Now he’s out. Can he be replaced?",
+   "link": "https://finance.yahoo.com/technology/articles/huang-trillion-dollar-dinners-taiwan-230000506.html?.tsrc=rss",
+   "published_utc": "2026-11-16T23:00:00Z",
+   "teaser": "“With a new CEO, those relationships won’t be as close as they were with Jensen Huang.\""
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Hathaway's Only New Q3 Position Is a Company Few Investors Recognize",
+   "link": "https://beincrypto.com/berkshire-bending-spoons-q3-new-position/?.tsrc=rss",
+   "published_utc": "2026-11-16T22:45:33Z",
+   "teaser": "Berkshire Hathaway's only new Q3 position is a $689 million Bending Spoons stake in the Italian owner of AOL and Evernote."
+  },
+  {
    "symbol": "CAT",
    "title": "Michael Burry Buys More Of Adobe And MercadoLibre, Exits ORCL, CAT Puts",
    "link": "https://stocktwits.com/news-articles/markets/equity/michael-burry-buys-more-of-adobe-and-mercado-libre-exits-orcl-cat-puts/cNbJcE0R9gK?.tsrc=rss",
@@ -39,6 +60,13 @@
    "link": "https://finance.yahoo.com/m/481d5163-b671-396e-a2dc-5c0e57fb9c0b/berkshire-hathaway-slashes.html?.tsrc=rss",
    "published_utc": "2026-11-16T22:39:00Z",
    "teaser": "Details of Berkshire Hathaway's Q3 buys and sells came in a 13F filing after Monday's close."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Hathaway Stock Rally Puts A Shares Near Historic $1 Million Mark",
+   "link": "https://finance.yahoo.com/m/2657f70f-be31-30d2-85b1-128d4c389fd4/berkshire-hathaway-stock.html?.tsrc=rss",
+   "published_utc": "2026-11-16T22:38:00Z",
+   "teaser": "Crossing the $1 million mark would be a major milestone for the company and for Warren Buffett."
   },
   {
    "symbol": "NVDA",
@@ -90,18 +118,18 @@
    "teaser": "Elon Musk wants Jensen Huang back at Nvidia and has real money on the line, since SpaceX builds its AI data centers on Nvidia chips and Nvidia owns a multibillion-dollar stake in SpaceX."
   },
   {
+   "symbol": "BRK/B",
+   "title": "Berkshire Sold Bank of America and VeriSign Stock in Q3, and Bought Lennar and Delta",
+   "link": "https://finance.yahoo.com/m/acb811f9-8cd1-32ae-b9df-8d087895836e/berkshire-sold-bank-of.html?.tsrc=rss",
+   "published_utc": "2026-11-16T22:15:00Z",
+   "teaser": "Berkshire Hathaway reduced its Bank of America stake by 27.5 million shares in the third quarter, according to an SEC filing."
+  },
+  {
    "symbol": "AMZN",
    "title": "Nvidia is not considering rehiring Jensen Huang, and Amazon's data center gets bought",
    "link": "https://finance.yahoo.com/video/nvidia-is-not-considering-rehiring-jensen-huang-and-amazons-data-center-gets-bought-221405344.html?.tsrc=rss",
    "published_utc": "2026-11-16T22:14:05Z",
    "teaser": "Deirdre Bosa discusses Nvidia (NVDA), claiming they are not considering bringing back Jensen Huang, Amazon's (AMZN) data centers being bought by Blackstone (BX), and Apple (AAPL) launching a study on how people use AI for health. Deirdre Bosa then sits down with Niles Investment Management Founder Dan Niles to talk about the AI trade proving itself beyond Jensen Huang, Neoclouds could be the biggest loser post-Jensen, and the Anthropic (ANTH.PVT) IPO. 'Deirdre Bosa Live' airs every day at 4 p.m. Tune in daily to hear how the latest developments in AI and technology are reshaping companies, industries, and the global economy."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Jenny Harrington Says Jensen Huang ‘Incinerated Over $1 Trillion.’ Why She Thinks Nvidia’s Recovery Will Take Longer",
-   "link": "https://247wallst.com/investing/2026/11/16/jenny-harrington-says-jensen-huang-incinerated-over-1-trillion-why-she-thinks-nvidias-recovery-will-take-longer/?.tsrc=rss",
-   "published_utc": "2026-11-16T22:07:57Z",
-   "teaser": "Nvidia reports earnings tomorrow with a strong quarter expected, yet one CNBC panelist says the real damage has nothing to do with revenue. Her case turns on trust, a financing model, and who was vouching for it."
   },
   {
    "symbol": "META",
@@ -216,18 +244,11 @@
    "teaser": "YouTuber Marques Brownlee bet he would shave his head if Tesla sold a Cybercab to the general public for under $30,000 by 2026. Cybercab deliveries are scheduled for December."
   },
   {
-   "symbol": "BRK/B",
-   "title": "Berkshire Hathaway Stock Rally Puts A Shares Near Historic $1 Million Mark",
-   "link": "https://finance.yahoo.com/m/2657f70f-be31-30d2-85b1-128d4c389fd4/berkshire-hathaway-stock.html?.tsrc=rss",
-   "published_utc": "2026-11-16T20:50:00Z",
-   "teaser": "Crossing the $1 million mark would be a major milestone for the company and for Warren Buffett."
-  },
-  {
    "symbol": "MSFT",
    "title": "FAA, Microsoft outages show the perils of system upgrades",
    "link": "https://www.americanbanker.com/news/faa-microsoft-outages-show-the-perils-of-system-upgrades?.tsrc=rss",
    "published_utc": "2026-11-16T20:43:24Z",
-   "teaser": "The recent outages at Microsoft and the Federal Aviation Administration have something in common: They’re both system upgrades gone awry. Microsoft’s outage on Thursday and Friday stemmed from a network upgrade. The FAA was trying to modernize its air-traffic-control network from copper to fiber-optic wires when the situation went so awry that planes were grounded […]"
+   "teaser": "The recent outages at Microsoft and the Federal Aviation Administration are high-profile examples of system upgrades gone awry."
   },
   {
    "symbol": "BRK/B",
@@ -349,13 +370,6 @@
    "teaser": "Alphabet Inc. (NASDAQ:GOOGL) took 6th place on our list of 10 Stocks to Buy Following Jensen Huang’s Departure. For three years, the AI trade had one face. Now it has an interim CEO. On November 12, Jensen Huang resigned as chief executive and board member of one of the largest companies in the world, hours […]"
   },
   {
-   "symbol": "AMZN",
-   "title": "Amazon’s Big Week: First a New James Bond, Then Anthropic’s IPO",
-   "link": "https://www.benzinga.com/markets/prediction-markets/26/11/63310662/amazon-anthropic-ipo-pattinson?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
-   "published_utc": "2026-11-16T18:22:57Z",
-   "teaser": "This is shaping up to be a big week for Amazon.com Inc. (NASDAQ:AMZN). Its studio named Robert Pattinson as the next James Bond on Monday. On Thursday, Anthropic is expected to go public, putting a market price on Amazon’s stake,..."
-  },
-  {
    "symbol": "MU",
    "title": "Micron Stocks Sink Nearly 7% After Judge Lets DRAM Supply Lawsuit Proceed",
    "link": "https://finance.yahoo.com/markets/stocks/articles/micron-stocks-sink-nearly-7-182012075.html?.tsrc=rss",
@@ -433,13 +447,6 @@
    "teaser": "Washington just drew a new line around where AI chips can go, and Micron's growth runs straight through AI data centers worldwide. Management says China exposure is fading, but the stock already slid sharply. What does the new rule actually threaten?"
   },
   {
-   "symbol": "BRK/B",
-   "title": "Berkshire’s Third-Quarter Stock Moves Due Today. It Could Have Sold Bank of America.",
-   "link": "https://finance.yahoo.com/m/c4d2f97f-399c-3e3b-ae13-bf5dc02d7844/berkshire%E2%80%99s-third-quarter.html?.tsrc=rss",
-   "published_utc": "2026-11-16T17:07:00Z",
-   "teaser": "There are clues that Berkshire continued to reduce the size of its stake in Bank of America last quarter."
-  },
-  {
    "symbol": "SOFI",
    "title": "$10,000 in SoFi Stock: What Could It Be Worth by 2030",
    "link": "https://247wallst.com/investing/2026/11/16/10000-in-sofi-stock-what-could-it-be-worth-by-2030/?.tsrc=rss",
@@ -494,13 +501,6 @@
    "link": "https://www.fool.com/investing/2026/11/16/netflix-stock-trades-70-discount-peak-valuation-one-number-blame/?.tsrc=rss",
    "published_utc": "2026-11-16T16:20:02Z",
    "teaser": "Market sentiment has taken a negative turn for a business investors considered a perennial winner."
-  },
-  {
-   "symbol": "AMD",
-   "title": "AMD Completes World Labs Acquisition, Appoints Fei-Fei Li as Chief Scientist",
-   "link": "https://investorshub.advfn.com/market-news/article/40150/amd-completes-world-labs-acquisition-appoints-fei-fei-li-as-chief-scientist?.tsrc=rss",
-   "published_utc": "2026-11-16T16:12:24Z",
-   "teaser": "AMD (NASDAQ:AMD) announced the completion of its acquisition of World Labs, an artificial intelligence company specialising in models capable of generating and simulating interactive three-dimensional environments. The transaction expands AMD’s AI research capabilities and brings World Labs’ model development team into the semiconductor company’s operations."
   },
   {
    "symbol": "CEG",
