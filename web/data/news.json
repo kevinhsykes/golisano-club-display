@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-17T21:53:24Z",
+ "checked_at_utc": "2026-11-17T22:06:38Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,53 +27,67 @@
  "symbols_empty": [],
  "items": [
   {
-   "symbol": "NVDA",
-   "title": "Jensen Huang’s Last Quarter Beats Estimates: Can Nvidia Stock Recover Without Him?",
-   "link": "https://beincrypto.com/nvidia-earnings-first-report-jensen-huang-exit/?.tsrc=rss",
-   "published_utc": "2026-11-17T21:41:26Z",
-   "teaser": "Nvidia beat Q3 earnings forecasts in its first report without Jensen Huang. Here is what could still weigh on the stock."
+   "symbol": "AMD",
+   "title": "AMD, Broadcom, and TSMC stocks rise on Nvidia earnings beat",
+   "link": "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html?.tsrc=rss",
+   "published_utc": "2026-11-17T22:01:59Z",
+   "teaser": "Semiconductor and AI infrastructure stocks moved higher in after-hours trading on Tuesday after AI chip heavyweight Nvidia posted better-than-expected quarterly results."
   },
   {
    "symbol": "NVDA",
-   "title": "Stock Market Today: Dow Dives, Nvidia Falls Amid This Jensen Huang Offer; Cyber Plays Mixed",
-   "link": "https://finance.yahoo.com/m/0c9330f2-68c3-38ef-9244-7dbdfd0853b7/stock-market-today%3A-dow.html?.tsrc=rss",
-   "published_utc": "2026-11-17T21:41:19Z",
-   "teaser": "The Dow Jones index drops on the stock market today. Nvidia stock falls amid news of a new probe. Cybersecurity stocks mostly fall."
+   "title": "Nvidia's Third-Quarter Results Top Estimates as Data Center Sales More Than Double",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-apos-third-quarter-results-215926104.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:59:26Z",
+   "teaser": "Nvidia's (NVDA) fiscal third-quarter results topped Wall Street's expectations, driven by surging da"
   },
   {
    "symbol": "NVDA",
-   "title": "Nvidia Beats In First Earnings Report Without Jensen",
-   "link": "https://app.moby.co/home/news/news-nvidia-beats-and-raises-in-first-earnings-report-without-jensen?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
-   "published_utc": "2026-11-17T21:38:17Z",
-   "teaser": "Against all odds, Nvidia beat on both the top and bottom lines for its fiscal Q3 2027 report"
+   "title": "Dow Jones Futures Waver, Nvidia Earnings Beat After Market Breaks Lower; Target, Anthropic IPO Ahead",
+   "link": "https://finance.yahoo.com/m/3b22ed8c-00c3-32f8-89f5-91bc21ccb366/dow-jones-futures-waver%2C.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:58:45Z",
+   "teaser": "Nvidia earnings beat after the stock market broke below recent lows. Target earnings are on tap, with the Anthropic IPO set to price Wednesday night."
   },
   {
    "symbol": "NVDA",
-   "title": "Nvidia: Fiscal Q3 Earnings Snapshot",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-fiscal-q3-earnings-snapshot-213806281.html?.tsrc=rss",
-   "published_utc": "2026-11-17T21:38:06Z",
-   "teaser": "(NVDA) on Tuesday reported fiscal third-quarter earnings of $65.On a per-share basis, the Santa Clara, California-based company said it had profit of $2."
+   "title": "Nvidia sees strong growth in first earnings report without Huang",
+   "link": "https://www.cbsnews.com/news/nvidia-earnings-jensen-huang-colette-kress/?.tsrc=rss",
+   "published_utc": "2026-11-17T21:55:02Z",
+   "teaser": "Nvidia's latest earnings are the first time the chipmaker has reported financial results without founder and former CEO Jensen Huang at the helm."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple Pay outage blocks instant crypto purchases",
+   "link": "https://www.thestreet.com/crypto/markets/apple-pay-outage-blocks-instant-crypto-purchases?.tsrc=rss",
+   "published_utc": "2026-11-17T21:54:47Z",
+   "teaser": "The outage hits one of the most popular ways to buy Bitcoin instantly."
   },
   {
    "symbol": "NVDA",
    "title": "Nvidia Stock Rises On Fiscal Q3 Beat-And-Raise Report (Live Coverage)",
    "link": "https://finance.yahoo.com/m/ef40b1a2-2bff-390f-b0d5-c281b4d503ef/nvidia-stock-rises-on-fiscal.html?.tsrc=rss",
-   "published_utc": "2026-11-17T21:35:40Z",
+   "published_utc": "2026-11-17T21:53:31Z",
    "teaser": "Nvidia beat Wall Street’s targets for its fiscal third quarter and guided above views for the current quarter."
   },
   {
    "symbol": "NVDA",
-   "title": "Nvidia faces SEC investigation as crisis deepens following Huang resignation",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-faces-sec-investigation-crisis-213516541.html?.tsrc=rss",
-   "published_utc": "2026-11-17T21:35:16Z",
-   "teaser": "Investing.com -- Nvidia (NASDAQ: NVDA) is facing a Securities and Exchange Commission investigation into whether the company misled investors through its disclosures, adding to mounting scrutiny following the resignation of CEO Jensen Huang, The Wall Street Journal reported Tuesday, citing people familiar with the matter."
+   "title": "Nvidia doubles quarterly revenue in first earnings since Jensen Huang’s resignation",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-doubles-quarterly-revenue-first-215151401.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:51:51Z",
+   "teaser": "Report comes just days after company saw ouster of its CEO over allegations of affair with suspected Chinese spy"
   },
   {
    "symbol": "NVDA",
-   "title": "Nvidia beats Q3 earnings expectations in first report without Jensen Huang",
-   "link": "https://finance.yahoo.com/video/nvidia-beats-q3-earnings-expectations-in-first-report-without-jensen-huang-213316995.html?.tsrc=rss",
-   "published_utc": "2026-11-17T21:33:16Z",
-   "teaser": "AI chipmaker Nvidia (NVDA) beats on Q3 revenue and earnings, its first report since founder and CEO Jensen Huang stepped down after reports of extramarital affairs. Revenue came in at $115.8 billion vs. $109.1 billion expected. Nvidia also showed net profit of $65.3 billion and forecast Q4 revenue above Wall Street estimates."
+   "title": "Nvidia’s Q3 earnings show its advantage as the bank of the AI boom",
+   "link": "https://finance.yahoo.com/video/nvidias-q3-earnings-show-its-advantage-as-the-bank-of-the-ai-boom-215423703.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:51:00Z",
+   "teaser": "Yahoo Finance's Deirdre Bosa explains that Nvidia's (NVDA) role as a quasi-lender to smaller neo cloud customers means that part of its sales depends on customers it helps finance, which shows up in receivables and free cash flow."
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar vs. Vertiv: Which Industrials Stock Is a Better Buy for 2027?",
+   "link": "https://www.fool.com/coverage/better-buy/2026/11/17/caterpillar-vs-vertiv-which-industrials-stock-is-a-better-buy-for-2027/?.tsrc=rss",
+   "published_utc": "2026-11-17T21:50:02Z",
+   "teaser": "Caterpillar trades at a lower valuation multiple, while Vertiv's 27.7% revenue growth reflects surging data center demand, but one carries significantly more debt."
   },
   {
    "symbol": "MSFT",
@@ -440,13 +454,6 @@
    "teaser": "“The actual direction of the bandwidth of the internet is undergoing a fundamental shift,” Jeff McElfresh said. \"We’re seeing agents tap the network in a 24/7.\""
   },
   {
-   "symbol": "AMD",
-   "title": "David Tepper Just Made a $518 Million SpaceX Bet — But Dumped AMD and Broadcom",
-   "link": "https://247wallst.com/investing/2026/11/17/david-tepper-just-made-a-518-million-spacex-bet-but-dumped-amd-and-broadcom/?.tsrc=rss",
-   "published_utc": "2026-11-17T16:50:25Z",
-   "teaser": "Tepper walked away from two of the biggest names in AI chips and put a huge new bet on a single ticker that owns its own compute, models, and subscribers. The reasons come down to valuation, margins, and one stock that keeps sliding."
-  },
-  {
    "symbol": "NFLX",
    "title": "Netflix Stock Hasn't Been This Cheap in Over 2 Years. Is Now the Time to Buy?",
    "link": "https://www.fool.com/investing/2026/11/17/netflix-stock-hasn-t-been-this-cheap-in-over-2-years-is-now-the-time-to-buy/?.tsrc=rss",
@@ -489,6 +496,20 @@
    "teaser": "Apple Inc (NASDAQ:AAPL, XETRA:APC) is reportedly close to signing a four-to-five-year agreement to secure supplies of dynamic random-access memory (DRAM) from Samsung Electronics (KRX:005930, LSE:BC94), marking a significant shift in its approach to buying components as the artificial..."
   },
   {
+   "symbol": "CAT",
+   "title": "Caterpillar Stock: Analyst Estimates & Ratings",
+   "link": "https://www.barchart.com/story/news/8878929/caterpillar-stock-analyst-estimates-ratings?.tsrc=rss",
+   "published_utc": "2026-11-17T15:54:36Z",
+   "teaser": "While Caterpillar has underperformed the broader market over the past year, Wall Street analysts are moderately optimistic about the stock’s prospects."
+  },
+  {
+   "symbol": "UPS",
+   "title": "Are Wall Street Analysts Predicting United Parcel Service Stock Will Climb or Sink?",
+   "link": "https://www.barchart.com/story/news/8878925/are-wall-street-analysts-predicting-united-parcel-service-stock-will-climb-or-sink?.tsrc=rss",
+   "published_utc": "2026-11-17T15:54:27Z",
+   "teaser": "United Parcel Service has outpaced the broader market over the past year, and analysts remain moderately optimistic about the stock's prospects."
+  },
+  {
    "symbol": "MU",
    "title": "Oxide Integrates Micron Data Center Memory and Storage into Its Second-Generation Cloud Computer",
    "link": "https://finance.yahoo.com/technology/articles/oxide-integrates-micron-data-center-155000162.html?.tsrc=rss",
@@ -496,25 +517,11 @@
    "teaser": "The Oxide Cloud Computer comes to SC26 and is currently available for HPC data center deploymentsCHICAGO, IL / ACCESS Newswire / November 17, 2026 / today announced that it is shipping qualified Micron memory and storage products in its second-generation on-premises Cloud Computer. SC26 attendees can see the Oxide compute sled, equipped with Micron data center products, at the Oxide booth (6114) this week."
   },
   {
-   "symbol": "AAPL",
-   "title": "George Soros and 21 Other Big Funds Sold Apple Last Quarter, While 13 Bought. Who’s Right?",
-   "link": "https://www.tikr.com/blog/george-soros-and-21-other-big-funds-sold-apple-last-quarter-while-13-bought-whos-right?ref=yahoofinance&tlnk=yf-261117-m2jx4cr6&.tsrc=rss",
-   "published_utc": "2026-11-17T15:40:02Z",
-   "teaser": "Key TakeawaysOf the 456 big funds that have filed 13Fs for the quarter ended Sept. 30, 22 sold Apple or cut it by 20% or more, George Soros’ fund among them, while 13 bought or added 20% or more."
-  },
-  {
    "symbol": "MU",
    "title": "Micron and SanDisk Stocks Fall as GF Securities Warns NAND Glut Could Hit in 2027",
    "link": "https://finance.yahoo.com/markets/stocks/articles/micron-sandisk-stocks-fall-gf-153723056.html?.tsrc=rss",
    "published_utc": "2026-11-17T15:37:23Z",
    "teaser": "Wall Street Sounds Alarm on NAND Chips. SanDisk Could Take the Biggest Hit"
-  },
-  {
-   "symbol": "AAPL",
-   "title": "Can AT&T's New Apple Device Deals Strengthen Its Subscriber Growth?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/ts-apple-device-deals-strengthen-153300297.html?.tsrc=rss",
-   "published_utc": "2026-11-17T15:33:00Z",
-   "teaser": "T is rolling out attractive holiday deals on Apple's latest iPhones, iPads and Apple Watches, aiming to attract new subscribers and boost device sales."
   },
   {
    "symbol": "RDDT",
@@ -725,20 +732,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-gets-swept-4-2-153751172.html?.tsrc=rss",
    "published_utc": "2026-11-16T15:37:51Z",
    "teaser": "The next test is whether customers take deliveries on time."
-  },
-  {
-   "symbol": "CAT",
-   "title": "Caterpillar Stock Offers a Backdoor Route to a Potential AI Recovery",
-   "link": "https://www.barchart.com/story/news/8856747/caterpillar-stock-offers-a-backdoor-route-to-a-potential-ai-recovery?.tsrc=rss",
-   "published_utc": "2026-11-16T15:27:43Z",
-   "teaser": "With deflated tech giants looking to make a comeback, CAT stock presents an unorthodox contrarian narrative."
-  },
-  {
-   "symbol": "CAT",
-   "title": "CAT's Sales Volumes Rise Across Segments: Can Growth Continue?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/cats-sales-volumes-rise-across-144600339.html?.tsrc=rss",
-   "published_utc": "2026-11-16T14:46:00Z",
-   "teaser": "Caterpillar's equipment demand recovery is accelerating, with all three major segments driving volume growth and supporting its mid-to-high-teens revenue growth outlook for 2026."
   },
   {
    "symbol": "MKSI",
