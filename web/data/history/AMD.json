@@ -3,12 +3,12 @@
  "name": "Advanced Micro Devices, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-16T21:00:01Z",
- "price": 504.28,
- "previous_close": 246.81,
- "day_high": 526.2,
- "day_low": 501.303,
- "volume": 35785537,
+ "as_of_utc": "2026-11-17T14:32:08Z",
+ "price": 509.395,
+ "previous_close": 240.52,
+ "day_high": 511.85,
+ "day_low": 505.99,
+ "volume": 1855773,
  "week52_high": 658.52,
  "week52_low": 188.22,
  "closes": [
@@ -1015,8 +1015,12 @@
   {
    "date": "2026-11-16",
    "close": 504.28
+  },
+  {
+   "date": "2026-11-17",
+   "close": 509.395
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-17T03:38:08Z"
+ "retrieved_at_utc": "2026-11-17T14:32:10Z"
 }
