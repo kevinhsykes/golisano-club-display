@@ -3,12 +3,12 @@
  "name": "Apple Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-17T15:17:10Z",
- "price": 354.75,
+ "as_of_utc": "2026-11-17T15:39:15Z",
+ "price": 353.15,
  "previous_close": 267.46,
  "day_high": 355.36,
  "day_low": 351.81,
- "volume": 6615624,
+ "volume": 7838491,
  "week52_high": 360.83,
  "week52_low": 243.42,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-17",
-   "close": 354.75
+   "close": 353.15
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-17T15:17:11Z"
+ "retrieved_at_utc": "2026-11-17T15:39:17Z"
 }
