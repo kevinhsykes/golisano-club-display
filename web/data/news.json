@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-17T03:38:17Z",
+ "checked_at_utc": "2026-11-17T21:53:24Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -28,59 +28,619 @@
  "items": [
   {
    "symbol": "NVDA",
-   "title": "BlueQubit Names Quantum Flywheel Awardees, Backed by IBM, AWS, and NVIDIA Accelerated Computing",
-   "link": "https://finance.yahoo.com/technology/ai/articles/bluequbit-names-quantum-flywheel-awardees-032500624.html?.tsrc=rss",
-   "published_utc": "2026-11-17T03:25:00Z",
-   "teaser": "SAN FRANCISCO, November 17, 2026--BlueQubit today announced the research teams selected for its Quantum Flywheel grant program, a $150,000 initiative created with support from IBM, Amazon Web Services (AWS), and NVIDIA Accelerated Computing. Awardees receive three months of credits for AI tokens and classical and quantum compute, with awards ranging from $10,000 to $40,000 per proposal."
-  },
-  {
-   "symbol": "AMD",
-   "title": "Dow Jones Futures: AMD, Nvidia, Micron Lead AI Trade Lower With Nvidia Earnings On Deck",
-   "link": "https://finance.yahoo.com/m/d0a3411e-5f2b-302d-801a-a42b1d7ca5ea/dow-jones-futures%3A-amd%2C.html?.tsrc=rss",
-   "published_utc": "2026-11-17T03:20:17Z",
-   "teaser": "Dow Jones Futures: AMD, Nvidia stock and Micron led the AI trade lower Monday. Nvidia earnings are due after the close Tuesday."
-  },
-  {
-   "symbol": "AMD",
-   "title": "Is NVIDIA’s Turmoil Advanced Micro Devices’ (AMD) Biggest Opening Yet?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-turmoil-advanced-micro-devices-031446562.html?.tsrc=rss",
-   "published_utc": "2026-11-17T03:14:46Z",
-   "teaser": "Our list of the 10 Stocks to Buy Following Jensen Huang’s Departure is out, and Advanced Micro Devices, Inc. (NASDAQ:AMD) ranked 9th. For three years, the AI trade had one face. Now it has an interim CEO. On November 12, Jensen Huang resigned as NVIDIA’s chief executive and board member, hours after nerves gripped investors awaiting […]"
+   "title": "Jensen Huang’s Last Quarter Beats Estimates: Can Nvidia Stock Recover Without Him?",
+   "link": "https://beincrypto.com/nvidia-earnings-first-report-jensen-huang-exit/?.tsrc=rss",
+   "published_utc": "2026-11-17T21:41:26Z",
+   "teaser": "Nvidia beat Q3 earnings forecasts in its first report without Jensen Huang. Here is what could still weigh on the stock."
   },
   {
    "symbol": "NVDA",
-   "title": "Bitcoin Bears Target $60K As Nvidia Earnings, Anthropic IPO, Bond Yields And Fed Hike Odds Weigh On Crypto Recovery",
-   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/bitcoin-bear-nvidia-earnings-anthropic-fed-rate-hike-weighs-on-crypto-recovery/cNbaiD6R9gp?.tsrc=rss",
-   "published_utc": "2026-11-17T03:06:19Z",
-   "teaser": "A weak Nvidia report could cause a new wave of selling in crypto, says Nansen’s Nicolai Søndergaard, while Anthony Pompliano blames part of the slide on Anthropic’s upcoming IPO."
+   "title": "Stock Market Today: Dow Dives, Nvidia Falls Amid This Jensen Huang Offer; Cyber Plays Mixed",
+   "link": "https://finance.yahoo.com/m/0c9330f2-68c3-38ef-9244-7dbdfd0853b7/stock-market-today%3A-dow.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:41:19Z",
+   "teaser": "The Dow Jones index drops on the stock market today. Nvidia stock falls amid news of a new probe. Cybersecurity stocks mostly fall."
   },
   {
    "symbol": "NVDA",
-   "title": "Asian stocks sink as scandal-hit Nvidia prepares for earnings",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/asian-stocks-sink-scandal-hit-023848163.html?.tsrc=rss",
-   "published_utc": "2026-11-17T02:38:48Z",
-   "teaser": "Tech firms dragged Asian stock markets down again Tuesday as the fallout from the Nvidia crisis continued to rattle trading floors, with US moves to tighten restrictions on Chinese access to chips adding to uncertainty.Adding to the downbeat mood was news that the US Commerce Department moved on Monday to close a loophole that allowed Chinese companies to access Nvidia's powerful AI chips remotely."
+   "title": "Nvidia Beats In First Earnings Report Without Jensen",
+   "link": "https://app.moby.co/home/news/news-nvidia-beats-and-raises-in-first-earnings-report-without-jensen?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+   "published_utc": "2026-11-17T21:38:17Z",
+   "teaser": "Against all odds, Nvidia beat on both the top and bottom lines for its fiscal Q3 2027 report"
   },
   {
-   "symbol": "AMD",
-   "title": "1 Number Reveals Which Is the Better Buy Between Nvidia and AMD",
-   "link": "https://www.fool.com/investing/2026/11/16/1-number-reveals-which-is-the-better-buy-between-nvidia-and-amd/?.tsrc=rss",
-   "published_utc": "2026-11-17T02:22:02Z",
-   "teaser": "Is AMD really worth three times as much as Nvidia?"
+   "symbol": "NVDA",
+   "title": "Nvidia: Fiscal Q3 Earnings Snapshot",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-fiscal-q3-earnings-snapshot-213806281.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:38:06Z",
+   "teaser": "(NVDA) on Tuesday reported fiscal third-quarter earnings of $65.On a per-share basis, the Santa Clara, California-based company said it had profit of $2."
   },
   {
-   "symbol": "AMD",
-   "title": "AMD’s Nvidia Rally Fades: Michael Burry Calls AMD ‘Too Expensive As Eternal Alternative’",
-   "link": "https://stocktwits.com/news-articles/markets/equity/amd-s-nvidia-rally-fades-michael-burry-calls-amd-too-expensive-as-eternal-alternative/cNbah8GR9gn?.tsrc=rss",
-   "published_utc": "2026-11-17T02:20:02Z",
-   "teaser": "Burry sounded caution about the potential upside in AMD despite it being billed as a key beneficiary of the fallout at Nvidia."
+   "symbol": "NVDA",
+   "title": "Nvidia Stock Rises On Fiscal Q3 Beat-And-Raise Report (Live Coverage)",
+   "link": "https://finance.yahoo.com/m/ef40b1a2-2bff-390f-b0d5-c281b4d503ef/nvidia-stock-rises-on-fiscal.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:35:40Z",
+   "teaser": "Nvidia beat Wall Street’s targets for its fiscal third quarter and guided above views for the current quarter."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia faces SEC investigation as crisis deepens following Huang resignation",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-faces-sec-investigation-crisis-213516541.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:35:16Z",
+   "teaser": "Investing.com -- Nvidia (NASDAQ: NVDA) is facing a Securities and Exchange Commission investigation into whether the company misled investors through its disclosures, adding to mounting scrutiny following the resignation of CEO Jensen Huang, The Wall Street Journal reported Tuesday, citing people familiar with the matter."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia beats Q3 earnings expectations in first report without Jensen Huang",
+   "link": "https://finance.yahoo.com/video/nvidia-beats-q3-earnings-expectations-in-first-report-without-jensen-huang-213316995.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:33:16Z",
+   "teaser": "AI chipmaker Nvidia (NVDA) beats on Q3 revenue and earnings, its first report since founder and CEO Jensen Huang stepped down after reports of extramarital affairs. Revenue came in at $115.8 billion vs. $109.1 billion expected. Nvidia also showed net profit of $65.3 billion and forecast Q4 revenue above Wall Street estimates."
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Microsoft AI chief says compute isn't a bottleneck — for now",
+   "link": "https://finance.yahoo.com/video/microsoft-ai-chief-says-compute-isnt-a-bottleneck--for-now-213157737.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:31:57Z",
+   "teaser": "Microsoft (MSFT) unveiled a slew of new AI models at its Ignite 2026 event on Tuesday. Microsoft AI CEO Mustafa Suleyman sits down with Deirdre Bosa to discuss the status of Microsoft's AI compute and the pricing scale it's offering to partner companies."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Alphabet vs. Amazon: Which Is the Better AI Cloud Stock to Own for the Next 5 Years?",
+   "link": "https://www.fool.com/investing/2026/11/17/alphabet-amazon-better-ai-cloud-stock-5-years/?.tsrc=rss",
+   "published_utc": "2026-11-17T21:20:00Z",
+   "teaser": "It's hard not to like both businesses, but one offers the potential for a better return."
   },
   {
    "symbol": "BRK/B",
-   "title": "Berkshire Hathaway (BRK.B) Could Be 23% Undervalued As Buybacks Come Into Focus",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-brk-b-could-020813745.html?.tsrc=rss",
-   "published_utc": "2026-11-17T02:08:13Z",
-   "teaser": "Capital shift under Greg Abel puts Berkshire Hathaway buybacks in focus Greg Abel has reshaped capital use at Berkshire Hathaway (BRK.B), with the conglomerate turning into a net seller of equities in the third quarter of 2026 while stepping up repurchases. The business bought back US$9.6b of its own shares in the quarter, taking year to date repurchases above US$14b and putting Berkshire Hathaway's capital allocation and valuation squarely on investors' radar. Berkshire Hathaway's capital..."
+   "title": "Berkshire Hathaway Slashes This Top 5 Stock; Nvidia Boosts SpaceX",
+   "link": "https://finance.yahoo.com/m/481d5163-b671-396e-a2dc-5c0e57fb9c0b/berkshire-hathaway-slashes.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:11:46Z",
+   "teaser": "Berkshire Hathaway detailed Q3 buys and sells in a 13F filing late Monday. SpaceX stock popped."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Billionaire David Tepper Grew His SpaceX Stake 17-Fold While Dumping AMD and Broadcom",
+   "link": "https://247wallst.com/investing/2026/11/17/billionaire-david-tepper-grew-his-spacex-stake-17-fold-while-dumping-amd-and-broadcom/?.tsrc=rss",
+   "published_utc": "2026-11-17T21:10:51Z",
+   "teaser": "David Tepper's latest 13F shows a rocket-fueled bet on one hot stock and two quiet exits from AI chip winners that were still posting blowout numbers. The filing leaves out the one thing investors most want to know."
+  },
+  {
+   "symbol": "UPS",
+   "title": "UPS Announces Agreement to Acquire Smartways Logistics",
+   "link": "https://finance.yahoo.com/healthcare/articles/ups-announces-agreement-acquire-smartways-210000837.html?.tsrc=rss",
+   "published_utc": "2026-11-17T21:00:00Z",
+   "teaser": "ATLANTA, November 17, 2026--UPS (NYSE: UPS) today announced it has entered into an agreement to acquire Smartways Logistics (Smartways), a healthcare logistics provider serving Australia and New Zealand. Once completed, the acquisition will enhance UPS Healthcare’s time-critical transportation capabilities in the region."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple down live: iPhones stop working properly as iCloud taken down by ‘internal update’",
+   "link": "https://www.independent.co.uk/tech/apple-down-not-working-pay-icloud-music-app-store-iphone-status-b3086668.html?.tsrc=rss",
+   "published_utc": "2026-11-17T20:59:30Z",
+   "teaser": "Apple Pay payments, App Store downloads, and Apple Music streaming all hit by outage – which does not appear to be the result of a cyber attack or AI hacks"
+  },
+  {
+   "symbol": "AMD",
+   "title": "ASUS Showcases Full-Stack AI Infrastructure at SC26, Featuring Intel and AMD Platforms",
+   "link": "https://finance.yahoo.com/technology/ai/articles/asus-showcases-full-stack-ai-204300656.html?.tsrc=rss",
+   "published_utc": "2026-11-17T20:43:00Z",
+   "teaser": "CHICAGO, November 17, 2026--At SC26, ASUS unveils a unified AI Factory blueprint that gives enterprises the flexibility to build AI infrastructure around their workloads, performance targets, and deployment needs. Spanning AMD, Intel and NVIDIA platforms — from rack-scale AI systems and enterprise servers to edge computing — ASUS brings architectural choice together with integrated engineering, automated manufacturing, rigorous validation, and lifecycle support. With volume shipments of its late"
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Microsoft's AI pitch at Ignite: Cheaper models as business 'token spend is going through the roof'",
+   "link": "https://finance.yahoo.com/markets/article/microsoft-ignite-focuses-on-ai-models-for-specific-tasks-lowering-costs-for-enterprise-203433266.html?.tsrc=rss",
+   "published_utc": "2026-11-17T20:34:33Z",
+   "teaser": "Microsoft rolled out new features to its AI initiative and products during its flagship conference on Tuesday. One theme was keeping enterprise costs down."
+  },
+  {
+   "symbol": "MU",
+   "title": "Why Is Micron Down? GF Securities Warns a “NAND Glut” Could Hit in 2027",
+   "link": "https://www.tikr.com/blog/why-is-micron-down-gf-securities-warns-a-nand-glut-could-hit-in-2027?ref=yahoofinance&tlnk=yf-261117-7qfq4x2g&.tsrc=rss",
+   "published_utc": "2026-11-17T20:30:21Z",
+   "teaser": "Key TakeawaysMicron fell 3% today after GF Securities forecast NAND prices falling in three of 2027’s four quarters, and Sandisk fell with it. Sandisk is the most exposed, but analysts still expect its revenue to grow through June 2028, when GF expects prices to be falling."
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Microsoft’s “Next Leg” Is Charging 500 Million Office Users More, Says RBC Analyst",
+   "link": "https://www.tikr.com/blog/microsofts-next-leg-is-charging-500-million-office-users-more-says-rbc-analyst?ref=yahoofinance&tlnk=yf-261117-3jj9g8fp&.tsrc=rss",
+   "published_utc": "2026-11-17T20:26:03Z",
+   "teaser": "Key TakeawaysAnthropic is giving away Office-style tools, but RBC analyst Rishi Jaluria says charging Microsoft’s roughly half a billion paying Office users more is the next leg of growth. Microsoft’s September quarter backs him up: Microsoft 365 commercial cloud revenue grew 17% while seats grew 5%."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire’s Only New Stock Owns AOL and Evernote. Is Greg Abel Rewriting Buffett’s Playbook?",
+   "link": "https://www.tikr.com/blog/berkshires-only-new-stock-owns-aol-and-evernote-is-greg-abel-rewriting-buffetts-playbook?ref=yahoofinance&tlnk=yf-261117-px6whgpq&.tsrc=rss",
+   "published_utc": "2026-11-17T20:25:33Z",
+   "teaser": "Key TakeawaysBerkshire Hathaway’s third-quarter 13F lists one new stock: 20. 7 million shares of Bending Spoons, the owner of AOL and Evernote, worth $689 million at Sept."
+  },
+  {
+   "symbol": "META",
+   "title": "Meta Platforms, Inc. (META): Strong Advertising Growth Supports Its Long-Term Investment Case",
+   "link": "https://finance.yahoo.com/technology/articles/meta-platforms-inc-meta-strong-202131281.html?.tsrc=rss",
+   "published_utc": "2026-11-17T20:21:31Z",
+   "teaser": "We just published our list, Ken Fisher Portfolio Review: 10 Highest-Conviction Technology Stocks for Long-Term Growth, and Meta Platforms, Inc. ranked 9th on this list. Ken Fisher, founder and former CEO of Fisher Asset Management, has historically maintained a constructive, growth-oriented view of technology stocks. His investment philosophy centers around companies with strong long-term growth […]"
+  },
+  {
+   "symbol": "MSFT",
+   "title": "BNY and Microsoft complete first AI agent-negotiated Treasury trade",
+   "link": "https://finance.yahoo.com/technology/ai/articles/bny-microsoft-complete-first-ai-201911277.html?.tsrc=rss",
+   "published_utc": "2026-11-17T20:19:11Z",
+   "teaser": "Investing.com -- Bank of New York (BNY) and Microsoft Corp (MSFT) had AI agents negotiate a US Treasury trade. They bill it as the first of its kind. Electronic trading and machine-to-machine messaging are old news. What is new is software that deliberates and finds middle ground on price, a role that used to belong to human brokers."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla (TSLA) Is Spending €3 Billion To Expand Berlin Cybercab Production",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-tsla-spending-3-billion-201132630.html?.tsrc=rss",
+   "published_utc": "2026-11-17T20:11:32Z",
+   "teaser": "Tesla (NasdaqGS:TSLA) plans a €3b expansion of its Berlin Gigafactory to build fully autonomous Cybercabs at scale. The enlarged German plant is targeted to support output of up to 1 million driverless Cybercabs annually from 2029. Management expects the project to create thousands of additional roles at the Grünheide site as the facility shifts toward autonomy focused production. Tesla's €3b Berlin Cybercab expansion and pivot to driverless production is important to weigh alongside the..."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Hathaway Is Up 18% in Its First Year Without Buffett as CEO. Can BRK.B Stock Hit $700 by 2027?",
+   "link": "https://247wallst.com/investing/2026/11/17/berkshire-hathaway-is-up-18-in-its-first-year-without-buffett-as-ceo-can-brk-b-stock-hit-700-by-2027/?.tsrc=rss",
+   "published_utc": "2026-11-17T20:07:36Z",
+   "teaser": "Greg Abel inherited a record-setting stock, a $380 billion cash pile, and a founder who still holds his shares. Wall Street's analysts remain unconvinced, and one soft spot in the latest earnings may decide whether the next leg higher arrives."
+  },
+  {
+   "symbol": "UPS",
+   "title": "A 67-Year-Old With $750,000 in Pfizer, Enterprise Products and UPS Collects $3,765 a Month in Dividends. How Safe Is Each Check?",
+   "link": "https://www.tikr.com/blog/a-67-year-old-with-750000-in-pfizer-enterprise-products-and-ups-collects-3710-a-month-in-dividends-how-safe-is-each-check?ref=yahoofinancedividend&tlnk=yf-261117-h5527qr8&.tsrc=rss",
+   "published_utc": "2026-11-17T19:50:24Z",
+   "teaser": "Key TakeawaysAt today’s prices, a hypothetical $750,000 portfolio split evenly across Pfizer, Enterprise Products Partners and UPS pays about $45,200 a year in dividends, or about $3,760 a month. Enterprise Products Partners’ distribution looks the safest of the three, covered 1."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Prediction: These Will Be Nvidia’s and AMD’s Stock Prices by the End of 2027 (Hint: Only 1 Is a Buy).",
+   "link": "https://www.fool.com/investing/2026/11/17/prediction-these-will-be-nvidia-s-and-amd-s-stock-prices-by-the-end-of-2027-hint-only-1-is-a-buy/?.tsrc=rss",
+   "published_utc": "2026-11-17T19:46:02Z",
+   "teaser": "AMD's stock has a ton of growth priced into it already."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Morgan Stanley: Midterms Push “20% of the 2028 Pipeline” to 2029. Microsoft and Amazon Keep Spending",
+   "link": "https://www.tikr.com/blog/morgan-stanley-midterms-push-20-of-the-2028-pipeline-to-2029-microsoft-and-amazon-keep-spending?ref=yahoofinance&tlnk=yf-261117-h7924xgj&.tsrc=rss",
+   "published_utc": "2026-11-17T19:37:47Z",
+   "teaser": "Key TakeawaysMicrosoft (MSFT) and Amazon (AMZN) could benefit from tighter U. S."
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Zenity Expands AI Agent Security Coverage Across the Microsoft Ecosystem",
+   "link": "https://finance.yahoo.com/technology/ai/articles/zenity-expands-ai-agent-security-193500080.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:35:00Z",
+   "teaser": "SAN FRANCISCO, November 17, 2026--Zenity today expanded its security coverage across the Microsoft ecosystem, where many enterprises deploy agents at their greatest scale."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple outage today: iCloud and App Store down after a week of big outages",
+   "link": "https://finance.yahoo.com/markets/article/why-apple-is-down-in-a-week-of-outages-from-microsoft-to-chase-193424335.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:34:24Z",
+   "teaser": "Apple's iCloud and App Store problems follow outages at Microsoft, the FAA, Chase, and United."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple's $1,299 iPhone has a problem updates can't fix",
+   "link": "https://www.thestreet.com/technology/apple-iphone-18-pro-max-connectivity-problem-updates-cant-fix?.tsrc=rss",
+   "published_utc": "2026-11-17T19:31:42Z",
+   "teaser": "Apple’s flagship iPhone faces an unusual hardware problem"
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Atlan and Microsoft Collaborate to Extend OneLake Governance Across the Data Estate",
+   "link": "https://finance.yahoo.com/technology/ai/articles/atlan-microsoft-collaborate-extend-onelake-193100830.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:31:00Z",
+   "teaser": "SAN FRANCISCO, November 17, 2026--Atlan today announced a collaboration with Microsoft that brings its cross-estate lineage and governance capabilities together with Microsoft’s lake-first approach to data governance. Working alongside the OneLake catalog, Atlan extends governance across customers’ broader data estates, including data inside and beyond Microsoft Fabric."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Alphabet, Amazon, and Nvidia All Have a Stake in Anthropic. Here’s the One I’d Buy If I Could Only Pick 1.",
+   "link": "https://www.fool.com/investing/2026/11/17/alphabet-amazon-and-nvidia-all-have-a-stake-in-anthropic-here-s-the-1-i-d-buy-if-i-could-only-pick-1/?.tsrc=rss",
+   "published_utc": "2026-11-17T19:27:02Z",
+   "teaser": "Many big tech companies will see a huge payoff with Anthropic's IPO."
+  },
+  {
+   "symbol": "CAT",
+   "title": "Caterpillar Sees a Bright 2027 as Compact Equipment and Rental Expansion Gains Ground",
+   "link": "https://www.marketbeat.com/instant-alerts/event-caterpillar-sees-a-bright-2027-as-compact-equipment-and-rental-expansion-gains-ground-2026-11-17/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published_utc": "2026-11-17T19:13:01Z",
+   "teaser": "Caterpillar (NYSE:CAT) is expanding its compact equipment and rental businesses to reach smaller contractors and win more large projects, Construction Industries Group President Rod Shurman said during an investor discussion at a Cat Compact store in North Carolina. Shurman said the company is gain"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Amazon’s Andy Jassy Plans To Stay Invested In Anthropic For ‘A Long Time’",
+   "link": "https://stocktwits.com/news-articles/markets/equity/amazon-s-andy-jassy-plans-to-stay-invested-in-anthropic-for-a-long-time/cNbO5FVR9ha?.tsrc=rss",
+   "published_utc": "2026-11-17T19:11:14Z",
+   "teaser": "“We’re believers in Anthropic,” Jassy said in an exclusive interview to CNBC."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "There's 'no difference' between buying Anthropic's IPO and Amazon's IPO: Kevin O'Leary",
+   "link": "https://finance.yahoo.com/markets/stocks/article/theres-no-difference-between-buying-anthropics-ipo-and-amazons-ipo-kevin-oleary-190707549.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:07:07Z",
+   "teaser": "\"Shark Tank\" star Kevin O'Leary weighs in on Anthropic's IPO."
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD Stocks Decrease 1.62% as New US Rule Requires Licenses for Five Chip Hubs",
+   "link": "https://finance.yahoo.com/technology/articles/amd-stocks-decrease-1-62-190241595.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:02:41Z",
+   "teaser": "The rule covers Singapore, which supplied 12.4% of AMD's 2025 revenue, while Appaloosa disclosed a full exit from the chipmaker."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Amazon Stocks Edge Higher as Anthropic IPO Reveals $110 Billion Compute Pledge",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-stocks-edge-higher-anthropic-190217398.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:02:17Z",
+   "teaser": "Anthropic plans to price its Nasdaq debut on November 18 at $70 to $78 a share, with trading under ANT set for November 19."
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "Alphabet Stocks Move Lower as Anthropic IPO Filing Shows $121.3 Billion Google Commitment",
+   "link": "https://finance.yahoo.com/technology/ai/articles/alphabet-stocks-move-lower-anthropic-190134552.html?.tsrc=rss",
+   "published_utc": "2026-11-17T19:01:34Z",
+   "teaser": "Anthropic's largest disclosed compute pledge runs to Google through July 2033, days after Gemini 4 Hydrogen undercut Anthropic's top model on cost per task."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla Plans $3.3 Billion German Factory Expansion for Cybercab Production",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-plans-3-3-billion-185703321.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:57:03Z",
+   "teaser": "The company targets annual production capacity of up to 1 million Cybercabs at the site."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Is AMD Stock a Buy Amid the Uncertainty Around Nvidia?",
+   "link": "https://www.fool.com/investing/2026/11/17/is-amd-stock-a-buy-amid-the-uncertainty-around-nvidia/?.tsrc=rss",
+   "published_utc": "2026-11-17T18:56:02Z",
+   "teaser": "Nvidia's CEO, Jensen Huang, recently resigned, and questions about the company's leadership could give AMD a perceived advantage."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Exchange Traded Concepts to Close and Liquidate The xETFs TSLA Daily Income ETF (NYSE: TYYY)",
+   "link": "https://finance.yahoo.com/markets/options/articles/exchange-traded-concepts-close-liquidate-184900140.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:49:00Z",
+   "teaser": "After careful consideration, Exchange Traded Concepts, LLC, the Fund's investment adviser has recommended, and the Board of Trustees of Exchange Listed Funds Trust has approved, the termination and liquidation of the Fund pursuant to the terms of a Plan of Liquidation. Accordingly, the Fund is expected to cease operations and liquidate on or about November 20, 2026 (the \"Liquidation Date\")."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Hathaway’s Stock Rally Puts Its Class A Shares Near the Historic $1M Mark",
+   "link": "https://finance.yahoo.com/m/2657f70f-be31-30d2-85b1-128d4c389fd4/berkshire-hathaway%E2%80%99s-stock.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:45:00Z",
+   "teaser": "Crossing the $1 million mark would be a major milestone for the company and for Warren Buffett."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire’s CFO Just Paid $888,869 a Share for Berkshire Stock",
+   "link": "https://247wallst.com/investing/2026/11/17/berkshires-cfo-just-paid-888869-a-share-for-berkshire-stock/?.tsrc=rss",
+   "published_utc": "2026-11-17T18:32:28Z",
+   "teaser": "Two Berkshire officers spent their own cash on the same day, just as Greg Abel steps into Warren Buffett's role. Their silence on motives leaves a bigger question: what do record prices really say about the stock?"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla Stocks Decrease 0.51% Even as Texas Robotaxi Authorizations Jump 21% in 18 Days",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-stocks-decrease-0-51-182744286.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:27:44Z",
+   "teaser": "Texas DMV data show 1,306 Tesla robotaxis authorized for driverless operation, closing in on Waymo's 1,321."
+  },
+  {
+   "symbol": "MU",
+   "title": "Why Micron Stock Keeps On Going Down",
+   "link": "https://www.fool.com/investing/2026/11/17/why-micron-stock-keeps-on-going-down/?.tsrc=rss",
+   "published_utc": "2026-11-17T18:27:21Z",
+   "teaser": "Nvidia's CEO scandal keeps dragging Micron lower -- and that's not the only reason."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Bank of America Stocks Move Lower as Berkshire Cuts Stake Another 5.7%",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/bank-america-stocks-move-lower-182719762.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:27:19Z",
+   "teaser": "Berkshire sold 27.5 million shares in the third quarter and has trimmed 57.8 million since March, while nearly doubling its Lennar position."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Warren Buffett’s Successor, Greg Abel, Has 30.2% of Berkshire’s $367 Billion Portfolio in Just 2 Magnificent Artificial Intelligence (AI) Stocks. Here’s the One I’d Buy Without Hesitation.",
+   "link": "https://www.fool.com/investing/2026/11/17/warren-buffett-s-successor-greg-abel-has-30-2-of-berkshire-s-usd367-billion-portfolio-in-just-2-monster-artificial-intelligence-ai-stocks-here-s-the-one-i-d-buy-without-hesitation/?.tsrc=rss",
+   "published_utc": "2026-11-17T18:20:02Z",
+   "teaser": "Berkshire Hathaway has nearly one-third of its portfolio invested in two \"Magnificent Seven\" stocks."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron Drops Again. What Hedge Funds Are Doing With the Stock.",
+   "link": "https://finance.yahoo.com/m/8de18bcc-f636-3e12-8e8b-a141738198d9/micron-drops-again.-what.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:12:00Z",
+   "teaser": "AI hedge fund Situational Awareness sells Micron stock in the third quarter. It could be a boon for the memory-chip company."
+  },
+  {
+   "symbol": "CAT",
+   "title": "What Is Caterpillar (CAT) Signaling With Standard Collision Safety On New Machines?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-signaling-standard-collision-180924661.html?.tsrc=rss",
+   "published_utc": "2026-11-17T18:09:24Z",
+   "teaser": "Caterpillar (NYSE:CAT) plans to make advanced collision warning and mitigation systems standard on most new construction machines by 2027. The safety package is expected to roll out across a wide range of construction equipment models rather than only premium tiers. The move targets jobsites that are becoming more crowded, where operator visibility and accident prevention are growing safety priorities. Caterpillar's push to standardize collision warning and mitigation technology is only one..."
+  },
+  {
+   "symbol": "AMD",
+   "title": "AMD Stock Rises After Chip Deal Closes",
+   "link": "https://finance.yahoo.com/technology/ai/articles/amd-stock-rises-chip-deal-175746205.html?.tsrc=rss",
+   "published_utc": "2026-11-17T17:57:46Z",
+   "teaser": "Cloud customers could get more out of each watt."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron, SanDisk and SK Hynix Face New Warning From Wall Street",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-sandisk-sk-hynix-face-174959688.html?.tsrc=rss",
+   "published_utc": "2026-11-17T17:49:59Z",
+   "teaser": "GF Securities expects NAND flash memory prices to weaken in 2027 as consumer demand slows and production capacity expands."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla commits $3.30bn to expand German gigafactory for Cybercab",
+   "link": "https://www.just-auto.com/news/tesla-3-30bn-german-gigafactory-cybercab/?.tsrc=rss",
+   "published_utc": "2026-11-17T17:48:11Z",
+   "teaser": "The funding encompasses the addition of a new production hall intended for manufacturing the autonomous Cybercab starting in 2029."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron is Deeply Affected By The Loss of Jensen Huang’s Risk Appetite",
+   "link": "https://247wallst.com/investing/2026/11/17/micron-is-deeply-affected-by-the-loss-of-jensen-huangs-risk-appetite/?.tsrc=rss",
+   "published_utc": "2026-11-17T17:45:49Z",
+   "teaser": "Micron posted record earnings and trades at a forward multiple that assumes disaster, yet its shares keep sliding. A leadership change at its biggest customer has investors asking who now decides how many chips get ordered."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Musk Says Owners’ Tesla Robotaxi Trials “May Start” Next Month. That’s a Threat to Uber",
+   "link": "https://www.tikr.com/blog/musk-says-owners-tesla-robotaxi-trials-may-start-next-month-thats-a-threat-to-uber?ref=yahoofinance&tlnk=yf-261117-pj3j3mgm&.tsrc=rss",
+   "published_utc": "2026-11-17T17:35:53Z",
+   "teaser": "Key TakeawaysElon Musk said on Monday that trials letting Tesla owners add their own cars to the Robotaxi network may start next month, if things go well. Owners’ cars would let Tesla grow its fleet without buying the cars, as it guides to about $20 billion of capital spending this year."
+  },
+  {
+   "symbol": "CEG",
+   "title": "Bernstein Cut Its Constellation Energy Target to $293. It Still Sees 5% Upside",
+   "link": "https://www.tikr.com/blog/bernstein-cut-its-constellation-energy-target-to-293-it-still-sees-6-upside?ref=yahoofinance&tlnk=yf-261117-673q4fjf&.tsrc=rss",
+   "published_utc": "2026-11-17T17:21:25Z",
+   "teaser": "Key TakeawaysBernstein cut its Constellation Energy price target to $293 from $296 and kept its Outperform rating, leaving about 5% upside. The stock is 27% below its December 2025 high after a soft 2026 outlook, a jump in debt and a midterm scare over data centers."
+  },
+  {
+   "symbol": "META",
+   "title": "Update: Market Chatter: Amazon, Google, Meta Lobbying Fails to Stop Trump From Pursuing China Data Center Curbs",
+   "link": "https://finance.yahoo.com/technology/articles/market-chatter-amazon-google-meta-172106872.html?.tsrc=rss",
+   "published_utc": "2026-11-17T17:21:06Z",
+   "teaser": "(Updates with Microsoft's response in the last paragraph.) Amazon.com (AMZN), Alphabet's (GOOG, G"
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Warren Buffett’s Berkshire Has Sold 30% of Its Kroger Shares Since March. The Stock Is Up 21% Since September",
+   "link": "https://247wallst.com/investing/2026/11/17/warren-buffetts-berkshire-has-sold-30-of-its-kroger-shares-since-march-the-stock-is-up-21-since-september/?.tsrc=rss",
+   "published_utc": "2026-11-17T17:17:00Z",
+   "teaser": "Berkshire Hathaway's new 13F shows 35,000,000 Kroger shares on September 30, down from 50,000,000 on March 31."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Stanley Druckenmiller Dumped AMD and Alphabet. His Next 3 AI Bets May Surprise Investors",
+   "link": "https://247wallst.com/investing/2026/11/17/stanley-druckenmiller-dumped-amd-and-alphabet-his-next-3-ai-bets-may-surprise-investors/?.tsrc=rss",
+   "published_utc": "2026-11-17T17:07:01Z",
+   "teaser": "Stanley Druckenmiller walked away from two fast-growing AI giants, yet he did not walk away from AI. His latest 13F reveals where the money went instead, and the new picks tell a different story about how he sees the next phase of the boom."
+  },
+  {
+   "symbol": "META",
+   "title": "Meta Platforms is Cheap at 18.78X P/E: Buy, Sell or Hold the Stock?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-cheap-18-78x-170700349.html?.tsrc=rss",
+   "published_utc": "2026-11-17T17:07:00Z",
+   "teaser": "META trades at a cheap 18.78X forward P/E, but soaring AI spending, margin pressure and strong ad growth raise questions about the stock's upside."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Reveals a $689 Million Popular Tech Stock Bet",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-reveals-689-million-popular-170442666.html?.tsrc=rss",
+   "published_utc": "2026-11-17T17:04:42Z",
+   "teaser": "The quarter-end filing captures only part of the bet."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "The internet was built for Netflix streaming down to your couch. AT&T’s COO says AI agents are flipping it the other way",
+   "link": "https://finance.yahoo.com/technology/ai/articles/internet-built-netflix-streaming-down-165716511.html?.tsrc=rss",
+   "published_utc": "2026-11-17T16:57:16Z",
+   "teaser": "“The actual direction of the bandwidth of the internet is undergoing a fundamental shift,” Jeff McElfresh said. \"We’re seeing agents tap the network in a 24/7.\""
+  },
+  {
+   "symbol": "AMD",
+   "title": "David Tepper Just Made a $518 Million SpaceX Bet — But Dumped AMD and Broadcom",
+   "link": "https://247wallst.com/investing/2026/11/17/david-tepper-just-made-a-518-million-spacex-bet-but-dumped-amd-and-broadcom/?.tsrc=rss",
+   "published_utc": "2026-11-17T16:50:25Z",
+   "teaser": "Tepper walked away from two of the biggest names in AI chips and put a huge new bet on a single ticker that owns its own compute, models, and subscribers. The reasons come down to valuation, margins, and one stock that keeps sliding."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix Stock Hasn't Been This Cheap in Over 2 Years. Is Now the Time to Buy?",
+   "link": "https://www.fool.com/investing/2026/11/17/netflix-stock-hasn-t-been-this-cheap-in-over-2-years-is-now-the-time-to-buy/?.tsrc=rss",
+   "published_utc": "2026-11-17T16:37:02Z",
+   "teaser": "The streaming stock has crashed 45% in the past 12 months, despite posting strong numbers."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "‘That Math Is Obvious and Trivial’: Elon Musk Says Solar Will Supply 100% of Civilization’s Energy as SpaceX and Tesla Ramp Up Manufacturing",
+   "link": "https://finance.yahoo.com/energy/articles/math-obvious-trivial-elon-musk-163005317.html?.tsrc=rss",
+   "published_utc": "2026-11-17T16:30:05Z",
+   "teaser": "Space Exploration Technologies Corp. CEO Elon Musk said solar power will ultimately provide all energy used by civilization, pointing to mathematics and rapid deployment trends. Musk took to X on Monday and stated that \"The amount of energy we harness..."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix (NFLX) Could See Viewer Engagement Shift On Major Game Release",
+   "link": "https://finance.yahoo.com/media-advertising/articles/netflix-nflx-could-see-viewer-161156336.html?.tsrc=rss",
+   "published_utc": "2026-11-17T16:11:56Z",
+   "teaser": "Netflix (NasdaqGS:NFLX) faces a potential shift in viewer attention as anticipation builds for Grand Theft Auto VI’s launch. Industry analysts expect GTA VI to be one of the largest video game releases in history, with unusually strong pre-release consumer interest. Streaming platforms are assessing how extended gameplay sessions could influence subscription engagement and time spent watching long form content. The expected Grand Theft Auto VI launch impact on entertainment time is worth..."
+  },
+  {
+   "symbol": "MU",
+   "title": "SanDisk and Micron Fall 4% as GF Securities Cuts NAND Price Forecast and Warns of a Glut; SK Hynix Dips",
+   "link": "https://247wallst.com/investing/2026/11/17/sandisk-and-micron-fall-4-as-gf-securities-cuts-nand-price-forecast-and-warns-of-a-glut-sk-hynix-dips/?.tsrc=rss",
+   "published_utc": "2026-11-17T16:06:40Z",
+   "teaser": "Micron owns a far broader product mix, yet its shares are sinking right alongside the pure-play NAND maker. Is the market punishing every memory name on cycle fears, or did one analyst note just expose who is really at risk?"
+  },
+  {
+   "symbol": "CEG",
+   "title": "Constellation Energy vs. Vistra: Which Utilities Stock Is a Better Buy for 2027?",
+   "link": "https://www.fool.com/coverage/better-buy/2026/11/17/constellation-energy-vs-vistra-which-utilities-stock-is-a-better-buy-for-2027/?.tsrc=rss",
+   "published_utc": "2026-11-17T16:05:25Z",
+   "teaser": "Vistra trades at a lower forward P/E than Constellation Energy, but its heavier debt load and thinner free cash flow raise questions worth weighing."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple moves towards rare long-term Samsung memory deal as AI boom tightens supply",
+   "link": "https://www.proactiveinvestors.com/companies/news/1101941/apple-moves-towards-rare-long-term-samsung-memory-deal-as-ai-boom-tightens-supply-1101941.html?.tsrc=rss",
+   "published_utc": "2026-11-17T16:00:00Z",
+   "teaser": "Apple Inc (NASDAQ:AAPL, XETRA:APC) is reportedly close to signing a four-to-five-year agreement to secure supplies of dynamic random-access memory (DRAM) from Samsung Electronics (KRX:005930, LSE:BC94), marking a significant shift in its approach to buying components as the artificial..."
+  },
+  {
+   "symbol": "MU",
+   "title": "Oxide Integrates Micron Data Center Memory and Storage into Its Second-Generation Cloud Computer",
+   "link": "https://finance.yahoo.com/technology/articles/oxide-integrates-micron-data-center-155000162.html?.tsrc=rss",
+   "published_utc": "2026-11-17T15:50:00Z",
+   "teaser": "The Oxide Cloud Computer comes to SC26 and is currently available for HPC data center deploymentsCHICAGO, IL / ACCESS Newswire / November 17, 2026 / today announced that it is shipping qualified Micron memory and storage products in its second-generation on-premises Cloud Computer. SC26 attendees can see the Oxide compute sled, equipped with Micron data center products, at the Oxide booth (6114) this week."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "George Soros and 21 Other Big Funds Sold Apple Last Quarter, While 13 Bought. Who’s Right?",
+   "link": "https://www.tikr.com/blog/george-soros-and-21-other-big-funds-sold-apple-last-quarter-while-13-bought-whos-right?ref=yahoofinance&tlnk=yf-261117-m2jx4cr6&.tsrc=rss",
+   "published_utc": "2026-11-17T15:40:02Z",
+   "teaser": "Key TakeawaysOf the 456 big funds that have filed 13Fs for the quarter ended Sept. 30, 22 sold Apple or cut it by 20% or more, George Soros’ fund among them, while 13 bought or added 20% or more."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron and SanDisk Stocks Fall as GF Securities Warns NAND Glut Could Hit in 2027",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-sandisk-stocks-fall-gf-153723056.html?.tsrc=rss",
+   "published_utc": "2026-11-17T15:37:23Z",
+   "teaser": "Wall Street Sounds Alarm on NAND Chips. SanDisk Could Take the Biggest Hit"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Can AT&T's New Apple Device Deals Strengthen Its Subscriber Growth?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/ts-apple-device-deals-strengthen-153300297.html?.tsrc=rss",
+   "published_utc": "2026-11-17T15:33:00Z",
+   "teaser": "T is rolling out attractive holiday deals on Apple's latest iPhones, iPads and Apple Watches, aiming to attract new subscribers and boost device sales."
+  },
+  {
+   "symbol": "RDDT",
+   "title": "RDDT vs. GOOGL: Which Digital Advertising Stock Has an Edge Right Now?",
+   "link": "https://finance.yahoo.com/media-advertising/articles/rddt-vs-googl-digital-advertising-151500470.html?.tsrc=rss",
+   "published_utc": "2026-11-17T15:15:00Z",
+   "teaser": "Reddit emerges as the stronger digital advertising stock over Alphabet, backed by surging ad revenues, AI-driven growth, cheaper valuation, and upbeat earnings estimates."
+  },
+  {
+   "symbol": "SOFI",
+   "title": "SoFi Technologies (SOFI) Dropped, What Is Behind the Latest Attention?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-sofi-dropped-behind-151331674.html?.tsrc=rss",
+   "published_utc": "2026-11-17T15:13:31Z",
+   "teaser": "SoFi Technologies (SOFI) has been back in the spotlight after a fresh round of guidance updates, with management now targeting 40% adjusted revenue growth and a 33% adjusted EBITDA margin for 2026. Recent guidance has landed against a tough tape for SoFi Technologies, with the share price down 11.34% over the past week and 45.92% year to date, even after a 2.06% one-month share price return and a much stronger three-year total shareholder return of 124.49%. This highlights how volatile..."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Elon Musk Says Nvidia Needs Jensen Huang. Here’s What’s at Stake for Tesla and SpaceX.",
+   "link": "https://www.barchart.com/story/news/8878161/elon-musk-says-nvidia-needs-jensen-huang-heres-whats-at-stake-for-tesla-and-spacex?.tsrc=rss",
+   "published_utc": "2026-11-17T15:11:34Z",
+   "teaser": "Musk warns that Huang's departure could jeopardize critical supplier relationships, potentially disrupting the AI ambitions of some of Nvidia's biggest customers."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Warren Buffett Dumped Every Airline Stock in 2020. Berkshire Now Owns $5.6 Billion of One",
+   "link": "https://247wallst.com/investing/2026/11/17/warren-buffett-dumped-every-airline-stock-in-2020-berkshire-now-owns-5-6-billion-of-one/?.tsrc=rss",
+   "published_utc": "2026-11-17T15:07:00Z",
+   "teaser": "Berkshire Hathaway's new 13F shows 64,450,000 Delta Air Lines shares on September 30, up from 39,809,456 on March 31."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla's $3.3B Cybercab Push in Germany: Will It Pay Off?",
+   "link": "https://finance.yahoo.com/technology/articles/teslas-3-3b-cybercab-push-150300873.html?.tsrc=rss",
+   "published_utc": "2026-11-17T15:03:00Z",
+   "teaser": "Tesla's $3.3B Cybercab expansion in Germany targets 1 million vehicles annually by 2029, but can it turn manufacturing scale into a profitable robotaxi business?"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Cathie Wood Is Betting $1.2 Billion on Tesla",
+   "link": "https://www.tikr.com/blog/cathie-wood-is-betting-1-2-billion-on-tesla?ref=yahoofinance&tlnk=yf-261117-9rx4jpqp&.tsrc=rss",
+   "published_utc": "2026-11-17T15:00:17Z",
+   "teaser": "Key TakeawaysARK Invest’s latest 13F shows Tesla as its biggest holding at 6. 9% of its 13F stocks, with 22% more shares than it held at the end of June."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Executives Buy $2 Million in Stock With Shares Near Record",
+   "link": "https://finance.yahoo.com/m/a0d0fafd-3aa7-3c98-8774-a285ed3396bc/berkshire-executives-buy-%242.html?.tsrc=rss",
+   "published_utc": "2026-11-17T14:46:00Z",
+   "teaser": "CFO Charles Chang and general counsel Michael O’Sullivan added to their holdings after Berkshire’s latest earnings report."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Cathie Wood and 16 Other Big Funds Bought Netflix Last Quarter, While 20 Sold. Who’s Right?",
+   "link": "https://www.tikr.com/blog/cathie-wood-and-16-other-big-funds-bought-netflix-last-quarter-while-20-sold-whos-right?ref=yahoofinance&tlnk=yf-261117-526cxgv5&.tsrc=rss",
+   "published_utc": "2026-11-17T14:42:31Z",
+   "teaser": "Key TakeawaysOf the 456 big funds that have filed 13Fs for the third quarter, 17 bought Netflix, Cathie Wood’s ARK Invest among them, and 20 sold, including George Soros’ fund. The biggest moves came from less famous firms: Harris Associates added about $556 million of Netflix stock at quarter-end prices, while Sands Capital sold about $184 million."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix Stock Down 47%: Too Early To Buy?",
+   "link": "https://www.trefis.com/stock/nflx/articles/625752/netflix-stock-down-47-too-early-to-buy/2026-11-17?.tsrc=rss",
+   "published_utc": "2026-11-17T14:40:52Z",
+   "teaser": "Today's big story: Could Nvidia Stock Fall 50%? Follow The Cash."
+  },
+  {
+   "symbol": "CAT",
+   "title": "CAT Standardizes Construction Equipment Safety: Will It Set It Apart?",
+   "link": "https://finance.yahoo.com/technology/articles/cat-standardizes-construction-equipment-safety-144000969.html?.tsrc=rss",
+   "published_utc": "2026-11-17T14:40:00Z",
+   "teaser": "Caterpillar is making collision warning and mitigation technology standard on most new construction machines in 2027, expanding jobsite safety capabilities."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Omdia: Netflix Beats YouTube in Daily Viewing Time Across Four Latin American Markets",
+   "link": "https://finance.yahoo.com/media-advertising/articles/omdia-netflix-beats-youtube-daily-142800032.html?.tsrc=rss",
+   "published_utc": "2026-11-17T14:28:00Z",
+   "teaser": "LONDON, November 17, 2026--Viewers spend significantly more time watching Netflix than YouTube, across four major Latin American markets, according to new Omdia analysis of Digital i data presented at MIP Cancun."
+  },
+  {
+   "symbol": "CEG",
+   "title": "Why Did Constellation Energy Stock Jump Over 10%?",
+   "link": "https://www.trefis.com/stock/ceg/articles/625688/why-did-constellation-energy-stock-jump-over-10/2026-11-17?.tsrc=rss",
+   "published_utc": "2026-11-17T14:13:43Z",
+   "teaser": "Today's big story: Could Nvidia Stock Fall 50%? Follow The Cash."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "What Does Berkshire’s Climb Past Its May 2025 Peak Mean for a 78-Year-Old With $400,000 in the Stock?",
+   "link": "https://247wallst.com/investing/2026/11/17/what-does-berkshires-climb-past-its-may-2025-peak-mean-for-a-78-year-old-with-400000-in-the-stock/?.tsrc=rss",
+   "published_utc": "2026-11-17T14:03:35Z",
+   "teaser": "Berkshire finally topped its pre-Buffett-exit price, and a retired widow sitting on a $400,000 stake that pays no dividend now faces a choice. One path triggers a tax bill and Medicare surcharges, while another quietly erases the gain."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Sells 27.5M Bank of America Shares: Should Investors Worry?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-sells-27-5m-bank-135900148.html?.tsrc=rss",
+   "published_utc": "2026-11-17T13:59:00Z",
+   "teaser": "Berkshire Hathaway sells about 27.5 million BAC shares, raising concerns over investor sentiment despite the bank's promising earnings growth outlook."
+  },
+  {
+   "symbol": "CAT",
+   "title": "Michael Burry Just Closed the Last of His Caterpillar Puts. The Stock Is Down 46% From Its June High",
+   "link": "https://247wallst.com/investing/2026/11/17/michael-burry-just-closed-the-last-of-his-caterpillar-puts-the-stock-is-down-46-from-its-june-high/?.tsrc=rss",
+   "published_utc": "2026-11-17T13:03:00Z",
+   "teaser": "Michael Burry said he closed the last of his Caterpillar puts. The stock closed Monday at $570.49, 46.4% below its June high."
+  },
+  {
+   "symbol": "SOFI",
+   "title": "SoFi Technologies, Inc. (SOFI) is Attracting Investor Attention: Here is What You Should Know",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-inc-sofi-attracting-130005159.html?.tsrc=rss",
+   "published_utc": "2026-11-17T13:00:05Z",
+   "teaser": "SoFi Technologies (SOFI) has been one of the stocks most watched by Zacks.com users lately. So, it is worth exploring what lies ahead for the stock."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix, Inc. (NFLX) Is a Trending Stock: Facts to Know Before Betting on It",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-inc-nflx-trending-stock-130005621.html?.tsrc=rss",
+   "published_utc": "2026-11-17T13:00:05Z",
+   "teaser": "Zacks.com users have recently been watching Netflix (NFLX) quite a bit. Thus, it is worth knowing the facts that could determine the stock's prospects."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Why Netflix Stock Is At A One-Year Low",
+   "link": "https://www.trefis.com/stock/nflx/articles/625595/why-netflix-stock-is-at-a-one-year-low/2026-11-17?.tsrc=rss",
+   "published_utc": "2026-11-17T10:38:56Z",
+   "teaser": "Today's big story: Could Nvidia Stock Fall 50%? Follow The Cash."
   },
   {
    "symbol": "CEG",
@@ -90,95 +650,11 @@
    "teaser": "For questions about this article or underlying research, email help@trefis.com."
   },
   {
-   "symbol": "TSLA",
-   "title": "Tesla board member Joe Gebbia: Nvidia should “reinstate” Jensen Huang to let investigation play out",
-   "link": "https://finance.yahoo.com/video/tesla-board-member-joe-gebbia-010013441.html?.tsrc=rss",
-   "published_utc": "2026-11-17T01:00:13Z",
-   "teaser": "Joe Gebbia, the U.S. chief design officer, Airbnb cofounder, and Tesla board member, told Alyson Shontell that Nvidia should reinstate Jensen Huang as CEO and then run a due diligence process. “Nvidia is one of the greatest companies ever of all time, and it got there because of founder mode,” Gebbia said at the F500 Innovation Forum."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Warren Buffett's Successor, Greg Abel, Overhauled Berkshire's Portfolio for a 3rd Straight Quarter, Reducing 6 Stocks and Piling Into a Hot Tech IPO",
-   "link": "https://www.fool.com/investing/2026/11/16/warren-buffett-successor-greg-abel-overhaul-berkshire-portfolio-3rd-straight-quarter-reduce-6-stocks-buy-hot-tech-ipo/?.tsrc=rss",
-   "published_utc": "2026-11-17T00:53:01Z",
-   "teaser": "This isn’t your grandparents’ Berkshire Hathaway any longer."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "S&P 500, Dow, Nasdaq End Lower As Investors Hold Back Ahead Of Nvidia Earnings, Anthropic IPO This Week —  NVDA, TSLA, ANT In Focus",
-   "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-dow-nasdaq-end-lower-as-investors-hold-back-ahead-of-nvidia-earnings-anthropic-ipo/cNbaf4PR9gk?.tsrc=rss",
-   "published_utc": "2026-11-17T00:09:28Z",
-   "teaser": "Nvidia earnings are due on Tuesday, and Anthropic is set to list on Thursday under the ticker ANT."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Bill Ackman Adds More To Netflix In Q3; Exits Hertz, Cuts Microsoft",
-   "link": "https://stocktwits.com/news-articles/markets/equity/bill-ackman-adds-more-to-netflix-in-q3-exits-hertz-cuts-microsoft/cNbaf33R9gj?.tsrc=rss",
-   "published_utc": "2026-11-17T00:08:07Z",
-   "teaser": "According to the firm’s filing with the Securities and Exchange Commission, Pershing also opened new positions in exchange operator Intercontinental Exchange (ICE) and medical-device company Alcon (ALC) during the third quarter."
-  },
-  {
-   "symbol": "GOOGL",
-   "title": "Brad Gerstner Says AI Is at Its ‘Google 2005’ Moment. Here’s Who He Thinks Wins",
-   "link": "https://247wallst.com/investing/2026/11/16/brad-gerstner-says-ai-is-at-its-google-2005-moment-heres-who-he-thinks-wins/?.tsrc=rss",
-   "published_utc": "2026-11-17T00:07:04Z",
-   "teaser": "Brad Gerstner is putting in the biggest IPO order of his career, and he is doing it while chip stocks bleed. Why he trusts two AI labs over their chip supplier, and what could still wreck the bet."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Berkshire trims Bank of America, Capital One stakes, adds to Delta investment",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-trims-bank-america-capital-233028370.html?.tsrc=rss",
-   "published_utc": "2026-11-16T23:30:28Z",
-   "teaser": "Investment.com -- Berkshire Hathaway reshuffled its equity portfolio in the third quarter, cutting its exposure to Bank of America and Capital One while increasing its investment in Delta Air Lines and building a new position in Italian technology company Bending Spoons, a regulatory filing showed on Monday."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Warren Buffett’s Berkshire Just Revealed a New $689 Million Stock. The Company’s IPO Was Less Than Five Months Ago",
-   "link": "https://247wallst.com/investing/2026/11/16/warren-buffetts-berkshire-just-revealed-a-new-689-million-stock-the-companys-ipo-was-less-than-five-months-ago/?.tsrc=rss",
-   "published_utc": "2026-11-16T23:17:00Z",
-   "teaser": "Berkshire Hathaway's new 13F shows 20,689,655 shares of Bending Spoons, the owner of AOL, Evernote and Vimeo, which priced its initial public offering on June 30."
-  },
-  {
-   "symbol": "GOOGL",
-   "title": "David Tepper’s Appaloosa Goes Big on SpaceX, While Slashing Alphabet Stake",
-   "link": "https://finance.yahoo.com/m/f487537a-09c4-3b0f-beb6-14e5629c10ed/david-tepper%E2%80%99s-appaloosa-goes.html?.tsrc=rss",
-   "published_utc": "2026-11-16T23:09:00Z",
-   "teaser": "It was a busy quarter, marked by several exits and a few new holdings."
-  },
-  {
    "symbol": "CAT",
    "title": "What Has Changed In Caterpillar's Story?",
    "link": "https://www.trefis.com/stock/cat/articles/625206/what-has-changed-in-caterpillars-story/2026-11-16?.tsrc=rss",
    "published_utc": "2026-11-16T23:05:51Z",
    "teaser": "For questions about this article or underlying research, email help@trefis.com."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Your $300,000 in XLY Holds $125,585 in Amazon and Tesla Alone",
-   "link": "https://247wallst.com/investing/etf/2026/11/16/your-300000-in-xly-holds-125585-in-amazon-and-tesla-alone/?.tsrc=rss",
-   "published_utc": "2026-11-16T23:03:19Z",
-   "teaser": "A fund named for everyday American spending looks diversified until you open its holdings filing. Two familiar companies quietly steer the whole ride, and you may already own them twice without realizing it."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Berkshire Boosts Lennar, Starts Bending Spoons, Trims Bank Of America In Q3",
-   "link": "https://stocktwits.com/news-articles/markets/equity/berkshire-boosts-lennar-starts-bending-spoons-trims-bank-of-america-in-q3/cNbJ2orR9g1?.tsrc=rss",
-   "published_utc": "2026-11-16T23:02:47Z",
-   "teaser": "According to the company’s filing with the Securities and Exchange Commission on Monday, the firm’s overall equity portfolio stood at roughly $304 billion across about 30 positions as of the end of the quarter."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Here's What Berkshire Hathaway Bought and Sold in Q3",
-   "link": "https://www.kiplinger.com/investing/stocks/stocks-berkshire-hathaway-bought-sold-q3-2026?.tsrc=rss",
-   "published_utc": "2026-11-16T22:59:39Z",
-   "teaser": "Berkshire mostly continued where it left off in Q2. Here are all the stocks that Greg Abel & Co. added to the portfolio — and the ones they sold, too."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Berkshire Hathaway's Only New Q3 Position Is a Company Few Investors Recognize",
-   "link": "https://beincrypto.com/berkshire-bending-spoons-q3-new-position/?.tsrc=rss",
-   "published_utc": "2026-11-16T22:45:33Z",
-   "teaser": "Berkshire Hathaway's only new Q3 position is a $689 million Bending Spoons stake in the Italian owner of AOL and Evernote."
   },
   {
    "symbol": "CAT",
@@ -188,67 +664,11 @@
    "teaser": "Burry continues to hold a large put position in the VanEck Semiconductor ETF, along with puts on the Nasdaq 100, Nvidia, MetLife, and Palantir."
   },
   {
-   "symbol": "BRK/B",
-   "title": "Berkshire Hathaway Slashes This Top 5 Stock; Nvidia Boosts SpaceX",
-   "link": "https://finance.yahoo.com/m/481d5163-b671-396e-a2dc-5c0e57fb9c0b/berkshire-hathaway-slashes.html?.tsrc=rss",
-   "published_utc": "2026-11-16T22:39:00Z",
-   "teaser": "Details of Berkshire Hathaway's Q3 buys and sells came in a 13F filing after Monday's close."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Berkshire Hathaway Stock Rally Puts A Shares Near Historic $1 Million Mark",
-   "link": "https://finance.yahoo.com/m/2657f70f-be31-30d2-85b1-128d4c389fd4/berkshire-hathaway-stock.html?.tsrc=rss",
-   "published_utc": "2026-11-16T22:38:00Z",
-   "teaser": "Crossing the $1 million mark would be a major milestone for the company and for Warren Buffett."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Warren Buffett’s Berkshire Just Sold More of One of Its Five Biggest Stocks. 57.8 Million Shares Are Gone Since March",
-   "link": "https://247wallst.com/investing/2026/11/16/warren-buffetts-berkshire-just-sold-more-of-one-of-its-five-biggest-stocks-57-8-million-shares-are-gone-since-march/?.tsrc=rss",
-   "published_utc": "2026-11-16T22:23:00Z",
-   "teaser": "Berkshire Hathaway's new 13F shows 455,860,908 Bank of America shares on September 30, down 27,533,107 in three months and 57,763,257 in six."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Stock Market Today, Nov. 16: Amazon Falls on New AI Chip Export Rule and Leo Satellite Launch Failure",
-   "link": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-amazon-falls-on-new-ai-chip-export-rule-and-leo-satellite-launch-failure/?.tsrc=rss",
-   "published_utc": "2026-11-16T22:20:33Z",
-   "teaser": "Today, Nov. 16, 2026, Amazon shares slid as a new U.S. AI chip access rule and a $5 billion AWS data center deal kept AI spending in focus."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Berkshire Sold Bank of America and VeriSign Stock in Q3, and Bought Lennar and Delta",
-   "link": "https://finance.yahoo.com/m/acb811f9-8cd1-32ae-b9df-8d087895836e/berkshire-sold-bank-of.html?.tsrc=rss",
-   "published_utc": "2026-11-16T22:15:00Z",
-   "teaser": "Berkshire Hathaway reduced its Bank of America stake by 27.5 million shares in the third quarter, according to an SEC filing."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Nvidia is not considering rehiring Jensen Huang, and Amazon's data center gets bought",
-   "link": "https://finance.yahoo.com/video/nvidia-is-not-considering-rehiring-jensen-huang-and-amazons-data-center-gets-bought-221405344.html?.tsrc=rss",
-   "published_utc": "2026-11-16T22:14:05Z",
-   "teaser": "Deirdre Bosa discusses Nvidia (NVDA), claiming they are not considering bringing back Jensen Huang, Amazon's (AMZN) data centers being bought by Blackstone (BX), and Apple (AAPL) launching a study on how people use AI for health. Deirdre Bosa then sits down with Niles Investment Management Founder Dan Niles to talk about the AI trade proving itself beyond Jensen Huang, Neoclouds could be the biggest loser post-Jensen, and the Anthropic (ANTH.PVT) IPO. 'Deirdre Bosa Live' airs every day at 4 p.m. Tune in daily to hear how the latest developments in AI and technology are reshaping companies, industries, and the global economy."
-  },
-  {
-   "symbol": "META",
-   "title": "Meta pays Nevoya to put 25 electric trucks on I-10",
-   "link": "https://finance.yahoo.com/energy/articles/meta-pays-nevoya-put-25-220410952.html?.tsrc=rss",
-   "published_utc": "2026-11-16T22:04:10Z",
-   "teaser": "Meta will buy environmental attribute certificates tied to 25 Nevoya battery-electric trucks running between San Bernardino and Phoenix starting in 2027. The post Meta pays Nevoya to put 25 electric trucks on I-10 appeared first on FreightWaves."
-  },
-  {
    "symbol": "DOCN",
    "title": "DigitalOcean (DOCN) Is Growing Faster Than It Has in a Decade. How?",
    "link": "https://finance.yahoo.com/markets/stocks/articles/digitalocean-docn-growing-faster-decade-220310037.html?.tsrc=rss",
    "published_utc": "2026-11-16T22:03:10Z",
    "teaser": "DigitalOcean (NYSE:DOCN) ranks 7th on our newly published list of 11 Unstoppable Stocks to Buy According to Analysts. AI stocks had a brutal week. Last Thursday, the S&P 500 fell 4.4%, its biggest one-day drop since the April 2025 tariff shock. The Dow Jones Industrial Average lost more than 1,800 points, and the Nasdaq Composite […]"
-  },
-  {
-   "symbol": "AAPL",
-   "title": "What's dragging down the S&P 500? Apple in focus",
-   "link": "https://finance.yahoo.com/video/whats-dragging-down-the-sp-500-apple-in-focus-214949304.html?.tsrc=rss",
-   "published_utc": "2026-11-16T21:49:49Z",
-   "teaser": "Yahoo Finance Markets and Data Editor Jared Blikre joins Deirdre Bosa on Deirdre Bosa Live to discuss Apple's (AAPL) influence on the S&P 500 (^GSPC). Blikre examines what's driving the latest weakness on Wall Street."
   },
   {
    "symbol": "SOFI",
@@ -258,116 +678,11 @@
    "teaser": "SoFi's member base is growing fast, but Toast's restaurant software moat and lower forward P/E may tip the scales for cautious buyers."
   },
   {
-   "symbol": "AMD",
-   "title": "Is AMD Stock Still a Buy After Its Post-Earnings Jump?",
-   "link": "https://www.fool.com/investing/2026/11/16/is-advanced-micro-devices-amd-stock-still-buy-after-post-earnings-jump/?.tsrc=rss",
-   "published_utc": "2026-11-16T21:43:18Z",
-   "teaser": "Advanced Micro Devices has benefited from Nvidia's turmoil."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Warren Buffett’s Berkshire Nearly Doubled Its Stake in One Homebuilder Last Quarter. It Now Owns 26 Million Shares",
-   "link": "https://247wallst.com/investing/2026/11/16/warren-buffetts-berkshire-nearly-doubled-its-stake-in-one-homebuilder-last-quarter-it-now-owns-26-million-shares/?.tsrc=rss",
-   "published_utc": "2026-11-16T21:43:00Z",
-   "teaser": "Berkshire Hathaway's new 13F shows 26,034,436 Class A shares of Lennar on September 30, up from 13,111,741 three months earlier."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla's Cybertruck exit reveals an expensive gamble",
-   "link": "https://www.thestreet.com/automotive/teslas-cybertruck-exit-reveals-an-expensive-gamble?.tsrc=rss",
-   "published_utc": "2026-11-16T21:33:00Z",
-   "teaser": "Elon Musk is sacrificing his futuristic pickup to make room for a vehicle with a much bigger financial question."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Musk Plans Next Starship After Flight 15 Catch. ULA Loses Amazon Payload.",
-   "link": "https://finance.yahoo.com/m/2d356bcc-b5bf-3399-abcb-35876bae2f1a/musk-plans-next-starship.html?.tsrc=rss",
-   "published_utc": "2026-11-16T21:31:17Z",
-   "teaser": "SpaceX catches Starship with historic Flight 15 mission, Musk eyes new model. ULA suffers mission failure, loses Amazon Leo satellites."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Microsoft (MSFT) Is One of NVIDIA’s Biggest Customers, and a Growing Rival",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-one-nvidia-biggest-213025809.html?.tsrc=rss",
-   "published_utc": "2026-11-16T21:30:25Z",
-   "teaser": "We just published our list of the 10 Stocks to Buy Following Jensen Huang’s Departure, and Microsoft Corporation (NASDAQ:MSFT) rounds it out at number 10. For three years, the AI trade had one face. Now it has an interim CEO. On November 12, Jensen Huang resigned as NVIDIA’s chief executive and board member, hours after nerves […]"
-  },
-  {
    "symbol": "CAT",
    "title": "Michael Burry Cashed In Caterpillar Puts After a Nearly 4x Gain Even as CAT Stock Fell 10% in Its Worst Week in 18 Months. Is Caterpillar Still Overvalued, or Did Burry Just Lock In the Easy Money?",
    "link": "https://www.fool.com/investing/2026/11/16/michael-burry-cashed-in-caterpillar-puts-after-a-nearly-4x-gain-even-as-cat-stock-fell-10-in-its-worst-week-in-18-months-is-caterpillar-still-overvalued-or-did-burry-just-lock-in-the-easy-money/?.tsrc=rss",
    "published_utc": "2026-11-16T21:25:02Z",
    "teaser": "Caterpillar's valuation got out of hand and is now coming back down to earth."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Warren Buffett’s Berkshire Just Revealed a New Stock and Sold More Bank of America. Here’s What a 68-Year-Old With 400 Shares Owns",
-   "link": "https://247wallst.com/investing/2026/11/16/warren-buffetts-berkshire-just-revealed-a-new-stock-and-sold-more-bank-of-america-heres-what-a-68-year-old-with-400-shares-owns/?.tsrc=rss",
-   "published_utc": "2026-11-16T21:18:13Z",
-   "teaser": "Berkshire's 13F shows a new stake in Bending Spoons, a near doubling of Lennar and a $1.5 billion cut to Bank of America. Here's what a 68-year-old with 400 Berkshire shares in her IRA owns."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Amazon workers’ union gets a contract, but it’s in Canada",
-   "link": "https://finance.yahoo.com/small-business/articles/amazon-workers-union-gets-contract-211520406.html?.tsrc=rss",
-   "published_utc": "2026-11-16T21:15:20Z",
-   "teaser": "Amazon has its first deal with a union in North America, but it came from a top-down process in a Canadian province, rather than traditional collective bargaining. The Amazon view of what happened for its workers at a Delta, British Columbia fulfillment center, a Vancouver suburb, was stark. The contract for a group of workers […] The post Amazon workers’ union gets a contract, but it’s in Canada appeared first on FreightWaves."
-  },
-  {
-   "symbol": "AAPL",
-   "title": "The Tech Resale Market Is Booming. That’s Good News for Apple.",
-   "link": "https://finance.yahoo.com/m/3550bffb-77d4-3b23-b91e-3aaa0b12b846/the-tech-resale-market-is.html?.tsrc=rss",
-   "published_utc": "2026-11-16T21:11:00Z",
-   "teaser": "Consumers are looking to tighten their belts, but the world’s largest electronics company is benefiting nevertheless."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Anthropic Launches Claude Sheets. Is Microsoft's Stock in Trouble?",
-   "link": "https://www.fool.com/investing/2026/11/16/anthropic-launches-claude-sheets-is-microsoft-s-stock-in-trouble/?.tsrc=rss",
-   "published_utc": "2026-11-16T21:08:02Z",
-   "teaser": "The artificial intelligence company is expanding its productivity tools, as it looks to be making a bigger play for enterprise clients."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "JPMorgan slashes IREN price target on Microsoft site delays",
-   "link": "https://blockspace.media/short/jpmorgan-slashes-iren-price-target-on-microsoft-site-delays/?.tsrc=rss",
-   "published_utc": "2026-11-16T21:01:44Z",
-   "teaser": "JPMorgan recently reduced its price target for IREN from $65 to $55, while maintaining a buy rating, following a broader selloff in neocloud and data center stocks. At IREN's Childress,…"
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla Sells Cybercabs To The Public. It Might Be Because Of A Bet With A YouTuber.",
-   "link": "https://finance.yahoo.com/m/40779e8f-2539-3b70-a13d-63c13ba203c1/tesla-sells-cybercabs-to-the.html?.tsrc=rss",
-   "published_utc": "2026-11-16T21:00:32Z",
-   "teaser": "YouTuber Marques Brownlee bet he would shave his head if Tesla sold a Cybercab to the general public for under $30,000 by 2026. Cybercab deliveries are scheduled for December."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "FAA, Microsoft outages show the perils of system upgrades",
-   "link": "https://www.americanbanker.com/news/faa-microsoft-outages-show-the-perils-of-system-upgrades?.tsrc=rss",
-   "published_utc": "2026-11-16T20:43:24Z",
-   "teaser": "Bankers who have been through large tech projects can surely empathize with the recent situations at the Federal Aviation Administration and software giant Microsoft. There are also lessons to be drawn."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "How Investors Are Reacting To Berkshire Hathaway (BRK.A) $5.5 Billion Share Donation",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/investors-reacting-berkshire-hathaway-brk-202134127.html?.tsrc=rss",
-   "published_utc": "2026-11-16T20:21:34Z",
-   "teaser": "Warren Buffett has already converted 6,150 Berkshire Hathaway Class A shares into 9,225,000 Class B shares and donated roughly $5.5b of stock to four family foundations, while indicating that all remaining Berkshire holdings are earmarked for philanthropy. The donation coincides with Berkshire Hathaway’s Class A and B shares reaching record highs and follows significant share repurchases. This highlights how capital allocation, ownership structure and philanthropic commitments intersect with..."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla's Cybercab Comes With a Monthly Catch",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/teslas-cybercab-comes-monthly-catch-193540736.html?.tsrc=rss",
-   "published_utc": "2026-11-16T19:35:40Z",
-   "teaser": "Where owners can ride may matter as much as price."
-  },
-  {
-   "symbol": "AAPL",
-   "title": "Apple adds facial recognition unlock to iPhone Duo",
-   "link": "https://finance.yahoo.com/news/apple-adds-facial-recognition-unlock-191440685.html?.tsrc=rss",
-   "published_utc": "2026-11-16T19:14:40Z",
-   "teaser": "Investing.com -- Apple Inc. has introduced facial recognition capabilities for the iPhone Duo, addressing complaints from early adopters about the device's authentication system."
   },
   {
    "symbol": "SOFI",
@@ -377,53 +692,11 @@
    "teaser": "The fintech’s goals are ambitious, but they’re more reasonable than they look."
   },
   {
-   "symbol": "MU",
-   "title": "Micron Stocks Sink Nearly 7% After Judge Lets DRAM Supply Lawsuit Proceed",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-stocks-sink-nearly-7-182012075.html?.tsrc=rss",
-   "published_utc": "2026-11-16T18:20:12Z",
-   "teaser": "A federal judge rejected Micron, Samsung and SK hynix's bid to dismiss claims they cut conventional DRAM output to lift prices."
-  },
-  {
-   "symbol": "MU",
-   "title": "Micron Stock: Why Strong Memory Prices May Count for Nothing",
-   "link": "https://finance.yahoo.com/m/6b85e733-ffc0-3cbf-93ed-2c5633543e8e/micron-stock%3A-why-strong.html?.tsrc=rss",
-   "published_utc": "2026-11-16T18:14:00Z",
-   "teaser": "Micron stock isn't benefiting from predictions of rising memory prices next year."
-  },
-  {
-   "symbol": "MU",
-   "title": "Why Micron Stock Keeps Going Down",
-   "link": "https://www.fool.com/investing/2026/11/16/why-micron-stock-keeps-going-down/?.tsrc=rss",
-   "published_utc": "2026-11-16T18:10:12Z",
-   "teaser": "The Nvidia scandal drove Micron stock lower for a third straight day Monday."
-  },
-  {
-   "symbol": "MU",
-   "title": "Why Micron Stock Dove Today",
-   "link": "https://www.fool.com/investing/2026/11/16/why-micron-stock-dove-today/?.tsrc=rss",
-   "published_utc": "2026-11-16T17:43:42Z",
-   "teaser": "The U.S. government is taking steps to stem the flow of AI-related technology to China."
-  },
-  {
-   "symbol": "META",
-   "title": "Meta’s Prepayment Is Buying Oklo’s Nuclear Fuel for Up to Five Reactors",
-   "link": "https://www.tikr.com/blog/metas-prepayment-is-buying-oklos-nuclear-fuel-for-up-to-five-reactors?ref=yahoofinance&tlnk=yf-261116-2vpq4v59&.tsrc=rss",
-   "published_utc": "2026-11-16T17:24:04Z",
-   "teaser": "Key TakeawaysOklo (OKLO) signed definitive agreements with Centrus Energy (LEU) on November 12 to secure enough nuclear fuel for up to five Aurora powerhouses, with deliveries starting in 2029. Meta Platforms (META) is helping finance fuel purchases for Oklo’s planned 1."
-  },
-  {
    "symbol": "CAT",
    "title": "Caterpillar (CAT) Stock Fair Value Falls As Analysts Cut Targets And Lift Rates",
    "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-stock-fair-value-171207128.html?.tsrc=rss",
    "published_utc": "2026-11-16T17:12:07Z",
    "teaser": "Caterpillar’s modeled fair value has shifted lower from about US$902.34 to approximately US$815.26, trimming the stock’s implied upside in current research. Analysts link this reset to more conservative work on valuation, including higher discount rates and closer scrutiny of how AI, data center and construction demand might flow through to earnings over time. As you read on, you will see how this evolving narrative could shape the way you track Caterpillar from here. Analyst Price Targets..."
-  },
-  {
-   "symbol": "MU",
-   "title": "Micron Has $14.6 Billion in China-Linked Revenue. Are These New U.S. Chip Export Rules a Threat?",
-   "link": "https://247wallst.com/investing/2026/11/16/micron-has-14-6-billion-in-china-linked-revenue-are-these-new-u-s-chip-export-rules-a-threat/?.tsrc=rss",
-   "published_utc": "2026-11-16T17:07:08Z",
-   "teaser": "Washington just drew a new line around where AI chips can go, and Micron's growth runs straight through AI data centers worldwide. Management says China exposure is fading, but the stock already slid sharply. What does the new rule actually threaten?"
   },
   {
    "symbol": "SOFI",
@@ -433,34 +706,6 @@
    "teaser": "SoFi just posted record results, yet the stock sits near its 52-week low and has shed more than 40% this year. Our model maps three scenarios for a $10,000 stake, and the spread between best and worst is striking."
   },
   {
-   "symbol": "META",
-   "title": "Trump Media Sinks 12% Ahead of Convertible-Note Deadline and TAE Merger Vote; Rumble Tumbles 11%, Meta Declines 2%",
-   "link": "https://247wallst.com/investing/2026/11/16/trump-media-sinks-12-ahead-of-convertible-note-deadline-and-tae-merger-vote-rumble-tumbles-11-meta-declines-2/?.tsrc=rss",
-   "published_utc": "2026-11-16T17:02:54Z",
-   "teaser": "A nine-figure note obligation could drain the very cash Trump Media needs for its fusion-energy merger. A record quarterly profit hides a stranger story, and shareholders must soon decide what comes next."
-  },
-  {
-   "symbol": "AAPL",
-   "title": "Apple Is “Literally the Trade of the Year” Says Josh Brown, for a Very Simple Reason",
-   "link": "https://www.tikr.com/blog/apple-is-literally-the-trade-of-the-year-says-josh-brown-for-a-very-simple-reason?ref=yahoofinance&tlnk=yf-261116-3qvmffq8&.tsrc=rss",
-   "published_utc": "2026-11-16T16:49:15Z",
-   "teaser": "Key TakeawaysApple is the best-performing Magnificent Seven stock this year, and Josh Brown calls it “literally the trade of the year” as investors sell NVIDIA and memory stocks. Apple’s capital spending fell to $9."
-  },
-  {
-   "symbol": "AAPL",
-   "title": "I Will Keep Holding Apple Stock at New All-Time Highs as Long as It Stays Above This Key Level",
-   "link": "https://www.barchart.com/story/news/8858008/i-will-keep-holding-apple-stock-at-new-all-time-highs-as-long-as-it-stays-above-this-key-level?.tsrc=rss",
-   "published_utc": "2026-11-16T16:40:03Z",
-   "teaser": "Apple (AAPL) combines excellent profitability and strong price momentum with significant valuation challenges and mixed growth indicators. The stock is trading at a new all-time high, and shares are up more than 30% over the past year. AAPL maintains a 100% “Buy” technical opinion from Barchart. I continue to own..."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix Stock Now Trades at a 70% Discount to Its Peak Valuation, and One Number Is to Blame",
-   "link": "https://www.fool.com/investing/2026/11/16/netflix-stock-trades-70-discount-peak-valuation-one-number-blame/?.tsrc=rss",
-   "published_utc": "2026-11-16T16:20:02Z",
-   "teaser": "Market sentiment has taken a negative turn for a business investors considered a perennial winner."
-  },
-  {
    "symbol": "CEG",
    "title": "Will Rising Operating Income Boost CEG's Long-Term Earnings Growth?",
    "link": "https://finance.yahoo.com/markets/stocks/articles/rising-operating-income-boost-cegs-161000671.html?.tsrc=rss",
@@ -468,25 +713,11 @@
    "teaser": "Constellation Energy's surging operating income, Calpine contributions, long-term power contracts and nuclear upgrades strengthen its earnings growth outlook through 2029."
   },
   {
-   "symbol": "META",
-   "title": "Mapbox Powers Hands-free Cycling Navigation on Meta Ray-Bans",
-   "link": "https://finance.yahoo.com/technology/ai/articles/mapbox-powers-hands-free-cycling-160000827.html?.tsrc=rss",
-   "published_utc": "2026-11-16T16:00:00Z",
-   "teaser": "Mapbox, a leading provider of location infrastructure for AI, today announced an expanded partnership with Meta to bring hands-free cycling navigation to Meta Ray-Ban Display glasses."
-  },
-  {
    "symbol": "CAT",
    "title": "Caterpillar’s 34% Slump Over 6 Months: Wall Street Desk Says It Sets Up 90% Gains Within a Year",
    "link": "https://247wallst.com/investing/2026/11/16/caterpillars-34-slump-over-6-months-wall-street-desk-says-it-sets-up-90-gains-within-a-year/?.tsrc=rss",
    "published_utc": "2026-11-16T15:45:52Z",
    "teaser": "Caterpillar's record backlog is stacked with data center orders stretching into 2030, yet the stock has cratered while Deere and PACCAR barely flinched. Is Wall Street punishing the wrong fear, and what will the next earnings call reveal?"
-  },
-  {
-   "symbol": "META",
-   "title": "Google and Meta Tell Two Different Stories as Search Rebounds",
-   "link": "https://finance.yahoo.com/technology/articles/google-meta-tell-two-different-154422387.html?.tsrc=rss",
-   "published_utc": "2026-11-16T15:44:22Z",
-   "teaser": "The next test is whether more queries lift ad sales."
   },
   {
    "symbol": "CAT",
@@ -510,27 +741,6 @@
    "teaser": "Caterpillar's equipment demand recovery is accelerating, with all three major segments driving volume growth and supporting its mid-to-high-teens revenue growth outlook for 2026."
   },
   {
-   "symbol": "META",
-   "title": "Meta Stock Has Fallen 3% YTD. Its Cheapest AI Model Could Change Everything.",
-   "link": "https://www.barchart.com/story/news/8855657/meta-stock-has-fallen-3-ytd-its-cheapest-ai-model-could-change-everything?.tsrc=rss",
-   "published_utc": "2026-11-16T14:30:03Z",
-   "teaser": "Meta's new Muse Ember model could lower the cost of running AI agents and make large-scale deployment more economical."
-  },
-  {
-   "symbol": "CAT",
-   "title": "Caterpillar Makes Advanced Safety Technologies Standard on Construction Equipment",
-   "link": "https://finance.yahoo.com/technology/articles/caterpillar-makes-advanced-safety-technologies-141500778.html?.tsrc=rss",
-   "published_utc": "2026-11-16T14:15:00Z",
-   "teaser": "Caterpillar Inc. (NYSE: CAT) is making collision warning and collision mitigation technologies standard on the majority of new Cat® construction machines throughout 2027. The move expands access to advanced safety technology that helps improve operator awareness and jobsite safety."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix Lowers 2026 Ad Revenue Forecast: Time to Hold the Stock?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-lowers-2026-ad-revenue-135900499.html?.tsrc=rss",
-   "published_utc": "2026-11-16T13:59:00Z",
-   "teaser": "NFLX cuts its 2026 ad revenue forecast to $2.7B, but strong margins, cash flow and a packed content slate support holding the stock despite valuation risks."
-  },
-  {
    "symbol": "MKSI",
    "title": "Wall Street Analysts See a 45.9% Upside in MKS (MKSI): Can the Stock Really Move This High?",
    "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-analysts-see-45-135503767.html?.tsrc=rss",
@@ -545,39 +755,11 @@
    "teaser": "Recently, Zacks.com users have been paying close attention to Constellation Energy Corporation (CEG). This makes it worthwhile to examine what the stock has in store."
   },
   {
-   "symbol": "CAT",
-   "title": "Is Trending Stock Caterpillar Inc. (CAT) a Buy Now?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/trending-stock-caterpillar-inc-cat-130004520.html?.tsrc=rss",
-   "published_utc": "2026-11-16T13:00:04Z",
-   "teaser": "Zacks.com users have recently been watching Caterpillar (CAT) quite a bit. Thus, it is worth knowing the facts that could determine the stock's prospects."
-  },
-  {
    "symbol": "RDDT",
    "title": "Reddit Is Down 60% This Year. Time to Buy?",
    "link": "https://www.tikr.com/blog/reddit-is-down-60-this-year-time-to-buy?ref=yahoofinance&tlnk=yf-261116-rcwwfxhc&.tsrc=rss",
    "published_utc": "2026-11-16T11:32:24Z",
    "teaser": "Key TakeawaysReddit stock is down 57% this year as Google’s AI search sends it fewer visitors. Reddit still guided to about 40% fourth-quarter growth, and free cash flow hit $1."
-  },
-  {
-   "symbol": "CAT",
-   "title": "State Street Industrial Select Sector SPDR (XLI) Adds GE and Caterpillar on Thursday",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-industrial-select-sector-110527356.html?.tsrc=rss",
-   "published_utc": "2026-11-16T11:05:27Z",
-   "teaser": "The $31.21 billion fund bought $214.8 million in stocks, increasing all 83 positions and selling nothing."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "ETFs Are Buying Netflix (NFLX) on Nov. 12",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-netflix-nflx-nov-110111950.html?.tsrc=rss",
-   "published_utc": "2026-11-16T11:01:11Z",
-   "teaser": "ETFs bought $59.6 million of Netflix stock, with 42 funds buying and 12 selling."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Trump Backs a Hollywood Tax Break So Movies “Must Stay in America.” Netflix and Disney Could Gain",
-   "link": "https://www.tikr.com/blog/trump-backs-a-hollywood-tax-break-so-movies-must-stay-in-america-netflix-and-disney-could-gain?ref=yahoofinance&tlnk=yf-261116-9x4j4cjp&.tsrc=rss",
-   "published_utc": "2026-11-16T09:53:21Z",
-   "teaser": "Key TakeawaysPresident Trump backed a bipartisan bill that would give US film and TV productions a 20% federal tax credit on labor costs. A credit would lower what Netflix and Disney pay to film in the US, helping cash flow and margins."
   },
   {
    "symbol": "RDDT",
@@ -587,20 +769,6 @@
    "teaser": "Reddit (NYSE:RDDT) is scheduled to present at the Yahoo Finance Invest 2026 conference, according to a recent event listing. The appearance gives Reddit executives a public stage to discuss the business with an audience focused on listed companies. Yahoo Finance Invest 2026 typically features sessions where management teams outline priorities, product focus, or high level operating themes. Reddit's upcoming Yahoo Finance Invest 2026 appearance is one piece of a broader story that goes beyond..."
   },
   {
-   "symbol": "SOFI",
-   "title": "SoFi Planned for 2 Rate Cuts This Year and Got a Rate Hike. It Raised Its Guidance Anyway.",
-   "link": "https://www.fool.com/investing/2026/11/15/sofi-planned-for-2-rate-cuts-this-year-and-got-a-r/?.tsrc=rss",
-   "published_utc": "2026-11-15T21:50:00Z",
-   "teaser": "The fintech company's strengths offset its weaknesses."
-  },
-  {
-   "symbol": "SOFI",
-   "title": "SoFi Expects About 50% Earnings Growth in 2027 and Says It Won't Need to Raise New Capital",
-   "link": "https://www.fool.com/investing/2026/11/15/sofi-expects-about-50-earnings-growth-in-2027-and/?.tsrc=rss",
-   "published_utc": "2026-11-15T19:19:00Z",
-   "teaser": "The online bank's growth is now being earned rather than bought. This is a key turning point for investors."
-  },
-  {
    "symbol": "UPS",
    "title": "United Parcel Service (UPS) Appoints Shannon Eisenhardt To Its Board And Audit Committee",
    "link": "https://finance.yahoo.com/markets/stocks/articles/united-parcel-ups-appoints-shannon-190805225.html?.tsrc=rss",
@@ -608,60 +776,11 @@
    "teaser": "United Parcel Service (NYSE:UPS) appointed Shannon Eisenhardt to its Board of Directors, effective immediately, and named her to the Audit Committee. Eisenhardt brings executive finance experience from prior senior roles at Reckitt Benckiser and Nike, with a focus on global consumer businesses. Her background spans corporate finance, business planning, and technology leadership, which may affect how UPS evaluates future projects and controls. The addition of Shannon Eisenhardt to the UPS..."
   },
   {
-   "symbol": "NFLX",
-   "title": "Netflix, HBO, and Disney keep raising streaming prices",
-   "link": "https://www.thestreet.com/entertainment/peacock-espn-netflix-apple-tv-and-disney-streaming-service-test-loyalty-with-price-hikes?.tsrc=rss",
-   "published_utc": "2026-11-15T16:33:00Z",
-   "teaser": "Cord-cutting could become streaming-cutting as a new option gains viewers."
-  },
-  {
-   "symbol": "SOFI",
-   "title": "What Does SoFi Technologies (SOFI) Polygon Stablecoin Expansion Mean For Users?",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/does-sofi-technologies-sofi-polygon-130607240.html?.tsrc=rss",
-   "published_utc": "2026-11-15T13:06:07Z",
-   "teaser": "SoFi Technologies (NasdaqGS: SOFI) expanded its bank issued stablecoin, SoFiUSD, to the Polygon blockchain in mid November 2026. SoFiUSD is issued by a U.S. national bank and is described as being backed 1:1 by U.S. dollars held in reserve. The Polygon launch takes SoFiUSD to a third major network after Ethereum and Solana, widening cross chain payment options for users. The move to Polygon for SoFiUSD, a bank issued stablecoin, is worth weighing alongside the rest of our findings on SoFi..."
-  },
-  {
-   "symbol": "SOFI",
-   "title": "SoFi Jumped 9% on a Record $1.4 Billion Quarter as Personal Loans Did the Heavy Lifting",
-   "link": "https://www.tikr.com/blog/sofi-jumped-9-on-a-record-1-4-billion-quarter-as-personal-loans-did-the-heavy-lifting?ref=yahoofinance&tlnk=yf-261115-3w49ffmc&.tsrc=rss",
-   "published_utc": "2026-11-15T03:19:21Z",
-   "teaser": "Key TakeawaysSoFi’s third-quarter revenue rose 44% to a record $1. 4 billion, nearly matching Robinhood’s $1."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix (NFLX) Following Ad Outlook Cuts Still Looks Undervalued To Some Investors",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-nflx-following-ad-outlook-190805204.html?.tsrc=rss",
-   "published_utc": "2026-11-14T19:08:05Z",
-   "teaser": "Netflix (NFLX) cut its 2026 ad revenue and free cash flow outlook after delays in rolling out new ad features and partner integrations, putting the streaming group’s newer ad-supported model under closer investor scrutiny. Investors have reacted quickly to the ad guidance cut, with Netflix’s share price falling 11.9% over the past 30 days and down 31.7% year to date, while the 1 year total shareholder return is down 44.1%. However, the 3 year total shareholder return remains positive at..."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix Engagement Growth Is Slowing. Here’s Why I Bought More Anyway.",
-   "link": "https://www.fool.com/investing/2026/11/14/netflix-engagement-growth-is-slowing-i-bought-more-anyway/?.tsrc=rss",
-   "published_utc": "2026-11-14T18:05:01Z",
-   "teaser": "Netflix's core competitive advantage should drive great long-term results."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix Stock Has Been Cut in Half Since Its 2025 Peak. History Says What Came After Its Last 5 Drops Like This.",
-   "link": "https://www.fool.com/investing/2026/11/14/netflix-stock-has-been-cut-in-half-since-its-2025-peak-history-says-what-came-after-its-last-5-drops-like-this/?.tsrc=rss",
-   "published_utc": "2026-11-14T10:33:02Z",
-   "teaser": "It has happened just five times before. Did buying at the halfway mark pay off?"
-  },
-  {
    "symbol": "RDDT",
    "title": "Reddit Sinks 29% in a Day as Huffman Says Google’s AI Mode “Does Not Drive Traffic”",
    "link": "https://www.tikr.com/blog/reddit-sinks-29-in-a-day-as-huffman-says-googles-ai-mode-does-not-drive-traffic?ref=yahoofinance&tlnk=yf-261114-c3f3xcpm&.tsrc=rss",
    "published_utc": "2026-11-14T07:35:08Z",
    "teaser": "Key TakeawaysReddit shares fell 29% on October 30 after the company warned Google’s AI search was cutting referral traffic, even though revenue jumped 53% to $895 million. CEO Steve Huffman said “the AI mode does not drive traffic,” and US daily users fell 2% to 50."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Walt Disney vs. Netflix: Which Is the Better Entertainment Stock to Buy Going Into 2027?",
-   "link": "https://www.fool.com/coverage/better-buy/2026/11/13/walt-disney-vs-netflix-which-is-the-better-entertainment-stock-to-buy-going-into-2027/?.tsrc=rss",
-   "published_utc": "2026-11-13T19:54:40Z",
-   "teaser": "Netflix commands a premium forward P/E, while Disney's parks, streaming, and licensing empire trades at a far lower sales multiple. Which valuation holds up better for the years ahead?"
   },
   {
    "symbol": "RDDT",
@@ -692,53 +811,11 @@
    "teaser": "Key TakeawaysUPS yields 6. 1% and Kraft Heinz 6."
   },
   {
-   "symbol": "NFLX",
-   "title": "Netflix Said To Eye 'Channel Store,' May Bundle With Fox One",
-   "link": "https://www.mediapost.com/publications/article/419434/netflix-may-launch-channel-store-or-bundle-with-fo.html?.tsrc=rss",
-   "published_utc": "2026-11-13T16:35:52Z",
-   "teaser": "Co-branded streaming bundles such as Disney+, Hulu, and HBO Max and other combinations have resulted in steadier subscriber retention with lower 'churn.'"
-  },
-  {
-   "symbol": "RDDT",
-   "title": "Argus’s $150 Target Says Reddit’s Selloff Went Too Far",
-   "link": "https://www.tikr.com/blog/arguss-150-target-says-reddits-selloff-went-too-far?ref=yahoofinance&tlnk=yf-261113-56mpv48f&.tsrc=rss",
-   "published_utc": "2026-11-13T15:45:21Z",
-   "teaser": "Key TakeawaysArgus cut its Reddit price target to $150 from $225 and kept its Buy rating, a target 49% above today’s price. Reddit’s stock has sunk since its third-quarter report, when management warned that search traffic from Alphabet’s Google is falling fast and daily users could drop."
-  },
-  {
-   "symbol": "RDDT",
-   "title": "Reddit CEO Steve Huffman on surfing today's internet with AI",
-   "link": "https://finance.yahoo.com/video/reddit-ceo-steve-huffman-on-surfing-todays-internet-with-ai-154153772.html?.tsrc=rss",
-   "published_utc": "2026-11-13T15:41:53Z",
-   "teaser": "Reddit (RDDT) CEO and co-founder Steve Huffman joins Yahoo Finance Executive Editor Brian Sozzi at Yahoo Finance's 2026 Invest conference to discuss how AI depends on human-generated content like Reddit's and is one of the last platforms requiring users to log in."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "GTN vs. NFLX: Which Stock Is the Better Value Option?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/gtn-vs-nflx-stock-better-154004583.html?.tsrc=rss",
-   "published_utc": "2026-11-13T15:40:04Z",
-   "teaser": "GTN vs. NFLX: Which Stock Is the Better Value Option?"
-  },
-  {
-   "symbol": "NFLX",
-   "title": "What Could Surprise Netflix Stock Investors On The Upside?",
-   "link": "https://www.trefis.com/stock/nflx/articles/624979/what-could-surprise-netflix-stock-investors-on-the-upside/2026-11-13?.tsrc=rss",
-   "published_utc": "2026-11-13T14:56:12Z",
-   "teaser": "For questions about this article or underlying research, email help@trefis.com."
-  },
-  {
    "symbol": "UPS",
    "title": "UPS or Comcast: I Can Only Pick One Dividend Stock for the Next 10 Years. Here’s Mine",
    "link": "https://www.tikr.com/blog/ups-or-comcast-i-can-only-pick-one-dividend-stock-for-the-next-10-years-heres-mine?ref=yahoofinancedividend&tlnk=yf-261113-p8h7vh7v&.tsrc=rss",
    "published_utc": "2026-11-13T14:48:09Z",
    "teaser": "Key TakeawaysUPS yields 6% and Comcast 5%, and each held its quarterly dividend flat in its latest declaration. UPS’s dividend took 85% of its free cash flow over the twelve months to Sept."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix Stock Outlook: Is Wall Street Bullish or Bearish?",
-   "link": "https://www.barchart.com/story/news/8822222/netflix-stock-outlook-is-wall-street-bullish-or-bearish?.tsrc=rss",
-   "published_utc": "2026-11-13T14:22:59Z",
-   "teaser": "Netflix has lagged behind the broader market over the past year, yet analysts remain cautiously optimistic about the stock’s prospects."
   },
   {
    "symbol": "LIN",
@@ -769,20 +846,6 @@
    "teaser": "Constellation Energy has climbed sharply over the past few years, yet the share price has pulled back in 2024, which puts fresh focus on whether the current level is in line with what its earnings can support. Over the past 3 years the stock has gained 136.1%, so a lot of future profit expectations are already embedded in the valuation question. Recent news that Constellation Energy more than doubled net income and lifted longer term earnings expectations, while expanding its generation..."
   },
   {
-   "symbol": "CEG",
-   "title": "Bloom Energy vs. Constellation Energy: On-Site Power or Grid Power, Which Wins the Data Center?",
-   "link": "https://www.fool.com/investing/2026/11/13/bloom-energy-vs-constellation-energy-on-site-power/?.tsrc=rss",
-   "published_utc": "2026-11-13T09:06:00Z",
-   "teaser": "Bloom Energy offers speed, while Constellation Energy brings nuclear scale. But which stock belongs in your portfolio as AI's power demands grow?"
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Should Netflix (NFLX) Investors Rethink Its Outlook After Bill Ackman’s Fresh Backing?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-nflx-investors-rethink-outlook-080854948.html?.tsrc=rss",
-   "published_utc": "2026-11-13T08:08:54Z",
-   "teaser": "Bill Ackman reiterated his confidence in Netflix (NasdaqGS:NFLX) and its long-term outlook in fresh comments to investors. He pointed to higher expected cash generation as a key support for his positive view on the streaming platform’s future. Ackman also highlighted new content approaches and internal reorganization moves that he believes can improve Netflix’s operating performance. Bill Ackman’s renewed backing of Netflix’s long-term prospects and operational shifts is important to weigh..."
-  },
-  {
    "symbol": "UPS",
    "title": "Does UPS Stock's Run Make Any Sense Now?",
    "link": "https://www.trefis.com/stock/ups/articles/624556/does-ups-stocks-run-make-any-sense-now/2026-11-12?.tsrc=rss",
@@ -811,25 +874,11 @@
    "teaser": "Key TakeawaysA $400,000 portfolio split evenly across UPS, Enterprise Products Partners and Pfizer pays about $1,960 a month in dividends at today’s prices. Enterprise Products Partners has the most room behind its payout, with distributable cash flow at 1."
   },
   {
-   "symbol": "CEG",
-   "title": "Constellation Energy Soars 13% in a Week on a Guidance Raise: “A Platform Heretofore Unseen”",
-   "link": "https://www.tikr.com/blog/constellation-energy-soars-12-in-a-week-on-a-guidance-raise-a-platform-heretofore-unseen?ref=yahoofinance&tlnk=yf-261112-6375477v&.tsrc=rss",
-   "published_utc": "2026-11-12T16:35:34Z",
-   "teaser": "Key TakeawaysConstellation Energy is up 13% in the past week after a third-quarter beat and its second guidance raise this year. After Vistra’s record quarter, Constellation’s report showed customers are still signing deals despite the midterm scare."
-  },
-  {
    "symbol": "UPS",
    "title": "UPS’ Teamsters contract expires in 2028. Shippers should prepare now.",
    "link": "https://www.supplychaindive.com/news/ups-teamsters-contract-expires-in-2028-shippers-should-prepare-now/874374/?.tsrc=rss",
    "published_utc": "2026-11-12T15:34:00Z",
    "teaser": "Even with a potential clash a ways out, shippers should ensure they have other established carrier relationships to mitigate strike risk, experts say."
-  },
-  {
-   "symbol": "UPS",
-   "title": "UPS (UPS) Stock Gets Fair Value Bump After Q3 Beat And Analyst Revisions",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/ups-ups-stock-gets-fair-071311747.html?.tsrc=rss",
-   "published_utc": "2026-11-12T07:13:11Z",
-   "teaser": "The latest analyst updates for United Parcel Service center on modest price target adjustments, with fair value estimates now around US$115.46 per share compared with roughly US$112.54 previously. Many firms link these changes to recent research that highlights a Q3 earnings beat, improving mix and productivity, and ongoing debate about how much of this progress is already reflected in current valuations. As you read on, you will see how these shifting targets feed into the broader narrative..."
   },
   {
    "symbol": "DOCN",
@@ -844,13 +893,6 @@
    "link": "https://www.trefis.com/stock/lin/articles/624358/before-you-buy-linde-stock-settle-this/2026-11-11?.tsrc=rss",
    "published_utc": "2026-11-12T00:20:13Z",
    "teaser": "For questions about this article or underlying research, email help@trefis.com."
-  },
-  {
-   "symbol": "UPS",
-   "title": "United Parcel Service (UPS) Opens $80 Million Philippines Air Hub As Asia Trade Shifts",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/united-parcel-ups-opens-80-171545684.html?.tsrc=rss",
-   "published_utc": "2026-11-11T17:15:45Z",
-   "teaser": "United Parcel Service (NYSE:UPS) is investing more than US$80 million in a new air hub in the Philippines to scale its Asian logistics network. The facility is being developed at Clark International Airport and is intended to serve as a regional air gateway for shifting intra Asia trade routes. UPS plans to use the Philippine hub to support customers moving manufacturing and sourcing closer to key end markets. UPS opening a major new Philippine air hub is important context, but investors..."
   },
   {
    "symbol": "LIN",
