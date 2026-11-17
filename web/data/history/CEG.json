@@ -3,12 +3,12 @@
  "name": "Constellation Energy Corporation",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-17T16:24:16Z",
- "price": 272.79,
+ "as_of_utc": "2026-11-17T16:47:08Z",
+ "price": 273.43,
  "previous_close": 338.67,
  "day_high": 279.85,
  "day_low": 268.305,
- "volume": 736864,
+ "volume": 875752,
  "week52_high": 380.78,
  "week52_low": 228.63,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-17",
-   "close": 272.79
+   "close": 273.43
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-17T16:24:18Z"
+ "retrieved_at_utc": "2026-11-17T16:47:11Z"
 }
