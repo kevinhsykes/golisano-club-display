@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-18T21:33:20Z",
+ "checked_at_utc": "2026-11-18T21:45:00Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -28,6 +28,27 @@
  "items": [
   {
    "symbol": "NVDA",
+   "title": "Nvidia, Take-Two, Palo Alto, Applied Optoelectronics, TJX, and More Stocks That Explain Today’s Market",
+   "link": "https://finance.yahoo.com/m/415e4137-8850-333d-b848-d21e98bc6659/nvidia%2C-take-two%2C-palo-alto%2C.html?.tsrc=rss",
+   "published_utc": "2026-11-18T21:31:00Z",
+   "teaser": "Nvidia falls as rock-solid earnings aren’t enough to change Wall Street’s AI-trade narrative."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia's Board Chairman Says Jensen Huang Isn't Coming Back, but He May Have a Poker Move for the Ages Hiding up His Sleeve",
+   "link": "https://www.fool.com/investing/2026/11/18/nvidia-s-board-says-jensen-huang-isn-t-coming-back-but-he-may-have-a-poker-move-for-the-ages-hiding-up-his-sleeve/?.tsrc=rss",
+   "published_utc": "2026-11-18T21:28:24Z",
+   "teaser": "Nvidia's Board Chair, Harvey Jones, says the company does not plan to reinstate Jensen Huang as CEO."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Stocks slide despite bumper Nvidia profits, Anthropic IPO",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/stocks-drop-booming-nvidia-results-024500677.html?.tsrc=rss",
+   "published_utc": "2026-11-18T21:25:42Z",
+   "teaser": "Investors on Wednesday were absorbing a blockbuster earnings report from chip titan Nvidia and getting set for the long-awaited IPO from AI giant Anthropic, though stocks fell across the board as uncertainty continues to stalk the industry.The five-year-old startup is going public Thursday in an IPO that could raise $65 billion or more -- giving investors a first chance to bet directly on a stand-alone AI giant in a test of how long the sector's spending boom can last."
+  },
+  {
+   "symbol": "NVDA",
    "title": "Nvidia Delivers Reassuring Results, Outlook. But Wall Street Split.",
    "link": "https://finance.yahoo.com/m/7d839da5-898d-3b89-b6a4-ed8b84753cb0/nvidia-delivers-reassuring.html?.tsrc=rss",
    "published_utc": "2026-11-18T21:23:53Z",
@@ -39,6 +60,13 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/us-equity-markets-mixed-nvidia-212344686.html?.tsrc=rss",
    "published_utc": "2026-11-18T21:23:44Z",
    "teaser": "US equity indexes were mixed Wednesday after Nvidia (NVDA) shares declined despite a fiscal Q3 beat"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Amazon and Google Have a Stake",
+   "link": "https://finance.yahoo.com/m/d531fa3b-8542-340b-825c-bb4b95cd1a7b/amazon-and-google-have-a-stake.html?.tsrc=rss",
+   "published_utc": "2026-11-18T21:23:02Z",
+   "teaser": "Amazon.com and Google could soon own more than 35% of Anthropic stock."
   },
   {
    "symbol": "TSLA",
@@ -69,11 +97,11 @@
    "teaser": "Making the latest list of new buys by top funds, Apple stock shows strength while fellow AI names Nvidia and Meta flounder."
   },
   {
-   "symbol": "NVDA",
-   "title": "‘Nvidia’s turmoil has me spooked’: Should I sell my stocks and buy real estate — or ride out the storm?",
-   "link": "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6?.tsrc=rss",
-   "published_utc": "2026-11-18T21:00:00Z",
-   "teaser": "Tempted to ditch stocks for property or CDs? Take a deep breath before making any sudden moves."
+   "symbol": "MSFT",
+   "title": "Microsoft expands Azure arsenal at Ignite",
+   "link": "https://www.ciodive.com/news/microsoft-expands-azure-arsenal-ignite/875125/?.tsrc=rss",
+   "published_utc": "2026-11-18T21:04:03Z",
+   "teaser": "The tech giant is building out Azure to become a “single, co-engineered system,” uniting AI models, chips and cloud infrastructure, said Microsoft’s Jeremy Winter."
   },
   {
    "symbol": "MSFT",
@@ -83,25 +111,11 @@
    "teaser": "Tech giant Microsoft (MSFT) unveiled new AI models at its Ignite conference amid intense competition from AI players OpenAI and Anthropic (ANT). Reacting to the updates at the conference, Mizuho analyst Gregg Moskowitz reiterated a Buy rating on MSFT stock with a price target of $625. The analyst believes MSFT’s revenue growth prospects over the medium term and beyond are stronger than many expect, and he remains “very bullish on its tangible AI adoption and monetization levers.” Moskowitz ranks"
   },
   {
-   "symbol": "NVDA",
-   "title": "Update: US Equity Indexes Mixed as Nvidia Undermines Risk Sentiment, Fed Minutes Favor Policy Tightening",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-nvidia-205207511.html?.tsrc=rss",
-   "published_utc": "2026-11-18T20:52:07Z",
-   "teaser": "(Updates with index/price moves and Fed minutes from the first paragraph.) US equity indexes trad"
-  },
-  {
    "symbol": "GOOGL",
    "title": "Here’s What a $1,000 Investment in Alphabet Stock Could Be Worth by 2035",
    "link": "https://www.fool.com/investing/2026/11/18/here-s-what-a-usd1-000-investment-in-alphabet-stock-could-be-worth-by-2035/?.tsrc=rss",
    "published_utc": "2026-11-18T20:50:02Z",
    "teaser": "Alphabet has several powerful growth engines, but how much could a $1,000 investment in the Google parent be worth by 2035? Here's what the numbers suggest."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "CoreWeave Stock Forecast: Can Nvidia’s AI Boom Drive More Gains?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/coreweave-stock-forecast-nvidia-ai-204347762.html?.tsrc=rss",
-   "published_utc": "2026-11-18T20:43:47Z",
-   "teaser": "CoreWeave (CRWV) stock is back in focus after Nvidia’s (NVDA) latest results showed strong demand for AI chips and data center systems. Nvidia’s comments on neocloud firms have also drawn attention to companies such as CoreWeave, which rent out high-end chips and computing power to AI firms. How Did Nvidia Perform? Nvidia reported third-quarter fiscal 2027 revenue of $115.8 billion, up 103% year-over-year. Data Center revenue rose 110% to $107.6 billion. The company also gave a fourth-quarter re"
   },
   {
    "symbol": "MU",
@@ -111,11 +125,11 @@
    "teaser": "A record year and a 38% slide have left Micron trading at a price usually reserved for shrinking businesses."
   },
   {
-   "symbol": "NVDA",
-   "title": "Arm CEO Haas Approached by Nvidia Board's Recruitment Firm",
-   "link": "https://finance.yahoo.com/video/arm-ceo-haas-approached-nvidia-203922543.html?.tsrc=rss",
-   "published_utc": "2026-11-18T20:39:22Z",
-   "teaser": "Bloomberg's Ian King said that despite the Nvidia board's claims they have not begun the recruitment process for a new CEO, the firm hired to oversee the process has reached out to ARM Holdings CEO Renee Haas as a potential replacement for Jensen Huang. King said that after Nvidia earnings came in above estimates, investors still have questions about the future Nvidia that can't be answered until a new CEO is named."
+   "symbol": "CAT",
+   "title": "Top Stock Reports for Merck, Caterpillar & Union Pacific",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/top-stock-reports-merck-caterpillar-202700360.html?.tsrc=rss",
+   "published_utc": "2026-11-18T20:27:00Z",
+   "teaser": "Merck, Caterpillar and Union Pacific benefit from strong demand, strategic growth drivers and solid cash generation, but face key competitive and execution risks."
   },
   {
    "symbol": "GOOGL",
@@ -228,20 +242,6 @@
    "link": "https://finance.yahoo.com/technology/ai/articles/supermicro-unveils-major-ai-technology-183252634.html?.tsrc=rss",
    "published_utc": "2026-11-18T18:32:52Z",
    "teaser": "Supermicro launches AMD-powered storage servers with twice the read bandwidth."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Microsoft's Next AI Revenue Test Goes Beyond Copilot",
-   "link": "https://finance.yahoo.com/technology/ai/articles/microsofts-next-ai-revenue-test-182245754.html?.tsrc=rss",
-   "published_utc": "2026-11-18T18:22:45Z",
-   "teaser": "The payoff depends on keeping new cloud capacity busy."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Microsoft, Intel Deepen Azure Partnership Amid Increasing AI, Cloud Demand",
-   "link": "https://stocktwits.com/news-articles/markets/equity/microsoft-intel-deepen-azure-partnership-amid-increasing-ai-cloud-demand/cNbg90QR9L6?.tsrc=rss",
-   "published_utc": "2026-11-18T18:21:05Z",
-   "teaser": "The agreement confirms multi-year Intel Xeon processor supply capacity for Azure, including next-generation server CPUs codenamed Diamond Rapids."
   },
   {
    "symbol": "GOOGL",
@@ -753,13 +753,6 @@
    "link": "https://www.trefis.com/stock/nflx/articles/625752/netflix-stock-down-47-too-early-to-buy/2026-11-17?.tsrc=rss",
    "published_utc": "2026-11-17T14:40:52Z",
    "teaser": "Today's big story: Could Nvidia Stock Fall 50%? Follow The Cash."
-  },
-  {
-   "symbol": "CAT",
-   "title": "CAT Standardizes Construction Equipment Safety: Will It Set It Apart?",
-   "link": "https://finance.yahoo.com/technology/articles/cat-standardizes-construction-equipment-safety-144000969.html?.tsrc=rss",
-   "published_utc": "2026-11-17T14:40:00Z",
-   "teaser": "Caterpillar is making collision warning and mitigation technology standard on most new construction machines in 2027, expanding jobsite safety capabilities."
   },
   {
    "symbol": "CEG",
