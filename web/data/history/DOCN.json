@@ -3,12 +3,12 @@
  "name": "DigitalOcean Holdings, Inc.",
  "exchange": "NYSE",
  "currency": "USD",
- "as_of_utc": "2026-11-18T19:24:14Z",
- "price": 80.72,
+ "as_of_utc": "2026-11-18T19:53:39Z",
+ "price": 80.44,
  "previous_close": 44.01,
  "day_high": 82.04,
  "day_low": 77.59,
- "volume": 779029,
+ "volume": 838557,
  "week52_high": 187.5,
  "week52_low": 42.01,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-18",
-   "close": 80.72
+   "close": 80.44
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-18T19:24:20Z"
+ "retrieved_at_utc": "2026-11-18T19:54:13Z"
 }
