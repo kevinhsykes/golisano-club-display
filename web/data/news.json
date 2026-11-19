@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-19T21:44:43Z",
+ "checked_at_utc": "2026-11-19T22:01:01Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -26,6 +26,34 @@
  "symbols_failed": [],
  "symbols_empty": [],
  "items": [
+  {
+   "symbol": "AMD",
+   "title": "Dow Jones Futures Fall After Ugly Market Reversal To New Lows; Anthropic IPO Debuts, AMD Dives",
+   "link": "https://finance.yahoo.com/m/9e02231d-41cd-31ac-b37f-993325b8a4ca/dow-jones-futures-fall-after.html?.tsrc=rss",
+   "published_utc": "2026-11-19T21:52:20Z",
+   "teaser": "The stock market suffered an ugly reversal as AMD dived and the Anthropic IPO debuted. The S&P 500 and Nasdaq hit new lows."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Blue Owl Taps Wall Street For $513M To Finance Amazon Data Center",
+   "link": "https://www.benzinga.com/markets/private-markets/26/11/63461413/blue-owl-taps-wall-street-for-513m-to-finance-amazon-data-center?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+   "published_utc": "2026-11-19T21:50:19Z",
+   "teaser": "Blue Owl Capital (NYSE:OWL) is expanding its data center footprint, with more than 40 additional facilities under construction, as the private equity firm taps into debt markets to finance a property leased to Amazon. The firm is preparing a $513..."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Anthropic, AMD, Alphabet, Palo Alto, Take-Two, Walmart, and More Stocks That Explain Today’s Market",
+   "link": "https://finance.yahoo.com/m/65710a12-1ba7-3685-a3c3-30d9e0878af7/anthropic%2C-amd%2C-alphabet%2C.html?.tsrc=rss",
+   "published_utc": "2026-11-19T21:47:00Z",
+   "teaser": "Anthropic makes its hotly anticipated trading debut."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "IBD Stock Of The Day: Amazon Chases Entry As Anthropic IPO Swings AI Sentiment",
+   "link": "https://finance.yahoo.com/m/ffef95a7-3317-39a7-af61-44c06f2b7bb5/ibd-stock-of-the-day%3A-amazon.html?.tsrc=rss",
+   "published_utc": "2026-11-19T21:39:58Z",
+   "teaser": "Amazon stock briefly almost hit a buy point from the strong Anthropic IPO pricing."
+  },
   {
    "symbol": "NVDA",
    "title": "Is Nvidia Stock a Once-in-a-Decade Buying Opportunity After Its Latest Earnings?",
@@ -70,6 +98,13 @@
   },
   {
    "symbol": "TSLA",
+   "title": "Tesla Robo-Taxi Expands to Dallas. It Isn’t Enough.",
+   "link": "https://finance.yahoo.com/m/bb73f711-c5b1-3f23-8b24-3dd6a248b942/tesla-robo-taxi-expands-to.html?.tsrc=rss",
+   "published_utc": "2026-11-19T21:07:00Z",
+   "teaser": "Pony AI’s results give Tesla investors a look at robo-taxi economics."
+  },
+  {
+   "symbol": "TSLA",
    "title": "Michael Burry Adds To Tesla Rival BYD At Five-Year Lows",
    "link": "https://stocktwits.com/news-articles/markets/equity/michael-burry-adds-to-tesla-rival-byd-at-five-year-lows/cNbiNbKR90M?.tsrc=rss",
    "published_utc": "2026-11-19T21:06:31Z",
@@ -102,13 +137,6 @@
    "link": "https://www.fool.com/investing/2026/11/19/this-is-incredible-news-for-amd-stock-investors-hint-it-s-bad-news-for-intel/?.tsrc=rss",
    "published_utc": "2026-11-19T20:56:02Z",
    "teaser": "AMD continues to chip away at Intel's dominance in the server CPU market."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia Up 8.9% After a Strong Anthropic IPO? That’s What Tilt’s New Investing Tool Modeled",
-   "link": "https://www.benzinga.com/markets/prediction-markets/26/11/63457684/anthropic-ipo-nvidia?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
-   "published_utc": "2026-11-19T20:44:06Z",
-   "teaser": "Anthropic (NASDAQ:ANT) opened at $111.50 on Thursday, 34% above its $83 IPO price. Investing startup Tilt had modeled what a strong debut might mean for shareholders in two other tech giants. Over 20 days, it put Nvidia Corp. (NASDAQ:NVDA) up..."
   },
   {
    "symbol": "TSLA",
@@ -167,13 +195,6 @@
    "teaser": "An AMD spokesperson said the reports misrepresent the company’s business practices and relationships."
   },
   {
-   "symbol": "AMD",
-   "title": "Stock Market Today: Anthropic Up 14% From IPO Price, But AMD, Chip Stocks Slide Fast (Live Coverage)",
-   "link": "https://finance.yahoo.com/m/81d1d9ec-afbb-3e6f-882b-7e094a9a305e/stock-market-today%3A-anthropic.html?.tsrc=rss",
-   "published_utc": "2026-11-19T20:00:26Z",
-   "teaser": "The Dow Jones index flipped lower with other indexes Thursday as Anthropic's splashy IPO debut failed to sustain bullish vibes on Wall Street."
-  },
-  {
    "symbol": "TSLA",
    "title": "Tesla Expands Cybercab To Dallas In First Move Outside Austin",
    "link": "https://stocktwits.com/news-articles/markets/equity/tesla-expands-cybercab-to-dallas-in-first-move-outside-austin/cNbik2YR90r?.tsrc=rss",
@@ -214,13 +235,6 @@
    "link": "https://www.ibtimes.com/trump-financial-disclosure-nvidia-spacex-tesla-purchases-3809977?.tsrc=rss",
    "published_utc": "2026-11-19T19:03:57Z",
    "teaser": "Trump disclosed 751 securities transactions from September, including Nvidia, SpaceX, Tesla and Palantir purchases. The White House says independent managers control his investments."
-  },
-  {
-   "symbol": "AMD",
-   "title": "AMD Is Still Up 125% This Year. Did Today Just Mark the Top for AMD Stock?",
-   "link": "https://247wallst.com/investing/2026/11/19/amd-is-still-up-125-this-year-did-today-just-mark-the-top-for-amd-stock/?.tsrc=rss",
-   "published_utc": "2026-11-19T19:02:28Z",
-   "teaser": "A short seller just took aim at AMD's China ties, and the stock's biggest rally in years flinched. With bulls and bears now trading sharply different readings of the same chip giant, one question hangs over the next move."
   },
   {
    "symbol": "AAPL",
@@ -286,25 +300,11 @@
    "teaser": "The next flight could show whether the idea scales."
   },
   {
-   "symbol": "AMD",
-   "title": "AMD Has a New Problem to Solve in Asia",
-   "link": "https://finance.yahoo.com/technology/ai/articles/amd-problem-solve-asia-184139858.html?.tsrc=rss",
-   "published_utc": "2026-11-19T18:41:39Z",
-   "teaser": "The report puts AMD's overseas customer relationships under scrutiny."
-  },
-  {
    "symbol": "TSLA",
    "title": "Tesla Stocks Rise as Musk Pledges More Output From Shanghai Plant",
    "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-stocks-rise-musk-pledges-183655879.html?.tsrc=rss",
    "published_utc": "2026-11-19T18:36:55Z",
    "teaser": "Shanghai delivered 810,889 Model 3 and Model Y vehicles in ten months, already pressing against its stated capacity."
-  },
-  {
-   "symbol": "AMD",
-   "title": "AMD Faces Its Own China Questions After Hunterbrook Report",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/amd-faces-own-china-questions-183546783.html?.tsrc=rss",
-   "published_utc": "2026-11-19T18:35:46Z",
-   "teaser": "Hunterbrook, whose affiliated fund is short AMD, also flagged a new U.S. export rule taking effect today"
   },
   {
    "symbol": "MSFT",
@@ -314,25 +314,11 @@
    "teaser": "Microsoft Corp (NASDAQ:MSFT) is well positioned to withstand a potential slowdown in artificial intelligence (AI) spending and gain market share, according to Jefferies, which emerged more positive after meetings with management and customers at the company's Ignite conference. The brokerage..."
   },
   {
-   "symbol": "GOOGL",
-   "title": "As Anthropic Goes Public, Open Source AI Is Closing In Says Google Pioneer",
-   "link": "https://www.coinage.media/2026/as-anthropic-goes-public-open-source-ai-is-closing-in-says-google-pioneer?.tsrc=rss",
-   "published_utc": "2026-11-19T18:28:00Z",
-   "teaser": "The lead Anthropic built is evaporating, says NEAR co-founder Illia Polosukhin"
-  },
-  {
    "symbol": "CAT",
    "title": "Caterpillar CEO Joe Creed joins Walmart board of directors",
    "link": "https://www.pjstar.com/story/business/2026/11/19/caterpillar-ceo-joe-creed-joins-walmart-board-of-directors/92859710007/?.tsrc=rss",
    "published_utc": "2026-11-19T18:26:59Z",
    "teaser": "Walmart named Caterpillar CEO Joe Creed to its board of directors this week."
-  },
-  {
-   "symbol": "GOOGL",
-   "title": "Why Alphabet's Cheap P/E May Mislead Investors",
-   "link": "https://www.trefis.com/stock/googl/articles/626644/why-alphabet-s-cheap-p-e-may-mislead-investors/2026-11-19?.tsrc=rss",
-   "published_utc": "2026-11-19T18:24:30Z",
-   "teaser": "Today's big story: Could Anthropic Stock Fall 25."
   },
   {
    "symbol": "MU",
@@ -438,20 +424,6 @@
    "link": "https://www.tikr.com/blog/netflix-just-dropped-15-in-a-month-is-there-more-pain-ahead-or-is-it-time-to-load-up?ref=yahoofinance&tlnk=yf-261119-7vgf8rfq&.tsrc=rss",
    "published_utc": "2026-11-19T15:35:36Z",
    "teaser": "Key TakeawaysNetflix stock fell 15% in the past month after a soft fourth-quarter outlook and a cut to its 2026 ad revenue forecast, to about $2. 7 billion from about $3 billion."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla Stock Could Be Worth Much More in 2027. Here’s the Number I’m Watching",
-   "link": "https://247wallst.com/investing/2026/11/19/tesla-stock-could-be-worth-much-more-in-2027-heres-the-number-im-watching/?.tsrc=rss",
-   "published_utc": "2026-11-19T15:34:58Z",
-   "teaser": "Tesla rebuilt itself around robotaxis, subscriptions, and humanoid robots, yet the stock still trails its own progress. One valuation multiple decides whether 2027 brings a breakout or a stretch too far, and it looks nothing like a normal carmaker's."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Elon Musk Says Tesla and SpaceX Would “Probably” Be Better Together",
-   "link": "https://247wallst.com/investing/2026/11/19/elon-musk-says-tesla-and-spacex-would-probably-be-better-together/?.tsrc=rss",
-   "published_utc": "2026-11-19T15:32:35Z",
-   "teaser": "Musk hinted at a Tesla and SpaceX combination, but the math points to one set of shareholders getting a smaller slice of a bigger company. Which side holds the leverage, and what could the December 3 meeting reveal?"
   },
   {
    "symbol": "NFLX",

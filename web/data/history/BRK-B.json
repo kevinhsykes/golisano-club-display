@@ -7,8 +7,8 @@
  "price": 572.04,
  "previous_close": 501.26,
  "day_high": 573.13,
- "day_low": 565.6,
- "volume": 5577397,
+ "day_low": 565.7,
+ "volume": 5588445,
  "week52_high": 596.92,
  "week52_low": 464.01,
  "closes": [
@@ -1018,5 +1018,5 @@
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-19T21:44:36Z"
+ "retrieved_at_utc": "2026-11-19T22:00:55Z"
 }
