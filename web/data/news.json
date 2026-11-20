@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-20T21:29:01Z",
+ "checked_at_utc": "2026-11-20T21:44:08Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,11 +27,74 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "GOOGL",
+   "title": "Alphabet Raises $4.19 Billion in Debt as Free Cash Flow Turns Negative",
+   "link": "https://finance.yahoo.com/technology/articles/alphabet-raises-4-19-billion-214109252.html?.tsrc=rss",
+   "published_utc": "2026-11-20T21:41:09Z",
+   "teaser": "The Google parent issued C$6 billion in investment-grade debt as technology companies seek additional funding for infrastructure investments."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron Shares Crash Despite Strong AI Memory Demand: Is MU Undervalued?",
+   "link": "https://finance.yahoo.com/technology/ai/articles/micron-shares-crash-despite-strong-213845047.html?.tsrc=rss",
+   "published_utc": "2026-11-20T21:38:45Z",
+   "teaser": "Chipmakers and AI-related stocks came under selling pressure Friday despite earlier indications of tightening memory supply."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "From Nvidia To Amazon, Tech Giants Face Stunning Reversal As Nasdaq Erases 2026 Gains",
+   "link": "https://www.ibtimes.com/us-stocks-ai-selloff-nasdaq-market-decline-3810038?.tsrc=rss",
+   "published_utc": "2026-11-20T21:34:47Z",
+   "teaser": "Technology shares led a broad market retreat as investors questioned lofty AI valuations and responded to rising expectations for another Federal Reserve rate hike."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Stock Just Lost $900 Billion in Its Worst Week Since 2008. The Last Time the SEC Examined Nvidia’s Accounting, the Stock Fell 81% in a Year",
+   "link": "https://247wallst.com/investing/2026/11/20/nvidia-stock-just-lost-900-billion-in-its-worst-week-since-2008-the-last-time-the-sec-examined-nvidias-accounting-the-stock-fell-81-in-a-year/?.tsrc=rss",
+   "published_utc": "2026-11-20T21:33:04Z",
+   "teaser": "Nvidia closed down 14% Friday and 23% for the week, erasing about $900 billion, the largest one-week loss of market value on record. The SEC examined Nvidia's accounting once before, in 2002. Here's what the stock did next."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Disney (DIS) Is Catching Up to Netflix (NFLX), but the Upside May Be Shrinking",
+   "link": "https://finance.yahoo.com/media-advertising/articles/disney-dis-catching-netflix-nflx-212947164.html?.tsrc=rss",
+   "published_utc": "2026-11-20T21:29:47Z",
+   "teaser": "The Walt Disney Company (DIS) is catching up to Netflix (NFLX) in valuation, leaving less upside for its stock even as its streaming business gains ground. The California-based entertainment giant’s fiscal fourth-quarter results, released on November 17, showed that the company’s recovery is gaining momentum. Operating profit for Disney+ and Hulu more than doubled to $824 million, while the Experiences segment posted a 20% increase in operating profit to $2.25 billion. What’s interesting is that"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Could Jensen Huang Land At Nvidia Rival Intel?",
+   "link": "https://finance.yahoo.com/m/0f796a98-f9a0-3610-b88d-21a75faa2e7b/could-jensen-huang-land-at.html?.tsrc=rss",
+   "published_utc": "2026-11-20T21:28:35Z",
+   "teaser": "A Wall Street portfolio manager speculated that ex-Nvidia CEO Jensen Huang could end up at rival Intel."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Stock Plunge Wipes Out Nearly $500 Billion in One Day as SEC Reportedly Probes Its Accounting",
+   "link": "https://www.fool.com/investing/2026/11/20/nvidia-stock-plunge-wipes-out-nearly-usd500-billion-in-one-day-as-sec-reportedly-probes-its-accounting/?.tsrc=rss",
+   "published_utc": "2026-11-20T21:27:22Z",
+   "teaser": "A Reuters report that the SEC is looking at Nvidia's accounting sent the stock plunging on Friday. Here's what's known and what investors should do."
+  },
+  {
    "symbol": "META",
    "title": "Anthropic Stock Came Within 5 Cents of Its $83 IPO Price on Day 2, Then Bounced 6% to Close at $88.30. Facebook Closed Its Day 2 10% Below Its IPO Price",
    "link": "https://247wallst.com/investing/2026/11/20/anthropic-stock-came-within-5-cents-of-its-83-ipo-price-on-day-2-then-bounced-6-to-close-at-88-30-facebook-closed-its-day-2-10-below-its-ipo-price/?.tsrc=rss",
    "published_utc": "2026-11-20T21:17:10Z",
    "teaser": "Anthropic fell as low as $83.05 on its second day of trading, 5 cents above its $83 IPO price, then closed at $88.30. Facebook closed its second day 10% below its IPO price."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "3 Edge AI Stocks To Watch As Apple Pushes More AI On Device",
+   "link": "https://finance.yahoo.com/technology/ai/articles/3-edge-ai-stocks-watch-211405007.html?.tsrc=rss",
+   "published_utc": "2026-11-20T21:14:05Z",
+   "teaser": "Apple’s renewed push into its own AI agent has turned the quiet idea of on-device intelligence into a live contest, with ripple effects running through chip designers, hardware suppliers and software tool makers tied to edge computing. That shift creates both promise and risk for investors who care about where AI actually runs. This article explains how that news relates to three stocks that screen positively on this theme. The stocks highlighted below are only a small sample of the on-device..."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Should Tesla (TSLA) Investors Watch Its Merger Talks And Cybercab FSD Rollout?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-tsla-investors-watch-merger-211259073.html?.tsrc=rss",
+   "published_utc": "2026-11-20T21:12:59Z",
+   "teaser": "Tesla (NasdaqGS:TSLA) is reported to be in advanced merger talks with SpaceX, exploring a potential combination of the two Musk-led groups. The company is widely rolling out its Full Self Driving 14.3 software update alongside specialized insurance for its autonomous Cybercab service. Regulators and existing shareholders of both Tesla and SpaceX are expected to review detailed merger terms if negotiations progress to a formal proposal. The merger talks with SpaceX and the FSD 14.3 Cybercab..."
   },
   {
    "symbol": "AMZN",
@@ -88,20 +151,6 @@
    "link": "https://www.tikr.com/blog/pretty-bizarre-microsoft-is-worth-more-than-alphabet-which-makes-no-sense?ref=yahoofinance&tlnk=yf-261120-cgch722v&.tsrc=rss",
    "published_utc": "2026-11-20T20:38:43Z",
    "teaser": "Key TakeawaysAlphabet hit a 52-week low, leaving it worth $3. 34 trillion against Microsoft’s $3."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia Shares Sink to 52-Week Low After Report SEC Is Probing Accounting",
-   "link": "https://decrypt.co/383744/nvidia-shares-sink-52-week-low-sec-probing-accounting?.tsrc=rss",
-   "published_utc": "2026-11-20T20:36:54Z",
-   "teaser": "Nvidia shares fell about 13% to a 52-week low after reports that SEC enforcement staff are examining potential accounting issues, adding to pressure on the chipmaker after Jensen Huang’s resignation."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia Stock Plunges 12% After Reuters Reports an SEC Probe of Its Accounting. It’s Nvidia’s Worst Day Since DeepSeek and It Has Lost $2.7 Trillion Since October",
-   "link": "https://247wallst.com/investing/2026/11/20/nvidia-stock-plunges-12-after-reuters-reports-an-sec-probe-of-its-accounting-its-nvidias-worst-day-since-deepseek-and-it-has-lost-2-7-trillion-since-october/?.tsrc=rss",
-   "published_utc": "2026-11-20T20:17:02Z",
-   "teaser": "Nvidia fell 12% after Reuters reported that SEC enforcement staff are examining potential accounting issues. It's on track for its worst day since DeepSeek and is 46% below its October record."
   },
   {
    "symbol": "DOCN",
@@ -340,13 +389,6 @@
    "link": "https://247wallst.com/investing/2026/11/20/tesla-falls-4-despite-hsbc-upgrade-and-359-target-tied-to-spacex-merger-talk-rivian-drops-5-lucid-slides-4/?.tsrc=rss",
    "published_utc": "2026-11-20T16:57:39Z",
    "teaser": "HSBC just handed Tesla a bullish price target, yet investors sold anyway. The gap between a merger fantasy and the company's standalone worth reveals what Wall Street really fears, and why Rivian and Lucid have no such safety net."
-  },
-  {
-   "symbol": "MU",
-   "title": "Why Micron Stock Crashed Today",
-   "link": "https://www.fool.com/investing/2026/11/20/why-micron-stock-crashed-today/?.tsrc=rss",
-   "published_utc": "2026-11-20T16:54:02Z",
-   "teaser": "TrendForce warns: NAND prices are suddenly falling."
   },
   {
    "symbol": "AAPL",
@@ -711,20 +753,6 @@
    "link": "https://www.trefis.com/stock/ceg/articles/626738/will-buyers-defend-constellation-energy-stock-at-263/2026-11-19?.tsrc=rss",
    "published_utc": "2026-11-19T12:08:04Z",
    "teaser": "Today's big story: Could Anthropic Stock Fall 25."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "What Are Netflix Stock Bears Missing?",
-   "link": "https://www.trefis.com/stock/nflx/articles/626821/what-are-netflix-stock-bears-missing/2026-11-19?.tsrc=rss",
-   "published_utc": "2026-11-19T11:51:28Z",
-   "teaser": "Today's big story: Could Anthropic Stock Fall 25."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Netflix Is 48% Below Its High While Guiding to Record Revenue of $51.1 Billion, Up 13%, for 2026",
-   "link": "https://www.tikr.com/blog/netflix-is-48-below-its-high-while-guiding-to-record-revenue-of-51-1-billion-up-13-for-2026?ref=yahoofinance&tlnk=yf-261119-c55xxvxf&.tsrc=rss",
-   "published_utc": "2026-11-19T11:47:58Z",
-   "teaser": "Key TakeawaysNetflix hit a new 52-week low this week, 48% below its high a year ago, while guiding 2026 revenue to a record $51. 1 billion."
   },
   {
    "symbol": "CAT",
