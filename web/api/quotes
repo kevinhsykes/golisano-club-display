@@ -1,13 +1,13 @@
 {
  "schema": "portfolio-quotes.v1",
- "collected_at_utc": "2026-11-20T21:43:47Z",
+ "collected_at_utc": "2026-11-21T02:03:43Z",
  "quotes": [
   {
    "symbol": "AAPL",
    "price": "342.56",
    "previous_close": "349.21",
    "provider_update_at_utc": "2026-11-20T21:00:02Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/AAPL/"
@@ -17,7 +17,7 @@
    "price": "424.39",
    "previous_close": "489.19",
    "provider_update_at_utc": "2026-11-20T21:00:00Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/AMD/"
@@ -27,7 +27,7 @@
    "price": "246.82",
    "previous_close": "257.37",
    "provider_update_at_utc": "2026-11-20T21:00:00Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/AMZN/"
@@ -37,7 +37,7 @@
    "price": "570.00",
    "previous_close": "572.04",
    "provider_update_at_utc": "2026-11-20T21:04:07Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/BRK-B/"
@@ -47,7 +47,7 @@
    "price": "237.41",
    "previous_close": "252.03",
    "provider_update_at_utc": "2026-11-20T21:00:02Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/CEG/"
@@ -57,7 +57,7 @@
    "price": "66.76",
    "previous_close": "77.09",
    "provider_update_at_utc": "2026-11-20T21:00:03Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/DOCN/"
@@ -67,7 +67,7 @@
    "price": "265.29",
    "previous_close": "272.66",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/GOOGL/"
@@ -77,7 +77,7 @@
    "price": "502.83",
    "previous_close": "510.21",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/LIN/"
@@ -87,7 +87,7 @@
    "price": "560.84",
    "previous_close": "596.22",
    "provider_update_at_utc": "2026-11-20T21:00:00Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/META/"
@@ -97,7 +97,7 @@
    "price": "184.52",
    "previous_close": "205.08",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/MKSI/"
@@ -107,7 +107,7 @@
    "price": "484.52",
    "previous_close": "498.30",
    "provider_update_at_utc": "2026-11-20T21:00:00Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/MSFT/"
@@ -117,7 +117,7 @@
    "price": "56.73",
    "previous_close": "58.46",
    "provider_update_at_utc": "2026-11-20T21:00:00Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/NFLX/"
@@ -127,7 +127,7 @@
    "price": "125.53",
    "previous_close": "145.98",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/NVDA/"
@@ -137,7 +137,7 @@
    "price": "85.33",
    "previous_close": "89.88",
    "provider_update_at_utc": "2026-11-20T21:04:09Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/RDDT/"
@@ -147,7 +147,7 @@
    "price": "12.48",
    "previous_close": "13.53",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/SOFI/"
@@ -157,7 +157,7 @@
    "price": "689.81",
    "previous_close": "715.87",
    "provider_update_at_utc": "2026-11-20T21:00:04Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/SPY/"
@@ -167,7 +167,7 @@
    "price": "345.82",
    "previous_close": "374.41",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/TSLA/"
@@ -177,7 +177,7 @@
    "price": "106.22",
    "previous_close": "109.11",
    "provider_update_at_utc": "2026-11-20T21:02:03Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/UPS/"
@@ -187,7 +187,7 @@
    "price": "594.51",
    "previous_close": "690.44",
    "provider_update_at_utc": "2026-11-20T21:00:01Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/MU/"
@@ -197,7 +197,7 @@
    "price": "510.45",
    "previous_close": "537.37",
    "provider_update_at_utc": "2026-11-20T21:00:02Z",
-   "retrieved_at_utc": "2026-11-20T21:43:47Z",
+   "retrieved_at_utc": "2026-11-21T02:03:43Z",
    "session": "closed",
    "provider": "Yahoo Finance (snapshot)",
    "source_url": "https://finance.yahoo.com/quote/CAT/"
@@ -205,7 +205,7 @@
  ],
  "meta": null,
  "health": {
-  "attempted_at_utc": "2026-11-20T21:43:47Z",
+  "attempted_at_utc": "2026-11-21T02:03:43Z",
   "provider": "yahoo-snapshot",
   "ok": true
  }
