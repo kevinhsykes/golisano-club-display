@@ -3,12 +3,12 @@
  "name": "Berkshire Hathaway Inc.",
  "exchange": "NYSE",
  "currency": "USD",
- "as_of_utc": "2026-11-23T17:39:13Z",
- "price": 572.93,
+ "as_of_utc": "2026-11-23T18:02:14Z",
+ "price": 573.15,
  "previous_close": 504.04,
  "day_high": 575.6,
  "day_low": 568.35,
- "volume": 2021213,
+ "volume": 2107636,
  "week52_high": 596.92,
  "week52_low": 464.01,
  "closes": [
@@ -1014,9 +1014,9 @@
   },
   {
    "date": "2026-11-23",
-   "close": 572.93
+   "close": 573.15
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-23T17:39:17Z"
+ "retrieved_at_utc": "2026-11-23T18:02:14Z"
 }
