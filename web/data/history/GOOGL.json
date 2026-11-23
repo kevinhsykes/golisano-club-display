@@ -3,19 +3,15 @@
  "name": "Alphabet Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-20T21:00:01Z",
- "price": 265.29,
- "previous_close": 289.45,
- "day_high": 283.14,
- "day_low": 264.22,
- "volume": 57297123,
+ "as_of_utc": "2026-11-23T14:32:12Z",
+ "price": 281.33,
+ "previous_close": 299.66,
+ "day_high": 284.6,
+ "day_low": 280.8,
+ "volume": 4660027,
  "week52_high": 408.61,
  "week52_low": 264.22,
  "closes": [
-  {
-   "date": "2025-11-21",
-   "close": 299.66
-  },
   {
    "date": "2025-11-24",
    "close": 318.58
@@ -1011,8 +1007,16 @@
   {
    "date": "2026-11-19",
    "close": 272.66
+  },
+  {
+   "date": "2026-11-20",
+   "close": 265.29
+  },
+  {
+   "date": "2026-11-23",
+   "close": 281.33
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-21T02:03:54Z"
+ "retrieved_at_utc": "2026-11-23T14:32:14Z"
 }
