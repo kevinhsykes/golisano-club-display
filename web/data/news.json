@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-24T01:32:17Z",
+ "checked_at_utc": "2026-11-24T05:13:22Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -28,45 +28,87 @@
  "items": [
   {
    "symbol": "NVDA",
-   "title": "CFO Colette Kress Just Made This Subtle Shift That Could Save Nvidia Shareholders",
-   "link": "https://www.fool.com/investing/2026/11/23/cfo-colette-kress-just-made-this-subtle-shift-that-could-save-nvidia-shareholders/?.tsrc=rss",
-   "published_utc": "2026-11-24T01:26:02Z",
-   "teaser": "Nvidia may now take a more deliberate approach to customer financing."
+   "title": "Nvidia Corp. (NVDA) Has Made Investors a Fortune — Is Now Time to Book Profits?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-corp-nvda-made-investors-044731067.html?.tsrc=rss",
+   "published_utc": "2026-11-24T04:47:31Z",
+   "teaser": "Nvidia Corp. (NASDAQ:NVDA) is one of the 10 Stocks With Eye-Popping Gains. Nvidia Corp. snapped a seven-day losing streak on Monday, soaring 31.48 percent to finish at $165.05 apiece following the reinstatement of Jensen Huang as its chief executive officer. In an updated report on the same day, the chipmaker said that its Board of […]"
   },
   {
    "symbol": "NVDA",
-   "title": "Nvidia reinstates Jensen Huang as CEO",
-   "link": "https://www.cbsnews.com/news/nvidia-reinstates-jensen-huang-ceo/?.tsrc=rss",
-   "published_utc": "2026-11-24T01:19:26Z",
-   "teaser": "Nvidia said Monday that it has restored Jensen Huang as the chipmaker's chief executive, calling him the \"right person\" to lead the company."
+   "title": "Stocks climb as Huang's return to Nvidia lifts investor optimism",
+   "link": "https://www.euronews.com/2026/11/24/stocks-climb-as-huangs-return-to-nvidia-lifts-investor-optimism?.tsrc=rss",
+   "published_utc": "2026-11-24T04:30:05Z",
+   "teaser": "Shares in AI chip behemoth Nvidia rocketed 30% higher on Monday after the shock reinstatement of its CEO Jensen Huang, which sparked a recovery across markets after a technology-led rout last week.View on euronews"
   },
   {
    "symbol": "NVDA",
-   "title": "Huang's return at Nvidia puts spotlight on chipmaker's board",
-   "link": "https://www.cbsnews.com/news/nvidia-board-reinstates-ceo-jensen-huang/?.tsrc=rss",
-   "published_utc": "2026-11-24T01:17:32Z",
-   "teaser": "Nvidia directors' decision to rehire Jensen Huang shows a \"lack of courage,\" according to one prominent governance expert."
+   "title": "Nvidia shares soar more than 30% after Huang reinstated as CEO",
+   "link": "https://www.cnn.com/2026/11/23/markets/us-stocks-rebound-intl?.tsrc=rss",
+   "published_utc": "2026-11-24T04:23:57Z",
+   "teaser": "Nvidia shares soared more than 30% Monday and had their third-best day on record after the company announced it reinstated Jensen Huang as CEO and president, effective immediately."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple's five-device plan creates an iPhone buying dilemma",
+   "link": "https://www.thestreet.com/technology/apples-five-device-plan-creates-an-iphone-buying-dilemma?.tsrc=rss",
+   "published_utc": "2026-11-24T04:17:00Z",
+   "teaser": "New launch timing could reward shoppers willing to wait."
   },
   {
    "symbol": "NVDA",
-   "title": "Nasdaq gains 6.5% after Huang reinstated as Nvidia CEO",
-   "link": "https://www.cbsnews.com/news/us-stock-futures-rebound-tech-rout/?.tsrc=rss",
-   "published_utc": "2026-11-24T01:12:57Z",
-   "teaser": "The Nasdaq Composite closed 6.5% higher, erasing all of its losses from Friday, when the index suffered its second-worst day of 2026."
+   "title": "Nvidia employee hugs Jensen Huang after comeback speech",
+   "link": "https://www.cnn.com/2026/11/23/business/video/nvidia-employee-hugs-jensen-huang-after-comeback-speech-hnk-digvid?cid=external-feeds_iluminar_yahoo&.tsrc=rss",
+   "published_utc": "2026-11-24T04:16:43Z",
+   "teaser": "Nvidia employees greeted Jensen Huang with loud cheers and applause as he returned to the company’s Santa Clara headquarters after being reinstated as CEO. Huang apologized to staffers and promised to be a “better CEO the second time around.”"
   },
   {
    "symbol": "NVDA",
-   "title": "U.S. stock futures steady after Nvidia-led Wall Street rally",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/u-stock-futures-steady-nvidia-004836470.html?.tsrc=rss",
-   "published_utc": "2026-11-24T00:48:36Z",
-   "teaser": "Investing.com-- U.S. stock futures were little changed on Monday evening following a powerful rally on Wall Street driven by Nvidia's decision to reinstate founder Jensen Huang as chief executive."
+   "title": "Watch these chip stocks for bargain buys after Nvidia’s post-reinstatement rally",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/watch-chip-stocks-bargain-buys-040218865.html?.tsrc=rss",
+   "published_utc": "2026-11-24T04:02:18Z",
+   "teaser": "Investing.com -- Jensen Huang was reinstated as Nvidia CEO on Nov 23, 2026, 11 days after he resigned, sparking a broad-based rally across battered chipmaking and artificial intelligence names on Monday."
   },
   {
-   "symbol": "NVDA",
-   "title": "Nvidia’s stock was falling. Here's why one investor is buying more",
-   "link": "https://www.thestreet.com/investing/stocks/nvidias-stock-was-falling-heres-why-one-investor-is-buying-more?.tsrc=rss",
-   "published_utc": "2026-11-24T00:35:19Z",
-   "teaser": "Nvidia’s sell-off rattled AI investors, but Deepwater’s Gene Munster sees an opportunity. Here’s why he’s buying more shares despite the risks."
+   "symbol": "AMD",
+   "title": "AMD Stock Dips Overnight After Nvidia-Triggered Rally: AMD Registers 337M Shares For Resale Tied To OpenAI, Meta Warrants",
+   "link": "https://stocktwits.com/news-articles/markets/equity/amd-stock-dips-overnight-after-nvidia-triggered-rally-amd-registers-337-m-shares-for-resale-tied-to-open-ai-meta-warrants/cNbru6MR9jU?.tsrc=rss",
+   "published_utc": "2026-11-24T03:47:48Z",
+   "teaser": "AMD is not selling the shares itself and will not receive any proceeds from potential sales."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang's Return; Elon Musk-Led SpaceX, Tesla Rally",
+   "link": "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss",
+   "published_utc": "2026-11-24T03:27:54Z",
+   "teaser": "Dow Jones Futures: Tech stocks and Nvidia stock surged Monday on the return of Jensen Huang. Elon Musk-led SpaceX and Tesla rallied."
+  },
+  {
+   "symbol": "SOFI",
+   "title": "Credit Card Rate Cap Might Change The Case For Investing In SoFi Stock",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/credit-card-rate-cap-might-032256757.html?.tsrc=rss",
+   "published_utc": "2026-11-24T03:22:56Z",
+   "teaser": "SoFi Technologies is in focus after a proposal by President Donald Trump to cap US credit card interest rates at 10%. This move would affect card issuers and could reshape the economics of SoFi's higher coupon personal loans. At the same time, SoFi is reporting strong member and product growth, expanding use of its bank charter, and higher adjusted revenue guidance. Together, these developments highlight how regulation and operating momentum are pulling the business in different..."
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Microsoft CEO Satya Nadella Offered 60,000 Employees Buyouts So Everyone 'Felt Like They Had Agency' — Yet Insists Software Engineering Is 'Very Much Alive'",
+   "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-ceo-satya-nadella-offered-023006172.html?.tsrc=rss",
+   "published_utc": "2026-11-24T02:30:06Z",
+   "teaser": "Nobody enjoys being shown the door, so Microsoft Corp. tried holding it open instead. Microsoft CEO Satya Nadella says the company’s buyout offer to roughly 60,000 employees was about choice, as AI changes what a workday looks like inside the..."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "TSLA And SPCX Rally As Musk Cheers Huang’s Return — Analyst Flags Nvidia’s Push To Send SpaceX More Chips",
+   "link": "https://stocktwits.com/news-articles/markets/equity/tsla-spcx-musk-cheers-huang-return-analyst-nvidia-spacex-more-chips/cNbrs1IR9jt?.tsrc=rss",
+   "published_utc": "2026-11-24T02:12:56Z",
+   "teaser": "ARK’s Brett Winton believes Huang ultimately favored directing additional chip supply toward SpaceX rather than financing a broader group of smaller AI infrastructure developers still struggling to bring their projects online."
+  },
+  {
+   "symbol": "META",
+   "title": "'He's Not Quite a God': Palmer Luckey Opens Up About Facebook Firing, Explains Why He'd Still Make a Deal With Mark Zuckerberg",
+   "link": "https://finance.yahoo.com/technology/articles/hes-not-quite-god-palmer-013007219.html?.tsrc=rss",
+   "published_utc": "2026-11-24T01:30:07Z",
+   "teaser": "Anduril Industries Founder Palmer Luckey says former Oculus executives, rather than Meta Platforms, Inc. CEO Mark Zuckerberg, were responsible for his 2017 departure from Facebook. However, he remains open to partnering with Meta for U.S. military applications. Palmer Luckey Says..."
   },
   {
    "symbol": "AMZN",
@@ -74,13 +116,6 @@
    "link": "https://www.trefis.com/stock/amzn/articles/627559/is-amazon-s-profit-riskier-than-it-looks/2026-11-23?.tsrc=rss",
    "published_utc": "2026-11-24T00:25:13Z",
    "teaser": "Today's big story: Reported SEC Probe: Could Nvidia Stock Fall To $92."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang's Return; Elon Musk-Led SpaceX, Tesla Rally",
-   "link": "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss",
-   "published_utc": "2026-11-24T00:20:07Z",
-   "teaser": "Dow Jones Futures: Tech stocks and Nvidia stock surged Monday on the return of Jensen Huang. Elon Musk-led SpaceX and Tesla rallied."
   },
   {
    "symbol": "MSFT",
@@ -224,17 +259,17 @@
   },
   {
    "symbol": "MSFT",
+   "title": "Pinterest announces partnership with Microsoft Ads",
+   "link": "https://www.socialmediatoday.com/news/pinterest-announces-partnership-with-microsoft-ads/875553/?.tsrc=rss",
+   "published_utc": "2026-11-23T21:10:29Z",
+   "teaser": "The new integration will see Pinterest ad placements extended across Microsoft’s partner platforms."
+  },
+  {
+   "symbol": "MSFT",
    "title": "Billionaire Andreas Halvorsen Exited Microsoft and Made TSMC His Top Holding at $1.8 Billion",
    "link": "https://247wallst.com/investing/2026/11/23/billionaire-andreas-halvorsen-exited-microsoft-and-made-tsmc-his-top-holding-at-1-8-billion/?.tsrc=rss",
    "published_utc": "2026-11-23T20:57:26Z",
    "teaser": "Viking Global dumped a cloud giant that is growing faster than ever and bet on the company building the chips behind it. The filing hints at a thesis, but one detail makes copying the move risky."
-  },
-  {
-   "symbol": "AMD",
-   "title": "Is AMD's Stock in Trouble After a Concerning Short-Seller Report?",
-   "link": "https://www.fool.com/investing/2026/11/23/is-amd-s-stock-in-trouble-after-a-concerning-short-seller-report/?.tsrc=rss",
-   "published_utc": "2026-11-23T20:56:02Z",
-   "teaser": "A recent short-seller report called into question AMD's high exposure to China."
   },
   {
    "symbol": "TSLA",
@@ -293,20 +328,6 @@
    "teaser": "Key TakeawaysNetflix is down 45% this year. Bill Ackman likes it below $60, while Michael Burry is waiting for the high $30s."
   },
   {
-   "symbol": "MSFT",
-   "title": "GTA VI Hype More Than Doubled Sony’s US PS5 And Microsoft’s Xbox Weekly Sales, Circana Says",
-   "link": "https://stocktwits.com/news-articles/markets/equity/gta-vi-hype-more-than-doubled-sony-s-us-ps-5-and-microsoft-s-xbox-weekly-sales-circana-says/cNbpaZJR9jN?.tsrc=rss",
-   "published_utc": "2026-11-23T19:13:27Z",
-   "teaser": "The firm said PlayStation 5 sales were more than 2.4 times higher than a year earlier during the week ended Nov. 7, while Xbox Series sales rose to 2.3 times their year-ago level."
-  },
-  {
-   "symbol": "MU",
-   "title": "Is Micron Technology Stock a Buy at $700?",
-   "link": "https://www.fool.com/investing/2026/11/23/is-micron-technology-stock-a-buy-at-700/?.tsrc=rss",
-   "published_utc": "2026-11-23T19:12:01Z",
-   "teaser": "The memory stock got a boost on Monday after news that Jensen Huang would return as Nvidia's CEO."
-  },
-  {
    "symbol": "CAT",
    "title": "Caterpillar (CAT) Falls In Broad Pullback As Undervalued Narrative Stays In Focus",
    "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-falls-broad-pullback-191143887.html?.tsrc=rss",
@@ -319,13 +340,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/gev-vs-cat-rebound-comparison-190016772.html?.tsrc=rss",
    "published_utc": "2026-11-23T19:00:16Z",
    "teaser": "Investing.com -- Both GE Vernova and Caterpillar rallied on Nov 23, but their underlying signals differ, making one a cleaner setup and the other a deeper, riskier snapback."
-  },
-  {
-   "symbol": "AMZN",
-   "title": "Amazon Makes AI Chip Move; Stock Climbs Alongside Nvidia Relief Rally",
-   "link": "https://finance.yahoo.com/m/7370b0be-717c-344a-9b50-5d4c679f2a82/amazon-makes-ai-chip-move%3B.html?.tsrc=rss",
-   "published_utc": "2026-11-23T18:31:44Z",
-   "teaser": "Amazon's Decart deal is overshadowed by the stunning return of Nvidia's embattled leader."
   },
   {
    "symbol": "UPS",
@@ -375,13 +389,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-member-rises-revenues-172100425.html?.tsrc=rss",
    "published_utc": "2026-11-23T17:21:00Z",
    "teaser": "SOFI's surging member growth, record product additions and stronger lending revenues drive momentum, raising prospects for further revenue gains."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla Jumps 13% as Jensen Huang’s Return to NVIDIA Sparks Broad Market Rally; Rivian Rallies 9%, Lucid Surges 8%",
-   "link": "https://247wallst.com/investing/2026/11/23/tesla-jumps-13-as-jensen-huangs-return-to-nvidia-sparks-broad-market-rally-rivian-rallies-9-lucid-surges-8/?.tsrc=rss",
-   "published_utc": "2026-11-23T17:03:42Z",
-   "teaser": "A boardroom reversal at the world's most important AI chipmaker sent EV stocks soaring, but the smallest names carry the deepest scars. Can a one-day relief rally turn into a real recovery for Tesla, Rivian and Lucid?"
   },
   {
    "symbol": "NFLX",
@@ -508,13 +515,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/37-etfs-add-berkshire-hathaway-110111592.html?.tsrc=rss",
    "published_utc": "2026-11-23T11:01:11Z",
    "teaser": "ETFs bought a net $102.9 million of Berkshire Hathaway (BRK.B) on Thursday, Nov. 19."
-  },
-  {
-   "symbol": "SOFI",
-   "title": "SoFi Stock Crashes to a 52-Week Low. Why You Should Buy the Dip.",
-   "link": "https://www.barchart.com/story/news/8960645/sofi-stock-crashes-to-a-52-week-low-why-you-should-buy-the-dip?.tsrc=rss",
-   "published_utc": "2026-11-23T09:55:57Z",
-   "teaser": "SoFi stock lost substantial value as it dropped to a 52-week low. The significant decline, combined with its solid fundamentals, has improved its risk-reward profile."
   },
   {
    "symbol": "BRK/B",
