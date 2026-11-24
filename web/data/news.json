@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-24T23:14:48Z",
+ "checked_at_utc": "2026-11-24T23:25:30Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,6 +27,34 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "MU",
+   "title": "3 AI Investment Stocks We’re Buying Today And Why We’re Selling On Micron",
+   "link": "https://247wallst.com/videos/3-ai-investment-stocks-were-buying-today-and-why-were-selling-on-micron/?.tsrc=rss",
+   "published_utc": "2026-11-24T23:19:04Z",
+   "teaser": "With AI infrastructure stocks pulling back 30% to 80% from their highs, many investors are making adjustments to their portfolio. Eric Bleeker, the co-host of The AI Investor Podcast, recently shared three AI-related stocks he's buying as we head into 2027, as well as why he is selling on Micron. Among his recommendations is  Analog Devices, a longtime industry winner with a comprehensive portfolio in sensing, precision motion, and power management that stands to capture thousands of dollars in hardware content per humanoid robot."
+  },
+  {
+   "symbol": "AMD",
+   "title": "A scandal like the one haunting Nvidia just reached AMD, its biggest rival",
+   "link": "https://www.thestreet.com/investing/stocks/scandal-like-one-haunting-nvidia-just-reached-amd-its-biggest-rival?.tsrc=rss",
+   "published_utc": "2026-11-24T23:17:00Z",
+   "teaser": "Short seller Hunterbrook claims that AMD faces a major problem that has plagued Nvidia all year."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "California AG Sees 'Bright Red Flags' Regarding Nvidia",
+   "link": "https://finance.yahoo.com/video/california-ag-sees-bright-red-230340002.html?.tsrc=rss",
+   "published_utc": "2026-11-24T23:03:40Z",
+   "teaser": "\"When there's flags in the air you have to look,\" California Attorney General Rob Bonta says about the state's investigation into whether Nvidia illegally sold advanced chips to China and misled investors about the conduct. He speaks on \"Balance of Power: Evening Edition.\""
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Dow Jones Futures: Nvidia, Anthropic Lead AI Retreat But Many Sectors Strong; Fed Inflation Data Due",
+   "link": "https://finance.yahoo.com/m/d96603c1-fe7f-3bf3-8158-0728b464d469/dow-jones-futures%3A-nvidia%2C.html?.tsrc=rss",
+   "published_utc": "2026-11-24T23:02:58Z",
+   "teaser": "Nvidia, Anthropic and Sandisk led an AI sell-off but medicals, retailers and more fared well. Fed inflation data looms."
+  },
+  {
    "symbol": "NVDA",
    "title": "In Response to the Turmoil at Nvidia, Bitcoin Drops Below $70,000. Is This a Buy-the-Dip Opportunity?",
    "link": "https://www.fool.com/investing/2026/11/24/in-response-to-the-turmoil-at-nvidia-bitcoin-drops-below-usd70-000-is-this-a-buy-the-dip-opportunity/?.tsrc=rss",
@@ -34,11 +62,11 @@
    "teaser": "Bitcoin's mediocre response to Jensen Huang returning to Nvidia is a bit concerning for the coin's potential buyers."
   },
   {
-   "symbol": "NVDA",
-   "title": "Dow Jones Futures: Nvidia, Anthropic Lead AI Retreat But Many Sectors Strong; Fed Inflation Data Due",
-   "link": "https://finance.yahoo.com/m/d96603c1-fe7f-3bf3-8158-0728b464d469/dow-jones-futures%3A-nvidia%2C.html?.tsrc=rss",
-   "published_utc": "2026-11-24T22:57:31Z",
-   "teaser": "Nvidia, Anthropic and Sandisk led an AI sell-off but medicals, retailers and more fared well. Fed inflation data looms."
+   "symbol": "NFLX",
+   "title": "Tech Keeps Eating Hollywood As Netflix Buys Historic Seinfeld Lot",
+   "link": "https://finance.yahoo.com/m/34be458f-965e-30c4-8fb7-e730267a65a9/tech-keeps-eating-hollywood.html?.tsrc=rss",
+   "published_utc": "2026-11-24T23:00:28Z",
+   "teaser": "Netflix announced a $380 million deal for Radford Studio in Los Angeles, where Seinfeld, Mary Tyler Moore and more were filmed."
   },
   {
    "symbol": "MSFT",
@@ -88,13 +116,6 @@
    "link": "https://www.fool.com/investing/2026/11/24/is-netflix-a-buy-for-usd1-000/?.tsrc=rss",
    "published_utc": "2026-11-24T22:30:02Z",
    "teaser": "Trading 57% off its all-time record, the streaming stock has been crushed."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Jensen Huang is back, but Nvidia is not out of the woods",
-   "link": "https://www.axios.com/2026/11/24/jensen-huang-nvidia-scandal-ceo#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-AI?.tsrc=rss",
-   "published_utc": "2026-11-24T22:27:51Z",
-   "teaser": "With Jensen Huang back as CEO, Nvidia might be hoping for a return to normal — but questions about the scandal, internal turmoil and the direction of federal policy will continue to hang over the company."
   },
   {
    "symbol": "TSLA",
@@ -613,13 +634,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-approach-beat-markets-brk-143300578.html?.tsrc=rss",
    "published_utc": "2026-11-23T14:33:00Z",
    "teaser": "Berkshire Hathaway, Vera Bradley and Ulta Beauty outpace the market as Zacks' research-driven strategies deliver gains amid heightened volatility."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "What Will Move Netflix Stock Over Six Months?",
-   "link": "https://www.trefis.com/stock/nflx/articles/627584/what-will-move-netflix-stock-over-six-months/2026-11-23?.tsrc=rss",
-   "published_utc": "2026-11-23T13:34:05Z",
-   "teaser": "For questions about this article or underlying research, email help@trefis.com."
   },
   {
    "symbol": "CAT",
