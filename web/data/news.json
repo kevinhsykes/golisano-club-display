@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-24T01:10:17Z",
+ "checked_at_utc": "2026-11-24T01:32:17Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -28,6 +28,34 @@
  "items": [
   {
    "symbol": "NVDA",
+   "title": "CFO Colette Kress Just Made This Subtle Shift That Could Save Nvidia Shareholders",
+   "link": "https://www.fool.com/investing/2026/11/23/cfo-colette-kress-just-made-this-subtle-shift-that-could-save-nvidia-shareholders/?.tsrc=rss",
+   "published_utc": "2026-11-24T01:26:02Z",
+   "teaser": "Nvidia may now take a more deliberate approach to customer financing."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia reinstates Jensen Huang as CEO",
+   "link": "https://www.cbsnews.com/news/nvidia-reinstates-jensen-huang-ceo/?.tsrc=rss",
+   "published_utc": "2026-11-24T01:19:26Z",
+   "teaser": "Nvidia said Monday that it has restored Jensen Huang as the chipmaker's chief executive, calling him the \"right person\" to lead the company."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Huang's return at Nvidia puts spotlight on chipmaker's board",
+   "link": "https://www.cbsnews.com/news/nvidia-board-reinstates-ceo-jensen-huang/?.tsrc=rss",
+   "published_utc": "2026-11-24T01:17:32Z",
+   "teaser": "Nvidia directors' decision to rehire Jensen Huang shows a \"lack of courage,\" according to one prominent governance expert."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nasdaq gains 6.5% after Huang reinstated as Nvidia CEO",
+   "link": "https://www.cbsnews.com/news/us-stock-futures-rebound-tech-rout/?.tsrc=rss",
+   "published_utc": "2026-11-24T01:12:57Z",
+   "teaser": "The Nasdaq Composite closed 6.5% higher, erasing all of its losses from Friday, when the index suffered its second-worst day of 2026."
+  },
+  {
+   "symbol": "NVDA",
    "title": "U.S. stock futures steady after Nvidia-led Wall Street rally",
    "link": "https://finance.yahoo.com/markets/stocks/articles/u-stock-futures-steady-nvidia-004836470.html?.tsrc=rss",
    "published_utc": "2026-11-24T00:48:36Z",
@@ -48,7 +76,7 @@
    "teaser": "Today's big story: Reported SEC Probe: Could Nvidia Stock Fall To $92."
   },
   {
-   "symbol": "NVDA",
+   "symbol": "TSLA",
    "title": "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang's Return; Elon Musk-Led SpaceX, Tesla Rally",
    "link": "https://finance.yahoo.com/m/be493228-4ecf-338d-9017-054d3d6efc36/dow-jones-futures%3A-tech.html?.tsrc=rss",
    "published_utc": "2026-11-24T00:20:07Z",
@@ -60,13 +88,6 @@
    "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-msft-enterprise-ai-partnerships-001743463.html?.tsrc=rss",
    "published_utc": "2026-11-24T00:17:43Z",
    "teaser": "Recent announcements from partners such as Danaher, V2X, Audi and Intel show Microsoft products like Azure, Foundry, Fabric and EMIB-based Azure hardware being embedded deeper into mission operations, scientific instruments and workplace tools. These deals point to Microsoft quietly turning AI from headline demos into long-term, embedded workloads across defense, healthcare, autos and labs, which ties AI demand directly to everyday enterprise processes rather than one-off projects. We will..."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Cathie Wood Swapped Nvidia for SpaceX Over the Risk of “Losing Jensen.” Now Jensen’s Back",
-   "link": "https://247wallst.com/investing/2026/11/23/cathie-wood-swapped-nvidia-for-spacex-over-the-risk-of-losing-jensen-now-jensens-back/?.tsrc=rss",
-   "published_utc": "2026-11-24T00:07:46Z",
-   "teaser": "ARK dumped Nvidia because one man might walk away to join Elon Musk. Then the board did the unthinkable, and the trade started to look very different. What did Wood's bet miss, and what risks still hang over Nvidia holders?"
   },
   {
    "symbol": "AMD",
