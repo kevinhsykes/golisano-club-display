@@ -3,12 +3,12 @@
  "name": "SoFi Technologies, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-25T20:24:47Z",
- "price": 13.075,
+ "as_of_utc": "2026-11-25T20:47:16Z",
+ "price": 13.035,
  "previous_close": 28.33,
  "day_high": 13.19,
  "day_low": 11.95,
- "volume": 47269829,
+ "volume": 50068219,
  "week52_high": 30.42,
  "week52_low": 11.95,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-25",
-   "close": 13.075
+   "close": 13.035
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-25T20:24:49Z"
+ "retrieved_at_utc": "2026-11-25T20:47:17Z"
 }
