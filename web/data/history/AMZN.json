@@ -3,12 +3,12 @@
  "name": "Amazon.com, Inc.",
  "exchange": "NasdaqGS",
  "currency": "USD",
- "as_of_utc": "2026-11-25T17:09:13Z",
- "price": 242.82,
+ "as_of_utc": "2026-11-25T17:32:10Z",
+ "price": 243.53,
  "previous_close": 229.67,
- "day_high": 243.32,
+ "day_high": 244.07,
  "day_low": 235.96,
- "volume": 28299597,
+ "volume": 30706386,
  "week52_high": 287.2,
  "week52_low": 196.0,
  "closes": [
@@ -1018,9 +1018,9 @@
   },
   {
    "date": "2026-11-25",
-   "close": 242.82
+   "close": 243.53
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-25T17:09:14Z"
+ "retrieved_at_utc": "2026-11-25T17:32:11Z"
 }
