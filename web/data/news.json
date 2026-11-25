@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-24T23:25:30Z",
+ "checked_at_utc": "2026-11-25T04:03:43Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,6 +27,132 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "NVDA",
+   "title": "Dow Jones Futures Fall; Trump Says 'Not Too Late' For U.S. To Take Nvidia Stake",
+   "link": "https://finance.yahoo.com/m/d96603c1-fe7f-3bf3-8158-0728b464d469/dow-jones-futures-fall%3B-trump.html?.tsrc=rss",
+   "published_utc": "2026-11-25T03:46:29Z",
+   "teaser": "Futures fell after AI stocks tumbled but medicals, retailers and more rose. President Trump mused about an Nvidia stake. Fed inflation data looms."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Tesla's $3.5 trillion merger talks have a surprising catch",
+   "link": "https://www.thestreet.com/investing/teslas-3-5-trillion-merger-talks-have-a-surprising-catch?.tsrc=rss",
+   "published_utc": "2026-11-25T03:33:00Z",
+   "teaser": "Five directors must decide whether Elon Musk’s biggest corporate combination would reward ordinary shareholders."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Jensen Huang Reportedly Says Succession Plan Risks ‘Unnecessary Hierarchy’ At Nvidia — Crypto Bettors Wager on Another Exit",
+   "link": "https://www.benzinga.com/markets/prediction-markets/26/11/63613509/nvidia-ceo-jensen-huang-succession-plan-polymarket-prediction-market?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+   "published_utc": "2026-11-25T03:01:26Z",
+   "teaser": "NVIDIA Corp. (NASDAQ:NVDA) CEO Jensen Huang addressed succession planning during his first employee meeting on Tuesday since being reinstated. Huang Warns of ‘Unnecessary Hierarchy’ During the meeting, Huang apologized for disappointing employees and acknowledged the effect of his actions, CNBC..."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Jensen Huang's Return Could Make a Tesla/SpaceX Merger More Likely",
+   "link": "https://www.fool.com/investing/2026/11/24/jensen-huang-s-return-could-make-a-tesla-spacex-merger-more-likely/?.tsrc=rss",
+   "published_utc": "2026-11-25T02:50:02Z",
+   "teaser": "The regulatory environment looks more forgiving after Huang's return."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Warren Buffett Finished Buying Coca-Cola in August 1994 and Never Bought Another Share. Under Greg Abel, Berkshire Now Collects $2.3 Million a Day From It",
+   "link": "https://247wallst.com/investing/2026/11/24/warren-buffett-finished-buying-coca-cola-in-august-1994-and-never-bought-another-share-under-greg-abel-berkshire-now-collects-2-3-million-a-day-from-it/?.tsrc=rss",
+   "published_utc": "2026-11-25T02:47:05Z",
+   "teaser": "Berkshire Hathaway's 400 million Coca-Cola shares, bought for $1,299 million between 1988 and 1994 and never added to since, now pay $848 million a year, about $2.3 million a day. Computed from Coca-Cola's split-adjusted dividend history, the checks since 1994 add up to about $13 billion, ten times the cost, and the next $212 million payment is due December 15."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "NFLX Stock Edges Lower Overnight: Streaming Giant Buys Historic ‘Seinfeld’ Studio Lot In Reported $380M Deal",
+   "link": "https://stocktwits.com/news-articles/markets/equity/nflx-stock-edges-lower-overnight-streaming-giant-buys-historic-seinfeld-studio-lot-in-reported-380-m-deal/cNbu6SoR9l4?.tsrc=rss",
+   "published_utc": "2026-11-25T02:46:32Z",
+   "teaser": "While Netflix did not disclose the deal value, according to a report from Los Angeles Times, the purchase was completed at a value of $380 million."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Breaking down Nvidia’s ‘boardroom blunder’",
+   "link": "https://www.cnn.com/2026/11/24/business/video/kiss-cam-bid-vod-hrzn?cid=external-feeds_iluminar_yahoo&.tsrc=rss",
+   "published_utc": "2026-11-25T02:45:48Z",
+   "teaser": "On the latest episode of “CNN Breaks It Down,” CNN Senior Reporter Matt Egan explains why corporate governance experts say Nvidia’s board of directors should resign after reinstating Jensen Huang as CEO. Go to cnn.com/BreaksItDown to watch."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Never say never: how Jensen Huang got his job back at Nvidia​‌",
+   "link": "https://www.cnn.com/2026/11/24/business/video/we-were-wrong-bid-vod-hrzn?cid=external-feeds_iluminar_yahoo&.tsrc=rss",
+   "published_utc": "2026-11-25T02:39:47Z",
+   "teaser": "“Full admission: We were wrong.” On this week’s “CNN Breaks It Down,” AI Correspondent Hadas Gold discusses Jensen Huang’s reinstatement as Nvidia CEO with Phil Mattingly and Matt Egan. Go to cnn.com/BreaksItDown to watch."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Dan Ives Says ‘Base Case’ for Nvidia Stock Is $250 After Jensen Huang Returns as CEO: ‘China Loophole Issues’ Keep Him Short of $300",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/dan-ives-says-case-nvidia-022719368.html?.tsrc=rss",
+   "published_utc": "2026-11-25T02:27:19Z",
+   "teaser": "Dan Ives of Yorkville Ives raised his Nvidia Corp. (NASDAQ:NVDA) price target to $250 on Tuesday with CEO Jensen Huang back, but stopped short of $300 as China chip issues remain unresolved. The stock was down more than 2% in after-hours trading. Prices in CEO’s Return In a post on X Tuesday, Ives said the “base case is $250 for Nvidia with Jensen back,” about 61% above the stock’s Tuesday close. Our base case is $250 for Nvidia with Jensen back @CNBCClosingBell 🏆👇🐂 https://t.co/awwTdIcJOe— Dan"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "TSLA Stock Slips Overnight: Dell And HP See No Quick Relief From The AI-Driven Chip Crunch Behind Tesla’s 25% Memory Cut",
+   "link": "https://stocktwits.com/news-articles/markets/equity/tsla-stock-dell-hp-no-quick-relief-ai-chip-crunch-tesla-memory-cut/cNbuC6fR9ld?.tsrc=rss",
+   "published_utc": "2026-11-25T02:26:26Z",
+   "teaser": "Dell said AI servers are taking up more chipmaking capacity, leaving less memory for PCs and vehicles."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia’s Rebound, Falling Oil And A Strong Dollar: Three Signals Complicating The Fed’s December Decision",
+   "link": "https://stocktwits.com/news-articles/markets/equity/fed-december-rate-hike-oil-prices-nvidia-rally-inflation/cNbuClGR9l5?.tsrc=rss",
+   "published_utc": "2026-11-25T02:09:32Z",
+   "teaser": "Data from the CME FedWatch tool puts the probability of a 25 bps rate hike in December at 96.4%, while the odds of a 50 bps hike are at 3.6%."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Thinking of Buying SpaceX Stock? Gary Black Says Wait for a Potential Tesla Merger to Send It Below $100",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/thinking-buying-spacex-stock-gary-013135652.html?.tsrc=rss",
+   "published_utc": "2026-11-25T01:31:35Z",
+   "teaser": "Investors looking to buy Space Exploration Technologies Corp. (NASDAQ:SPCX) may want to hold off, as Future Fund managing partner Gary Black believes a proposed all-stock merger with Tesla Inc. (NASDAQ:TSLA) could send the space company’s shares below $100. Gary Black Sets $100 Buying Target for SpaceX Stock On Tuesday, Black took to X to share his latest thoughts on when investors should consider buying SpaceX shares, suggesting they wait for the stock to fall below $100. “My answer has been: W"
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "Your $300,000 in XLC Holds $130,206 in Just Meta and Alphabet",
+   "link": "https://247wallst.com/investing/etf/2026/11/24/your-300000-in-xlc-holds-130206-in-just-meta-and-alphabet/?.tsrc=rss",
+   "published_utc": "2026-11-25T01:04:06Z",
+   "teaser": "A fund labeled communication services sounds like a broad bet on telecom, media, and entertainment. The latest SEC filing shows something far narrower, and one company hides in plain sight by appearing on the holdings list twice."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "He Lets His Tesla Drive at 93, Trusting the Brand. A $400,000 Crash Judgment Could Reach His Savings, While His $2,800 Social Security Check Stays Off-Limits to the Victim",
+   "link": "https://247wallst.com/personal-finance/social-security/2026/11/24/he-lets-his-tesla-drive-at-93-trusting-the-brand-a-400000-crash-judgment-could-reach-his-savings-while-his-2800-social-security-check-stays-off-limits-to-the-victim/?.tsrc=rss",
+   "published_utc": "2026-11-25T00:32:26Z",
+   "teaser": "Tesla's ads show a 93-year-old running errands on Full Self-Driving, but the law still names him the driver if something goes wrong. Which parts of his retirement could a crash victim reach, and which are walled off?"
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix Stock Is Down 37% in 2026, But the Business Is Still Growing. Here's Why I'd Buy It Before the End of November.",
+   "link": "https://www.fool.com/investing/2026/11/24/netflix-stock-is-down-37-in-2026-but-the-business-is-still-growing-heres-why-id-buy-it-before-the-end-of-november/?.tsrc=rss",
+   "published_utc": "2026-11-25T00:27:02Z",
+   "teaser": "Netflix stock is down 56% from its summer 2025 peak. Here's what the sell-off may be missing about the thriving business."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "S&P 500, Nasdaq End Lower As AI Jitters Resurface With Nvidia’s Governance Issues And Talks Of Fresh Import Tariffs  — NVDA, DELL, TSLA, TGTX In Focus",
+   "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-lower-as-ai-jitters-resurface-with-nvidia-s-governance-issues-and-talks-of-fresh-import-tariffs-nvda-dell-tsla-tgtx-in-focus/cNbuDhyR9lT?.tsrc=rss",
+   "published_utc": "2026-11-25T00:12:12Z",
+   "teaser": "The Trump administration is reportedly preparing to roll out new tariffs targeting China and dozens of trading partners."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Berkshire Hit a Record High While AI Power Stocks Sold Off. Here’s What That Says About Where Energy Money Is Going.",
+   "link": "https://www.fool.com/investing/2026/11/24/berkshire-hit-a-record-high-while-ai-power-stocks-sold-off-heres-what-that-says-about-where-energy-money-is-going/?.tsrc=rss",
+   "published_utc": "2026-11-25T00:02:02Z",
+   "teaser": "Berkshire Hathaway rose as stocks like Bloom Energy and Caterpillar dropped, suggesting safety is increasingly important."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Why AMD Stock Fell Today",
+   "link": "https://www.fool.com/investing/2026/11/24/why-amd-stock-fell-today/?.tsrc=rss",
+   "published_utc": "2026-11-24T23:25:02Z",
+   "teaser": "Investors are deciding what Huang's return means."
+  },
+  {
    "symbol": "MU",
    "title": "3 AI Investment Stocks We’re Buying Today And Why We’re Selling On Micron",
    "link": "https://247wallst.com/videos/3-ai-investment-stocks-were-buying-today-and-why-were-selling-on-micron/?.tsrc=rss",
@@ -34,32 +160,18 @@
    "teaser": "With AI infrastructure stocks pulling back 30% to 80% from their highs, many investors are making adjustments to their portfolio. Eric Bleeker, the co-host of The AI Investor Podcast, recently shared three AI-related stocks he's buying as we head into 2027, as well as why he is selling on Micron. Among his recommendations is  Analog Devices, a longtime industry winner with a comprehensive portfolio in sensing, precision motion, and power management that stands to capture thousands of dollars in hardware content per humanoid robot."
   },
   {
+   "symbol": "DOCN",
+   "title": "DigitalOcean's 2027 Outlook: Revenue Projected to Grow 60% or More Next Year",
+   "link": "https://www.fool.com/coverage/moneyball/2026/11/24/digitalocean-s-2027-outlook-revenue-projected-to-grow-60-or-more-next-year/?.tsrc=rss",
+   "published_utc": "2026-11-24T23:18:42Z",
+   "teaser": "This under-the-radar cloud computing stock boasts a Superscore of 82 from our Hidden Gems Primary database, part of The Motley Fool's Moneyball Database system. Here's why."
+  },
+  {
    "symbol": "AMD",
    "title": "A scandal like the one haunting Nvidia just reached AMD, its biggest rival",
    "link": "https://www.thestreet.com/investing/stocks/scandal-like-one-haunting-nvidia-just-reached-amd-its-biggest-rival?.tsrc=rss",
    "published_utc": "2026-11-24T23:17:00Z",
    "teaser": "Short seller Hunterbrook claims that AMD faces a major problem that has plagued Nvidia all year."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "California AG Sees 'Bright Red Flags' Regarding Nvidia",
-   "link": "https://finance.yahoo.com/video/california-ag-sees-bright-red-230340002.html?.tsrc=rss",
-   "published_utc": "2026-11-24T23:03:40Z",
-   "teaser": "\"When there's flags in the air you have to look,\" California Attorney General Rob Bonta says about the state's investigation into whether Nvidia illegally sold advanced chips to China and misled investors about the conduct. He speaks on \"Balance of Power: Evening Edition.\""
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Dow Jones Futures: Nvidia, Anthropic Lead AI Retreat But Many Sectors Strong; Fed Inflation Data Due",
-   "link": "https://finance.yahoo.com/m/d96603c1-fe7f-3bf3-8158-0728b464d469/dow-jones-futures%3A-nvidia%2C.html?.tsrc=rss",
-   "published_utc": "2026-11-24T23:02:58Z",
-   "teaser": "Nvidia, Anthropic and Sandisk led an AI sell-off but medicals, retailers and more fared well. Fed inflation data looms."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "In Response to the Turmoil at Nvidia, Bitcoin Drops Below $70,000. Is This a Buy-the-Dip Opportunity?",
-   "link": "https://www.fool.com/investing/2026/11/24/in-response-to-the-turmoil-at-nvidia-bitcoin-drops-below-usd70-000-is-this-a-buy-the-dip-opportunity/?.tsrc=rss",
-   "published_utc": "2026-11-24T23:01:02Z",
-   "teaser": "Bitcoin's mediocre response to Jensen Huang returning to Nvidia is a bit concerning for the coin's potential buyers."
   },
   {
    "symbol": "NFLX",
@@ -76,13 +188,6 @@
    "teaser": "At RSNA 2026, Maverick will demonstrate real-time documentation guidance connecting radiology reporting with autonomous, billing-ready codingWILMINGTON, Del., Nov. 24, 2026 (GLOBE NEWSWIRE) -- Maverick Medical AI will showcase CodeAgent™, its real-time AI documentation assistant, within Microsoft Dragon Copilot at RSNA 2026. Microsoft Dragon Copilot works alongside PowerScribe One, a Microsoft radiology reporting solution used by hundreds of healthcare organizations in the United States. The off"
   },
   {
-   "symbol": "NVDA",
-   "title": "Why Trump wanted Jensen Huang back at the helm of Nvidia",
-   "link": "https://finance.yahoo.com/markets/article/why-trump-wanted-jensen-huang-back-at-the-helm-of-nvidia-224325153.html?.tsrc=rss",
-   "published_utc": "2026-11-24T22:43:25Z",
-   "teaser": "President Trump and Vice President Vance view Huang as a vital defender of open-source AI models."
-  },
-  {
    "symbol": "AMD",
    "title": "Stock Market Today, Nov. 24: AMD Plunges 9% as 337 Million-Share Resale Filing Adds to AI Sell-Off",
    "link": "https://www.fool.com/coverage/stock-market-today/2026/11/24/stock-market-today-nov-24-amd-plunges-9-as-337-million-share-resale-filing-adds-to-ai-sell-off/?.tsrc=rss",
@@ -90,25 +195,11 @@
    "teaser": "AMD's latest decline highlights mounting pressure on semiconductor stocks as investors weigh regulatory concerns, potential share sales, and the financial demands of expanding AI infrastructure."
   },
   {
-   "symbol": "NVDA",
-   "title": "Colette Kress Scored a Win Worth Millions From Huang’s Return to Nvidia",
-   "link": "https://finance.yahoo.com/m/97a2ae60-8b24-38d0-ac03-3173b543f91f/colette-kress-scored-a-win.html?.tsrc=rss",
-   "published_utc": "2026-11-24T22:37:00Z",
-   "teaser": "Nvidia’s interim CEO lasted only 11 days before her old boss resurfaced—and she went back to being CFO. But the stock’s comeback padded a trust that her kids will inherit."
-  },
-  {
    "symbol": "AMZN",
    "title": "Amazon customers may qualify for $309.5M settlement. See how",
    "link": "https://www.usatoday.com/story/money/2026/11/24/amazon-settlement-deadline-is-approaching-who-qualifies/92947347007/?.tsrc=rss",
    "published_utc": "2026-11-24T22:32:44Z",
    "teaser": "Amazon customers may qualify for a share of a $309.5 million settlement over refund issues. Here's who is eligible and how to file a claim."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia’s $4 Trillion Board Is ‘The B Team,’ Says Former CIA Officer",
-   "link": "https://www.benzinga.com/markets/prediction-markets/26/11/63612075/nvidia-board-b-team-governance?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
-   "published_utc": "2026-11-24T22:32:06Z",
-   "teaser": "Nvidia Corp. (NASDAQ:NVDA) directors voted unanimously on Monday to reinstate Jensen Huang, 11 days after he resigned amid reports of an affair with a suspected Chinese spy. Now two former U.S. intelligence officials are questioning whether that board is equipped..."
   },
   {
    "symbol": "NFLX",
@@ -333,27 +424,6 @@
    "link": "https://finance.yahoo.com/small-business/articles/former-amazon-vp-reveals-jeff-183006747.html?.tsrc=rss",
    "published_utc": "2026-11-24T18:30:06Z",
    "teaser": "Quick Read Former Amazon VP Ethan Evans said Jeff Bezos rarely praised employees, even when they delivered strong results. Evans recalled meetings where Bezos criticized teams, challenged executives and sometimes embarrassed employees in front of colleagues. Sponsored: Could a demanding..."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla’s Robotaxi Business Could Generate $3-4B In Annual Recurring Revenue By 2027-End, Says Seaport Global",
-   "link": "https://stocktwits.com/news-articles/markets/equity/tesla-s-robotaxi-business-could-generate-3-4-b-in-annual-recurring-revenue-by-2027-end-says-seaport-global/cNbs0INR9kD?.tsrc=rss",
-   "published_utc": "2026-11-24T18:16:13Z",
-   "teaser": "Seaport Global Securities initiated coverage of Tesla with a ‘Buy’ rating and a $475 price target, according to an Investing.com report."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Here's Why SpaceX Stock Slumped Today, And Why it Could Come Under More Pressure as Tesla Merger Talks Continue",
-   "link": "https://www.fool.com/investing/2026/11/24/here-s-why-spacex-stock-slumped-today-and-why-it-could-come-under-more-pressure-as-tesla-merger-talks-continue/?.tsrc=rss",
-   "published_utc": "2026-11-24T18:09:05Z",
-   "teaser": "Merger discussions between SpaceX and Tesla appear to be heating up, and investors are positioning themselves accordingly."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "Tesla-SpaceX Talks Are Moving at “Warp Speed.” SpaceX’s IPO Lock-Up Ends Dec. 8",
-   "link": "https://www.tikr.com/blog/tesla-spacex-talks-are-moving-at-warp-speed-spacexs-ipo-lock-up-ends-dec-8?ref=yahoofinance&tlnk=yf-261124-6wwcvj4c&.tsrc=rss",
-   "published_utc": "2026-11-24T18:05:26Z",
-   "teaser": "Key TakeawaysSpaceX stock fell 3% Tuesday morning as reports showed three banks already negotiating a possible all-stock merger with Tesla. LumaSenti’s Larry Goldberg expected the committees to form late this year at the earliest, and he calls the pace “warp speed."
   },
   {
    "symbol": "RDDT",
@@ -601,20 +671,6 @@
    "teaser": "Shares rose 17.8% on Monday, Nov. 23, without company-specific news, along with cloud peers and a broad market rally."
   },
   {
-   "symbol": "NFLX",
-   "title": "Netflix Needs 'Buzzy' Franchises",
-   "link": "https://www.mediapost.com/publications/article/419628/netflix-needs-buzzy-franchises.html?.tsrc=rss",
-   "published_utc": "2026-11-23T16:47:50Z",
-   "teaser": "Despite being impacted by weakening viewer engagement, Netflix has the financial wherewithal to up its game with major brand franchises and prized intellectual property."
-  },
-  {
-   "symbol": "NFLX",
-   "title": "Forget the Doorbusters: Netflix and Amazon Are Fighting Over Thanksgiving Football",
-   "link": "https://www.marketbeat.com/articles/forget-the-doorbusters-netflix-and-amazon-are-fighting-over-thanksgiving-football/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-   "published_utc": "2026-11-23T16:10:00Z",
-   "teaser": "Netflix and Amazon are airing Thanksgiving-week NFL games, investing hundreds of millions annually to boost streaming engagement, ad revenue, and subscriber growth ahead of Black Friday."
-  },
-  {
    "symbol": "BRK/B",
    "title": "Berkshire Has Owned These 2 Consumer Stocks for Decades. I'd Buy Both Before December and Never Sell.",
    "link": "https://www.fool.com/investing/2026/11/23/berkshire-has-owned-these-2-consumer-stocks-for-decades-id-buy-both-before-december-and-never-sell/?.tsrc=rss",
@@ -641,13 +697,6 @@
    "link": "https://www.trefis.com/stock/cat/articles/627850/why-is-caterpillar-stock-falling/2026-11-23?.tsrc=rss",
    "published_utc": "2026-11-23T12:54:55Z",
    "teaser": "Today's big story: Reported SEC Probe: Could Nvidia Stock Fall To $92."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Here's How Much You'd Have If You Invested $1000 in Berkshire Hathaway B a Decade Ago",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/heres-much-youd-invested-1000-123002224.html?.tsrc=rss",
-   "published_utc": "2026-11-23T12:30:02Z",
-   "teaser": "Why investing for the long run, especially if you buy certain popular stocks, could reap huge rewards."
   },
   {
    "symbol": "UPS",
