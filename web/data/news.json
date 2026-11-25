@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-25T22:41:41Z",
+ "checked_at_utc": "2026-11-25T22:59:34Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,6 +27,20 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "AMD",
+   "title": "2 Billionaire Funds Dumped AMD Last Quarter. Is It a Sell?",
+   "link": "https://www.fool.com/investing/2026/11/25/2-billionaire-funds-dumped-amd-last-quarter-is-it-a-sell/?.tsrc=rss",
+   "published_utc": "2026-11-25T22:43:01Z",
+   "teaser": "AMD's stock is pricey compared to its peers."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Dow Jones Futures: Market Goes On Wild Ride. Nasdaq, Nvidia Slash Losses While Anthropic Reverses Higher.",
+   "link": "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures%3A-market.html?.tsrc=rss",
+   "published_utc": "2026-11-25T22:35:25Z",
+   "teaser": "The market went on a wild ride before Thanksgiving, but the Dow and Anthropic reversed higher while the Nasdaq and Nvidia came well off lows."
+  },
+  {
    "symbol": "MU",
    "title": "Micron's CEO pay rose 28%. His security bill rose way faster",
    "link": "https://www.thestreet.com/investing/micron-ceo-pay-security-costs-soar?.tsrc=rss",
@@ -46,13 +60,6 @@
    "link": "https://stocktwits.com/news-articles/markets/equity/nvidia-may-get-a-credit-rating-cut-amid-governance-issues-while-us-officials-reportedly-say-no-chinese-interference-in-huang-s-affair/cNbHubZR9mx?.tsrc=rss",
    "published_utc": "2026-11-25T22:26:54Z",
    "teaser": "S&P Global Ratings placed Nvidia on ‘CreditWatch’ with negative implications over governance concerns sparked by Chief Executive Officer Jensen Huang’s rapid exit and return."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Dow Jones Futures: Market Goes On Wild Ride. Nasdaq, Nvidia Slash Losses While Anthropic Reverses Higher.",
-   "link": "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures%3A-market.html?.tsrc=rss",
-   "published_utc": "2026-11-25T22:24:35Z",
-   "teaser": "The market went on a wild ride before Thanksgiving, but the Dow and Anthropic reversed higher while the Nasdaq and Nvidia came well off lows."
   },
   {
    "symbol": "NVDA",
@@ -90,13 +97,6 @@
    "teaser": "The FCC chair had a pointed message for Amazon and other doubters, but the new license comes with hard deadlines that start in 2033."
   },
   {
-   "symbol": "NVDA",
-   "title": "Nvidia engineer who quit in protest of Jensen Huang's ouster says he 'may have moved too quickly,' is open to returning",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-engineer-quit-protest-jensen-220000936.html?.tsrc=rss",
-   "published_utc": "2026-11-25T22:00:00Z",
-   "teaser": "Darrell Dai, however, doesn't have President Trump backing his return."
-  },
-  {
    "symbol": "MU",
    "title": "Not Micron. Not Broadcom. This Is My Top Oversold Artificial Intelligence (AI) Stock to Buy in December",
    "link": "https://www.fool.com/investing/2026/11/25/not-micron-not-broadcom-this-is-my-top-oversold-artificial-intelligence-ai-stock-to-buy-in-december/?.tsrc=rss",
@@ -109,6 +109,13 @@
    "link": "https://www.fool.com/investing/2026/11/25/is-berkshire-hathaway-stock-a-buy-if-the-fed-keeps-raising-rates/?.tsrc=rss",
    "published_utc": "2026-11-25T21:50:02Z",
    "teaser": "Berkshire Hathaway has both opportunities and challenges in a high-rate environment."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron (MU) Suffers a Larger Drop Than the General Market: Key Insights",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-suffers-larger-drop-214502791.html?.tsrc=rss",
+   "published_utc": "2026-11-25T21:45:02Z",
+   "teaser": "Micron (MU) reached $601.25 at the closing of the latest trading day, reflecting a -4.53% change compared to its last close."
   },
   {
    "symbol": "AMD",
@@ -431,13 +438,6 @@
    "link": "https://247wallst.com/investing/2026/11/25/tesla-slides-6-as-eu-delays-vote-on-its-self-driving-software-rivian-and-lucid-drop-4/?.tsrc=rss",
    "published_utc": "2026-11-25T15:54:11Z",
    "teaser": "Tesla calls Full Self-Driving the key driver of demand, yet Europe keeps stalling on a vote. With France and Sweden raising safety flags and rivals Rivian and Lucid dragged along, one December date could decide what comes next."
-  },
-  {
-   "symbol": "AMD",
-   "title": "AMD Stocks Plunge 9.74% as Chip Rout and Tariff Threat Collide",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/amd-stocks-plunge-9-74-154902897.html?.tsrc=rss",
-   "published_utc": "2026-11-25T15:49:02Z",
-   "teaser": "AMD guided to a 27% sequential revenue jump, but the shares still trade above their GF Value after a two-day slide."
   },
   {
    "symbol": "CAT",
