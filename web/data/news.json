@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-25T22:59:34Z",
+ "checked_at_utc": "2026-11-26T03:27:32Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,18 +27,137 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "NVDA",
+   "title": "Trump admin weighed using Cold War law to reinstate Nvidia CEO Huang, WaPo reports",
+   "link": "https://finance.yahoo.com/technology/articles/trump-admin-weighed-using-cold-032247551.html?.tsrc=rss",
+   "published_utc": "2026-11-26T03:22:47Z",
+   "teaser": "Investing.com -- Senior Trump administration officials discussed using a Cold War-era law to pressure Nvidia to bring back Jensen Huang as chief executive, the Washington Post reported on Wednesday, citing three people familiar with the matter."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia chips reach Chinese-owned U.S. firms despite export curbs, CBS reports",
+   "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-chips-reach-chinese-owned-031146505.html?.tsrc=rss",
+   "published_utc": "2026-11-26T03:11:46Z",
+   "teaser": "Investing.com -- Nvidia’s most advanced artificial intelligence chips are reaching Chinese-owned companies through U.S.-based businesses, raising fresh concerns over the enforcement of American export restrictions on sensitive semiconductor technology, a CBS News investigation revealed."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Kioxia and NVIDIA Collaborate to Expand Effective High-Bandwidth Memory Capacity with SSDs",
+   "link": "https://finance.yahoo.com/technology/ai/articles/kioxia-nvidia-collaborate-expand-effective-031000587.html?.tsrc=rss",
+   "published_utc": "2026-11-26T03:10:00Z",
+   "teaser": "SAN JOSE, Calif., November 26, 2026--A Kioxia and NVIDIA collaboration has demonstrated the potential to extend effective GPU memory capacity to petabyte scale."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Is Nvidia Stock a Buy After Dell's Record AI Backlog?",
+   "link": "https://www.fool.com/investing/2026/11/25/is-nvidia-stock-a-buy-after-dell-s-record-ai-backlog/?.tsrc=rss",
+   "published_utc": "2026-11-26T03:07:02Z",
+   "teaser": "Most of the server maker's newest AI orders run on the chip giant's latest system."
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Nvidia’s Market Cap Falls Below Microsoft’s: Analyst Flags Five Overhangs For NVDA Stock",
+   "link": "https://stocktwits.com/news-articles/markets/equity/nvidia-s-market-cap-falls-below-microsoft-s-analyst-flags-five-overhangs-for-nvda-stock/cNbx4KZR9Z3?.tsrc=rss",
+   "published_utc": "2026-11-26T02:39:42Z",
+   "teaser": "Nvidia shares fell nearly 4% on Wednesday, knocking the chipmaker down to third place in the U.S. market-cap rankings."
+  },
+  {
+   "symbol": "SOFI",
+   "title": "SOFI Stock Rebounds After Slumping To 52-Week Low: Retail Goes Bottom Fishing",
+   "link": "https://stocktwits.com/news-articles/markets/equity/sofi-stock-rebounds-after-slumping-to-52-week-low-retail-goes-bottom-fishing/cNbx4RiR9Z2?.tsrc=rss",
+   "published_utc": "2026-11-26T02:22:59Z",
+   "teaser": "SoFi Technologies stock hit a 52-week low of $11.95 during Wednesday's regular session before recovering to close 1.63% higher."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Why Retail Investors Are Watching AMD and AI Infrastructure Stocks After SpaceX Satellite News",
+   "link": "https://finance.yahoo.com/technology/ai/articles/why-retail-investors-watching-amd-021215050.html?.tsrc=rss",
+   "published_utc": "2026-11-26T02:12:15Z",
+   "teaser": "Space is no longer just about rockets. With the FCC greenlighting SpaceX’s vast Starmind satellite plan, the idea of orbital data centers suddenly feels less like science fiction and more like the early internet all over again. Investors watching AI infrastructure and high-performance computing now face a fresh frontier that could reroute where capital flows. This article unpacks 3 stocks exposed to this news and explains why their story might matter for your portfolio. The three stocks that..."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Put on Negative Credit Watch by S&P Over ‘Key Man’ Risk: Moody’s Says Jensen Huang’s Return as CEO ‘Reduces Near-Term Uncertainty’",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-put-negative-credit-watch-013558626.html?.tsrc=rss",
+   "published_utc": "2026-11-26T01:35:58Z",
+   "teaser": "Nvidia Corp. (NASDAQ:NVDA) faces a possible credit downgrade as S&P Global Ratings cites board independence and heavy reliance on CEO Jensen Huang, while Moody’s kept its rating unchanged. S&P Could Downgrade Nvidia Within 90 Days S&P said on Wednesday that “recent events undermine our view” of Nvidia’s management and governance, adding that the long tenure of certain board members “may have compromised their independence.” Weak executive oversight and a lack of succession planning “have brought"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Pete Hegseth, Trump Officials Reportedly Floated Wartime Law to Force Jensen Huang’s Return as Nvidia CEO, But Pentagon Says It ‘Never Happened’",
+   "link": "https://finance.yahoo.com/technology/articles/pete-hegseth-trump-officials-reportedly-013224994.html?.tsrc=rss",
+   "published_utc": "2026-11-26T01:32:24Z",
+   "teaser": "The Donald Trump administration reportedly considered invoking emergency powers under a decades-old defense law to pressure Nvidia Corp. (NASDAQ:NVDA) to reinstate Jensen Huang as CEO. Pentagon Considered Using Defense Production Act Senior Pentagon officials, including Defense Secretary Pete Hegseth and Deputy Secretary Steve Feinberg, discussed using the Defense Production Act to influence Nvidia’s board over the weekend, the Washington Post reported on Wednesday, citing people familiar with t"
+  },
+  {
+   "symbol": "NVDA",
+   "title": "'Alarming, if unsurprising': Trump administration cut corners with hasty Nvidia investigation, former CIA officer warns",
+   "link": "https://finance.yahoo.com/technology/articles/alarming-unsurprising-trump-administration-cut-010000318.html?.tsrc=rss",
+   "published_utc": "2026-11-26T01:00:00Z",
+   "teaser": "The FBI has provided at least two \"defensive briefings\" to Nvidia leadership regarding Chinese espionage tactics, according to a separate law enforcement official."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
+   "link": "https://beincrypto.com/apple-stock-ai-selloff-safe-haven/?.tsrc=rss",
+   "published_utc": "2026-11-26T01:00:00Z",
+   "teaser": "Apple stock is up 30.61% in 2026 while Nvidia falls 21.35%. See how low AI capex and a Gemini deal shaped the gap."
+  },
+  {
+   "symbol": "AMD",
+   "title": "Big AI Buyers Want a Second Source. Is AMD (AMD) It?",
+   "link": "https://finance.yahoo.com/technology/ai/articles/big-ai-buyers-want-second-005602621.html?.tsrc=rss",
+   "published_utc": "2026-11-26T00:56:02Z",
+   "teaser": "Advanced Micro Devices, Inc. (NASDAQ:AMD) ranks 6th on our list of the 10 Best Strong Buy Growth Stocks to Buy for 2027. By November 19, the wider market had slipped about 8.5% from its 52-week high, and chip stocks took the hardest hit, with the semiconductor sector down roughly 36% from its own peak. Concerns […]"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Elon Musk tells Tesla investors there is 'only one way' to eliminate poverty",
+   "link": "https://www.thestreet.com/investing/elon-musk-tells-tesla-investors-optimus-robots-will-eliminate-poverty?.tsrc=rss",
+   "published_utc": "2026-11-26T00:37:00Z",
+   "teaser": "Musk says poverty won’t end with government checks, and that Tesla is building the real answer."
+  },
+  {
+   "symbol": "MSFT",
+   "title": "Microsoft's Green Card Filings Reveal A Striking Pattern After Mass Layoffs. Trump's New Rule Could Freeze Sponsorships For Two Years.",
+   "link": "https://www.ibtimes.com/microsoft-green-card-filings-after-2025-layoffs-3810211?.tsrc=rss",
+   "published_utc": "2026-11-25T23:48:07Z",
+   "teaser": "An analysis of federal labor records shows Microsoft sharply reduced PERM filings after its 2025 layoffs, as proposed rules could impose longer restrictions on sponsoring foreign workers."
+  },
+  {
+   "symbol": "MU",
+   "title": "Is Micron Cheap Only If Its Record Margin Lasts?",
+   "link": "https://www.trefis.com/stock/mu/articles/628939/is-micron-cheap-only-if-its-record-margin-lasts/2026-11-25?.tsrc=rss",
+   "published_utc": "2026-11-25T23:43:07Z",
+   "teaser": "Today's big story: Anthropic Below Its IPO Price: Do Giants Come Back."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Bill Gurley: Investors Weren’t “Scrambling to Actually Own Anthropic.” That’s a Problem for Amazon and Alphabet",
+   "link": "https://www.tikr.com/blog/bill-gurley-investors-werent-scrambling-to-actually-own-anthropic-thats-a-problem-for-amazon-and-alphabet?ref=yahoofinance&tlnk=yf-261125-5qg4553j&.tsrc=rss",
+   "published_utc": "2026-11-25T23:43:06Z",
+   "teaser": "Key TakeawaysAnthropic fell below its $83 IPO price on Tuesday, its fourth day of trading. Bill Gurley says few of the IPO’s buyers planned to hold the stock."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "If SpaceX and Tesla Merge Next Year, Here's What a $5,000 Investment in the Combined Company Could Be Worth by the End of 2028",
+   "link": "https://www.fool.com/investing/2026/11/25/if-spacex-and-tesla-merge-next-year-here-s-what-a-usd5-000-investment-in-the-combined-company-could-be-worth-by-the-end-of-2027/?.tsrc=rss",
+   "published_utc": "2026-11-25T23:24:02Z",
+   "teaser": "An investment in Tesla could double in the event of a Space Exploration Technologies merger."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Musk's Plan To Put 1 Million AI Satellites In Orbit Gets US Approval. Amazon Questions Whether It Can Be Done.",
+   "link": "https://www.ibtimes.com/fcc-approves-spacex-ai-satellite-constellation-3810209?.tsrc=rss",
+   "published_utc": "2026-11-25T23:16:30Z",
+   "teaser": "SpaceX believes solar-powered satellites could eventually reduce the enormous energy demands of terrestrial AI infrastructure."
+  },
+  {
    "symbol": "AMD",
    "title": "2 Billionaire Funds Dumped AMD Last Quarter. Is It a Sell?",
    "link": "https://www.fool.com/investing/2026/11/25/2-billionaire-funds-dumped-amd-last-quarter-is-it-a-sell/?.tsrc=rss",
    "published_utc": "2026-11-25T22:43:01Z",
    "teaser": "AMD's stock is pricey compared to its peers."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Dow Jones Futures: Market Goes On Wild Ride. Nasdaq, Nvidia Slash Losses While Anthropic Reverses Higher.",
-   "link": "https://finance.yahoo.com/m/158e82fc-b889-34b6-8704-99a49e9a83ae/dow-jones-futures%3A-market.html?.tsrc=rss",
-   "published_utc": "2026-11-25T22:35:25Z",
-   "teaser": "The market went on a wild ride before Thanksgiving, but the Dow and Anthropic reversed higher while the Nasdaq and Nvidia came well off lows."
   },
   {
    "symbol": "MU",
@@ -48,46 +167,11 @@
    "teaser": "Micron’s proxy filing explains the jump in a single phrase, and it says a lot about the risks facing today’s best-paid executives."
   },
   {
-   "symbol": "NVDA",
-   "title": "Nvidia settles 8-year-old investor suit for $290M",
-   "link": "https://www.thestreet.com/crypto/artificial-intelligence/nvidia-settles-8-year-old-investor-suit-for-290m?.tsrc=rss",
-   "published_utc": "2026-11-25T22:30:00Z",
-   "teaser": "Nvidia reaches a $290 million settlement in a 2018 investor lawsuit."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia May Get A Credit Rating Cut Amid Governance Issues, While US Officials Reportedly Say No Chinese Interference in Huang’s Affair",
-   "link": "https://stocktwits.com/news-articles/markets/equity/nvidia-may-get-a-credit-rating-cut-amid-governance-issues-while-us-officials-reportedly-say-no-chinese-interference-in-huang-s-affair/cNbHubZR9mx?.tsrc=rss",
-   "published_utc": "2026-11-25T22:26:54Z",
-   "teaser": "S&P Global Ratings placed Nvidia on ‘CreditWatch’ with negative implications over governance concerns sparked by Chief Executive Officer Jensen Huang’s rapid exit and return."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Jensen Huang, Trump and the 11 Days That Rocked Nvidia",
-   "link": "https://finance.yahoo.com/video/jensen-huang-trump-11-days-222200314.html?.tsrc=rss",
-   "published_utc": "2026-11-25T22:22:00Z",
-   "teaser": "Jensen Huang made a stunning return to Nvidia just 11 days after being ousted as the chipmaker’s CEO. WSJ reporters explain what happened behind the scenes—from Silicon Valley to Washington, D.C.—to bring him back."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia Sell-Off: You Won’t Believe How Cheap the Stock Is",
-   "link": "https://www.fool.com/investing/2026/11/25/nvidia-sell-off-you-won-t-believe-how-cheap-the-stock-is/?.tsrc=rss",
-   "published_utc": "2026-11-25T22:20:02Z",
-   "teaser": "Nvidia's stock is the cheapest it has been since the financial crisis"
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Michael Burry slashes Nvidia bets but issues stark warning",
-   "link": "https://www.thestreet.com/investing/michael-burry-slashes-nvidia-bets-but-issues-stark-warning?.tsrc=rss",
-   "published_utc": "2026-11-25T22:17:00Z",
-   "teaser": "The “Big Short” investor has reduced his bearish Nvidia position ahead of a historic rally."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Stock Market Today, Nov. 25: Nvidia Slides 3.9% as the Market Considers Hot PCE Inflation Data and New Tariff Proposals",
-   "link": "https://www.fool.com/coverage/stock-market-today/2026/11/25/stock-market-today-nov-25-nvidia-slides-3-9-as-the-market-considers-hot-pce-inflation-data-and-new-tariff-proposals/?.tsrc=rss",
-   "published_utc": "2026-11-25T22:06:45Z",
-   "teaser": "Trading ran well above normal as Nvidia fell on hot inflation data and tariff proposals, today, Nov. 25, 2026."
+   "symbol": "AMZN",
+   "title": "Trump Has A Message for Big Tech Firms Like Amazon, Google and Microsoft Building Data Centers Abroad: ‘We’re Going to Put A Tremendous Tax On Them’",
+   "link": "https://finance.yahoo.com/economy/policy/articles/trump-message-big-tech-firms-223005233.html?.tsrc=rss",
+   "published_utc": "2026-11-25T22:30:05Z",
+   "teaser": "President Donald Trump is threatening steep tax penalties on U.S. technology companies that build data centers overseas, signaling a push to keep more AI infrastructure investment within American borders. Trump Threatens Taxes On Overseas Data Centers On Friday, speaking at..."
   },
   {
    "symbol": "AMZN",
@@ -116,6 +200,13 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-suffers-larger-drop-214502791.html?.tsrc=rss",
    "published_utc": "2026-11-25T21:45:02Z",
    "teaser": "Micron (MU) reached $601.25 at the closing of the latest trading day, reflecting a -4.53% change compared to its last close."
+  },
+  {
+   "symbol": "MU",
+   "title": "Anthropic, Nvidia, Micron, HP Inc., Dell, Deere, and More Stocks That Explain Today’s Market",
+   "link": "https://finance.yahoo.com/m/18e72c51-c6d7-33b1-aa90-ccce17a9b32f/anthropic%2C-nvidia%2C-micron%2C-hp.html?.tsrc=rss",
+   "published_utc": "2026-11-25T21:41:00Z",
+   "teaser": "Nvidia trades lower while Anthropic stock rebounds."
   },
   {
    "symbol": "AMD",
@@ -209,13 +300,6 @@
    "teaser": "The AI enterprise sector came under pressure as investors worried about the rising costs of building frontier AI models in a highly competitive market."
   },
   {
-   "symbol": "MU",
-   "title": "Anthropic, Nvidia, Micron, HP Inc., Dell, Deere, and More Stocks That Explain Today’s Market",
-   "link": "https://finance.yahoo.com/m/18e72c51-c6d7-33b1-aa90-ccce17a9b32f/anthropic%2C-nvidia%2C-micron%2C-hp.html?.tsrc=rss",
-   "published_utc": "2026-11-25T18:37:00Z",
-   "teaser": "Nvidia trades lower while Anthropic stock rebounds."
-  },
-  {
    "symbol": "AMZN",
    "title": "Amazon Is Backing More Than 5 Gigawatts of New Nuclear by 2039. This Reactor Developer Could Cash In.",
    "link": "https://www.fool.com/investing/2026/11/25/amazon-is-backing-more-than-5-gigawatts-of-new-nuclear-by-2039-this-reactor-developer-could-cash-in/?.tsrc=rss",
@@ -260,7 +344,7 @@
   {
    "symbol": "AMZN",
    "title": "Amazon to start selling cars in the UK",
-   "link": "https://www.telegraph.co.uk/business/2026/11/25/amazon-to-start-selling-cars-in-the-uk/?.tsrc=rss",
+   "link": "https://uk.finance.yahoo.com/news/amazon-start-selling-cars-uk-174741468.html?.tsrc=rss",
    "published_utc": "2026-11-25T17:47:41Z",
    "teaser": "Amazon is to start selling cars in the UK for the first time, marking the expansion of its online car dealership outside the US."
   },
@@ -321,32 +405,11 @@
    "teaser": "Micron Stock Is Getting Hit From All Sides. A Major Bank Just Turned Bearish"
   },
   {
-   "symbol": "GOOGL",
-   "title": "Alphabet stock plunges as Google walks away from a big Australian news deal",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-stock-plunges-google-walks-171450705.html?.tsrc=rss",
-   "published_utc": "2026-11-25T17:14:50Z",
-   "teaser": "Alphabet stock takes a big hit while Google ends a major media deal in Australia"
-  },
-  {
-   "symbol": "MU",
-   "title": "Micron Technology (MU) Dropped, So What Is Drawing Attention Now?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-mu-dropped-drawing-171415757.html?.tsrc=rss",
-   "published_utc": "2026-11-25T17:14:15Z",
-   "teaser": "Micron Technology stock reacts to sharp sector pullback Micron Technology (MU) grabbed attention after the stock fell 11% during a broad selloff in semiconductor and artificial intelligence shares, erasing part of a strong year-to-date move. The decline followed a period of rapid gains for chip makers, with memory producers like Micron giving back recent advances as investors reduced exposure to high-growth technology themes. For Micron Technology, the 11% single day share price drop comes on..."
-  },
-  {
    "symbol": "MSFT",
    "title": "Microsoft (MSFT) Deepens Europe Sovereign AI Push With Expanded Public Sector Cloud Pact",
    "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-msft-deepens-europe-sovereign-171058616.html?.tsrc=rss",
    "published_utc": "2026-11-25T17:10:58Z",
    "teaser": "Microsoft (NasdaqGS:MSFT) and Atos announced an extended partnership to deliver sovereign AI and cloud environments for Europe’s public sector and regulated enterprises. The collaboration targets digital infrastructure that meets European requirements for sovereignty, security, compliance, and data residency for government and critical industries. Atos plans to apply its sovereignty framework and services on top of Microsoft’s platform to support autonomous AI agents at scale in regulated..."
-  },
-  {
-   "symbol": "AMD",
-   "title": "AI Chip Stocks Extend Brutal Selloff as Nvidia, AMD and Broadcom Tumble Again",
-   "link": "https://finance.yahoo.com/technology/ai/articles/ai-chip-stocks-extend-brutal-170236621.html?.tsrc=rss",
-   "published_utc": "2026-11-25T17:02:36Z",
-   "teaser": "Nvidia, AMD Shares Sink as Wall Street's AI Rally Loses Steam"
   },
   {
    "symbol": "NFLX",
@@ -363,20 +426,6 @@
    "teaser": "Early reviews of Tesla’s FSD version 15 should be encouraging to investors."
   },
   {
-   "symbol": "AMZN",
-   "title": "Amazon Wants a 'Fair Exchange' Before Letting Muse Back In",
-   "link": "https://finance.yahoo.com/technology/articles/amazon-wants-fair-exchange-letting-163449964.html?.tsrc=rss",
-   "published_utc": "2026-11-25T16:34:49Z",
-   "teaser": "More than a quarter of Muse's active users use it to shop"
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Prediction: IREN’s Microsoft Deal Could Be Just the Beginning of Its Next Growth Phase",
-   "link": "https://247wallst.com/investing/2026/11/25/prediction-irens-microsoft-deal-could-be-just-the-beginning-of-its-next-growth-phase-massive-upside-ahead/?.tsrc=rss",
-   "published_utc": "2026-11-25T16:33:59Z",
-   "teaser": "IREN has dropped its Bitcoin mining roots and now owns the land, power, and data centers beneath its AI chips, yet the stock keeps sinking. What would it take for the market to finally notice, and could the price double?"
-  },
-  {
    "symbol": "BRK/B",
    "title": "How 2 Quick Calls Sealed Berkshire Hathaway’s $930M Bending Spoons Investment",
    "link": "https://finance.yahoo.com/m/c0f5187b-4c48-3bdf-bace-f60bd53791d7/how-2-quick-calls-sealed.html?.tsrc=rss",
@@ -391,46 +440,11 @@
    "teaser": "Key TakeawaysTesla fell 5% today as the AI selloff deepened and the EU delayed a vote on Full Self-Driving to Dec. 15."
   },
   {
-   "symbol": "AMZN",
-   "title": "Amazon Makes Major Move Into Car Sales Beyond U.S.",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-makes-major-move-car-163032877.html?.tsrc=rss",
-   "published_utc": "2026-11-25T16:30:32Z",
-   "teaser": "A growing retail experiment is entering its next phase."
-  },
-  {
-   "symbol": "AMD",
-   "title": "Without an Anthropic Rally, “There Will Be No OpenAI.” AMD Is the Real Loser",
-   "link": "https://www.tikr.com/blog/without-an-anthropic-rally-there-will-be-no-openai-amd-is-the-real-loser?ref=yahoofinance&tlnk=yf-261125-334c8hfc&.tsrc=rss",
-   "published_utc": "2026-11-25T16:18:36Z",
-   "teaser": "Key TakeawaysAnthropic fell below its $83 IPO price on Tuesday, and AMD fell 9% on a filing registering up to 336. 9 million shares for resale."
-  },
-  {
    "symbol": "AAPL",
    "title": "How Qualcomm’s CMO is reshaping his team for its post-Apple era",
    "link": "https://finance.yahoo.com/technology/ai/articles/qualcomm-cmo-reshaping-team-post-160155309.html?.tsrc=rss",
    "published_utc": "2026-11-25T16:01:55Z",
    "teaser": "After losing a key partnership with Apple, U.S. chipmaker Qualcomm is shifting its focus to data centers and laptops. Its CMO, Don McGuire, is reshaping the company’s marketing strategy to support the transition."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Can PINS's New Microsoft Advertising Deal Boost Its Competitive Edge?",
-   "link": "https://finance.yahoo.com/media-advertising/articles/pinss-microsoft-advertising-deal-boost-155900901.html?.tsrc=rss",
-   "published_utc": "2026-11-25T15:59:00Z",
-   "teaser": "Pinterest's Microsoft partnership expands advertising access, leveraging AI and commercial-intent searches to attract brands and boost monetization."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Microsoft-Backed OpenAI Faces Another ChatGPT Setback",
-   "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-backed-openai-faces-another-155758431.html?.tsrc=rss",
-   "published_utc": "2026-11-25T15:57:58Z",
-   "teaser": "Paid subscribers face fresh trouble just days after an earlier disruption."
-  },
-  {
-   "symbol": "AMD",
-   "title": "CNBC’s David Faber Says “AMD Is Taking Clients.” SemiAnalysis Has Its MI355X Beating Nvidia’s B200 on Cost",
-   "link": "https://www.tikr.com/blog/cnbcs-david-faber-says-amd-is-taking-clients-semianalysis-has-its-mi355x-beating-nvidias-b200-on-cost?ref=yahoofinance&tlnk=yf-261125-pj6xvm8j&.tsrc=rss",
-   "published_utc": "2026-11-25T15:57:44Z",
-   "teaser": "Key TakeawaysAMD fell 10% on Nov. 24 after Jensen Huang returned to Nvidia, but CNBC’s David Faber says AMD is taking clients."
   },
   {
    "symbol": "TSLA",
@@ -454,13 +468,6 @@
    "teaser": "Tesla and SpaceX shares were particularly hard-hit in Wednesday's broader market sell-off, amid growing investor pushback over a potential merger and another delay in European regulatory approval for Tesla's Full Self-Driving software."
   },
   {
-   "symbol": "TSLA",
-   "title": "‘Big Short’ investor snubs Tesla stock, echoes Buffett on $1,000 play",
-   "link": "https://www.thestreet.com/investing/steve-eisman-snubs-tesla-stock-buffett-1000-sp500?.tsrc=rss",
-   "published_utc": "2026-11-25T15:07:00Z",
-   "teaser": "One simple move beats chasing loud market hype."
-  },
-  {
    "symbol": "RDDT",
    "title": "Is Reddit Stock Priced Right Against Its Peers?",
    "link": "https://www.trefis.com/stock/rddt/articles/628782/is-reddit-stock-priced-right-against-its-peers/2026-11-25?.tsrc=rss",
@@ -480,13 +487,6 @@
    "link": "https://247wallst.com/investing/2026/11/25/warren-buffett-and-greg-abel-collect-billions-from-these-untouchable-berkshire-hathaway-dividend-stocks/?.tsrc=rss",
    "published_utc": "2026-11-25T14:19:14Z",
    "teaser": "Five Berkshire holdings never budged in the latest 13F, yet their yields range from a sliver to a hefty payout. Which ones actually deliver income for retirees, and which carry risks that could trim the checks?"
-  },
-  {
-   "symbol": "TSLA",
-   "title": "SpaceX Slides 5% as Gary Black Warns a Tesla Bid Could Push It Below $100; Rocket Lab and AST SpaceMobile Drop 4%",
-   "link": "https://247wallst.com/investing/2026/11/25/spacex-slides-5-as-gary-black-warns-a-tesla-bid-could-push-it-below-100-rocket-lab-and-ast-spacemobile-drop-4/?.tsrc=rss",
-   "published_utc": "2026-11-25T14:17:18Z",
-   "teaser": "A Tesla merger sounds like a win for SpaceX, but one veteran fund manager sees dilution and arbitrage traders quietly working against shareholders. Why is he telling investors to hold off, and how are Rocket Lab and AST SpaceMobile caught in the fallout?"
   },
   {
    "symbol": "UPS",
