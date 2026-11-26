@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-26T22:32:40Z",
+ "checked_at_utc": "2026-11-26T22:53:00Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -26,6 +26,13 @@
  "symbols_failed": [],
  "symbols_empty": [],
  "items": [
+  {
+   "symbol": "TSLA",
+   "title": "Should You Buy Tesla Stock Before December?",
+   "link": "https://www.fool.com/investing/2026/11/26/should-you-buy-tesla-stock-before-december/?.tsrc=rss",
+   "published_utc": "2026-11-26T22:35:02Z",
+   "teaser": "Merger talks might jolt Tesla stock by year-end, or they might now."
+  },
   {
    "symbol": "MSFT",
    "title": "Tech Stock Sell-Off: Down 13%, Is Microsoft a Buy Now?",
