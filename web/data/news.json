@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-27T22:17:19Z",
+ "checked_at_utc": "2026-11-27T22:33:42Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -26,6 +26,13 @@
  "symbols_failed": [],
  "symbols_empty": [],
  "items": [
+  {
+   "symbol": "AMZN",
+   "title": "What Amazon.com (AMZN)'s UK Car Marketplace Launch Means For Shareholders",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-uk-car-221235075.html?.tsrc=rss",
+   "published_utc": "2026-11-27T22:12:35Z",
+   "teaser": "Amazon.com is expanding its Amazon Autos online car marketplace to the UK in early 2027, while Amazon Web Services continues to post revenue growth and remains a major contributor to group operating income. The combination of capital-heavy cloud infrastructure spending and a new geography for high-ticket auto transactions illustrates how Amazon.com is leaning on AWS cash generation and new verticals to support its long-term buildout. The next focus is on how Amazon.com's heavy AWS capex plan..."
+  },
   {
    "symbol": "CEG",
    "title": "Is Constellation Energy (CEG) Below Fair Value After Its $5b Asset Sale?",
