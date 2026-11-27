@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-26T22:53:00Z",
+ "checked_at_utc": "2026-11-27T03:35:12Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,6 +27,83 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "NVDA",
+   "title": "Nvidia Is Down 35% From Its All-Time High, Tied for Its Biggest Drop Since the AI Boom Began. Is It a Buy?",
+   "link": "https://www.fool.com/investing/2026/11/26/nvidia-is-down-35-from-its-all-time-high-tied-for-its-biggest-drop-since-the-ai-boom-began-is-it-a-buy/?.tsrc=rss",
+   "published_utc": "2026-11-27T03:20:02Z",
+   "teaser": "Nvidia is a bargain buy right now."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple (AAPL) Has Found a New AI Opportunity That Has Little to Do With the iPhone",
+   "link": "https://finance.yahoo.com/technology/ai/articles/apple-aapl-found-ai-opportunity-031905510.html?.tsrc=rss",
+   "published_utc": "2026-11-27T03:19:05Z",
+   "teaser": "We just published the list of the 10 Best Tech Stocks to Buy for 2027 According to Hedge Funds, and Apple Inc. (NASDAQ:AAPL) ranked 10th on this list. Tech stocks aren’t lacking in growth stories for 2027. The problem is that smart money is increasingly selective about which companies it’s willing to pay a premium […]"
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Target cut its Apple Black Friday discount in half",
+   "link": "https://www.thestreet.com/retail/target-cut-its-apple-black-friday-discount-in-half?.tsrc=rss",
+   "published_utc": "2026-11-27T03:17:00Z",
+   "teaser": "There are two Target rules customers should know before buying."
+  },
+  {
+   "symbol": "MU",
+   "title": "Micron (MU) Has Secured $32 Billion in Customer Commitments. Here’s Why That Matters",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-secured-32-billion-031249719.html?.tsrc=rss",
+   "published_utc": "2026-11-27T03:12:49Z",
+   "teaser": "We just published the list of the 10 Best Tech Stocks to Buy for 2027 According to Hedge Funds, and Micron Technology, Inc. (NASDAQ:MU) ranked 8th on this list. Tech stocks aren’t lacking in growth stories for 2027. The problem is that smart money is increasingly selective about which companies it’s willing to pay a […]"
+  },
+  {
+   "symbol": "TSLA",
+   "title": "‘How Can TSLA Compete With Waymo?’ Gary Black Questions Tesla’s Robotaxi Strategy, Predicts Waymo Will Lead in Miles and Trips",
+   "link": "https://finance.yahoo.com/technology/articles/tsla-compete-waymo-gary-black-013007370.html?.tsrc=rss",
+   "published_utc": "2026-11-27T01:30:07Z",
+   "teaser": "Investor Gary Black of The Future Fund LLC slammed Tesla Inc.‘s bullish supporters, backing Alphabet Inc.‘s Waymo Robotaxi service in the autonomous race instead. Waymo Is Not ‘Terrified’ Of Tesla’s FSD On Sunday, user Randy Kirk took to X, quoting..."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "What Could Tesla (TSLA) Merger Talks Mean For Its Stock?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/could-tesla-tsla-merger-talks-013007632.html?.tsrc=rss",
+   "published_utc": "2026-11-27T01:30:07Z",
+   "teaser": "Tesla (NasdaqGS:TSLA) and SpaceX are reportedly in advanced talks over a potential merger of their operations. The proposed deal would bring Tesla's automotive, AI, and robotics units under a shared structure with SpaceX's aerospace business. A combined group would consolidate Elon Musk's AI compute infrastructure, autonomous systems research, and launch capabilities into a single corporate entity. The reported Tesla and SpaceX merger talks are important, but investors should weigh them..."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Trump Says Huang Is Excited About His ‘Second Term’ at Nvidia",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/trump-says-huang-excited-second-003925008.html?.tsrc=rss",
+   "published_utc": "2026-11-27T00:39:25Z",
+   "teaser": "President Donald Trump said Jensen Huang is looking forward to his “second term” as chief executive officer of Nvidia Corp., reiterating his praise for the man whose reinstatement he pushed hard for despite bipartisan backlash over national security concerns."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Amazon tried to kill Musk’s plan for 1 million AI satellites. The FCC chair scolded it and gave SpaceX the green light",
+   "link": "https://finance.yahoo.com/technology/ai/articles/amazon-tried-kill-musk-plan-233000718.html?.tsrc=rss",
+   "published_utc": "2026-11-26T23:30:00Z",
+   "teaser": "Musk says moving AI data centers into space could save money and energy, but critics warn his plan could threaten scientific research and the environment."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Semiconductor Stock Through 2030, This Would Be It.",
+   "link": "https://www.fool.com/investing/2026/11/26/not-nvidia-not-micron-if-i-could-buy-and-hold-only-1-artificial-intelligence-ai-semiconductor-stock-through-2030-this-would-be-it/?.tsrc=rss",
+   "published_utc": "2026-11-26T23:14:44Z",
+   "teaser": "Taiwan Semiconductor offers a compelling way to capitalize on the artificial intelligence (AI) chip revolution without having to pick a winner among competing chip designers."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Did Jensen Huang’s Alleged Chinese Spy Get Him to Do Anything Nvidia Didn’t Want?",
+   "link": "https://unchainedcrypto.com/did-jensen-huangs-alleged-chinese-spy-get-him-to-do-anything-nvidia-didnt-want/?.tsrc=rss",
+   "published_utc": "2026-11-26T23:00:49Z",
+   "teaser": "Kain Warwick, founder of Infinex and Synthetix, says Jensen Huang’s alleged spy scandal is far worse than the affairs, while security expert Taylor Monahan argues the spy never got him to act against Nvidia. From Unchained, the no-hype resource for all things crypto."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Is the Worst-Performing \"Magnificent Seven\" Stock This Year. Is It a Buy Before 2027?",
+   "link": "https://www.fool.com/investing/2026/11/26/nvidia-is-the-worst-performing-magnificent-seven-stock-this-year-is-it-a-buy-before-2027/?.tsrc=rss",
+   "published_utc": "2026-11-26T22:50:49Z",
+   "teaser": "Even with Jensen Huang back as CEO, Nvidia is drastically underperforming the S&P 500 and Nasdaq this year."
+  },
+  {
    "symbol": "TSLA",
    "title": "Should You Buy Tesla Stock Before December?",
    "link": "https://www.fool.com/investing/2026/11/26/should-you-buy-tesla-stock-before-december/?.tsrc=rss",
@@ -48,13 +125,6 @@
    "teaser": "Jim Lebenthal sees a dip and keeps buying, betting on a handful of businesses firing at once. The filings back much of his case, but one number in Alphabet's latest quarter could decide whether his optimism holds."
   },
   {
-   "symbol": "NVDA",
-   "title": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-return-doesn-t-212200380.html?.tsrc=rss",
-   "published_utc": "2026-11-26T21:22:00Z",
-   "teaser": "Jensen Huang’s return as CEO doesn’t make Nvidia (NVDA) stock a Buy, despite the market’s positive reaction. Shares of the leading semiconductor manufacturer jumped roughly 31.5% on November 23 after Nvidia’s board unanimously reinstated Huang with immediate effect. Yet the stock remains down roughly 31% over the past month following a steep sell-off. Although Nvidia enjoys a long runway for growth, I believe investors should closely watch the regulatory scrutiny still surrounding the company. I"
-  },
-  {
    "symbol": "MU",
    "title": "Why It’s Hard to Write Off Micron (MU) Even with a Memory Peak in Sight",
    "link": "https://finance.yahoo.com/markets/stocks/articles/why-hard-write-off-micron-210000375.html?.tsrc=rss",
@@ -62,25 +132,18 @@
    "teaser": "Micron Technology (MU) is hard to write off, even with a memory cycle peak in sight. I remain Bullish on the stock. Let me explain why. The global provider of semiconductor memory has lost nearly half its market value since June as fears of an approaching memory cycle peak gain traction. The funny thing is, despite some downward revisions in November, Wall Street still expects Micron to earn considerably more over the next three years than analysts projected six months ago. The real debate cente"
   },
   {
-   "symbol": "NVDA",
-   "title": "Nvidia halts server shipments to 4 countries just weeks after Jensen Huang’s affair with alleged spy was exposed",
-   "link": "https://nypost.com/2026/11/26/business/nvidia-halts-server-shipments-to-4-southeast-asian-countries-report/?.tsrc=rss",
-   "published_utc": "2026-11-26T20:30:14Z",
-   "teaser": "It was unclear whether the halt would be temporary as Nvidia and its partners work through compliance requirements under new US export controls, the FT reported."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia hits pause on chip shipments to Southeast Asia",
-   "link": "https://finance.yahoo.com/technology/articles/nvidia-hits-pause-chip-shipments-200354308.html?.tsrc=rss",
-   "published_utc": "2026-11-26T20:03:54Z",
-   "teaser": "Nvidia has told manufacturing partners to pause server shipments to Malaysia, Singapore, Thailand and Indonesia as the U.S. tightens its push to keep AI chips out of China."
-  },
-  {
    "symbol": "BRK/B",
    "title": "Warren Buffett’s Thanksgiving Message Names a Teacher Most Investors Have Never Heard Of. At 63 He Bought 300 Berkshire Shares That Would Be Worth $260 Million Today",
    "link": "https://247wallst.com/investing/2026/11/26/warren-buffetts-thanksgiving-message-names-a-teacher-most-investors-have-never-heard-of-at-63-he-bought-300-berkshire-shares-that-would-be-worth-260-million-today/?.tsrc=rss",
    "published_utc": "2026-11-26T19:52:00Z",
    "teaser": "Warren Buffett's Thanksgiving message thanks Joe Rosenfield, who at 63 bought 300 Berkshire shares for Grinnell College for $5,252. The college sold them. Today they would be worth about $260 million."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "Apple Enters the AI Agent Race as It Takes on OpenAI, Anthropic, and Meta. What That Means for AAPL Stock.",
+   "link": "https://www.barchart.com/story/news/9022924/apple-enters-the-ai-agent-race-as-it-takes-on-openai-anthropic-and-meta-what-that-means-for-aapl-stock?.tsrc=rss",
+   "published_utc": "2026-11-26T19:30:03Z",
+   "teaser": "Apple is reportedly developing an autonomous AI agent capable of controlling apps, writing code, and completing complex tasks as competition with OpenAI, Anthropic, and Meta intensifies."
   },
   {
    "symbol": "TSLA",
@@ -109,6 +172,20 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-slip-1-25-184200035.html?.tsrc=rss",
    "published_utc": "2026-11-26T18:42:00Z",
    "teaser": "Microsoft's CEO said trailing frontier labs by three to six months is fine if Microsoft spends a fraction of their compute."
+  },
+  {
+   "symbol": "AMD",
+   "title": "KHC, PINS, AMD: 3 Bets I’d Consider Waging From Thanksgiving Eve’s Top 25 Unusually Active Options",
+   "link": "https://www.barchart.com/story/news/9022595/khc-pins-amd-3-bets-id-consider-waging-from-thanksgiving-eves-top-25-unusually-active-options?.tsrc=rss",
+   "published_utc": "2026-11-26T18:30:04Z",
+   "teaser": "Kraft Heinz, Pinterest, and Advanced Micro Devices all had unusually active options in Wednesday’s top 25. The three stocks' options activity sets up vertical call spreads, LEAPS calls, and a complicated double call diagonal spread for holiday profits."
+  },
+  {
+   "symbol": "BRK/B",
+   "title": "Charlie Munger Said BYD Was ‘So Much Ahead Of Tesla, It’s Almost Ridiculous’ in 2023. BYD Then Outsold Tesla, But Berkshire Sold Every Share.",
+   "link": "https://www.barchart.com/story/news/9022591/charlie-munger-said-byd-was-so-much-ahead-of-tesla-its-almost-ridiculous-in-2023-byd-then-outsold-tesla-but-berkshire-sold-every-share?.tsrc=rss",
+   "published_utc": "2026-11-26T18:30:03Z",
+   "teaser": "BYD sold around 600,000 more pure-electric cars in 2025 than Tesla; Berkshire's 2008 BYD stake, bought for about $230 million, was sold off by September 2025."
   },
   {
    "symbol": "AMD",
@@ -263,6 +340,13 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-meta-surging-capex-165927360.html?.tsrc=rss",
    "published_utc": "2026-11-26T16:59:27Z",
    "teaser": "Hayden Capital, an investment management firm, released its third-quarter 2026 investment letter. The letter can be downloaded here. In the third quarter, the portfolio fell 0.4%, bringing its year-to-date loss to 23.6%, versus gains of 2.3% and 12.7% for the S&P 500, and 1.2% and 12.9% for MSCI World. The letter acknowledges a difficult year […]"
+  },
+  {
+   "symbol": "META",
+   "title": "Is Meta Stock Outperforming the Nasdaq?",
+   "link": "https://www.barchart.com/story/news/9021697/is-meta-stock-outperforming-the-nasdaq?.tsrc=rss",
+   "published_utc": "2026-11-26T16:50:55Z",
+   "teaser": "Meta Platforms has outpaced the Nasdaq Composite over the past three months, although its performance has lagged the benchmark over the past year. Meanwhile, analyst sentiment toward META remains upbeat."
   },
   {
    "symbol": "BRK/B",
@@ -447,13 +531,6 @@
    "teaser": "Micron just posted the most profitable year in its history, yet the stock has shed a third of its value in a month. Memory's long record of boom and bust may explain why investors refuse to pay up."
   },
   {
-   "symbol": "GOOGL",
-   "title": "Alphabet Drops 15% in a Year: Buy, Sell or Hold the Stock?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-drops-15-buy-sell-134800192.html?.tsrc=rss",
-   "published_utc": "2026-11-26T13:48:00Z",
-   "teaser": "GOOGL shares have plunged 15% in a year as soaring AI spending and weakening cash flow overshadow robust Cloud growth. Is it time to buy, sell or hold?"
-  },
-  {
    "symbol": "TSLA",
    "title": "Tesla's Self-Driving Expansion in Europe Faces a Crucial Test",
    "link": "https://finance.yahoo.com/technology/ai/articles/teslas-self-driving-expansion-europe-134400727.html?.tsrc=rss",
@@ -480,13 +557,6 @@
    "link": "https://finance.yahoo.com/m/75ebee7a-b584-3441-9bac-c4a6ec75020e/micron-may-now-face-a-threat.html?.tsrc=rss",
    "published_utc": "2026-11-26T13:01:00Z",
    "teaser": "Huawei could be about to start developing homegrown high bandwidth memory chips, but Micron investors shouldn’t panic just yet."
-  },
-  {
-   "symbol": "AAPL",
-   "title": "An Apple Executive Just Filed to Sell $19 Million of Apple Stock With Shares a Hair Below Their Record",
-   "link": "https://247wallst.com/investing/2026/11/26/an-apple-executive-just-filed-to-sell-19-million-of-apple-stock-with-shares-a-hair-below-their-record/?.tsrc=rss",
-   "published_utc": "2026-11-26T12:57:55Z",
-   "teaser": "Apple's COO just told the SEC he plans to sell, and unlike a colleague's sale a day earlier, no pre-set trading plan appears behind it. Does the timing hide a signal, or is it just routine after a big year?"
   },
   {
    "symbol": "BRK/B",
@@ -529,13 +599,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/microns-50-billion-taiwan-investment-113553440.html?.tsrc=rss",
    "published_utc": "2026-11-26T11:35:53Z",
    "teaser": "The memory chipmaker could redirect future investments to Singapore amid stalled wage negotiations."
-  },
-  {
-   "symbol": "AAPL",
-   "title": "MiniMax Faces Revenue Risks as Apple Removes Talkie AI Chatbot",
-   "link": "https://finance.yahoo.com/technology/ai/articles/minimax-faces-revenue-risks-apple-113357968.html?.tsrc=rss",
-   "published_utc": "2026-11-26T11:33:57Z",
-   "teaser": "The removal puts pressure on MiniMax as scrutiny of AI chatbot safety intensifies."
   },
   {
    "symbol": "MU",
@@ -613,20 +676,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-nflx-sees-21-5-110142773.html?.tsrc=rss",
    "published_utc": "2026-11-26T11:01:42Z",
    "teaser": "ETFs bought $21.5 million of Netflix stock on Tuesday, with 48 funds buying and 15 selling."
-  },
-  {
-   "symbol": "MU",
-   "title": "Micron's Margins Peaked Before. How Far Did MU Fall?",
-   "link": "https://www.trefis.com/stock/mu/articles/629179/micron-s-margins-peaked-before-how-far-did-mu-fall/2026-11-26?.tsrc=rss",
-   "published_utc": "2026-11-26T11:00:34Z",
-   "teaser": "Micron Technology kept 86.8% of its sales as gross profit in the three months to Sep 3, 2026. That share is called gross margin. It is what Micron keeps from its sales after paying to make its chips. It is the highest of the 115 quarters in our data, back to February 1998."
-  },
-  {
-   "symbol": "MU",
-   "title": "Micron’s Taiwan Expansion Plans Face Uncertainty Amid Ongoing Labour Dispute",
-   "link": "https://investorshub.advfn.com/market-news/article/40757/microns-taiwan-expansion-plans-face-uncertainty-amid-ongoing-labour-dispute?.tsrc=rss",
-   "published_utc": "2026-11-26T10:57:45Z",
-   "teaser": "Micron Technology (NASDAQ:MU) could reconsider its planned investments in Taiwan as an unresolved labour dispute raises concerns over the US memory chipmaker’s future manufacturing expansion, according to a report published by Taiwan’s Commercial Times on Thursday. The report cited Wealth Magazine chairman Hsieh Chin-ho, who warned that deteriorating labour relations could prompt Micron’s board to reassess planned investments totalling NT$1."
   },
   {
    "symbol": "BRK/B",
@@ -725,13 +774,6 @@
    "link": "https://www.trefis.com/stock/rddt/articles/628782/is-reddit-stock-priced-right-against-its-peers/2026-11-25?.tsrc=rss",
    "published_utc": "2026-11-25T15:00:23Z",
    "teaser": "Today's big story: Anthropic Below Its IPO Price: Do Giants Come Back."
-  },
-  {
-   "symbol": "BRK/B",
-   "title": "Even Without Warren Buffett as CEO, Berkshire Hathaway Is Outperforming the S&P 500, Nasdaq, and Dow by the Widest Margin Since 2022. History Says This Is What Happens Next.",
-   "link": "https://www.fool.com/investing/2026/11/25/even-without-warren-buffett-as-ceo-berkshire-hathaway-is-outperforming-the-s-and-p-500-nasdaq-and-dow-by-the-widest-margin-since-2022-history-says-this-is-what-happens-next/?.tsrc=rss",
-   "published_utc": "2026-11-25T14:50:02Z",
-   "teaser": "Berkshire remains an excellent value stock to build a portfolio around."
   },
   {
    "symbol": "UPS",
