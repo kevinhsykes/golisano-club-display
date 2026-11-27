@@ -4,7 +4,7 @@
  "exchange": "NYSE",
  "currency": "USD",
  "as_of_utc": "2026-11-27T18:02:44Z",
- "price": 93.43,
+ "price": 93.83,
  "previous_close": 207.56,
  "day_high": 95.669,
  "day_low": 92.125,
@@ -1014,9 +1014,9 @@
   },
   {
    "date": "2026-11-27",
-   "close": 93.43
+   "close": 93.83
   }
  ],
  "source": "Yahoo Finance chart API snapshot (daily closes, unadjusted)",
- "retrieved_at_utc": "2026-11-27T18:47:32Z"
+ "retrieved_at_utc": "2026-11-27T19:09:25Z"
 }
