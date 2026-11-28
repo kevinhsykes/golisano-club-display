@@ -1,7 +1,7 @@
 {
  "schema": "company-news.v1",
  "source": "Yahoo Finance",
- "checked_at_utc": "2026-11-27T22:33:42Z",
+ "checked_at_utc": "2026-11-28T03:12:04Z",
  "symbols_checked": [
   "AAPL",
   "AMD",
@@ -27,11 +27,109 @@
  "symbols_empty": [],
  "items": [
   {
+   "symbol": "AAPL",
+   "title": "Apple Is Beating the Rest of the \"Magnificent Seven\" in 2026. Can It Do It Again in 2027?",
+   "link": "https://www.fool.com/investing/2026/11/27/apple-is-beating-the-rest-of-the-magnificent-seven-in-2026-can-it-do-it-again-in-2027/?.tsrc=rss",
+   "published_utc": "2026-11-28T01:19:10Z",
+   "teaser": "Amazon, Alphabet, and Meta Platforms have pushed their free cash flow into the negative due to AI spending, while Apple has continued to generate cash."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia Stock Is Still Down 38% From Its Peak Despite Jensen Huang's Return. History Suggests a $10,000 Investment Today Will Be Worth This Much by Year-End 2027.",
+   "link": "https://www.fool.com/investing/2026/11/27/nvidia-stock-is-still-down-38-from-its-peak-despite-jensen-huang-s-return-history-suggests-a-usd10-000-investment-today-will-be-worth-this-much-by-year-end-2027/?.tsrc=rss",
+   "published_utc": "2026-11-28T01:11:20Z",
+   "teaser": "Nvidia's accelerating earnings growth and historically cheap valuation could help investors double their money by the end of 2027."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "OpenAI says a spy handed Apple secret plans for AI devices that could 'outcompete' the iPhone maker on its 'own turf'",
+   "link": "https://finance.yahoo.com/technology/ai/articles/openai-says-spy-handed-apple-010000370.html?.tsrc=rss",
+   "published_utc": "2026-11-28T01:00:00Z",
+   "teaser": "OpenAI and Apple are suing each other for stealing as the race to develop AI products fuels competition for talent and technology."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "3 Reasons I Might Buy More Nvidia in December",
+   "link": "https://www.fool.com/investing/2026/11/27/3-reasons-i-might-buy-more-nvidia-in-december/?.tsrc=rss",
+   "published_utc": "2026-11-28T00:58:50Z",
+   "teaser": "The stock is down nearly 30% over the past month, even as its fundamentals have only improved."
+  },
+  {
+   "symbol": "MU",
+   "title": "A 60-Year-Old Who Bought 1,000 Micron Shares at $192 Just Watched Jim Cramer’s Investing Club Call It ‘Comically Cheap.’ Here’s What’s Left of His $1 Million Gain",
+   "link": "https://247wallst.com/investing/2026/11/27/a-60-year-old-who-bought-1000-micron-shares-at-192-just-watched-jim-cramers-investing-club-call-it-comically-cheap-heres-whats-left-of-his-1-million-gain/?.tsrc=rss",
+   "published_utc": "2026-11-28T00:41:00Z",
+   "teaser": "A 60-year-old retiree's 1,000 Micron shares, bought at $192, were worth $1,213,560 in June and $646,950 at Friday's close. Jim Cramer's Investing Club calls the stock \"comically cheap.\" Here is the math on holding, selling a third or setting a line."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "2027 smartphone market outlook: Apple to outperform as shipments fall 5%",
+   "link": "https://finance.yahoo.com/technology/articles/2027-smartphone-market-outlook-apple-003322633.html?.tsrc=rss",
+   "published_utc": "2026-11-28T00:33:22Z",
+   "teaser": "Investing.com -- Global smartphone shipments are expected to decline 5% in 2027 following a projected 14% contraction in 2026, with Apple (NASDAQ:AAPL) positioned to gain market share, according to Bernstein."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "Zero To Sixty: Tesla Cybercab Fleet Tops 1,000 In Texas, Lucid Starts Fully Driverless Tests And Chinese EV Maker Posts Stronger Margins",
+   "link": "https://stocktwits.com/news-articles/markets/equity/zero-to-sixty-tesla-cybercab-fleet-tops-1-000-in-texas-lucid-starts-fully-driverless-tests-and-chinese-ev-maker-posts-stronger-margins/cNRRKv9R9Vl?.tsrc=rss",
+   "published_utc": "2026-11-28T00:12:27Z",
+   "teaser": "Tesla’s Cybercab fleet topped 1,000 units in Texas as it expanded in Dallas, while Lucid began fully driverless testing and U.S.-listed Chinese EV makers reported improving margins and modest growth outlooks."
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Plot Twist: Nvidia’s Vera Rubin Gets 2-6.5x GB300’s Tokens per Dollar. Amazon’s Trainium Edge Was Against the Old Chip",
+   "link": "https://www.tikr.com/blog/plot-twist-nvidias-vera-rubin-gets-2-6-5x-gb300s-tokens-per-dollar-amazons-trainium-edge-was-against-the-old-chip?ref=yahoofinance&tlnk=yf-261127-2mxwqf36&.tsrc=rss",
+   "published_utc": "2026-11-27T23:23:55Z",
+   "teaser": "Key TakeawaysSemiAnalysis found that Nvidia’s Vera Rubin NVL72 rack delivers 2x to 6. 5x the tokens per dollar of total cost of its GB300 NVL72 rack."
+  },
+  {
+   "symbol": "META",
+   "title": "Meta’s (META) Muse Could Unlock a New Revenue Stream",
+   "link": "https://finance.yahoo.com/technology/ai/articles/meta-meta-muse-could-unlock-232353308.html?.tsrc=rss",
+   "published_utc": "2026-11-27T23:23:53Z",
+   "teaser": "Meta Platforms, Inc. (META) could unlock a new revenue stream through Muse, its personal artificial intelligence (AI) agent. The social media platform operator has historically monetized its massive user base, which reached 3.64 billion daily active people (DAP) in September, primarily through advertising. Now, after investing $220 billion in capital expenditures between Q1 2023 and Q3 2026 and projecting $135 billion to $145 billion in full-year 2026 capex, Meta is looking to turn its AI invest"
+  },
+  {
+   "symbol": "AMZN",
+   "title": "Amazon Hits Its Lowest P/E Ever. Jim Cramer Predicts It Will “Prove to Be the Winner”",
+   "link": "https://www.tikr.com/blog/amazon-hits-its-lowest-p-e-ever-jim-cramer-predicts-it-will-prove-to-be-the-winner?ref=yahoofinance&tlnk=yf-261127-6f785p32&.tsrc=rss",
+   "published_utc": "2026-11-27T23:22:41Z",
+   "teaser": "Key TakeawaysAmazon’s forward P/E has fallen to about 24x, near its lowest in a decade, even as analysts expect its normalized EPS to nearly double from 2025 to 2028. Voters are turning against new data centers, which makes the capacity AWS already owns worth more."
+  },
+  {
+   "symbol": "GOOGL",
+   "title": "Warning for Alphabet Investors: MScience Data Show Q4 Search Revenue Tracking Below Consensus",
+   "link": "https://www.tikr.com/blog/warning-for-alphabet-investors-mscience-data-show-q4-search-revenue-tracking-below-consensus?ref=yahoofinance&tlnk=yf-261127-64qqmx2j&.tsrc=rss",
+   "published_utc": "2026-11-27T23:21:23Z",
+   "teaser": "Key TakeawaysMScience data have Alphabet’s fourth-quarter ad revenue tracking 2. 4% below consensus, with Search & other growth slowing to 7."
+  },
+  {
    "symbol": "AMZN",
    "title": "What Amazon.com (AMZN)'s UK Car Marketplace Launch Means For Shareholders",
    "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-uk-car-221235075.html?.tsrc=rss",
    "published_utc": "2026-11-27T22:12:35Z",
    "teaser": "Amazon.com is expanding its Amazon Autos online car marketplace to the UK in early 2027, while Amazon Web Services continues to post revenue growth and remains a major contributor to group operating income. The combination of capital-heavy cloud infrastructure spending and a new geography for high-ticket auto transactions illustrates how Amazon.com is leaning on AWS cash generation and new verticals to support its long-term buildout. The next focus is on how Amazon.com's heavy AWS capex plan..."
+  },
+  {
+   "symbol": "NFLX",
+   "title": "Netflix (NFLX) Beats Stock Market Upswing: What Investors Need to Know",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/netflix-nflx-beats-stock-market-214502710.html?.tsrc=rss",
+   "published_utc": "2026-11-27T21:45:02Z",
+   "teaser": "In the closing of the recent trading day, Netflix (NFLX) stood at $60.93, denoting a +2.56% move from the preceding trading day."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "S&P 500, Nasdaq End Best Week In Over A Year As AI Optimism Makes Comeback — VZ, ANT, ADBE, TSLA In Focus",
+   "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-best-week-in-over-a-year-as-ai-optimism-makes-comeback/cNb6EtcR9VK?.tsrc=rss",
+   "published_utc": "2026-11-27T21:29:46Z",
+   "teaser": "Meanwhile, the Dow Jones index recorded its best week since October 2022."
+  },
+  {
+   "symbol": "NVDA",
+   "title": "Nvidia chips on sale for $3M in China — as Jensen Huang scandal and US crackdown chokes supply",
+   "link": "https://nypost.com/2026/11/27/tech/chinese-ads-selling-banned-nvidia-servers-for-3m-as-jensen-huang-scandal-chokes-supply-market-is-crazy/?.tsrc=rss",
+   "published_utc": "2026-11-27T21:18:40Z",
+   "teaser": "Chinese videos are advertising banned Nvidia chips for sale at $3 million apiece, more than five times the US price."
   },
   {
    "symbol": "CEG",
@@ -62,6 +160,13 @@
    "teaser": "Amazon stock has held up amid the tech selloff. Can holiday demand and strong AWS growth drive shares higher?"
   },
   {
+   "symbol": "NVDA",
+   "title": "Unstoppable NVDA Stock? Jensen Huang is Back, and Nvidia Is Eyeing 75% Revenue Growth in FY 2028.",
+   "link": "https://www.barchart.com/story/news/9037026/unstoppable-nvda-stock-jensen-huang-is-back-and-nvidia-is-eyeing-75-revenue-growth-in-fy-2028?.tsrc=rss",
+   "published_utc": "2026-11-27T20:30:03Z",
+   "teaser": "Jensen Huang is back at Nvidia’s helm, while record AI demand and a 75% FY2028 revenue-growth target give NVDA stock a fresh catalyst."
+  },
+  {
    "symbol": "GOOGL",
    "title": "Alphabet Down Nearly 20%: What Would Its CEO Say?",
    "link": "https://www.trefis.com/stock/googl/articles/629198/alphabet-down-nearly-20-what-would-its-ceo-say/2026-11-27?.tsrc=rss",
@@ -74,6 +179,13 @@
    "link": "https://www.trefis.com/stock/meta/articles/629199/can-meta-s-business-pay-for-its-spending/2026-11-27?.tsrc=rss",
    "published_utc": "2026-11-27T20:15:58Z",
    "teaser": "Today's big story: Anthropic Broke Its $83 IPO Price. What Did Facebook Do Next."
+  },
+  {
+   "symbol": "AAPL",
+   "title": "OpenAI Reportedly Fires Back At Apple Over Trade Secrets And Hardware Suppliers",
+   "link": "https://stocktwits.com/news-articles/markets/equity/open-ai-reportedly-fires-back-at-apple-over-trade-secrets-and-hardware-suppliers/cNb65s2R9Vi?.tsrc=rss",
+   "published_utc": "2026-11-27T20:13:53Z",
+   "teaser": "OpenAI has countersued Apple in California, the FT reported, alleging trade secret theft and supplier coercion."
   },
   {
    "symbol": "BRK/B",
@@ -90,7 +202,7 @@
    "teaser": "The company has submitted deal plans to Germany’s competition authority without providing details of the transaction, Automotive World reported on Friday."
   },
   {
-   "symbol": "NVDA",
+   "symbol": "TSLA",
    "title": "Dow Jones Futures: Stock Market Makes Bullish Move, Tesla Leads 7 New Buys; Nvidia's Jensen Huang Heads To Capitol Hill",
    "link": "https://finance.yahoo.com/m/5b917298-e5b5-3d87-b1fa-f7cad345af64/dow-jones-futures%3A-stock.html?.tsrc=rss",
    "published_utc": "2026-11-27T19:54:29Z",
@@ -102,20 +214,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-target-walmart-chase-holiday-195308961.html?.tsrc=rss",
    "published_utc": "2026-11-27T19:53:08Z",
    "teaser": "Popular toys, gaming consoles and electronic devices are driving competition among retailers during the holiday shopping season."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Nvidia Stocks Slip 1.66% as S&P Weighs Downgrade Over Key-Man Risk",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stocks-slip-1-66-194936975.html?.tsrc=rss",
-   "published_utc": "2026-11-27T19:49:36Z",
-   "teaser": "Jensen Huang is back as CEO, but a possible cut to AA- puts board oversight and succession planning under a 90-day spotlight."
-  },
-  {
-   "symbol": "NVDA",
-   "title": "Should You Buy Nvidia Stock Before CEO Jensen Huang Testifies in Front of Congress on Dec. 1 and Dec. 3?",
-   "link": "https://www.fool.com/investing/2026/11/27/should-you-buy-nvidia-stock-before-ceo-jensen-huang-testifies-in-front-of-congress-on-dec-1-and-dec-3/?.tsrc=rss",
-   "published_utc": "2026-11-27T19:48:09Z",
-   "teaser": "Huang is set to testify before Congress next week, both publicly and behind closed doors."
   },
   {
    "symbol": "CAT",
@@ -167,11 +265,25 @@
    "teaser": "The SEC filing shows this was no ordinary transaction."
   },
   {
+   "symbol": "SOFI",
+   "title": "Black Friday Sale: SoFi’s Unusual Options Activity Points to 3 Intriguing Bullish and Bearish Bets",
+   "link": "https://www.barchart.com/story/news/9036284/black-friday-sale-sofis-unusual-options-activity-points-to-3-intriguing-bullish-and-bearish-bets?.tsrc=rss",
+   "published_utc": "2026-11-27T18:45:02Z",
+   "teaser": "After SoFi hit a 52-week low, Wednesday’s unusual options activity—featuring seven calls among eight standout options and a bullish 0.28 put/call ratio—spurred three options strategies: long/short gut strangles, bull/bear call spreads, and a double bull spread."
+  },
+  {
    "symbol": "GOOGL",
    "title": "Top Stock Reports for Alphabet, Meta & Bank of America",
    "link": "https://finance.yahoo.com/markets/stocks/articles/top-stock-reports-alphabet-meta-184100991.html?.tsrc=rss",
    "published_utc": "2026-11-27T18:41:00Z",
    "teaser": "Top stock reports for Alphabet, Meta and Bank of America spotlight AI-driven growth, advertising gains and rising interest income amid mounting cost pressures."
+  },
+  {
+   "symbol": "TSLA",
+   "title": "‘Superfan’ Elon Musk Says ‘China Is Cool’ as Tesla Boosts Production in Shanghai: ‘The More the US and China Cooperate, the Better Off Both Will Be’",
+   "link": "https://www.barchart.com/story/news/9036157/superfan-elon-musk-says-china-is-cool-as-tesla-boosts-production-in-shanghai-the-more-the-us-and-china-cooperate-the-better-off-both-will-be?.tsrc=rss",
+   "published_utc": "2026-11-27T18:30:03Z",
+   "teaser": "Elon Musk praises China as Tesla expands Shanghai production, highlighting the importance of U.S.-China cooperation amid intensifying geopolitical tensions and EV competition."
   },
   {
    "symbol": "BRK/B",
@@ -251,13 +363,6 @@
    "teaser": "Investors are weighing strong Black Friday data and AI optimism as stocks trade higher, today, Nov. 27, 2026."
   },
   {
-   "symbol": "AMZN",
-   "title": "Does Amazon's Profit Hang On One Business?",
-   "link": "https://www.trefis.com/stock/amzn/articles/629380/does-amazon-s-profit-hang-on-one-business/2026-11-27?.tsrc=rss",
-   "published_utc": "2026-11-27T17:31:14Z",
-   "teaser": "Today's big story: Anthropic Broke Its $83 IPO Price. What Did Facebook Do Next."
-  },
-  {
    "symbol": "MSFT",
    "title": "Did Billionaire Bill Ackman Lose Confidence in Microsoft? The Answer Might Surprise You",
    "link": "https://www.fool.com/investing/2026/11/27/did-billionaire-bill-ackman-lose-confidence-in-microsoft-the-answer-might-surprise-you/?.tsrc=rss",
@@ -277,13 +382,6 @@
    "link": "https://finance.yahoo.com/technology/ai/articles/micron-faces-ai-memory-threat-171328560.html?.tsrc=rss",
    "published_utc": "2026-11-27T17:13:28Z",
    "teaser": "Huawei is developing custom high-bandwidth memory technology."
-  },
-  {
-   "symbol": "GOOGL",
-   "title": "3 Ways To Own Alphabet In ETFs When Each Fund Holds It Differently",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/3-ways-own-alphabet-etfs-171242209.html?.tsrc=rss",
-   "published_utc": "2026-11-27T17:12:42Z",
-   "teaser": "Owning Alphabet directly means you carry its specific problems on your own. Simply Wall St flags the risk that further fines or forced changes to how it runs ads and artificial intelligence tools could hit advertising reach and earnings power. A fund that holds Alphabet alongside many other businesses dilutes how much those company issues move your overall portfolio, and also tones down any upside Alphabet delivers. Right now that trade off is in focus because hackers breached the US Air..."
   },
   {
    "symbol": "CAT",
@@ -396,13 +494,6 @@
    "link": "https://247wallst.com/investing/etf/2026/11/27/sofis-500-stock-etf-doesnt-weight-strictly-by-size-sfy-tilts-americas-biggest-companies-toward-growth/?.tsrc=rss",
    "published_utc": "2026-11-27T15:32:40Z",
    "teaser": "Two funds each hold 500 of the largest US companies, yet one quietly bets on growth and charges less to own it. After a rough stretch for tech, the gap between them is getting hard to ignore."
-  },
-  {
-   "symbol": "MSFT",
-   "title": "Why Is Microsoft (MSFT) Down 7.6% Since Last Earnings Report?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/why-microsoft-msft-down-7-153027471.html?.tsrc=rss",
-   "published_utc": "2026-11-27T15:30:27Z",
-   "teaser": "Microsoft (MSFT) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues."
   },
   {
    "symbol": "CEG",
@@ -538,13 +629,6 @@
    "teaser": "Today's big story: Anthropic Broke Its $83 IPO Price. What Did Facebook Do Next."
   },
   {
-   "symbol": "AAPL",
-   "title": "Tech Sell-Off: 1 Unstoppable Stock-Split Stock to Buy Before It Joins Nvidia, Alphabet, Microsoft, and Apple in the $3 Trillion Club",
-   "link": "https://www.fool.com/investing/2026/11/27/tech-sell-off-1-unstoppable-stock-split-stock-buy-before-joins-nvidia-alphabet-microsoft-apple-usd3-trillion-club/?.tsrc=rss",
-   "published_utc": "2026-11-27T12:37:02Z",
-   "teaser": "Artificial intelligence is unlocking brand-new opportunities for this tech giant."
-  },
-  {
    "symbol": "CEG",
    "title": "Constellation Energy Sinks 10% in a Week, NuScale 17%, as “the Jensen Huang Stock Put Is Fading”",
    "link": "https://www.tikr.com/blog/constellation-energy-sinks-10-in-a-week-nuscale-17-as-the-jensen-huang-stock-put-is-fading?ref=yahoofinance&tlnk=yf-261127-7ffc6jh2&.tsrc=rss",
@@ -573,13 +657,6 @@
    "teaser": "SoFi stock plunges 20.7% in November despite record quarterly results, rising earnings estimates and a strong growth outlook. Is the sell-off overdone?"
   },
   {
-   "symbol": "AAPL",
-   "title": "Will Rising AI Capex Alter the Free Cash Flow Outlook for Apple Stock?",
-   "link": "https://finance.yahoo.com/technology/ai/articles/rising-ai-capex-alter-free-121600152.html?.tsrc=rss",
-   "published_utc": "2026-11-27T12:16:00Z",
-   "teaser": "Apple faces rising memory costs and fading tariff refunds despite stronger fiscal 2026 margins. Can record Services revenues cushion rising cost pressures?"
-  },
-  {
    "symbol": "BRK/B",
    "title": "3 Lessons From Berkshire Hathaway's Stock Portfolio That Work for Any Stock Portfolio",
    "link": "https://www.fool.com/investing/2026/11/27/3-lessons-from-berkshire-hathaway-s-stock-portfolio-that-work-for-any-stock-portfolio/?.tsrc=rss",
@@ -599,13 +676,6 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/ark-autonomous-technology-robotics-etf-110448164.html?.tsrc=rss",
    "published_utc": "2026-11-27T11:04:48Z",
    "teaser": "The fund sold $149.6 million of stock, cutting 33 positions and adding none, with Tesla and SpaceX the largest reductions."
-  },
-  {
-   "symbol": "TSLA",
-   "title": "ETFs Are Buying Tesla (TSLA) on Wednesday",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-tesla-tsla-wednesday-110102240.html?.tsrc=rss",
-   "published_utc": "2026-11-27T11:01:02Z",
-   "teaser": "ETFs bought $137.5 million of Tesla stock on Wednesday, with 36 funds buying and 18 selling."
   },
   {
    "symbol": "BRK/B",
@@ -956,6 +1026,13 @@
    "link": "https://finance.yahoo.com/markets/stocks/articles/united-parcel-ups-investors-now-081422681.html?.tsrc=rss",
    "published_utc": "2026-11-24T08:14:22Z",
    "teaser": "United Parcel Service (NYSE:UPS) reached an SEC settlement creating a US$45m Fair Fund for certain investors in UPS securities. The SEC found UPS failed to properly record goodwill impairment for its UPS Freight unit, leading to misstated earnings figures. Investors who bought UPS shares or specified bonds between October 2019 and January 2021 may now submit claims to the Fair Fund. The SEC goodwill impairment settlement and US$45m Fair Fund for UPS investors should be considered alongside..."
+  },
+  {
+   "symbol": "UPS",
+   "title": "UPS or Kimberly-Clark: I Can Only Pick One Dividend Stock for the Next 20 Years. Here’s Mine",
+   "link": "https://www.tikr.com/blog/ups-or-kimberly-clark-i-can-only-pick-one-dividend-stock-for-the-next-20-years-heres-mine?ref=yahoofinancedividend&tlnk=yf-261127-xh7rpjqp&.tsrc=rss",
+   "published_utc": "2026-11-23T22:27:19Z",
+   "teaser": "Key TakeawaysUPS yields 6. 2% and Kimberly-Clark yields 4."
   },
   {
    "symbol": "UPS",
